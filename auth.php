@@ -1,5 +1,6 @@
 <?php
 require './vendor/autoload.php';
+
 use Elliptic\EC;
 use kornrunner\Keccak;
 
@@ -22,17 +23,9 @@ function verifySignature($message, $signature, $address) {
 
     return $address == pubKeyToAddress($pubkey);
 }
-$servername = "localhost";
-$username = "root";
-$password = "123";
-$dbname = "voting";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+
+include("_config.php");
 // Takes raw data from the request
 $json = file_get_contents('php://input');
 

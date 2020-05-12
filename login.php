@@ -18,7 +18,7 @@ function GUID()
    return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 }
 ?>
-<form action="dna://signin/v1" method="get" >
+<form action="dna://signin/v1" method="get">
 
 <input type="hidden" id="nonce_endpoint" name="nonce_endpoint" value="<?php echo $url;?>/start-session.php">
  <input type="hidden" id="token" name="token" value="<?php echo GUID(); ?>">

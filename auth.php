@@ -1,7 +1,7 @@
 <?php
 include("_config.php");
 
-require './vendor/autoload.php';
+require 'vendor/autoload.php';
 use Elliptic\EC;
 use kornrunner\Keccak;
 

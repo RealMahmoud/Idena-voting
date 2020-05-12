@@ -40,9 +40,7 @@ die();
 
 $sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
 $result = $conn->query($sql);
-if (!$result) {
-    trigger_error('Invalid query: ' . $conn->error);
-}
+
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {

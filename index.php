@@ -26,7 +26,7 @@ Do you thing Idena will go to the moon?
 
 Idea 2 : Click and sign in 1
 <?php
-$url = '/Idena-voting/';
+$url = 'http://voting.rioda.org/Idena-voting/';
  function GUID()
 {
     if (function_exists('com_create_guid') === true)

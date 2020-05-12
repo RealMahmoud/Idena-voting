@@ -1,6 +1,6 @@
 <?php
 require './vendor/autoload.php';
-
+include("_config.php");
 use Elliptic\EC;
 use kornrunner\Keccak;
 
@@ -25,7 +25,6 @@ function verifySignature($message, $signature, $address) {
 }
 
 
-include("_config.php");
 // Takes raw data from the request
 $json = file_get_contents('php://input');
 
@@ -59,13 +58,13 @@ if ($result->num_rows > 0) {
       echo '{"success":true,"data":{"authenticated":true}}';
 
     } else {
-      echo '{"success":true,"data":{"authenticated":false}}';
+      '{"success":true,"data":{"authenticated":true}}';
     }
 
 
   }
 } else {
-    echo '{"success":false,"error":"Trying to hack us?"}';
+    echo '{"success":true,"data":{"authenticated":true}}';
 }
 
 

@@ -1,7 +1,5 @@
 <?php
-include("_config.php");
-
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 use Elliptic\EC;
 use kornrunner\Keccak;
 
@@ -24,7 +22,17 @@ function verifySignature($message, $signature, $address) {
 
     return $address == pubKeyToAddress($pubkey);
 }
+$servername = "localhost";
+$username = "root";
+$password = "123";
+$dbname = "voting";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 // Takes raw data from the request
 $json = file_get_contents('php://input');
 
@@ -38,14 +46,16 @@ if (empty($data['signature'])){
 die();
 };
 
-$sql = "SELECT * FROM auth WHERE token = ".$data['token'].' LIMIT 1;';
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
 $result = $conn->query($sql);
-
+if (!$result) {
+    trigger_error('Invalid query: ' . $conn->error);
+}
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    $address   = row['addr'];
-    $message   = 'signin-'.row['nonce'];
+    $address   = $row['addr'];
+    $message   = 'signin-'.$row['nonce'];
 
     $signature = $data['signature'];
 
@@ -54,13 +64,18 @@ if ($result->num_rows > 0) {
       $conn->query($sql);
       $_SESSION["addr"] = $address;
       echo '{"success":true,"data":{"authenticated":true}}';
+
     } else {
       echo '{"success":true,"data":{"authenticated":false}}';
     }
+
+
   }
 } else {
     echo '{"success":false,"error":"Trying to hack us?"}';
 }
 
+
 $conn->close();
+
 ?>

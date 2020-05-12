@@ -52,9 +52,7 @@ if ($result->num_rows > 0) {
     $signature = $data['signature'];
 
     if (verifySignature($message, $signature, $address)) {
-      $sql = "UPDATE `auth` SET `sig` = '".$data['signature']."', `authenticated` = 1 WHERE `token` = '".$data['token']."';";
-      $conn->query($sql);
-      $_SESSION["addr"] = $address;
+
       echo '{"success":true,"data":{"authenticated":true}}';
 
     } else {

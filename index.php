@@ -3,7 +3,7 @@ session_start();
 
 if(empty($_SESSION["addr"])) {
 
-  location("header:login.php");
+  header("location:login.php");
   die();
 } else {
 

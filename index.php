@@ -3,7 +3,7 @@ session_start();
 
 if(empty($_SESSION["addr"])) {
 
-  echo "<script> location.href='http://127.0.0.1/voting/login.php'; </script>";
+  location("header:login.php");
   die();
 } else {
 

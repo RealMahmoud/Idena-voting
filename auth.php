@@ -53,18 +53,14 @@ if ($result->num_rows > 0) {
       $sql = "UPDATE `auth` SET `sig` = '".$data['signature']."', `authenticated` = 1 WHERE `token` = '".$data['token']."';";
       $conn->query($sql);
       $_SESSION["addr"] = $address;
-      echo '{"success":true,"data":{"authenticated":true}}'
-
+      echo '{"success":true,"data":{"authenticated":true}}';
     } else {
-      echo '{"success":true,"data":{"authenticated":false}}'
+      echo '{"success":true,"data":{"authenticated":false}}';
     }
-
-
   }
 } else {
-    echo '{"success":false,"error":"Trying to hack us?"}'
+    echo '{"success":false,"error":"Trying to hack us?"}';
 }
-
 
 $conn->close();
 ?>

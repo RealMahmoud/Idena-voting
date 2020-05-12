@@ -2,13 +2,12 @@
 session_start();
 
 if(!empty($_SESSION["addr"])) {
-
-   echo "<script> location.href='http://127.0.0.1/voting/index.php'; </script>";
+header("location:index.php");
 die();
 } else {
 
 }
-$url = 'http://127.0.0.1';
+$url = '/Idena-voting/';
 function GUID()
 {
    if (function_exists('com_create_guid') === true)

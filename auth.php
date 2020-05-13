@@ -14,6 +14,7 @@ function verifySignature($message, $signature, $address) {
 
 
     $hash   = Keccak::hash($message, 256);
+
     $sign   = ["r" => substr($signature, 2, 64),
                "s" => substr($signature, 66, 64)];
     $recid  = ord(hex2bin(substr($signature, 130, 2)));

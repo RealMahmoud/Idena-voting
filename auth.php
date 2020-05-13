@@ -12,15 +12,13 @@ function pubKeyToAddress($pubkey) {
 
 function verifySignature($message, $signature, $address) {
 
-
-    $hash   = Keccak::hash($message, 256);
-
+   $rlp = new RLP;
+    $hash   = Keccak::hash(hex2bin("ab".bin2hex($message)), 256);
     $sign   = ["r" => substr($signature, 2, 64),
                "s" => substr($signature, 66, 64)];
     $recid  = ord(hex2bin(substr($signature, 130, 2)));
     if ($recid != ($recid & 1))
         return false;
-
     $ec = new EC('secp256k1');
     $pubkey = $ec->recoverPubKey($hash, $sign, $recid);
 
@@ -39,14 +37,14 @@ if (empty($data['signature'])){
 die();
 };
 
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']." LIMIT 1;';";
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     $address   = $row['addr'];
-    $message   = $row['nonce'];
+    $message   = 'signin-'.$row['nonce'];
 
     $signature = $data['signature'];
 

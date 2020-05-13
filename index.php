@@ -1,8 +1,11 @@
 <?php
 session_start();
-
+include("_config.php");
+if (!empty($_GET['token'])){
+  $_SESSION["token"] = $_GET['token'];
+}
 if(!empty($_SESSION["token"])) {
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."';";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -38,13 +41,5 @@ Do you thing Idena will go to the moon?
 Idea 2 : Click and sign in 1
 <?php
 $url = 'http://voting.rioda.org/Idena-voting';
- function GUID()
-{
-    if (function_exists('com_create_guid') === true)
-    {
-        return trim(com_create_guid(), '{}');
-    }
 
-    return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
-}
 ?>

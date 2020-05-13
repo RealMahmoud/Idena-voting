@@ -9,9 +9,9 @@ $data = (array) json_decode($json);
 $nonce = GUID();
 if ($data['token'] == ''){die();};
 if ($data['address'] == ''){die();};
-$sql = "INSERT INTO auth (nonce,token, addr) 
+$sql = "INSERT INTO auth (nonce,token, addr)
 VALUES ('".$nonce."', '".$data['token']."', '".$data['address']."')";
 $conn->query($sql);
 $conn->close();
 ?>
-{"success":true,"data":{"nonce":"signin-<?php echo $nonce; ?>"}}
+{"success":true,"data":{"nonce":"<?php echo '1'; ?>"}}

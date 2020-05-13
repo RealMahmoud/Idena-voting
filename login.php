@@ -1,14 +1,23 @@
 <?php
 session_start();
 
-if(!empty($_SESSION["addr"])) {
-header("location:index.php");
-die();
+if(!empty($_SESSION["token"])) {
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $auth   = $row['authenticated'];
+
+if ($auth == 1){
+  header("location:index.php");
 }
-else {
+
+}}}
 //something?
 //i need to see how this works so we know what to do and where to put what
-}
+
 include("_config.php");
 
 ?>

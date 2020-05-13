@@ -1,13 +1,21 @@
 <?php
 session_start();
 
-if(empty($_SESSION["addr"])) {
+if(!empty($_SESSION["token"])) {
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $auth   = $row['authenticated'];
+
+if ($auth == 0){
   header("location:login.php");
-  die();
-} else {
-
 }
+
+}}}
+
 ?>
 A BIG NICE
 Idea : 1 --Sending with custom payload --- Proposal ID + Answer + Nonce

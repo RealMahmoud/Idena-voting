@@ -7,7 +7,8 @@ die();
 } else {
 
 }
-$url = 'http://voting.rioda.org/Idena-voting';
+include("_config.php");
+
 function GUID()
 {
    if (function_exists('com_create_guid') === true)

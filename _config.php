@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "e37a602f8a785005553974f";
 $dbname = "voting";
-
+$url = 'http://voting.rioda.org/Idena-voting';
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

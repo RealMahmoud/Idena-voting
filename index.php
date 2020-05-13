@@ -14,8 +14,11 @@ if ($auth == 0){
   header("location:login.php");
 }
 
-}}}
-
+}}
+;}
+if (empty($_SESSION["token"])){
+    header("location:login.php");
+}
 ?>
 A BIG NICE
 Idea : 1 --Sending with custom payload --- Proposal ID + Answer + Nonce

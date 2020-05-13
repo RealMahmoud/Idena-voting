@@ -14,4 +14,4 @@ VALUES ('".$nonce."', '".$data['token']."', '".$data['address']."')";
 $conn->query($sql);
 $conn->close();
 ?>
-{"success":true,"data":{"nonce":"<?php echo '1'; ?>"}}
+{"success":true,"data":{"nonce":"signin-<?php echo $nonce; ?>"}}

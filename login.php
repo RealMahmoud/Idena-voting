@@ -1,8 +1,8 @@
 <?php
 session_start();
-
+include("_config.php");
 if(!empty($_SESSION["token"])) {
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."';";
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION['token']."';";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -18,7 +18,7 @@ if ($auth == 1){
 //something?
 //i need to see how this works so we know what to do and where to put what
 
-include("_config.php");
+
 $token = GUID();
 ?>
 <form action="dna://signin/v1" method="GET">

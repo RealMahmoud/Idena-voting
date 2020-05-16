@@ -38,11 +38,16 @@ if ($result->num_rows > 0) {
 
 <h3>Hi ,<?php echo  $addr ?></h3>
 
-
+<h4>Polls</h4>
 <form action="addp.php" method="POST">
-  <input type="text" name="desc" value="Will idena beat btc?" >
-
+<input type="text" name="desc" value="Will idena beat btc?" >
 <input type="hidden" name="type" value="poll" >
-
+<input type="submit" value="add">
+</form>
+<h4>projects</h4>
+<form action="addp.php" method="POST">
+<input type="text" name="desc" value="Cookies Store" >
+<input type="text" name="amount" value="amount" >
+<input type="hidden" name="type" value="project" >
 <input type="submit" value="add">
 </form>

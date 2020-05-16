@@ -38,8 +38,11 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     $addr = $row['addr'];
-
+    $dev = $row['dev'];
 }}
+if (!$dev == '1'){
+  die('You are not a dev');
+}
 if ($_POST['type'] == 'poll'){
   $sql = "INSERT INTO `polls`( `pdesc`, `addr`) VALUES ('".$_POST['desc']."','".$addr."')";
   $result = $conn->query($sql);

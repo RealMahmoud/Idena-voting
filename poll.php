@@ -25,16 +25,24 @@ if (empty($_SESSION["token"])){
     header("location:login.php");
 }
 
-// get poll data
+$sql = "SELECT * FROM `polls` WHERE `id` = '".$_GET["id"]."';";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+
+
+
 ?>
 
 
 
-<div id="poll">
-<h3>Do you like Idena?</h3>
+
+<h3><?php echo  $row['pdesc'] ?></h3>
 <form action="vote.php" method="GET">
-Yes: <input type="radio" name="vote" value="0" clicked><br>
+Yes: <input type="radio" name="vote" value="0" checked><br>
 No: <input type="radio" name="vote" value="1" >
 <input type="submit" value="Vote">
 </form>
-</div>
+<?php }} ?>

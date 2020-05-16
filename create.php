@@ -4,9 +4,7 @@ include("_config.php");
 if (!empty($_GET['token'])){
   $_SESSION["token"] = $_GET['token'];
 }
-if (empty($_GET['id'])){
-  die("404");
-}
+
 if(!empty($_SESSION["token"])) {
 $sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."';";
 $result = $conn->query($sql);
@@ -38,13 +36,13 @@ if ($result->num_rows > 0) {
 
 
 
-<h3>Hi ,<?php echo    $addr ?></h3>
+<h3>Hi ,<?php echo  $addr ?></h3>
 
-<h3><?php echo  $row['pdesc'] ?></h3>
-<form action="vote.php" method="GET">
-  <input type="hidden" name="id" value="<?php echo  $row['id'] ?>" >
+
+<form action="addp.php" method="POST">
+  <input type="text" name="desc" value="Will idena beat btc?" >
+
 <input type="hidden" name="type" value="poll" >
-Yes: <input type="radio" name="vote" value="0" checked><br>
-No: <input type="radio" name="vote" value="1" >
-<input type="submit" value="Vote">
+
+<input type="submit" value="add">
 </form>

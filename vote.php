@@ -40,7 +40,16 @@ if ($result->num_rows > 0) {
     $addr = $row['addr'];
 
 }}
-echo $addr;
+
+$sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$_GET['id']."';";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+  die('Already voted');
+
+}}
 $sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$_GET['id']."','".$addr."','".$_GET['vote']."','".$_GET['type']."');";
 $result = $conn->query($sql);
 ?>

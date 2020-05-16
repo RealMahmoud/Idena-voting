@@ -31,6 +31,18 @@ die('Error missing id');
 if (!isset($_GET['vote'])){
 die('Error missing vote');
 }
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."';";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $addr = $row['addr'];
+
+}}
+echo $addr;
+$sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$_GET['id']."','".$addr."','".$_GET['vote']."','".$_GET['type']."');";
+$result = $conn->query($sql);
 ?>
 
 

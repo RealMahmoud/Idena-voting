@@ -38,8 +38,8 @@ Do you thing Idena will go to the moon?
 </form>
 
 
-Idea 2 : Click and sign in 1
-<?php
-$url = 'http://voting.rioda.org/Idena-voting';
+Logout?
+<form action="logout.php" method="GET">
 
-?>
+<input type="submit" value="LOG OUT">
+</form>

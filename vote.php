@@ -22,12 +22,17 @@ if ($auth == 0){
 if (empty($_SESSION["token"])){
     header("location:login.php");
 }
+if (empty($_GET['type'])){
+die('Error missing type');
+}
+if (empty($_GET['id'])){
+die('Error missing id');
+}
+if (!isset($_GET['vote'])){
+die('Error missing vote');
+}
 ?>
 
 
 
-Logout?
-<form action="logout.php" method="GET">
-
-<input type="submit" value="LOG OUT">
-</form>
+Thanks for votting :)

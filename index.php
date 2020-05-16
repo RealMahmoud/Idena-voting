@@ -24,8 +24,32 @@ if (empty($_SESSION["token"])){
 }
 ?>
 
+<?php //fetch latest
+echo "<br>Polls : <br>";
+$sql = "SELECT * FROM `polls`;";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+ echo "<br> Poll ID : ".$row['id']."<br>";
+  echo "Description : ".$row['pdesc']."<br>";
+  }
+}
+?>
+<?php //fetch latest
+echo "<br>Projects : <br>";
+$sql = "SELECT * FROM `projects`;";
+$result = $conn->query($sql);
 
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+ echo "<br> Project ID : ".$row['id']."<br>";
+  echo "Description : ".$row['pdesc']."<br>";
+  }
+}
+?>
 Logout?
 <form action="logout.php" method="GET">
 

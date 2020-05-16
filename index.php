@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
  echo "<br> Poll ID : ".$row['id']."<br>";
   echo "Description : ".$row['pdesc']."<br>";
+  echo "Link : ".$url.'/poll.php?id='.$row['id']."<br>";
   }
 }
 ?>
@@ -47,9 +48,12 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
  echo "<br> Project ID : ".$row['id']."<br>";
   echo "Description : ".$row['pdesc']."<br>";
+    echo "Link : ".$url.'/project.php?id='.$row['id']."<br>";
   }
 }
 ?>
+
+<br>
 Logout?
 <form action="logout.php" method="GET">
 

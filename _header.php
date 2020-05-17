@@ -3,11 +3,21 @@
 
 <div class="col-auto">
 <div class="header_logo">
-<a href="/"><img src="images//idena-logo.svg" alt="Idena" width="60px" /></a>
+<a href="/"><img src="images//idena-logo.svg" alt="Idena" width="87x" /></a>
 </div>
+<?php echo $site_name; ?>
 </div>
 
-<div class="col"><a href="/"><?php echo $site_name; ?></a></div>
+<div class="col">
+    <form action="" class="form_search">
+        <div class="input-group">
+            <div class="input-addon">
+                <button type="submit" class="btn btn-icon"><i class="icon icon--search"></i></button>
+            </div>
+            <input type="search" value="" placeholder="Votings, projects, polls, users" class="form-control" />
+        </div>
+    </form>
+</div>
 
 <!--
 <div class="col-auto">

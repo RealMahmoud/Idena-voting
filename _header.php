@@ -19,26 +19,56 @@
     </form>
 </div>
 
-<!--
+
+
+<?php if(0==1) { ?>
 <div class="col-auto">
-<div class="user-pic hidden" id="currentUser">
-<img class="user-avatar" src="" alt="pic" width="40" />
+
+<div class="dropdown">
+<button src="https://robohash.org/0xcbb98843270812eece07bfb82d26b4881a33aa91" alt="pic" width="80"/>
+  
+  
+  <ul class="dropdown-menu">
+    <li><a href="#">New voting/project</a></li>
+    <li><a href="#">New poll</a></li>
+	 <li class="divider"></li> 
+    <li><a href="#">Settings</a></li>
+    <li><a href="#">Log out</a></li>
+  </ul>
+</div> 
+
+
+
+
+<!--
+<div class="user-pic" id="currentUser">
+
+
 <ul class="dropdown-menu">
 <li>
 <button id="MyAddressMenu" type="button" class="btn btn-small btn-icon">
-<span>My address</span>
+<span></span>
 </button>
 </li>
 <li class="brake"></li>
 <li>
 <button id="LogOutMenu" type="button" class="btn btn-small btn-icon" >
-<span>Log out</span>
+<span></span>
 </button>
 </li>
 </ul>
+
 </div>
 -->
 
+
+
+
+
+</div>
+<?php } else { ?>
+
+<div class="col-auto">
 <a id="SignInWithIdena" href="signin.php" type="button" class="btn btn-signin">
 <img alt="signin" class="icon icon-logo-white-small" width="24px" />
 <div class="spinner hidden">
@@ -46,11 +76,17 @@
 </div>
 <span>Sign-in with Idena</span>
 </a>
+</div>
+
+<?php } ?>
+
 
 </div>
 
-</div>
-</div>
+
+
+
+
 
 
 <!-- ORIGINAL

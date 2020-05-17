@@ -1,5 +1,5 @@
 <?php
-$url = 'http://voting.rioda.org/Idena-voting';
+$url = 'http://idena.site';
 
 $servername = "localhost";
 $username = "root";

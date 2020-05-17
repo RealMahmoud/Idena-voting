@@ -54,6 +54,4 @@ $sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$_GET['id']
 $result = $conn->query($sql);
 ?>
 
-
-
 Thanks for votting :)

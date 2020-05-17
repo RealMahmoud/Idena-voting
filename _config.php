@@ -1,5 +1,6 @@
 <?php
-$url = 'http://idena.site';
+$url = 'https://idena.site/';
+$site_name = 'Idena Site';
 
 $servername = "localhost";
 $username = "root";

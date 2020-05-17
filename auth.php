@@ -6,12 +6,10 @@ use kornrunner\Keccak;
 use Web3p\RLP\RLP;
 
 function pubKeyToAddress($pubkey) {
-
     return "0x" . substr(Keccak::hash(substr(hex2bin($pubkey->encode("hex")), 1), 256), 24);
 }
 
 function verifySignature($message, $signature, $address) {
-
    $rlp = new RLP;
     $hash   = Keccak::hash(hex2bin("ab".bin2hex($message)), 256);
     $sign   = ["r" => substr($signature, 2, 64),
@@ -21,13 +19,11 @@ function verifySignature($message, $signature, $address) {
         return false;
     $ec = new EC('secp256k1');
     $pubkey = $ec->recoverPubKey($hash, $sign, $recid);
-
     return $address == pubKeyToAddress($pubkey);
 }
 
 
 $json = file_get_contents('php://input');
-
 $data = (array) json_decode($json);
 
 if (empty($data['token'])){
@@ -45,26 +41,18 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     $address   = $row['addr'];
     $message   = 'signin-'.$row['nonce'];
-
     $signature = $data['signature'];
-
+	
     if (verifySignature($message, $signature, $address)) {
       $sql = "UPDATE `auth` SET `sig` = '".$data['signature']."', `authenticated` = 1 WHERE `token` = '".$data['token']."';";
       $conn->query($sql);
-
       echo '{"success":true,"data":{"authenticated":true}}';
 
-    } else {
-      echo '{"success":true,"data":{"authenticated":false}}';
-    }
+    } else {echo '{"success":true,"data":{"authenticated":false}}';}
 
 
   }
-} else {
-    echo '{"success":false,"error":"Trying to hack us?"}';
-}
-
+} else {echo '{"success":false,"error":"Trying to hack us?"}';}
 
 $conn->close();
-
 ?>

@@ -23,9 +23,9 @@ $token = GUID();
 ?>
 please login :) 
 <form action="dna://signin/v1" method="GET">
-<input type="hidden" id="nonce_endpoint" name="nonce_endpoint" value="<?php echo $url;?>/start-session.php">
+<input type="hidden" id="nonce_endpoint" name="nonce_endpoint" value="<?php echo $url;?>start-session.php">
 <input type="hidden" id="token" name="token" value="<?php echo $token; ?>">
-<input type="hidden" id="callback_url" name="callback_url" value="<?php echo $url;?>/index.php?token=<?php echo $token;?>">
-<input type="hidden" id="authentication_endpoint" name="authentication_endpoint" value="<?php echo $url;?>/auth.php">
+<input type="hidden" id="callback_url" name="callback_url" value="<?php echo $url;?>index.php?token=<?php echo $token;?>">
+<input type="hidden" id="authentication_endpoint" name="authentication_endpoint" value="<?php echo $url;?>auth.php">
 <input type="submit" value="Sign-In with Idena">
 </form>

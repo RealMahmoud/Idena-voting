@@ -40,7 +40,6 @@
 -->
 
 <a id="SignInWithIdena" href="signin.php" type="button" class="btn btn-signin">
-<!--<img src="images/icon-16-white@2x.png" width="16px"/>-->
 <img alt="signin" class="icon icon-logo-white-small" width="24px" />
 <div class="spinner hidden">
 <div class="small progress"><div></div></div>

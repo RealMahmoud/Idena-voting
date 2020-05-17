@@ -19,7 +19,7 @@ function opendnaurl(){
   var urlofwebsite = '<?php echo $url;?>';
    var token = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
    var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>start-session.php&token='+token+'&callback_url=<?php echo $url;?>index.php&token='+token+'&authentication_endpoint=<?php echo $url;?>auth.php';
-   window.open(encodeURI(url), '_blank');
+   window.open(encodeURI(url), '_self');
    console.log(encodeURI(url));
 }
 

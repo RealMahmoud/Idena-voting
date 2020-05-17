@@ -1,4 +1,3 @@
-<?php $session=1; ?>
 <div class="container">
 <div class="row justify-content-between align-items-center">
 
@@ -22,7 +21,7 @@
 
 
 
-<?php if($session==1) { ?>
+<?php if(0==1) { ?>
 <div class="col-auto">
 
 <div class="dropdown">
@@ -58,8 +57,6 @@
 </button>
 </li>
 </ul>
-
-
 
 </div>
 -->

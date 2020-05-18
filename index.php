@@ -30,5 +30,6 @@ Content here
 <script src="common.js"></script>
 <script src="signin.js"></script>
 <script src="main.js"></script>
-<script type="text/javascript" src="index.js"></script></body>
+<script type="text/javascript" src="index.js"></script>
+</body>
 </html>

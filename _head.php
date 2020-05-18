@@ -15,3 +15,12 @@
 <meta name="description" content=""/>
 <meta property="og:description" content=""/>
 <link href="index.css" rel="stylesheet">
+
+<!--
+<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+-->
+
+<style>
+.media-object.img-thumbnail{max-width:none}
+.img-thumbnail{display:inline-block;max-width:100%;height:auto;padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
+</style>

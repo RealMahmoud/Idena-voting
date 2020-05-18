@@ -26,12 +26,12 @@
 
 <div class="dropdown">
 <img src="https://robohash.org/0xcbb98843270812eece07bfb82d26b4881a33aa91" alt="pic" width="80" class="img-thumbnail"/>
-  
-  
+
+
   <ul class="dropdown-menu">
     <li><a href="#">New voting/project</a></li>
     <li><a href="#">New poll</a></li>
-	 <li class="divider"></li> 
+	 <li class="divider"></li>
     <li><a href="#">Settings</a></li>
     <li><a href="#">Log out</a></li>
   </ul>

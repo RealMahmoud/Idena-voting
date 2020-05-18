@@ -21,11 +21,11 @@
 
 
 
-<?php if(0==1) { ?>
+<?php if(1==1) { ?>
 <div class="col-auto">
 
 <div class="dropdown">
-<button src="https://robohash.org/0xcbb98843270812eece07bfb82d26b4881a33aa91" alt="pic" width="80"/>
+<img src="https://robohash.org/0xcbb98843270812eece07bfb82d26b4881a33aa91" alt="pic" width="80" class="img-thumbnail"/>
   
   
   <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
     <li><a href="#">Settings</a></li>
     <li><a href="#">Log out</a></li>
   </ul>
-</div> 
+</div>
 
 
 

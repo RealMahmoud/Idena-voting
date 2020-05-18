@@ -7,7 +7,7 @@ include("_config.php"); ?>
 <?php include("_head.php"); ?>
 </head>
 
-<body>
+<body onload="opendnaurl()">
 <header class="header">
 <?php include("_header.php"); ?>
 </header>
@@ -37,13 +37,12 @@ function opendnaurl(){
 <img src="images//idena-logo.svg" alt="Idena" width="100px" style="margin:60px"/>
 <h3>Launching Idena App...</h3>
 <div class="text_block">If you do not have Idena app installed on your computer, please open <br/>the <a href="https://idena.io?view=download">download page</a> to install it and then try again</div>
-<body onload="opendnaurl()">
+
 </div>
 </div>
 </div>
 </div>
 </main>
-
 
 </body>
 </html>

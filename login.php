@@ -1,31 +1,48 @@
 <?php
 session_start();
-include("_config.php");
-if(!empty($_SESSION["token"])) {
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION['token']."';";
-$result = $conn->query($sql);
+include("_config.php"); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php include("_head.php"); ?>
+</head>
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $auth   = $row['authenticated'];
-
-if ($auth == 1){
-  header("location:index.php");
+<body onload="opendnaurl()">
+<header class="header">
+<?php include("_header.php"); ?>
+</header>
+<script>
+function S4() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 }
 
-}}}
-//something?
-//i need to see how this works so we know what to do and where to put what
+// then to call it, plus stitch in '4' in the third group
+function opendnaurl(){
+  var urlofwebsite = '<?php echo $url;?>';
+   var token = '<?php $guid = GUID();
+   echo $guid;
+     $_SESSION["token"] = $guid;?>';
+   var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>start-session.php&token='+token+'&callback_url=<?php echo $url;?>index.php&authentication_endpoint=<?php echo $url;?>auth.php';
+   window.open(encodeURI(url), '_self');
+   console.log(encodeURI(url));
+}
 
 
-$token = GUID();
-?>
-please login :) 
-<form action="dna://signin/v1" method="GET">
-<input type="hidden" id="nonce_endpoint" name="nonce_endpoint" value="<?php echo $url;?>start-session.php">
-<input type="hidden" id="token" name="token" value="<?php echo $token; ?>">
-<input type="hidden" id="callback_url" name="callback_url" value="<?php echo $url;?>index.php?token=<?php echo $token;?>">
-<input type="hidden" id="authentication_endpoint" name="authentication_endpoint" value="<?php echo $url;?>auth.php">
-<input type="submit" value="Sign-In with Idena">
-</form>
+</script>
+<main class="main">
+<div class="container">
+<div class="container">
+<div class="card" style="text-align:center;height:70vh">
+<div>
+<img src="images//idena-logo.svg" alt="Idena" width="100px" style="margin:60px"/>
+<h3>Launching Idena App...</h3>
+<div class="text_block">If you do not have Idena app installed on your computer, please open <br/>the <a href="https://idena.io?view=download">download page</a> to install it and then try again</div>
+
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body>
+</html>

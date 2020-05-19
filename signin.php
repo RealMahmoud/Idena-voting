@@ -22,7 +22,7 @@ function opendnaurl(){
    var token = '<?php $guid = GUID();
    echo $guid;
      $_SESSION["token"] = $guid;?>';
-   var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>start-session.php&token='+token+'&callback_url=<?php echo $url;?>index.php&authentication_endpoint=<?php echo $url;?>auth.php';
+   var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>start-session.php&token='+token+'&callback_url=<?php echo $url;?>index-bro.php&authentication_endpoint=<?php echo $url;?>auth.php';
    window.open(encodeURI(url), '_self');
    console.log(encodeURI(url));
 }

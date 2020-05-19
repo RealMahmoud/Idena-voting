@@ -47,10 +47,6 @@ if ($_POST['type'] == 'poll'){
   $sql = "INSERT INTO `polls`( `pdesc`, `addr`) VALUES ('".$_POST['desc']."','".$addr."')";
   $result = $conn->query($sql);
 }
-if ($_POST['type'] == 'project'){
-  $sql = "INSERT INTO `projects`( `pdesc`, `addr`,`amount`) VALUES ('".$_POST['desc']."','".$addr."','".$_POST['amount']."')";
 
-  $result = $conn->query($sql);
-}
 ?>
 added :)

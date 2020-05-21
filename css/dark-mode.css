@@ -15,6 +15,18 @@
     color: #efefef !important;
 }
 
+.darkmode .dropdown-menu .brake {
+    background-color: #444 !important;
+}
+
+.darkmode .dropdown-menu {
+    background-color: #292c2e !important;
+}
+
+.darkmode .dropdown-menu li .btn {
+    color: #eee !important;
+}
+
 .darkmode .glider-prev,.darkmode .glider-next {
     color: #fff !important;
     background: #2a2c2e !important;

@@ -566,8 +566,6 @@ h1, .h1 {
 
 .btn-secondary.disabled, .btn-secondary:disabled {
     color: #999 !important;
-    background-color: #6c757d !important;
-    border-color: #6c757d !important;
 }
 
 .main .btn-primary {

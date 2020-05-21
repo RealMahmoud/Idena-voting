@@ -44,35 +44,48 @@ include(dirname(__FILE__)."/partials/header.php");
         
           
           
-          <div class="col-12 col-sm-12">
+          <div class="col-12 col-sm-3">
             <div class="card">
               <div>
                 <div class="row">
                     
-                    <div class="col-12 col-sm-3 bordered-col">
-
+                    <div class="col-12 col-sm-12 bordered-col">
                         <h4 class="info_block__accent">Status</h4>
                         <p><?php echo $state; ?></p>
                         <br/>
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $age; ?></p>
-                  </div>
+                    </div>
                   
-                  <div class="col-12 col-sm-9 bordered-col">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <div class="col-12 col-sm-9">
+            <div class="card">
+              <div>
+                <div class="row">
+                  
+                  <div class="col-12 col-sm-12 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
                         </div>
                         
-                        <h4 class="info_block__accent">Change username</h4>
-                        <form id="name_form" METHOD="POST">
+                        <h4 class="info_block__accent">Start a new poll</h4>
+                        <form id="poll_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="username" class="formVal form-control" value="" placeholder="your new nickname goes here..."/>
+                                <input type="text" name="desc" id="desc" class="formVal form-control" value="" placeholder="Will DNA beat btc?"/>
+                                <input type="hidden" name="type" class="formVal" value="poll"/>
                             </div>
                             
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeName(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit">Change My Nickname</span>
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="createPoll(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit">Create Poll</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -99,7 +112,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script type="text/javascript">
-function changeName()
+function createPoll()
 {
     toggle(true);
     var elements = document.getElementsByClassName("formVal");
@@ -109,12 +122,12 @@ function changeName()
         formData.append(elements[i].name, elements[i].value);
     }
     
-    ajax_post('./services/changeusername.php', formData, function(data) {
+    ajax_post('./services/addpoll.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Nickname changed successfully';
+            document.getElementById("success").innerHTML = '&#x2705; Poll created successfully';
             checkusername();
         } else {
             document.getElementById("success").classList.add("rem");
@@ -126,18 +139,18 @@ function changeName()
 
 function toggle(change) {
     if(change == true) {
-            document.getElementById("text_submit").innerHTML = "Changing...";
+            document.getElementById("text_submit").innerHTML = "Creating...";
             document.getElementById("submit").classList.add("disabled");
     } else {
-            document.getElementById("text_submit").innerHTML = "Change My Nickname";
+            document.getElementById("text_submit").innerHTML = "Create Poll";
             document.getElementById("submit").classList.remove("disabled");   
     }
 }
-
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
             document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.add("rem");
     });
 }
 window.onload = function() {

@@ -1,56 +1,28 @@
 <?php
 session_start();
-include("_config.php");
-if(!empty($_SESSION["token"])) {
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."';";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $auth   = $row['authenticated'];
-
-if ($auth == 0){
-
-  header("location:login.php");
-}
-
-}};
-}
-if (empty($_SESSION["token"])){
-
-    header("location:login.php");
-}
+include_once(dirname(__FILE__)."/common/_config.php");
+include_once(dirname(__FILE__)."/partials/header.php");
 ?>
 
-<?php //fetch latest
-echo "<br>Polls : <br>";
-$sql = "SELECT * FROM `polls`;";
-$result = $conn->query($sql);
+<section class="section section_info">
+        <div class="card" style="text-align:center;height:70vh">
+                <div>
+                    <img src="./images/idena_black.svg" alt="Idena" width="100px" style="margin:60px">
+                    <h3 class="info_block__accent">Idena Polls</h3>
+                    <div class="text_block" style="display: block;padding-bottom: 2rem;">Make polls great again</div>
+                    <br/>
+                    <a class="btn btn-signin" href="./signin.php">
+                    <img alt="signin" class="icon icon-logo-white-small" src="https://scan.idena.io/static/images/idena_white_small.svg" width="24px"/>
+                    <span style="color: #fff;">Sign-in with Idena</span>
+                    </a>
+                </div>
+        </div>
+</section>
+      
+ <!-- this is to close main, div opened in the header -->     
+ </div>
+</main>
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
- echo "<br> Poll ID : ".$row['id']."<br>";
-  echo "Description : ".$row['pdesc']."<br>";
-  echo "Link : ".$url.'poll.php?id='.$row['id']."<br>";
-  }
-}
+<?php 
+include_once(dirname(__FILE__)."/partials/footer.php");
 ?>
-<?php //fetch latest
-echo "<br>Projects : <br>";
-$sql = "SELECT * FROM `projects`;";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
- echo "<br> Project ID : ".$row['id']."<br>";
-  echo "Description : ".$row['pdesc']."<br>";
-    echo "Link : ".$url.'project.php?id='.$row['id']."<br>";
-  }
-}
-?>
-
-
-<a href="logout.php">Logout</a>

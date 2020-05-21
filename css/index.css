@@ -5014,8 +5014,7 @@ h5,
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight: 600;
   color: inherit;
-  line-height: normal;
-  word-break: break-all; }
+  line-height: normal; }
 
 h1, .h1 {
   font-size: 1.75rem;
@@ -5179,40 +5178,6 @@ p:last-child {
     -webkit-box-shadow: none;
             box-shadow: none; }
 
-.icon-logo-white {
-  content: url(/images/idena_white.svg); }
-
-.icon-logo-black {
-  content: url(/images/idena_black.svg); }
-
-.icon-logo-white-small {
-  content: url(/images/idena_white_small.svg); }
-
-.icon-logo-black-small {
-  content: url(/images/idena_black_small.svg); }
-
-.btn-signin {
-  display: none;
-  margin-left: -144px;
-  font-size: 0.75rem;
-  padding: 0.9375rem 0.875rem 0.8125rem 0.875rem;
-  background-color: #53565c;
-  color: #ffffff;
-  -webkit-box-shadow: 0 3px 8px 0 rgba(83, 86, 92, 0.1), 0 1px 2px 0 rgba(83, 86, 92, 0.2) !important;
-          box-shadow: 0 3px 8px 0 rgba(83, 86, 92, 0.1), 0 1px 2px 0 rgba(83, 86, 92, 0.2) !important; }
-  .btn-signin .spinner {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 1px; }
-  @media (min-width: 768px) {
-    .btn-signin {
-      display: block; } }
-  .btn-signin:hover, .btn-signin:active {
-    color: #ffffff !important;
-    -webkit-box-shadow: 0 1px 4px 0 rgba(83, 86, 92, 0.1), 0 1px 1px 0 rgba(83, 86, 92, 0.16) !important;
-            box-shadow: 0 1px 4px 0 rgba(83, 86, 92, 0.1), 0 1px 1px 0 rgba(83, 86, 92, 0.16) !important;
-    opacity: 0.8; }
-
 .btn-secondary {
   background-color: #ffffff;
   color: #53565c; }
@@ -5348,13 +5313,6 @@ p:last-child {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; }
 
-.show-more-btn {
-  position: absolute;
-  left: 40%; }
-  @media (max-width: 767px) {
-    .show-more-btn {
-      left: 20%; } }
-
 .card {
   color: #53565c;
   background-color: #ffffff;
@@ -5440,7 +5398,7 @@ p:last-child {
     table-layout: fixed; }
 
 .button-group {
-  line-height: 45px;
+  white-space: nowrap;
   font-size: 0; }
   .button-group .btn + .btn {
     margin-left: 0.5rem; }
@@ -5474,98 +5432,6 @@ p:last-child {
 
 .hidden {
   display: none !important; }
-
-.user-avatar {
-  cursor: pointer; }
-
-.dropdown-menu {
-  position: absolute;
-  background-color: #fff;
-  right: 25px;
-  margin: 3px;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
-          box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
-  border-radius: 5px 5px 5px 5px;
-  display: none;
-  max-height: 144px;
-  z-index: 10;
-  padding: 0;
-  list-style: none; }
-  .dropdown-menu .brake {
-    background-color: #f5f6f7 !important;
-    padding: 0.5px !important;
-    margin: 0 10px 0 10px !important; }
-  .dropdown-menu li {
-    cursor: pointer;
-    padding: 0; }
-    .dropdown-menu li .btn {
-      color: #53565c;
-      padding: 20px 40px 20px 40px; }
-      .dropdown-menu li .btn:hover, .dropdown-menu li .btn:active {
-        opacity: 0.8; }
-
-/* Spinner */
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(1turn);
-            transform: rotate(1turn); } }
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(1turn);
-            transform: rotate(1turn); } }
-
-.progress {
-  position: relative;
-  display: inline-block;
-  width: 5em;
-  height: 5em;
-  margin: 0;
-  font-size: 12px;
-  text-indent: 999em;
-  overflow: hidden;
-  -webkit-animation: spin 1s infinite steps(8);
-          animation: spin 1s infinite steps(8); }
-
-.small.progress {
-  font-size: 3px; }
-
-.large.progress {
-  font-size: 24px; }
-
-.progress:before,
-.progress:after,
-.progress > div:before,
-.progress > div:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 2.25em;
-  width: 0.5em;
-  height: 1.5em;
-  border-radius: 0.2em;
-  background: #eee;
-  -webkit-box-shadow: 0 3.5em #eee;
-          box-shadow: 0 3.5em #eee;
-  -webkit-transform-origin: 50% 2.5em;
-          transform-origin: 50% 2.5em; }
-
-.progress:before {
-  background: #555; }
-
-.progress:after {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  background: #777; }
-
-.progress > div:before {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-  background: #999; }
-
-.progress > div:after {
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
-  background: #bbb; }
 
 @font-face {
   font-family: 'icons';
@@ -5807,16 +5673,8 @@ p:last-child {
 .header {
   padding: 0.5rem 0;
   margin-bottom: 4rem;
-  overflow: visible;
+  overflow: hidden;
   z-index: 200; }
-  .header .form_search {
-    font-size: 0;
-    margin-left: 30%;
-    margin-right: 30%; }
-    @media (max-width: 767px) {
-      .header .form_search {
-        margin-left: 0;
-        margin-right: 0; } }
 
 .header_logo {
   font-size: 0; }
@@ -5877,12 +5735,11 @@ p:last-child {
   vertical-align: middle;
   border-radius: 100px;
   margin-right: 0.5rem;
-  line-height: 0;
-  background-color: #ffffff; }
+  line-height: 0; }
   .user-pic img {
     border-radius: 100px;
-    -webkit-box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.16);
-            box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.16); }
+    -webkit-box-shadow: 0 0 0 1px rgba(83, 86, 92, 0.16);
+            box-shadow: 0 0 0 1px rgba(83, 86, 92, 0.16); }
 
 .flipkeywordsframe .flipkeywords {
   background-color: white;

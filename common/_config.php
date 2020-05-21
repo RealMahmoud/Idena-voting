@@ -1,6 +1,7 @@
 <?php
 $url = 'http://127.0.0.1/Idena-voting/';
-$site_name = 'Idena Site';
+$site_name = 'Idena Voting';
+
 $servername = "localhost";
 $username = "root";
 $password = "";

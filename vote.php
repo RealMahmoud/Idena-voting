@@ -14,13 +14,13 @@ if ($result->num_rows > 0) {
     $auth   = $row['authenticated'];
 
 if ($auth == 0){
-  header("location:login.php");
+  header("location:signin.php");
 }
 
 }}
 ;}
 if (empty($_SESSION["token"])){
-    header("location:login.php");
+    header("location:signin.php");
 }
 if (empty($_GET['type'])){
 die('Error missing type');

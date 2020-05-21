@@ -1,35 +1,28 @@
-<?php include("_config.php"); ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<?php include("_head.php"); ?>
-</head>
+<?php
+session_start();
+include_once(dirname(__FILE__)."/common/_config.php");
+include_once(dirname(__FILE__)."/partials/header.php");
+?>
 
-<body>
-<header class="header">
-<?php include("_header.php"); ?>
-</header>
-
-<main class="main">
-<div class="container">
-
-
-
-Content here
-
-
-
-</div>
+<section class="section section_info">
+        <div class="card" style="text-align:center;height:70vh">
+                <div>
+                    <img src="./images/idena_black.svg" alt="Idena" width="100px" style="margin:60px">
+                    <h3 class="info_block__accent">Idena Polls</h3>
+                    <div class="text_block" style="display: block;padding-bottom: 2rem;">Make polls great again</div>
+                    <br/>
+                    <a class="btn btn-signin" href="./signin.php">
+                    <img alt="signin" class="icon icon-logo-white-small" src="https://scan.idena.io/static/images/idena_white_small.svg" width="24px"/>
+                    <span style="color: #fff;">Sign-in with Idena</span>
+                    </a>
+                </div>
+        </div>
+</section>
+      
+ <!-- this is to close main, div opened in the header -->     
+ </div>
 </main>
 
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-dateformat.min.js"></script>
-<script src="js/js.cookie.js"></script>
-<script src="common.js"></script>
-<script src="signin.js"></script>
-<script src="main.js"></script>
-<script type="text/javascript" src="index.js"></script>
-</body>
-</html>
+<?php 
+include_once(dirname(__FILE__)."/partials/footer.php");
+?>

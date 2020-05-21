@@ -1,20 +1,27 @@
 <?php
 session_start();
-include("_config.php"); ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<?php include("_head.php"); ?>
-</head>
+include(dirname(__FILE__)."/common/_config.php");
+include(dirname(__FILE__)."/partials/header.php");
+?>
+      <section class="section section_info">
+        <div class="card" style="text-align:center;height:70vh">
+                <div>
+                    <img src="./images/idena_black.svg" alt="Idena" width="100px" style="margin:60px"/>
+                    <h3 class="info_block__accent">Launching Idena App...</h3>
+                    <br/>
+                    <br/>
+                    <div class="text_block">If you do not have Idena app installed on your computer, please open <br/>the <a href="https://idena.io?view=download">download page</a> to install it and then try again</div>
+                </div>
+        </div>
+      </section>
+  
+ <!-- this is to close main, div opened in the header -->     
+ </div>
+</main>
 
-<body onload="opendnaurl()">
-<header class="header">
-<?php include("_header.php"); ?>
-</header>
-<script>
-function S4() {
-    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-}
+<!-- add page specific js code below -->
+
+<script type="text/javascript">
 
 // then to call it, plus stitch in '4' in the third group
 function opendnaurl(){
@@ -22,27 +29,17 @@ function opendnaurl(){
    var token = '<?php $guid = GUID();
    echo $guid;
      $_SESSION["token"] = $guid;?>';
-   var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>start-session.php&token='+token+'&callback_url=<?php echo $url;?>index-bro.php&authentication_endpoint=<?php echo $url;?>auth.php';
+   var url = 'dna://signin/v1?nonce_endpoint=<?php echo $url;?>services/start-session.php&token='+token+'&callback_url=<?php echo $url;?>polls.php&authentication_endpoint=<?php echo $url;?>services/auth.php';
    window.open(encodeURI(url), '_self');
    console.log(encodeURI(url));
 }
 
+window.onload = function() {
+    opendnaurl();
+}
 
 </script>
-<main class="main">
-<div class="container">
-<div class="container">
-<div class="card" style="text-align:center;height:70vh">
-<div>
-<img src="images//idena-logo.svg" alt="Idena" width="100px" style="margin:60px"/>
-<h3>Launching Idena App...</h3>
-<div class="text_block">If you do not have Idena app installed on your computer, please open <br/>the <a href="https://idena.io?view=download">download page</a> to install it and then try again</div>
 
-</div>
-</div>
-</div>
-</div>
-</main>
-
-</body>
-</html>
+<?php 
+include(dirname(__FILE__)."/partials/footer.php");
+?>

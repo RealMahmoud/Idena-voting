@@ -3,9 +3,9 @@ $url = 'https://idena-dev.com/';
 $site_name = 'Idena Site';
 
 $servername = "localhost";
-$username = "supriyo_root";
-$password = "idenaplayground";
-$dbname = "supriyo_voting";
+$username = "roothere";
+$password = "passhere";
+$dbname = "voting";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 

@@ -50,7 +50,7 @@
       </div>
 
       <div class="col-auto">
-          
+          <?php if(!empty($addr)) { ?>
           <div class="btn-group">
               <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="user-pic">
@@ -70,6 +70,7 @@
                 
                 
             </div>
+            <?php } ?>
             
       </div>
 

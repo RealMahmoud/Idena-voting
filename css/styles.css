@@ -218,7 +218,7 @@ p.desc {
 .badge {
     padding: 0.225rem 0.76rem 0.2875rem !important;
     margin: 0px 1rem 0 1rem !important;
-    margin-top: -4px !important;
+    margin-top: 0px !important;
     color: #666;
     display: inline-block !important;
     position: absolute !important;
@@ -232,7 +232,7 @@ p{
 .header {
     padding: 0.5rem 0;
     margin-bottom: 4rem;
-    overflow: hidden;
+    overflow: visible !important;
     z-index: 200;
     background: #f5f6f7;
 }
@@ -256,19 +256,29 @@ p{
     padding-top: 8rem;
 }
 
-#scrollTop {
-    position: fixed;
-    bottom: 2.1rem;
-    right: 2.1rem;
-    padding: 1.2rem 1.2rem;
-    margin-top: -10px;
-    vertical-align: middle;
-    background: #fff;
-    font-weight: 500;
-    font-size: 1.65rem;
-    border-radius: 100rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 15px !important;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 15px !important;
+
+#scrollTop, .theme {
+    position: fixed !important;
+    bottom: 7.0rem !important;
+    right: 2.5rem !important;
+    padding: 1.3rem 1.1rem !important;
+    margin-top: -10px !important;
+    vertical-align: middle !important;
+    background: #fff !important;
+    font-weight: 500 !important;
+    font-size: 1.65rem !important;
+    border-radius: 100rem !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px !important;
+}
+
+.theme {
+    bottom: 2.5rem !important;
+}
+
+#sun, #moon {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px !important;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px !important;
 }
 
 
@@ -280,7 +290,7 @@ p{
     width: 100%;
     padding: 0.75rem 1.125rem;   
     height: 2.5rem;  
-    border: 0;
+    border: 1px solid #dfdfdf;
     -webkit-box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
     box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
     font-size: 0.875rem;
@@ -297,6 +307,20 @@ p{
     outline: 0;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-signin {
+    font-size: 0.75rem;
+    padding: 0.9375rem 0.875rem 0.8125rem 0.875rem;
+    background-color: #53565c;
+    color: #ffffff !important;
+    box-shadow: 0 3px 8px 0 rgba(83, 86, 92, 0.1), 0 1px 2px 0 rgba(83, 86, 92, 0.2) !important;
+}
+
+.btn-signin:hover, .btn-signin:active {
+    color: #ffffff !important;
+    box-shadow: 0 1px 4px 0 rgba(83, 86, 92, 0.1), 0 1px 1px 0 rgba(83, 86, 92, 0.16) !important;
+    opacity: 0.8;
 }
 
 .btn-icon {
@@ -371,11 +395,22 @@ h1, .h1 {
 
 .warning {
     font-size: 0.75em;
-    padding: 1em;
+    padding: 0.6em;
     line-height: 1.8em;
     background: rgba(255, 135, 135, 0.2);
     color: #b52525;
     border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.success {
+    font-size: 0.75em;
+    padding: 0.6em;
+    line-height: 1.8em;
+    background: rgba(159, 255, 135, 0.2);
+    color: #2d6b13;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
 .flipkeywordsframe .flipkeywords {
@@ -529,6 +564,12 @@ h1, .h1 {
     pointer-events: none;
 }
 
+.btn-secondary.disabled, .btn-secondary:disabled {
+    color: #999 !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
 .main .btn-primary {
 }
 
@@ -546,3 +587,48 @@ h1, .h1 {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
+
+/* dropdown */
+
+.dropdown-menu li {
+    cursor: pointer;
+    padding: 0;
+}
+
+.dropdown-menu li .btn {
+    color: #53565c;
+    padding: 10px 40px 10px 20px;
+}
+
+.dropdown-menu li .btn:hover, .dropdown-menu li .btn:active {
+    opacity: 0.8;
+}
+
+.dropdown-menu .brake {
+    background-color: #f5f6f7 !important;
+    padding: 0.5px !important;
+    margin: 0 10px 0 10px !important;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    right: 25px;
+    margin: 3px;
+    display: none;
+    box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
+    border-radius: 5px 5px 5px 5px;
+    max-height: 144px;
+    z-index: 10;
+    padding: 0;
+    top: 40px !important;
+    will-change: none !important;
+    left: -100px !important;
+    transform: none !important;
+    list-style: none;
+}
+
+.show {
+    display: block;
+}
+

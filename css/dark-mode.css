@@ -47,6 +47,11 @@
     color: #ffd3d3 !important;
 }
 
+.darkmode .success {
+    background: rgba(53, 165, 25, 0.2) !important;
+    color: #caffb9 !important;
+}
+
 .darkmode .mini-card .badge {
     color: #fff !important;
     background-color: #191c1e !important;
@@ -73,6 +78,7 @@
 .darkmode .form-control {
     color: #fff !important;
     background: #292c2e !important;
+    border: 1px solid #666 !important;
 }
 
 .darkmode .form-control:focus {
@@ -124,7 +130,7 @@
     color: #50b6ff !important;
 }
 
-.darkmode #scrollTop {
+.darkmode #scrollTop, .darkmode .theme {
     background-color: rgb(41, 44, 46) !important;
 }
 

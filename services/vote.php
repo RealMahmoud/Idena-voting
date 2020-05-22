@@ -8,7 +8,7 @@ $id = $conn->real_escape_string($_POST['id']);
 $vote = $conn->real_escape_string($_POST['vote']);
 $type = $conn->real_escape_string($_POST['type']);
 
-$sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$id."' LIMIT 1;";
+$sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$id."' AND `type` = '".$type."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

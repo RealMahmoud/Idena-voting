@@ -41,24 +41,24 @@
     <div class="row justify-content-between align-items-center">
       <div class="col-auto">
         <div class="header_logo">
-          <a class="" href="./polls.php">
+          <a class="" href="./index.php">
             <img src="./images/idena-logo.svg" alt="Idena" width="40px">
           </a>
         </div>
       </div>
       <li class="nav-item header_nav__item">
-              <a class="nav-link header_nav__link appslink" title="Polls" descriptioncontent="Navigate through the list of apps and resources created by Idena community.">
+              <a href='./polls.php'class="nav-link header_nav__link appslink" title="Polls" descriptioncontent="Polls">
                 Polls
               </a>
             </li>
             <li class="nav-item header_nav__item">
-            <a class="nav-link header_nav__link appslink" title="Proposals" descriptioncontent="Navigate through the list of apps and resources created by Idena community.">
+            <a href='./proposals.php' class="nav-link header_nav__link appslink" title="Proposals" descriptioncontent="Proposals">
               Proposals
             </a>
           </li>
 
           <li class="nav-item header_nav__item">
-            <a class="nav-link header_nav__link appslink" title="Registrations" descriptioncontent="Navigate through the list of apps and resources created by Idena community.">
+            <a class="nav-link header_nav__link appslink" title="Registrations" descriptioncontent="Registrations">
               Registrations
             </a>
           </li>

@@ -6,7 +6,7 @@ $polls = array();
 $entries = array();
 ?>
 <?php
-    $sql1 = "SELECT * FROM `polls`";
+    $sql1 = "SELECT * FROM `proposals`";
     $result_acct = $conn->query($sql1);
     if ($result_acct->num_rows > 0) {
         // output data of each row

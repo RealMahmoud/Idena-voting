@@ -9,17 +9,13 @@ if($credits < 1){
 
 if(!empty($addr))
 {
-        if ($_POST['type'] == 'poll'){
+        if ($_POST['type'] == 'proposal'){
           $description = $conn->real_escape_string($_POST['desc']);
           $option1 = $conn->real_escape_string($_POST['option1']);
           $option2 = $conn->real_escape_string($_POST['option2']);
-          $option3 = $conn->real_escape_string($_POST['option3']);
-          $option4 = $conn->real_escape_string($_POST['option4']);
-          $option5 = $conn->real_escape_string($_POST['option5']);
-          $option6 = $conn->real_escape_string($_POST['option6']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
 
-          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`) VALUES ('".$description."','".$addr."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."')";
+          $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`) VALUES ('".$description."','".$addr."','".$option1."','".$option2."','".$endtime."')";
         
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`addr` = '$addr';";

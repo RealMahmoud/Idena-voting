@@ -9,9 +9,5 @@
   <script src="./js/global.js"></script>
 
 </body>
-<<<<<<< HEAD
 
 </html>
-=======
-</html>
->>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1

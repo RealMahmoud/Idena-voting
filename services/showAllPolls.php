@@ -11,7 +11,7 @@ $entries = array();
     if ($result_acct->num_rows > 0) {
         // output data of each row
                 while($row = $result_acct->fetch_assoc()) {
-                    $polls[] = array('description' => $row['pdesc'],'id' => $row['id'],'addr' => $row['addr']);
+                    $polls[] = array('description' => mb_strimwidth($row['pdesc'], 0, 35, '...'),'id' => $row['id'],'addr' => $row['addr']);
                 }
                 $entries = $result = array('entries' => $polls);
                 echo json_encode($entries);

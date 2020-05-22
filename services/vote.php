@@ -14,11 +14,11 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
           // output data of each row
           while($row = $result->fetch_assoc()) {
-          echo '{"success":false, "data": "you have already voted"}';
+          echo '{"success":false, "data": "You have already voted"}';
           }
 } else {
     $sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$id."','".$addr."','".$vote."','".$type."');";
     $result = $conn->query($sql);
-    echo '{"success":true, "data": "vote casted successfully"}';
+    echo '{"success":true, "data": "Vote casted successfully"}';
 }
 ?>

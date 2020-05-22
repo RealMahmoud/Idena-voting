@@ -60,11 +60,21 @@ if(!empty($token)) {
 
         $sql2 = "SELECT `username`,`status` FROM `accounts` WHERE `address` = '".$addr."' LIMIT 1;";
         $result_acct2 = $conn->query($sql2);
+
         // fetch and update the lastest state with new login
         if ($result_acct2->num_rows > 0) {
                 $sql3 = "UPDATE `accounts` SET `status` = '".$state."' WHERE `address` = '".$addr."' LIMIT 1;";
                 $result3 = $conn->query($sql3);
         }
+
+
+        $sql = "SELECT * FROM `accounts` WHERE `address` = '".$addr."' LIMIT 1;";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+        $credits = $row['credits'];
+        $username = $row['username'];}}
     }
 
 } elseif (empty($token)){

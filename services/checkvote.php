@@ -9,13 +9,19 @@ $id = $conn->real_escape_string($_GET['id']);
 if(!empty($id)){
         $sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$id."' LIMIT 1;";
         $result = $conn->query($sql);
-        
+
         if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
-                  echo '{"status": "voted", "vote": '.$row["vote"].'}';
+                    // get poll option desc
+                    $sql = "SELECT * FROM `polls` WHERE `id` = '".$row["pid"]."' LIMIT 1;";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                    while($row2 = $result->fetch_assoc()) {
+                    echo '{"status": "true", "vote": "'.$row2["option".$row["vote"]].'"}'; }}
+
                   }
         } else {
-           echo '{"status": "none", "data": "no vote yet"}';
+           echo '{"status": "false", "data": "0"}';
         }
 }
 ?>

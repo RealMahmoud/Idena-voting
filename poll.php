@@ -25,85 +25,187 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-
+$owner = $row['addr'];
 ?>
 
 
 <section class="section section_info">
 
     <div class="row">
-        
-          
-          
+
+
+
           <div class="col-12 col-sm-12">
             <div class="card">
               <div>
                 <div class="row">
-                  
+
                   <div class="col-12 col-sm-7 bordered-col">
+
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
-                            <img class="user-avatar" src="https://robohash.org/<?php echo  $row['addr'] ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
-                            <?php echo  $row['addr'] ?>
+                            <img class="user-pic user-avatar" src="https://robohash.org/<?php echo  $owner; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
+                            <?php echo  $owner; ?>
                         </p>
                         <br>
-                        <h4>Description</h4>
-                        <p><?php echo  $row['pdesc'] ?></p>
+                        <div class="row">
+                        <div class="col-4 col-sm-4 bordered-col">
+                          <h4>Description</h4>
+                          <p><?php echo  $row['pdesc']; ?></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-4 col-sm-4 bordered-col">
+                        <h4>Start Time</h4>
+                        <p><?php echo  date('Y-m-d H:i A', strtotime($row['addtime'])); ?></p>
+                      </div>
+                      <div class="col-4 col-sm-4 bordered-col">
+                      <h4>End Time</h4>
+                      <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
+                    </div>
+                    <?php if ($owner == $addr){
+                  echo '<div class="col-4 col-sm-4 bordered-col">
+                    <h4>Administration</h4>
+                    <div class="input-group">
+                    <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="Delete('.$row['id'].');" style="margin-top: 1em;">
+                        <span id="text_submit">DELETE</span>
+
+                    </a>
+                    </div>
+                  </div>';} ?>
+                      </div>
                         <br/>
                   </div>
-                  
-                  
+
+
                   <div class="col-12 col-sm-5 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
                         </div>
-                        
+
                         <h4 class="info_block__accent">Add your vote below</h4>
-                        <div id="vote_container">
-                                <form id="vote_form" METHOD="POST">
-                                    <div class="input-group" style="width: 60%;">
-                                        Yes: <input type="radio" class="formVal" name="vote" value="0" checked/><br>
-                                        No: <input type="radio" class="formVal" name="vote" value="1"/>
-                                    </div>
-                                    
-                                        <input type="hidden" class="formVal" name="id" value="<?php echo  $row['id'] ?>"/>
+                        <div id="vote_container"><?php
+                                      $id = $conn->real_escape_string($_GET["id"]);
+                                      $sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
+                                      $result = $conn->query($sql);
+
+                                      if ($result->num_rows > 0) {
+                                        while($row = $result->fetch_assoc()) {
+                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))){
+echo '<div id="checker"></div>
+<form id="vote_form" METHOD="POST">
+        <div class="input-group" style="width: 60%;">';
+                                          if (!$row['option1'] == null){
+                                          echo $row['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked/><br>';
+                                          }
+                                          if (!$row['option2'] == null){
+                                          echo $row['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
+                                          }
+                                          if (!$row['option3'] == null){
+                                          echo $row['option3'].'  <input type="radio" class="formVal" name="vote" value="3" /><br>';
+                                          }
+                                          if (!$row['option4'] == null){
+                                          echo $row['option4'].'  <input type="radio" class="formVal" name="vote" value="4" /><br>';
+                                          }
+                                          if (!$row['option5'] == null){
+                                          echo $row['option5'].'  <input type="radio" class="formVal" name="vote" value="5" /><br>';
+                                          }
+                                          if (!$row['option6'] == null){
+                                          echo $row['option6'].'  <input type="radio" class="formVal" name="vote" value="6"/><br>';
+                                        }
+                                      echo  '<input type="hidden" class="formVal" name="id" value="<?php echo  $id ?>"/>
                                         <input type="hidden" class="formVal" name="type" value="poll"/>
-                    
-                                    <div class="input-group">
-                                    <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
-                                        <span id="text_submit">Cast My Vote</span>
-                                        <i class="icon icon--thin_arrow_right"></i>
-                                    </a>
-                                    </div>
-                              
+                                        <div class="input-group">
+                                        <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
+                                            <span id="text_submit">Cast My Vote</span>
+                                            <i class="icon icon--thin_arrow_right"></i>
+                                        </a>
+                                        </div>
+                                            </div>';
+                                      }else{echo "<h2>Poll Ended</h2>";}}
+                                      }
+
+                                        ?>
+
+
+
+
+
+
                                 </form>
                         </div>
-                        
+
                   </div>
 
                 </div>
               </div>
             </div>
           </div>
-        
+
     </div><!-- row end -->
-    
+
 </section>
 
+<section class="section section_info">
 
-<?php 
-      
+    <div class="row">
+      <div class="col-12 col-sm-12">
+        <div class="card">
+          <div>
+            <div class="row">
+              <div class="col-10 col-sm-6 bordered-col">
+                    <h4 class="info_block__accent">Humans Voters Stats</h4>
+                    <p>Total Humans Accounts : 750 of 1000 - 75%</p>
+                    <p>Total Humans Votes : 500 of 5000(Net) - 10%</p>
+                    <p>Total Humans Votes : 500 of 1000(T.V) - 50%</p>
+                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
+                    <br/>
+              </div>
+
+              <div class="col-10 col-sm-5 bordered-col">
+                    <h4 class="info_block__accent">Verified Voters Stats</h4>
+                    <p>Total Verified Accounts : 750 of 1000 - 75%</p>
+                    <p>Total Verified Votes : 500 of 5000(Net) - 10%</p>
+                    <p>Total Verified Votes : 500 of 1000(T.V) - 50%</p>
+                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
+                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
+                    <br/>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div><!-- row end -->
+
+</section>
+<?php
+
   } //while loop ends
 
 } ?>
 
 
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/donation.php");
 ?>
 
- <!-- this is to close main, div opened in the header -->     
+ <!-- this is to close main, div opened in the header -->
  </div>
 </main>
 
@@ -114,7 +216,7 @@ function toggle(change) {
             document.getElementById("submit").classList.add("disabled");
     } else {
             document.getElementById("text_submit").innerHTML = "Cast my Vote";
-            document.getElementById("submit").classList.remove("disabled");   
+            document.getElementById("submit").classList.remove("disabled");
     }
 }
 
@@ -122,12 +224,20 @@ function changeVote()
 {
     toggle(true);
     var elements = document.getElementsByClassName("formVal");
-    var formData = new FormData(); 
+    var formData = new FormData();
     for(var i=0; i<elements.length; i++)
     {
+
+      if (elements[i].name == 'vote'){
+        if (elements[i].checked){
+            formData.append(elements[i].name, elements[i].value);
+        }
+      }else {
         formData.append(elements[i].name, elements[i].value);
+      }
+
     }
-    
+
     ajax_post('./services/vote.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
@@ -142,19 +252,31 @@ function changeVote()
         }
     });
 }
+function Delete(id)
+{
+  ajax_get('./services/deletepoll.php?id='+id, function(data) {
 
-window.onload = function() 
+
+      window.location.replace("<?php echo $url;?>");
+
+  });
+}
+window.onload = function()
 {
     ajax_get('./services/checkvote.php?id=<?php echo $id; ?>', function(data) {
-        if(data["status"]=='voted'){
-            if(data["vote"]==1){ var votelng = 'yes'; } else { var votelng = 'no'; }
-            document.getElementById("vote_container").innerHTML = '<p>You have voted '+votelng+'.</p>';
+        if(data["status"]=='true'){
+            if(document.getElementById("checker") == null){
+
+            }else {
+            document.getElementById("vote_container").innerHTML = '<p>You have voted "'+data["vote"]+'".</p>';
+            }
+
         }
     });
 }
 
 
 </script>
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/footer.php");
 ?>

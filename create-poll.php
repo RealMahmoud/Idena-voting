@@ -41,14 +41,24 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
 
     <div class="row">
+<<<<<<< HEAD
 
 
 
+=======
+        
+          
+          
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
           <div class="col-12 col-sm-3">
             <div class="card">
               <div>
                 <div class="row">
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
                     <div class="col-12 col-sm-12 bordered-col">
                         <h4 class="info_block__accent">Status</h4>
                         <p><?php echo $state; ?></p>
@@ -56,25 +66,40 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $age; ?></p>
                     </div>
+<<<<<<< HEAD
 
+=======
+                  
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
 
                 </div>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
 
 
+=======
+          
+          
+          
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
           <div class="col-12 col-sm-9">
             <div class="card">
               <div>
                 <div class="row">
+<<<<<<< HEAD
 
+=======
+                  
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
                   <div class="col-12 col-sm-12 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
                         </div>
+<<<<<<< HEAD
 
                         <h4 class="info_block__accent">Start a new poll</h4>
                         <form id="poll_form" METHOD="POST">
@@ -90,21 +115,38 @@ include(dirname(__FILE__)."/partials/header.php");
                             <input type="hidden" name="type" class="formVal" value="poll"/>
                             </div>
 
+=======
+                        
+                        <h4 class="info_block__accent">Start a new poll</h4>
+                        <form id="poll_form" METHOD="POST">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="desc" id="desc" class="formVal form-control" value="" placeholder="Will DNA beat btc?"/>
+                                <input type="hidden" name="type" class="formVal" value="poll"/>
+                            </div>
+                            
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="createPoll(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit">Create Poll</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
+<<<<<<< HEAD
 
                         </form>
 
+=======
+                      
+                        </form>
+                        
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
                   </div>
 
                 </div>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
     </div><!-- row end -->
 
@@ -115,6 +157,18 @@ include(dirname(__FILE__)."/partials/donation.php");
 ?>
 
  <!-- this is to close main, div opened in the header -->
+=======
+        
+    </div><!-- row end -->
+    
+</section>
+
+<?php 
+include(dirname(__FILE__)."/partials/donation.php");
+?>
+
+ <!-- this is to close main, div opened in the header -->     
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
  </div>
 </main>
 
@@ -123,12 +177,20 @@ function createPoll()
 {
     toggle(true);
     var elements = document.getElementsByClassName("formVal");
+<<<<<<< HEAD
     var formData = new FormData();
+=======
+    var formData = new FormData(); 
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
     for(var i=0; i<elements.length; i++)
     {
         formData.append(elements[i].name, elements[i].value);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
     ajax_post('./services/addpoll.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
@@ -150,7 +212,11 @@ function toggle(change) {
             document.getElementById("submit").classList.add("disabled");
     } else {
             document.getElementById("text_submit").innerHTML = "Create Poll";
+<<<<<<< HEAD
             document.getElementById("submit").classList.remove("disabled");
+=======
+            document.getElementById("submit").classList.remove("disabled");   
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1
     }
 }
 function checkusername() {
@@ -164,6 +230,12 @@ window.onload = function() {
 checkusername();
 }
 </script>
+<<<<<<< HEAD
 <?php
 include(dirname(__FILE__)."/partials/footer.php");
 ?>
+=======
+<?php 
+include(dirname(__FILE__)."/partials/footer.php");
+?>
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1

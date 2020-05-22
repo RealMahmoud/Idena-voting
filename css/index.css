@@ -5701,7 +5701,7 @@ p:last-child {
 
 .footer {
   text-align: center;
-  padding-top: 6rem;}
+  padding: 6.25rem 0 8.75rem; }
   @media (max-width: 767px) {
     .footer {
       padding-bottom: 120px;
@@ -5735,19 +5735,11 @@ p:last-child {
   vertical-align: middle;
   border-radius: 100px;
   margin-right: 0.5rem;
-  line-height: 0;
-}
+  line-height: 0; }
   .user-pic img {
     border-radius: 100px;
     -webkit-box-shadow: 0 0 0 1px rgba(83, 86, 92, 0.16);
-    box-shadow: 0 0 0 1px rgba(83, 86, 92, 0.16);
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 100px;
-    margin-right: 0.5rem;
-    line-height: 0;
-    background-color: #ffffff;
-          }
+            box-shadow: 0 0 0 1px rgba(83, 86, 92, 0.16); }
 
 .flipkeywordsframe .flipkeywords {
   background-color: white;

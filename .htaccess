@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ErrorDocument 404 /404.php
+=======
+ErrorDocument 404 /404.php
+>>>>>>> 78e6e37aeff63cd7d064f13e7ae0ff878036ccb1

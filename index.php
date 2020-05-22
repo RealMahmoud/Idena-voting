@@ -1,39 +1,28 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
-include(dirname(__FILE__)."/partials/header.php");
+include_once(dirname(__FILE__)."/common/_config.php");
+include_once(dirname(__FILE__)."/partials/header.php");
 ?>
 
 <section class="section section_info">
-
-        <h3 id="page_title" class="info_block__accent rem">All Polls</h3>
-
-
-
-            <div class="card" id="empty_card" style="text-align:center;height:60vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Home Page</h3>
-                            <div class="text_block" id="none">Welcome to Home Page</div>
-                         </div>
-            </div>
-
-            <div class="row row-fluid" id="poll-list">
-
-
-          </div><!-- polls end -->
-
-
+        <div class="card" style="text-align:center;height:70vh">
+                <div>
+                    <img src="./images/idena_black.svg" alt="Idena" width="100px" style="margin:60px">
+                    <h3 class="info_block__accent">Idena Polls</h3>
+                    <div class="text_block" style="display: block;padding-bottom: 2rem;">Make polls great again</div>
+                    <br/>
+                    <a class="btn btn-signin" href="./signin.php">
+                    <img alt="signin" class="icon icon-logo-white-small" src="https://scan.idena.io/static/images/idena_white_small.svg" width="24px"/>
+                    <span style="color: #fff;">Sign-in with Idena</span>
+                    </a>
+                </div>
+        </div>
 </section>
-
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
-
- <!-- this is to close main, div opened in the header -->
+      
+ <!-- this is to close main, div opened in the header -->     
  </div>
 </main>
 
-
-<?php
-include(dirname(__FILE__)."/partials/footer.php");
+<?php 
+include_once(dirname(__FILE__)."/partials/footer.php");
 ?>

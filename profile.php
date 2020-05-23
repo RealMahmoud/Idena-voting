@@ -17,13 +17,14 @@ include(dirname(__FILE__)."/partials/header.php");
                 <div class="section_main__group">
                     <h1 class="section_main__title">
                         <?php echo $addr; ?>
-                        <span class="badge badge-secondary" id="nick_name">Loading...</span>
+
+                      <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
                     </div>
                     <a class="btn btn-small btn-primary" href="./settings.php">
                         <span>Edit Settings</span>
                     </a>
-                    
+
                     <a class="btn btn-small btn-primary" href="./create-poll.php">
                         <span>Create New Poll</span>
                     </a>
@@ -35,29 +36,29 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
 
         <h3 id="page_title" class="info_block__accent rem">All My Polls</h3>
-          
+
           <div class="polls">
-             
+
             <div class="card" id="empty_card" style="text-align:center;height:30vh">
                         <div>
                             <h3 class="info_block__accent" style="margin-top: 3em;">Your Polls</h3>
                             <div class="text_block" id="none">Loading... please wait</div>
                          </div>
             </div>
-                    
+
             <div class="row row-fluid" id="poll-list">
             </div>
-            
+
           </div><!-- polls end -->
 
-    
+
 </section>
 
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/donation.php");
 ?>
 
- <!-- this is to close main, div opened in the header -->     
+ <!-- this is to close main, div opened in the header -->
  </div>
 </main>
 
@@ -76,36 +77,36 @@ checkusername();
 
   //load all polls
   ajax_get('./services/showpolls.php?addr=<?php echo $addr; ?>', function(data) {
-      
+
       if(data["entries"].length > 0){
           document.getElementById("page_title").classList.remove("rem");
           document.getElementById("empty_card").classList.add("rem");
-          
-          data["entries"].forEach(function(obj) { 
-          
+
+          data["entries"].forEach(function(obj) {
+
            pollcontent = pollcontent + '<div class="col-12 col-sm-3 entry">'
                                           +'<div class="mini-card">'
                                           +'<p class="desc" style="padding-bottom: 20px;">'
-                                           +obj.description                          
+                                           +obj.description
                                           +'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
                                             +'<span>Check out poll</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
                                           +'</a>'
                                           +'</div>'
-                                        +'</div>'; 
-                                    
+                                        +'</div>';
+
          });//retrieve all user polls
-         
+
       } else {
          document.getElementById("none").innerHTML = "No Polls made yet. Create a poll";
       }
-      
+
       polllist.innerHTML = pollcontent;
   });
 
 }
 </script>
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/footer.php");
 ?>

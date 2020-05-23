@@ -147,6 +147,9 @@ select {
 
 .mini-card .user-pic img {
     margin-top: 20px;
+
+  
+
 }
 
 .mini-card .badge-secondary {
@@ -224,7 +227,7 @@ p.desc {
     position: absolute !important;
 }
 
-p{ 
+p{
     font-size: 1rem;
     line-height: 1.7rem;
  }
@@ -288,8 +291,8 @@ p{
 
 .form-control {
     width: 100%;
-    padding: 0.75rem 1.125rem;   
-    height: 2.5rem;  
+    padding: 0.75rem 1.125rem;
+    height: 2.5rem;
     border: 1px solid #dfdfdf;
     -webkit-box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
     box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
@@ -339,7 +342,7 @@ p{
 
 #CurrentPrice {
     margin-bottom: 0.95rem;
-    }    
+    }
 
 hr {
     border: 0;
@@ -437,7 +440,7 @@ h1, .h1 {
 }
 
 .bordered-col + .bordered-col {
-   
+
 }
 
 .text_block {
@@ -629,4 +632,3 @@ h1, .h1 {
 .show {
     display: block;
 }
-

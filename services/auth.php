@@ -43,20 +43,20 @@ if ($result->num_rows > 0) {
     $address   = $row['addr'];
     $message   = 'signin-'.$row['nonce'];
     $signature = $data['signature'];
-	
+
     if (verifySignature($message, $signature, $address)) {
       $sql = "UPDATE `auth` SET `sig` = '".$data['signature']."', `authenticated` = 1 WHERE `token` = '".$data['token']."' LIMIT 1;";
-  
+
       $conn->query($sql);
-      
+
         $sql1 = "SELECT `username` FROM `accounts` WHERE `address` = '".$address."' LIMIT 1;";
         $result_acct = $conn->query($sql1);
-    
+
         if ($result_acct->num_rows == 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
                 $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `status`, `username`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'undefined', 'undefined');";
+    ('".$address."', '".$timestamp."', 0, 'undefined', '".mb_strimwidth($address, 0, 10, '')."');";
                 $result2 = $conn->query($sql2);
         }
       echo '{"success":true,"data":{"authenticated":true}}';

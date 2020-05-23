@@ -8,9 +8,9 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./polls.php">
+          			<a class="btn btn-small btn-nav" href="./proposals.php">
             		<i class="icon icon--thin_arrow_left"></i>
-            		<span id="back">Back to Polls</span>
+            		<span id="back">Back to Proposals</span>
             		</a>
           </div>
     </div>
@@ -19,7 +19,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
 <?php
 $id = $conn->real_escape_string($_GET["id"]);
-$sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
+$sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -51,7 +51,7 @@ $owner = $row['addr'];
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
                           <h4>Description</h4>
-                            <p><?php echo  nl2br($row['pdesc']); ?></p>
+                          <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
                         <div class="row">
@@ -69,10 +69,19 @@ $owner = $row['addr'];
                     <div class="input-group">
                     <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="Delete('.$row['id'].');" style="margin-top: 1em;">
                         <span id="text_submit">DELETE</span>
+
                     </a>
                     </div>
                   </div>';} ?>
-                  
+              <?php if (strlen($row['fundaddr']) == 42){
+
+
+              echo '<div class="row">
+                  <div class="col-8 col-sm-8 bordered-col">
+                    <p>Funding Address</p>
+                      <p>'.$row['fundaddr'].'</p>
+                    </div>
+                  </div>';}?>
                       </div>
                         <br/>
                   </div>
@@ -87,7 +96,7 @@ $owner = $row['addr'];
                         <h4 class="info_block__accent">Add your vote below</h4>
                         <div id="vote_container"><?php
                                       $id = $conn->real_escape_string($_GET["id"]);
-                                      $sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
+                                      $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
                                       $result = $conn->query($sql);
 
                                       if ($result->num_rows > 0) {
@@ -102,20 +111,9 @@ echo '<div id="checker"></div>
                                           if (!$row['option2'] == null){
                                           echo $row['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
                                           }
-                                          if (!$row['option3'] == null){
-                                          echo $row['option3'].'  <input type="radio" class="formVal" name="vote" value="3" /><br>';
-                                          }
-                                          if (!$row['option4'] == null){
-                                          echo $row['option4'].'  <input type="radio" class="formVal" name="vote" value="4" /><br>';
-                                          }
-                                          if (!$row['option5'] == null){
-                                          echo $row['option5'].'  <input type="radio" class="formVal" name="vote" value="5" /><br>';
-                                          }
-                                          if (!$row['option6'] == null){
-                                          echo $row['option6'].'  <input type="radio" class="formVal" name="vote" value="6"/><br>';
-                                        }
-                                      echo  '<input type="hidden" class="formVal" name="id" value="value="'.$id.'"/>
-                                        <input type="hidden" class="formVal" name="type" value="poll"/>
+
+                                      echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
+                                        <input type="hidden" class="formVal" name="type" value="proposal"/>
                                         <div class="input-group">
                                         <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
                                             <span id="text_submit">Cast My Vote</span>
@@ -123,7 +121,7 @@ echo '<div id="checker"></div>
                                         </a>
                                         </div>
                                             </div>';
-                                      }else{echo "<h2>Poll Ended</h2>";}}
+                                      }else{echo "<h2>Proposal Ended</h2>";}}
                                       }
 
                                         ?>
@@ -213,7 +211,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 /*
 function toggle(change) {
     if(change == true) {
-            document.getElementById("text_submit").innerHTML = "Casting...";
+            document.getElementById("text_submit").innerHTML = "Loading...";
             document.getElementById("submit").classList.add("disabled");
     } else {
             document.getElementById("text_submit").innerHTML = "Cast my Vote";
@@ -223,7 +221,7 @@ function toggle(change) {
 */
 function changeVote()
 {
-  //  toggle(true);
+    // toggle(true);
     var elements = document.getElementsByClassName("formVal");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -255,7 +253,7 @@ function changeVote()
 }
 function Delete(id)
 {
-  ajax_get('./services/deletepoll.php?id='+id, function(data) {
+  ajax_get('./services/deleteproposal.php?id='+id, function(data) {
 
 
       window.location.replace("<?php echo $url;?>");
@@ -264,7 +262,7 @@ function Delete(id)
 }
 window.onload = function()
 {
-    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>', function(data) {
+    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){
 

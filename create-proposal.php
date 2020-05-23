@@ -76,23 +76,21 @@ include(dirname(__FILE__)."/partials/header.php");
                         <div class="success rem" id="success">
                         </div>
 
-                        <h4 class="info_block__accent">Start a new poll</h4>
-                        <form id="poll_form" METHOD="POST">
+                        <h4 class="info_block__accent">Start a new proposal</h4>
+                        <form id="proposal_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
-                            <p>Description :</p><input type="text" name="desc" id="desc" class="formVal form-control" value="Do you like Cookies ?" placeholder="Will DNA beat BTC?"required/>
+                            <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" value="Do you like Cookies ?" placeholder="Will DNA beat BTC?"></textarea><br>
                           <br>  <p> DeadLine :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">
-                            <br><p> Option 3 :</p><input type="text"name="option3" class="formVal form-control" value="">
-                            <br><p> Option 4 :</p><input type="text"name="option4" class="formVal form-control" value="">
-                            <br><p> Option 5 :</p><input type="text"name="option5" class="formVal form-control" value="">
-                            <br><p> Option 6 :</p><input type="text"name="option6" class="formVal form-control" value="">
-                            <input type="hidden" name="type" class="formVal" value="poll"/>
+                            <br><p> Required Amount :</p><input type="text"name="amount" class="formVal form-control" value="1000">
+                            <br><p> Funding Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="<?php echo $addr;?>">
+                            <input type="hidden" name="type" class="formVal" value="proposal"/>
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="createPoll(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit">Create Poll</span>
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="createproposal(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit">Create proposal</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -119,7 +117,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script type="text/javascript">
-function createPoll()
+function createproposal()
 {
     toggle(true);
     var elements = document.getElementsByClassName("formVal");
@@ -129,12 +127,12 @@ function createPoll()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/addpoll.php', formData, function(data) {
+    ajax_post('./services/addproposal.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Poll created successfully';
+            document.getElementById("success").innerHTML = '&#x2705; proposal created successfully';
             checkusername();
         } else {
             document.getElementById("success").classList.add("rem");
@@ -149,7 +147,7 @@ function toggle(change) {
             document.getElementById("text_submit").innerHTML = "Creating...";
             document.getElementById("submit").classList.add("disabled");
     } else {
-            document.getElementById("text_submit").innerHTML = "Create Poll";
+            document.getElementById("text_submit").innerHTML = "Create proposal";
             document.getElementById("submit").classList.remove("disabled");
     }
 }

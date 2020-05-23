@@ -41,23 +41,37 @@
     <div class="row justify-content-between align-items-center">
       <div class="col-auto">
         <div class="header_logo">
-          <a class="" href="./polls.php">
+          <a class="" href="./index.php">
             <img src="./images/idena-logo.svg" alt="Idena" width="40px">
           </a>
         </div>
       </div>
-      <div class="col col-5">
-      </div>
+      <li class="nav-item header_nav__item">
+              <a href='./polls.php'class="nav-link header_nav__link appslink" title="Polls" descriptioncontent="Polls">
+                Polls
+              </a>
+            </li>
+            <li class="nav-item header_nav__item">
+            <a href='./proposals.php' class="nav-link header_nav__link appslink" title="Proposals" descriptioncontent="Proposals">
+              Proposals
+            </a>
+          </li>
+
+          <li class="nav-item header_nav__item">
+            <a class="nav-link header_nav__link appslink" title="Registrations" descriptioncontent="Registrations">
+              Registrations
+            </a>
+          </li>
 
       <div class="col-auto">
           <?php if(!empty($addr)) { ?>
           <div class="btn-group">
-              <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div class="user-pic">
-                      <img class="user-avatar" src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="40">
+              <a href=" " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div  class="user-pic">
+                      <img  class="user-avatar" src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="40">
                       </div>
               </a>
-              
+
               <div class="dropdown-menu" aria-hidden="true" role="menu">
                     <li>
                         <a class="btn btn-small" href="./profile.php"><span>My Profile</span></a>
@@ -67,11 +81,11 @@
                         <a class="btn btn-small" href="./logout.php"><span>Log out</span></a>
                     </li>
               </div>
-                
-                
+
+
             </div>
             <?php } ?>
-            
+
       </div>
 
     </div>

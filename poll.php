@@ -63,7 +63,7 @@ $owner = $row['addr'];
                       <h4>End Time</h4>
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
-                    <?php if ($owner == $addr){
+                    <?php if ($owner == $_SESSION["addr"]){
                   echo '<div class="col-4 col-sm-4 bordered-col">
                     <h4>Administration</h4>
                     <div class="input-group">
@@ -72,7 +72,7 @@ $owner = $row['addr'];
                     </a>
                     </div>
                   </div>';} ?>
-                  
+
                       </div>
                         <br/>
                   </div>

@@ -10,13 +10,13 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image">
-                <img src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="120"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="120"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
                     <h1 class="section_main__title">
-                        <?php echo $addr; ?>
+                        <?php echo $_SESSION["addr"]; ?>
 
                       <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
@@ -100,7 +100,7 @@ window.onload = function() {
 checkusername();
 
   //load all polls
-  ajax_get('./services/showpolls.php?addr=<?php echo $addr; ?>', function(data) {
+  ajax_get('./services/showpolls.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
 
       if(data["entries"].length > 0){
           document.getElementById("page_title").classList.remove("rem");
@@ -130,7 +130,7 @@ checkusername();
   });
 
 
-ajax_get('./services/showproposals.php?addr=<?php echo $addr; ?>', function(data) {
+ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
 
     if(data["entries"].length > 0){
         document.getElementById("page_title2").classList.remove("rem");

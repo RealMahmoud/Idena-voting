@@ -64,11 +64,11 @@
           </li>
 
       <div class="col-auto">
-          <?php if(!empty($addr)) { ?>
+          <?php if(!empty($_SESSION["addr"])) { ?>
           <div class="btn-group">
               <a href=" " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div  class="user-pic">
-                      <img  class="user-avatar" src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="40">
+                      <img  class="user-avatar" src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="40">
                       </div>
               </a>
 

@@ -20,17 +20,17 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image" style="width: 7rem;height: 7rem;">
-                <img src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="80"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="80"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
                     <h1 class="section_main__title">
-                        <?php echo $addr; ?>
+                        <?php echo $_SESSION["addr"]; ?>
                         <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
                     </div>
-                    <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $addr; ?>" target="_blank">
+                    <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
                         <i class="icon icon--coins"></i><span>Address details on explorer</span>
                     </a>
                 </div>
@@ -51,10 +51,10 @@ include(dirname(__FILE__)."/partials/header.php");
 
                     <div class="col-12 col-sm-12 bordered-col">
                         <h4 class="info_block__accent">Status</h4>
-                        <p><?php echo $state; ?></p>
+                        <p><?php echo $_SESSION["state"]; ?></p>
                         <br/>
                         <h4 class="info_block__accent">Age</h4>
-                        <p><?php echo $age; ?></p>
+                        <p><?php echo $_SESSION["age"]; ?></p>
                     </div>
 
 

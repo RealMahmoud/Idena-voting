@@ -8,7 +8,7 @@ $id = $conn->real_escape_string($_POST['id']);
 $vote = $conn->real_escape_string($_POST['vote']);
 $type = $conn->real_escape_string($_POST['type']);
 
-$sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$id."' AND `type` = '".$type."' LIMIT 1;";
+$sql = "SELECT * FROM `votes` WHERE `addr` = '".$_SESSION["addr"]."' AND `pid` = '".$id."' AND `type` = '".$type."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
           echo '{"success":false, "data": "You have already voted"}';
           }
 } else {
-    $sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$id."','".$addr."','".$vote."','".$type."');";
+    $sql = "INSERT INTO `votes`(`pid`, `addr`, `vote`,`type`) VALUES ('".$id."','".$_SESSION["addr"]."','".$vote."','".$type."');";
     $result = $conn->query($sql);
     echo '{"success":true, "data": "Vote casted successfully"}';
 }

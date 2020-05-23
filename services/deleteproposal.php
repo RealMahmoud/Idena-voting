@@ -8,7 +8,7 @@ $id = $conn->real_escape_string($_GET['id']);
 
 if(!empty($id)){
 
-                    $sql = "DELETE from `proposal` WHERE `id` = '$id' AND `addr` = '$addr';";
+                    $sql = "DELETE from `proposals` WHERE `id` = '$id' AND `addr` = '$addr';";
                     $result = $conn->query($sql);
 
                     echo '{"status": "success"}';

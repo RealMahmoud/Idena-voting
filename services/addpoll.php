@@ -20,9 +20,9 @@ if(!empty($addr))
           $endtime = $conn->real_escape_string($_POST['endtime']);
 
           $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`) VALUES ('".$description."','".$addr."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."')";
-        
+
           $result = $conn->query($sql);
-          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`addr` = '$addr';";
+          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '$addr';";
          $conn->query($sql);
           echo '{"success":true}';
         } else {

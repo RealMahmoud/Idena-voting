@@ -51,7 +51,7 @@ $owner = $row['addr'];
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
                           <h4>Description</h4>
-                          <p><?php echo  $row['pdesc']; ?></p>
+                          <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
                         <div class="row">
@@ -73,6 +73,15 @@ $owner = $row['addr'];
                     </a>
                     </div>
                   </div>';} ?>
+              <?php if (strlen($row['fundaddr']) == 42){
+
+
+              echo '<div class="row">
+                  <div class="col-8 col-sm-8 bordered-col">
+                    <p>Funding Address</p>
+                      <p>'.$row['fundaddr'].'</p>
+                    </div>
+                  </div>';}?>
                       </div>
                         <br/>
                   </div>
@@ -199,19 +208,20 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script>
+/*
 function toggle(change) {
     if(change == true) {
-            document.getElementById("text_submit").innerHTML = "Casting...";
+            document.getElementById("text_submit").innerHTML = "Loading...";
             document.getElementById("submit").classList.add("disabled");
     } else {
             document.getElementById("text_submit").innerHTML = "Cast my Vote";
             document.getElementById("submit").classList.remove("disabled");
     }
 }
-
+*/
 function changeVote()
 {
-    toggle(true);
+    // toggle(true);
     var elements = document.getElementsByClassName("formVal");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)

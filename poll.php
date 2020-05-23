@@ -51,7 +51,7 @@ $owner = $row['addr'];
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
                           <h4>Description</h4>
-                          <p><?php echo  $row['pdesc']; ?></p>
+                            <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
                         <div class="row">
@@ -69,10 +69,10 @@ $owner = $row['addr'];
                     <div class="input-group">
                     <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="Delete('.$row['id'].');" style="margin-top: 1em;">
                         <span id="text_submit">DELETE</span>
-
                     </a>
                     </div>
                   </div>';} ?>
+                  
                       </div>
                         <br/>
                   </div>
@@ -210,6 +210,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script>
+/*
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Casting...";
@@ -219,10 +220,10 @@ function toggle(change) {
             document.getElementById("submit").classList.remove("disabled");
     }
 }
-
+*/
 function changeVote()
 {
-    toggle(true);
+  //  toggle(true);
     var elements = document.getElementsByClassName("formVal");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)

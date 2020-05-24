@@ -79,7 +79,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Start a new poll</h4>
                         <form id="poll_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
-                            <p>Description :</p><input type="text" name="desc" id="desc" class="formVal form-control" value="Do you like Cookies ?" placeholder="Will DNA beat BTC?"required/>
+                              <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" value="Will DNA beat BTC?"></textarea><br>
                           <br>  <p> DeadLine :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">
@@ -156,7 +156,7 @@ function toggle(change) {
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
-        
+
     });
 }
 window.onload = function() {

@@ -72,7 +72,21 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeName(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit">Change My Nickname</span>
+                                <span id="text_submit"> Change</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
+                        <h4 class="info_block__accent">Change Password</h4>
+                        <form id="name_form" METHOD="POST">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="password" class="formVal form-control" value="" placeholder="your new password goes here..."/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changePassword(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -123,13 +137,37 @@ function changeName()
         }
     });
 }
+function changePassword()
+{
+    toggle(true);
+    var elements = document.getElementsByClassName("formVal");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+
+    ajax_post('./services/changepassword.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Password changed successfully';
+            checkusername();
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+        }
+    });
+}
 
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Changing...";
             document.getElementById("submit").classList.add("disabled");
     } else {
-            document.getElementById("text_submit").innerHTML = "Change My Nickname";
+            document.getElementById("text_submit").innerHTML = "Change";
             document.getElementById("submit").classList.remove("disabled");
     }
 }
@@ -137,7 +175,7 @@ function toggle(change) {
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
-          
+
     });
 }
 window.onload = function() {

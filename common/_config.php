@@ -1,10 +1,10 @@
 <?php
-$url = 'http://127.0.0.1/Idena-voting/';
+$url = 'http://idena.voting/';
 $site_name = 'Idena Voting';
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "123";
 $dbname = "voting";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}

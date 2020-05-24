@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $id = $conn->real_escape_string($_GET['id']);
 $type = $conn->real_escape_string($_GET['type']);
 if(!empty($id)){
-        $sql = "SELECT * FROM `votes` WHERE `addr` = '".$addr."' AND `pid` = '".$id."' AND `type` = 'proposal' LIMIT 1;";
+        $sql = "SELECT * FROM `votes` WHERE `addr` = '".$_SESSION["addr"]."' AND `pid` = '".$id."' AND `type` = '".$type."' LIMIT 1;";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

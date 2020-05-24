@@ -3,11 +3,19 @@ session_start();
 include(dirname(__FILE__)."/../common/_config.php");
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
-if($credits < 1){
-  die('{"success":false}');
-}
+$sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    if($row['credits'] < 1){
+      die('{"success":false}');
+    }
+  }}
+  if(empty($conn->real_escape_string($_POST['desc']))) {
+    die('{"success":false}');
+  }
 
-if(!empty($addr))
+if(!empty($_SESSION["addr"]))
 {
         if ($_POST['type'] == 'poll'){
           $description = $conn->real_escape_string($_POST['desc']);
@@ -19,10 +27,10 @@ if(!empty($addr))
           $option6 = $conn->real_escape_string($_POST['option6']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
 
-          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`) VALUES ('".$description."','".$addr."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."')";
+          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`) VALUES ('".$description."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."')";
 
           $result = $conn->query($sql);
-          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '$addr';";
+          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
           echo '{"success":true}';
         } else {

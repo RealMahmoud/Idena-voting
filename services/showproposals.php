@@ -8,7 +8,7 @@ $entries = array();
 ?>
 <?php
 if(!empty($_SESSION["addr"])) {
-    $sql1 = "SELECT * FROM `polls` WHERE `addr` = '".$_SESSION["addr"]."'";
+    $sql1 = "SELECT * FROM `proposals` WHERE `addr` = '".$_SESSION["addr"]."'";
     $result_acct = $conn->query($sql1);
     if ($result_acct->num_rows > 0) {
         // output data of each row

@@ -30,51 +30,48 @@ if(!empty($token)) {
                 if ($auth == 0){
                     header("location:signin.php");
                 } else {
-                    $addr = $row['addr'];
-                    $_SESSION["addr"] = $addr;
-                }
+                    $_SESSION["addr"] = $row['addr'];
+                    }
          }
 
     }
 
-    if(empty($addr)) {
+    if(empty($_SESSION["addr"])) {
         header("location:signin.php");
     }
 
 
-    if(!empty($addr)) {
-        $identity_url = 'https://api.idena.org/api/identity/'.$addr;
+    if(!empty($_SESSION["addr"])) {
+      $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+          if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['age'] == '0'){
+            $identity_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"];
+            $jsonArrayResponse = curl_get($identity_url);
+            if(!empty($jsonArrayResponse)){
+                $newstate = $jsonArrayResponse["result"]["state"];
+              }
+            $age_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"].'/age';
+            $jsonArrayResponse = curl_get($age_url);
+            if(!empty($jsonArrayResponse)){
+                $newage = $jsonArrayResponse["result"];
 
-        $jsonArrayResponse = curl_get($identity_url);
-        if(!empty($jsonArrayResponse)){
-            $_SESSION["state"] = $jsonArrayResponse["result"]["state"];
-            $state =  $_SESSION["state"];
-        }
+            }
 
-        $age_url = 'https://api.idena.org/api/identity/'.$addr.'/age';
-        $jsonArrayResponse = curl_get($age_url);
-        if(!empty($jsonArrayResponse)){
-            $_SESSION["age"] = $jsonArrayResponse["result"];
-            $age =  $_SESSION["age"];
-        }
+            // update
+            $sql3 = "UPDATE `accounts` SET `state` = '".$newstate."',`age`='".$newage."',`lastseen`= NOW()  WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 
-        $sql2 = "SELECT `username`,`status` FROM `accounts` WHERE `address` = '".$addr."' LIMIT 1;";
-        $result_acct2 = $conn->query($sql2);
-
-        // fetch and update the lastest state with new login
-        if ($result_acct2->num_rows > 0) {
-                $sql3 = "UPDATE `accounts` SET `status` = '".$state."' WHERE `address` = '".$addr."' LIMIT 1;";
-                $result3 = $conn->query($sql3);
-        }
-
-
-        $sql = "SELECT * FROM `accounts` WHERE `address` = '".$addr."' LIMIT 1;";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-        $credits = $row['credits'];
-        $username = $row['username'];}}
+            $result3 = $conn->query($sql3);
+          }
+          $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+          $_SESSION["state"] = $row['state'];
+          $_SESSION["age"] = $row['age'];}}
+    }
+    }
     }
 
 } elseif (empty($token)){

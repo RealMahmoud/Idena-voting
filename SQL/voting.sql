@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2020 at 03:29 AM
+-- Generation Time: May 24, 2020 at 02:11 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -34,16 +34,22 @@ CREATE TABLE `accounts` (
   `lastlogin` timestamp NOT NULL DEFAULT current_timestamp(),
   `votescount` int(11) NOT NULL,
   `credits` tinyint(10) NOT NULL DEFAULT 2,
-  `status` varchar(255) NOT NULL DEFAULT 'undefined',
-  `username` varchar(50) NOT NULL
+  `state` varchar(255) NOT NULL DEFAULT 'undefined',
+  `username` varchar(50) NOT NULL,
+  `lastseen` timestamp NOT NULL DEFAULT current_timestamp(),
+  `age` int(11) NOT NULL DEFAULT 0,
+  `score` decimal(10,4) NOT NULL DEFAULT 0.0000
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `address`, `lastlogin`, `votescount`, `credits`, `status`, `username`) VALUES
-(2, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 23:05:21', 0, 1, 'Verified', 'Mr.BroBot');
+INSERT INTO `accounts` (`id`, `address`, `lastlogin`, `votescount`, `credits`, `state`, `username`, `lastseen`, `age`, `score`) VALUES
+(4, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-22 08:05:04', 0, 2, 'Verified', '0xb3034881', '2020-05-23 23:21:56', 6, '1.0000'),
+(5, '0x930348813590e02907da79e1c46fba4edca5a2d5', '2020-05-22 08:05:04', 0, 2, 'Verified', '0xb3034881', '2020-05-23 19:11:13', 6, '0.0000'),
+(6, '0x830348813590e02907da79e1c46fba4edca502d5', '2020-05-22 08:05:04', 0, 2, 'Newbie', '0xb3034881', '2020-05-23 19:11:13', 6, '0.0000'),
+(7, '0x000348810590e02907da79e1c46fba4edca5a2d5', '2020-05-22 08:05:04', 0, 2, 'Human', '0xb3034881', '2020-05-23 19:11:13', 6, '0.0000');
 
 -- --------------------------------------------------------
 
@@ -76,7 +82,10 @@ INSERT INTO `auth` (`id`, `token`, `nonce`, `sig`, `addr`, `authenticated`) VALU
 (58, '84963AE1-D97B-4200-A142-679F9AE7A0D0', '584A35B0-EDE9-4B46-BEEC-B656A09C17DB', '0x0d63cea57646b54c50ece0893acb684f9bac7f3e95ae3c5f5b050628b6fd24144ba8738d57be57096f3de0a9f7f61282e1dd9007a06598b3ab9e7741ece6f78800', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
 (59, 'C63966C1-894D-4760-BC2D-488B1486AEDF', 'D32808D4-E678-4EA7-9153-F412FD310966', '0x538c75f410041651312d012336540cd659b9eb33cb8b1f1d2a56ec22928b72e8611745097821123a91700a3ca53833ac270f9a0e5b578b295b51d5f1bf1c818200', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
 (60, '01F52829-62C2-4B1E-9E9A-C7BF15476EED', '198B9095-D516-40B8-AD07-6C184A434CC7', '0x8ec10abdd981c36dc8a9e215b427fd3b296f6a69a09b80ed246fdc4f8722826d3a538efb75fa15c00bebf02318c6545f53c3bc2fedf2bcc6cfcfcb5bdc54c3d301', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
-(61, 'B52D29B8-F27C-4B40-9F57-E2C083B79652', '66F89F39-96C4-4C5D-AC4C-5D50985C89A6', '0x150e6cd75abeb42fa57e5d2706e0c1d30a7196da8e964f0023a8834293e974ef5ac4599e90b3c0e26f16cd3537d37cd1bab5f0c2c33e9bc6af463f0d26d5d47800', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1);
+(61, 'B52D29B8-F27C-4B40-9F57-E2C083B79652', '66F89F39-96C4-4C5D-AC4C-5D50985C89A6', '0x150e6cd75abeb42fa57e5d2706e0c1d30a7196da8e964f0023a8834293e974ef5ac4599e90b3c0e26f16cd3537d37cd1bab5f0c2c33e9bc6af463f0d26d5d47800', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
+(62, '98B49227-AEFB-448E-AE07-4B599670D3B9', '5D420DC1-B95F-4186-AC4E-40248A690A9B', '0xc7f2c19a0adcb85862a372bf15d814c6752e94fb9a13f2f9f4774b5df473110a3dfc3779de118573acd0124741e6b7cc03a4c146f76f187f826c1d27f5f23ea701', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
+(63, '2B314226-7997-48C6-BCF2-28C71818A522', '0B7A99A9-85BE-4D1B-914D-9B76113DACDC', '0x8041d709b7a87fea760e2c06c478c51d71a87a42b557a2eab2c50dcda995e65858be96e163e21400e387cc42a50e2f21a60fd9677055055012a11309194c586001', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1),
+(64, '1BADB108-ACC9-4FCA-AED4-0540E65AB432', '3DFCD901-E69A-41CE-9826-663BEC919769', '0xd02e93376e0735f03107c9a452891fd80f50bc32bed67c4362ba9c2f79ef674c2d4df7480287510eff3cc12d5a93a1d616fbdd4b9e7c6ffe198589ea0c90204e01', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 1);
 
 -- --------------------------------------------------------
 
@@ -103,30 +112,41 @@ CREATE TABLE `polls` (
 --
 
 INSERT INTO `polls` (`id`, `addtime`, `pdesc`, `endtime`, `addr`, `option1`, `option2`, `option3`, `option4`, `option5`, `option6`) VALUES
-(12, '2020-05-21 23:42:06', 'Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?', '2020-05-22 00:42:55', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', 'Fuck off', '', '', '');
+(12, '2020-05-21 23:42:06', 'Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?Do you like Cookies ?', '2020-05-22 00:42:55', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', 'Fuck off', '', '', ''),
+(13, '2020-05-22 20:57:24', 'Do you like Cookies ?', '2020-05-23 08:55:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '2020-05-22 21:02:55', 'Do you like Cookies ?', '2020-05-23 09:01:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', ''),
+(15, '2020-05-22 23:24:30', 'Do you like Cookies ?', '2020-05-23 11:24:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', ''),
+(16, '2020-05-22 23:24:34', 'Do you like Cookies ?', '2020-05-23 11:24:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', ''),
+(17, '2020-05-22 23:24:40', 'Do you like Cookies ?', '2020-05-23 11:24:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', ''),
+(18, '2020-05-22 23:25:08', 'Do you like Cookies ?', '2020-05-23 11:24:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', ''),
+(19, '2020-05-22 23:25:12', 'Do you like Cookies ?', '2020-05-23 11:24:00', '0xb30348813590e02907da79e1c46fba4edca5a2d8', 'Yes', 'No', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Table structure for table `proposals`
 --
 
-CREATE TABLE `projects` (
+CREATE TABLE `proposals` (
   `id` int(11) NOT NULL,
   `addr` varchar(255) NOT NULL DEFAULT '0',
   `addtime` timestamp NOT NULL DEFAULT current_timestamp(),
   `amount` int(15) NOT NULL DEFAULT 1,
   `pdesc` text NOT NULL DEFAULT '\'0\'',
-  `endtime` timestamp NOT NULL DEFAULT current_timestamp()
+  `endtime` timestamp NOT NULL DEFAULT current_timestamp(),
+  `step1` mediumtext NOT NULL,
+  `option1` varchar(255) NOT NULL DEFAULT 'Yes',
+  `option2` varchar(255) NOT NULL DEFAULT 'No',
+  `fundaddr` varchar(64) NOT NULL DEFAULT 'NONE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `projects`
+-- Dumping data for table `proposals`
 --
 
-INSERT INTO `projects` (`id`, `addr`, `addtime`, `amount`, `pdesc`, `endtime`) VALUES
-(1, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-16 13:32:55', 10000, 'Idena polls and voting for projects', '2020-05-16 14:17:37'),
-(2, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-16 14:24:25', 1000, 'Cookies Store', '2020-05-16 14:24:25');
+INSERT INTO `proposals` (`id`, `addr`, `addtime`, `amount`, `pdesc`, `endtime`, `step1`, `option1`, `option2`, `fundaddr`) VALUES
+(8, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-22 23:53:38', 1000, 'hi', '2020-05-23 11:53:00', '', 'Yes', 'No', '0xb30348813590e02907da79e1c46fba4edca5a2d8'),
+(9, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-22 23:54:52', 1000, 'hi', '2020-05-23 11:53:00', '', 'Yes', 'No', '0xb30348813590e02907da79e1c46fba4edca5a2d8');
 
 -- --------------------------------------------------------
 
@@ -150,8 +170,9 @@ CREATE TABLE `votes` (
 INSERT INTO `votes` (`id`, `addr`, `time`, `vote`, `type`, `pid`) VALUES
 (9, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 18:47:07', 1, 'poll', 3),
 (17, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 21:03:01', 3, 'poll', 1),
-(20, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 22:23:29', 3, 'poll', 9),
-(21, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 23:13:54', 1, 'poll', 0);
+(20, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 22:23:29', 1, 'poll', 9),
+(21, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-21 23:13:54', 1, 'poll', 9),
+(25, '0xb30348813590e02907da79e1c46fba4edca5a2d8', '2020-05-22 23:07:36', 1, 'proposal', 3);
 
 --
 -- Indexes for dumped tables
@@ -176,9 +197,9 @@ ALTER TABLE `polls`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `projects`
+-- Indexes for table `proposals`
 --
-ALTER TABLE `projects`
+ALTER TABLE `proposals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -195,31 +216,31 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT for table `proposals`
 --
-ALTER TABLE `projects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `proposals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

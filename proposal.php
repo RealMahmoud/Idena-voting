@@ -23,7 +23,7 @@ $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
+  // output data  Of each row
   while($row = $result->fetch_assoc()) {
 $owner = $row['addr'];
 ?>
@@ -63,7 +63,7 @@ $owner = $row['addr'];
                       <h4>End Time</h4>
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
-                    <?php if ($owner == $addr){
+                    <?php if ($owner == $_SESSION["addr"]){
                   echo '<div class="col-4 col-sm-4 bordered-col">
                     <h4>Administration</h4>
                     <div class="input-group">
@@ -145,58 +145,74 @@ echo '<div id="checker"></div>
 
 </section>
 
-<section class="section section_info">
-
-    <div class="row">
-      <div class="col-12 col-sm-12">
-        <div class="card">
-          <div>
-            <div class="row">
-              <div class="col-10 col-sm-6 bordered-col">
-                    <h4 class="info_block__accent">Humans Voters Stats</h4>
-                    <p>Total Humans Accounts : 750 of 1000 - 75%</p>
-                    <p>Total Humans Votes : 500 of 5000(Net) - 10%</p>
-                    <p>Total Humans Votes : 500 of 1000(T.V) - 50%</p>
-                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
-                    <br/>
-              </div>
-
-              <div class="col-10 col-sm-5 bordered-col">
-                    <h4 class="info_block__accent">Verified Voters Stats</h4>
-                    <p>Total Verified Accounts : 750 of 1000 - 75%</p>
-                    <p>Total Verified Votes : 500 of 5000(Net) - 10%</p>
-                    <p>Total Verified Votes : 500 of 1000(T.V) - 50%</p>
-                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
-                    <br/>
-              </div>
-
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div><!-- row end -->
-
-</section>
 <?php
+$id = $conn->real_escape_string($_GET["id"]);
+$sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    $json2 = curl_get($url.'/services/stats.php?pid='.$id.'&type=proposal');
+    $sql = "SELECT * FROM `net` WHERE `Epoch` = '44' LIMIT 1;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+      while($row2 = $result->fetch_assoc()) {
+$NotValidatedCount = $row2['NotValidated'];
+ $ValidatedCount =  $row2['Validated'];
+ $HumanCount = $row2['Human'];
+$VerifiedCount =  $row2['Verified'];
+$NewbieCount =  $row2['Newbie'];
+}}
+    if (!$row['option1'] == null){
+      $json = curl_get($url.'/services/option-stats.php?pid='.$id.'&vote=1&type=proposal');
 
-  } //while loop ends
+    echo '<section class="section section_info">
+          <div class="row">
+          <div class="col-12 col-sm-12">
+          <div class="card">
+          <div>
+          <div class="row">
+          <div class="col-10 col-sm-10 bordered-col">
+          <h4 class="info_block__accent"> Option : '.$row['option1'].'</h4>
+          <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
+          <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
+          <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
+          <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
+          <p>Verified Count : <span style="color: #5B2C6F ">'.$json['Verified'].'</span> Of <span style="color: #D98880"> '.$json2['VerifiedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['VerifiedCount'].' || <span style="color: #148F77 ">Network</span> : '.$VerifiedCount.'</p>
+          <p>Newbies Count : <span style="color: #5B2C6F ">'.$json['Newbie'].'</span> Of <span style="color: #D98880"> '.$json2['NewbieVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NewbieCount'].' || <span style="color: #148F77 ">Network</span> : '.$NewbieCount.'</p>
+          </div></div></div></div></div></div></section>';
+    }
+    if (!$row['option2'] == null){
+      $json = curl_get($url.'/services/option-stats.php?pid='.$id.'&vote=2&type=proposal');
+
+    echo '<section class="section section_info">
+          <div class="row">
+          <div class="col-12 col-sm-12">
+          <div class="card">
+          <div>
+          <div class="row">
+          <div class="col-10 col-sm-10 bordered-col">
+          <h4 class="info_block__accent"> Option : '.$row['option2'].'</h4>
+          <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
+          <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
+          <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
+          <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
+          <p>Verified Count : <span style="color: #5B2C6F ">'.$json['Verified'].'</span> Of <span style="color: #D98880"> '.$json2['VerifiedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['VerifiedCount'].' || <span style="color: #148F77 ">Network</span> : '.$VerifiedCount.'</p>
+          <p>Newbies Count : <span style="color: #5B2C6F ">'.$json['Newbie'].'</span> Of <span style="color: #D98880"> '.$json2['NewbieVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NewbieCount'].' || <span style="color: #148F77 ">Network</span> : '.$NewbieCount.'</p>
+          </div></div></div></div></div></div></section>';
+    }
+
+
+
+
+
+}}
+
+
+} //while loop ends
 
 } ?>
+
+
 
 
 <?php
@@ -208,7 +224,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script>
-/*
+
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Loading...";
@@ -218,7 +234,7 @@ function toggle(change) {
             document.getElementById("submit").classList.remove("disabled");
     }
 }
-*/
+
 function changeVote()
 {
     // toggle(true);

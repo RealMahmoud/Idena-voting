@@ -20,17 +20,17 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image" style="width: 7rem;height: 7rem;">
-                <img src="https://robohash.org/<?php echo $addr; ?>" alt="pic" width="80"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="80"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
                     <h1 class="section_main__title">
-                        <?php echo $addr; ?>
+                        <?php echo $_SESSION["addr"]; ?>
                         <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
                     </div>
-                    <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $addr; ?>" target="_blank">
+                    <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
                         <i class="icon icon--coins"></i><span>Address details on explorer</span>
                     </a>
                 </div>
@@ -41,60 +41,74 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
 
     <div class="row">
-        
-          
-          
+
+
+
           <div class="col-12 col-sm-12">
             <div class="card">
               <div>
                 <div class="row">
-                    
+
                     <div class="col-12 col-sm-3 bordered-col">
 
                         <h4 class="info_block__accent">Status</h4>
-                        <p><?php echo $state; ?></p>
+                        <p><?php echo $_SESSION["state"]; ?></p>
                         <br/>
                         <h4 class="info_block__accent">Age</h4>
-                        <p><?php echo $age; ?></p>
+                        <p><?php echo $_SESSION["age"]; ?></p>
                   </div>
-                  
+
                   <div class="col-12 col-sm-9 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
                         </div>
-                        
+
                         <h4 class="info_block__accent">Change username</h4>
                         <form id="name_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
                                 <input type="text" name="username" class="formVal form-control" value="" placeholder="your new nickname goes here..."/>
                             </div>
-                            
+
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeName(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit">Change My Nickname</span>
+                                <span id="text_submit"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
-                      
+
                         </form>
-                        
+                        <h4 class="info_block__accent">Change Password</h4>
+                        <form id="name_form" METHOD="POST">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="password" class="formVal form-control" value="" placeholder="your new password goes here..."/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changePassword(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit"> Change</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
+
                   </div>
 
                 </div>
               </div>
             </div>
           </div>
-        
+
     </div><!-- row end -->
-    
+
 </section>
 
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/donation.php");
 ?>
 
- <!-- this is to close main, div opened in the header -->     
+ <!-- this is to close main, div opened in the header -->
  </div>
 </main>
 
@@ -103,12 +117,12 @@ function changeName()
 {
     toggle(true);
     var elements = document.getElementsByClassName("formVal");
-    var formData = new FormData(); 
+    var formData = new FormData();
     for(var i=0; i<elements.length; i++)
     {
         formData.append(elements[i].name, elements[i].value);
     }
-    
+
     ajax_post('./services/changeusername.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
@@ -123,27 +137,51 @@ function changeName()
         }
     });
 }
+function changePassword()
+{
+    toggle(true);
+    var elements = document.getElementsByClassName("formVal");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+
+    ajax_post('./services/changepassword.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Password changed successfully';
+            checkusername();
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+        }
+    });
+}
 
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Changing...";
             document.getElementById("submit").classList.add("disabled");
     } else {
-            document.getElementById("text_submit").innerHTML = "Change My Nickname";
-            document.getElementById("submit").classList.remove("disabled");   
+            document.getElementById("text_submit").innerHTML = "Change";
+            document.getElementById("submit").classList.remove("disabled");
     }
 }
 
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
-            document.getElementById("success").classList.add("rem");
+
     });
 }
 window.onload = function() {
 checkusername();
 }
 </script>
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/footer.php");
 ?>

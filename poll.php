@@ -168,6 +168,8 @@ echo '<div id="checker"></div>
                     <br/>
               </div>
 
+
+  
               <div class="col-10 col-sm-5 bordered-col">
                     <h4 class="info_block__accent">Verified Voters Stats</h4>
                     <p>Total Verified Accounts : 750 of 1000 - 75%</p>

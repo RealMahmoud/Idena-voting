@@ -11,7 +11,9 @@ if ($result->num_rows > 0) {
       die('{"success":false}');
     }
   }}
-
+  if(empty($conn->real_escape_string($_POST['desc']))) {
+    die('{"success":false}');
+  }
 if(!empty($_SESSION["addr"]))
 {
         if ($_POST['type'] == 'proposal'){

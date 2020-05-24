@@ -154,8 +154,7 @@ function toggle(change) {
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.add("rem");
+          
     });
 }
 window.onload = function() {

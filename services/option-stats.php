@@ -13,24 +13,26 @@ $resultjson =(object)array();
 $resultjson->result='true';
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."';");
 $row = $result->fetch_row();
-$resultjson->all=$row[0];
+$resultjson->All=$row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."'AND`state` = 'Human';");
 $row = $result->fetch_row();
-$resultjson->human=$row[0];
+$resultjson->Human=$row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."'AND `state` = 'Verified';");
 $row = $result->fetch_row();
-$resultjson->verified=$row[0];
+$resultjson->Verified=$row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."'AND`state` = 'Newbie';");
 $row = $result->fetch_row();
-$resultjson->newbie=$row[0];
+$resultjson->Newbie=$row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."' AND`state` <> 'Human' AND `state` <> 'Verified' AND `state` <> 'Newbie';");
 $row = $result->fetch_row();
-$resultjson->notvalidated=$row[0];
-
+$resultjson->NotValidated=$row[0];
+$result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE  `vote` = '".$vote."'AND `pid` = '".$pid."' AND `type` = '".$type."' AND (`state` = 'Human' or `state` = 'Verified' or `state` = 'Newbie');");
+$row = $result->fetch_row();
+$resultjson->Validated=$row[0];
 
 if ($type == 'poll'){
   $db = 'polls';
@@ -43,7 +45,7 @@ $sql = "SELECT * FROM `".$db."` WHERE `id` = '".$pid."' LIMIT 1;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-    $resultjson->desc=$row['option'.$vote];
+    $resultjson->Desc=$row['option'.$vote];
     $exist = 1;
   }
 }

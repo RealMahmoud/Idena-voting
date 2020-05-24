@@ -21,17 +21,23 @@ $resultjson->VerifiedVotesCount=$row[0];
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Newbie' AND `pid` = '".$pid."' AND `type` = '".$type."';");
 $row = $result->fetch_row();
 $resultjson->NewbieVotesCount=$row[0];
-$result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` <> 'Human' AND `state` <> 'Verified' AND `state` <> 'Newbie' AND `pid` = '".$pid."' AND `type` = '".$type."';");
+$result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` <> 'Human' AND `state` <> 'Verified' AND `state` <> 'Newbie' ) AND `pid` = '".$pid."' AND `type` = '".$type."';");
 $row = $result->fetch_row();
 $resultjson->NoneValidatedVotesCount=$row[0];
+$result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' or `state` = 'Verified' or `state` = 'Newbie') AND `pid` = '".$pid."' AND `type` = '".$type."';");
+$row = $result->fetch_row();
+$resultjson->ValidatedVotesCount=$row[0];
 
 
 
 
 //  Count accounts
+$result = $conn->query("SELECT COUNT(*) FROM `accounts` WHERE `state` = 'Human' or `state` = 'Verified' or `state` = 'Newbie';");
+$row = $result->fetch_row();
+$resultjson->ValidatedCount=$row[0];
 $result = $conn->query("SELECT COUNT(*) FROM `accounts`;");
 $row = $result->fetch_row();
-$resultjson->AllValidatedCount=$row[0];
+$resultjson->AllAccountsCount=$row[0];
 $result = $conn->query("SELECT COUNT(*) FROM `accounts` WHERE `state` = 'Human';");
 $row = $result->fetch_row();
 $resultjson->HumansCount=$row[0];

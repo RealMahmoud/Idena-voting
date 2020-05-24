@@ -23,7 +23,7 @@ $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
+  // output data  Of each row
   while($row = $result->fetch_assoc()) {
 $owner = $row['addr'];
 ?>
@@ -151,38 +151,53 @@ $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
+    $json2 = curl_get($url.'/services/stats.php?pid='.$id.'&type=proposal');
+    $sql = "SELECT * FROM `net` WHERE `Epoch` = '44' LIMIT 1;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+      while($row2 = $result->fetch_assoc()) {
+$NotValidatedCount = $row2['NotValidated'];
+ $ValidatedCount =  $row2['Validated'];
+ $HumanCount = $row2['Human'];
+$VerifiedCount =  $row2['Verified'];
+$NewbieCount =  $row2['Newbie'];
+}}
     if (!$row['option1'] == null){
-      $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=1&type=proposal');
+      $json = curl_get($url.'/services/option-stats.php?pid='.$id.'&vote=1&type=proposal');
+
     echo '<section class="section section_info">
           <div class="row">
           <div class="col-12 col-sm-12">
           <div class="card">
           <div>
           <div class="row">
-          <div class="col-10 col-sm-5 bordered-col">
+          <div class="col-10 col-sm-10 bordered-col">
           <h4 class="info_block__accent"> Option : '.$row['option1'].'</h4>
-          <p>Votes Count : '.$json['all'].'</p>
-          <p>Humans Votes Count : '.$json['human'].'</p>
-          <p>Verified Count : '.$json['verified'].'</p>
-          <p>Newbies Count : '.$json['newbie'].'</p>
-          <p>Not Validated Count : '.$json['notvalidated'].'</p>
+          <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+          <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
+          <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
+          <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
+          <p>Verified Count : <span style="color: #5B2C6F ">'.$json['Verified'].'</span> Of <span style="color: #D98880"> '.$json2['VerifiedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['VerifiedCount'].' || <span style="color: #148F77 ">Network</span> : '.$VerifiedCount.'</p>
+          <p>Newbies Count : <span style="color: #5B2C6F ">'.$json['Newbie'].'</span> Of <span style="color: #D98880"> '.$json2['NewbieVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NewbieCount'].' || <span style="color: #148F77 ">Network</span> : '.$NewbieCount.'</p>
           </div></div></div></div></div></div></section>';
     }
     if (!$row['option2'] == null){
-      $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=2&type=proposal');
+      $json = curl_get($url.'/services/option-stats.php?pid='.$id.'&vote=2&type=proposal');
+
     echo '<section class="section section_info">
           <div class="row">
           <div class="col-12 col-sm-12">
           <div class="card">
           <div>
           <div class="row">
-          <div class="col-10 col-sm-5 bordered-col">
+          <div class="col-10 col-sm-10 bordered-col">
           <h4 class="info_block__accent"> Option : '.$row['option2'].'</h4>
-          <p>Votes Count : '.$json['all'].'</p>
-          <p>Humans Votes Count : '.$json['human'].'</p>
-          <p>Verified Count : '.$json['verified'].'</p>
-          <p>Newbies Count : '.$json['newbie'].'</p>
-          <p>Not Validated Count : '.$json['notvalidated'].'</p>
+          <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+          <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
+          <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
+          <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
+          <p>Verified Count : <span style="color: #5B2C6F ">'.$json['Verified'].'</span> Of <span style="color: #D98880"> '.$json2['VerifiedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['VerifiedCount'].' || <span style="color: #148F77 ">Network</span> : '.$VerifiedCount.'</p>
+          <p>Newbies Count : <span style="color: #5B2C6F ">'.$json['Newbie'].'</span> Of <span style="color: #D98880"> '.$json2['NewbieVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NewbieCount'].' || <span style="color: #148F77 ">Network</span> : '.$NewbieCount.'</p>
           </div></div></div></div></div></div></section>';
     }
 

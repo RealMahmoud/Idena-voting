@@ -114,7 +114,7 @@ echo '<div id="checker"></div>
                                           if (!$row['option6'] == null){
                                           echo $row['option6'].'  <input type="radio" class="formVal" name="vote" value="6"/><br>';
                                         }
-                                      echo  '<input type="hidden" class="formVal" name="id" value="value="'.$id.'"/>
+                                      echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
                                         <input type="hidden" class="formVal" name="type" value="poll"/>
                                         <div class="input-group">
                                         <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
@@ -147,56 +147,119 @@ echo '<div id="checker"></div>
 
 </section>
 
-<section class="section section_info">
-
-    <div class="row">
-      <div class="col-12 col-sm-12">
-        <div class="card">
-          <div>
+  <?php
+  $id = $conn->real_escape_string($_GET["id"]);
+  $sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+      if (!$row['option1'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=1&type=poll');
+      echo '<section class="section section_info">
             <div class="row">
-              <div class="col-10 col-sm-6 bordered-col">
-                    <h4 class="info_block__accent">Humans Voters Stats</h4>
-                    <p>Total Humans Accounts : 750 of 1000 - 75%</p>
-                    <p>Total Humans Votes : 500 of 5000(Net) - 10%</p>
-                    <p>Total Humans Votes : 500 of 1000(T.V) - 50%</p>
-                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
-                    <br/>
-              </div>
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option1'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
+      if (!$row['option2'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=2&type=poll');
+      echo '<section class="section section_info">
+            <div class="row">
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option2'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
+      if (!$row['option3'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=3&type=poll');
+      echo '<section class="section section_info">
+            <div class="row">
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option3'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
+      if (!$row['option4'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=4&type=poll');
+      echo '<section class="section section_info">
+            <div class="row">
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option4'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
+      if (!$row['option5'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=5&type=poll');
+      echo '<section class="section section_info">
+            <div class="row">
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option5'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
+      if (!$row['option6'] == null){
+        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=6&type=poll');
+      echo '<section class="section section_info">
+            <div class="row">
+            <div class="col-12 col-sm-12">
+            <div class="card">
+            <div>
+            <div class="row">
+            <div class="col-10 col-sm-5 bordered-col">
+            <h4 class="info_block__accent"> Option : '.$row['option6'].'</h4>
+            <p>Votes Count : '.$json['all'].'</p>
+            <p>Humans Votes Count : '.$json['human'].'</p>
+            <p>Verified Count : '.$json['verified'].'</p>
+            <p>Newbies Count : '.$json['newbie'].'</p>
+            <p>Not Validated Count : '.$json['notvalidated'].'</p>
+            </div></div></div></div></div></div></section>';
+      }
 
 
-  
-              <div class="col-10 col-sm-5 bordered-col">
-                    <h4 class="info_block__accent">Verified Voters Stats</h4>
-                    <p>Total Verified Accounts : 750 of 1000 - 75%</p>
-                    <p>Total Verified Votes : 500 of 5000(Net) - 10%</p>
-                    <p>Total Verified Votes : 500 of 1000(T.V) - 50%</p>
-                    <p>Option 1 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 2 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 3 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 4 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 5 Votes : 100 of 500(V) - 20%</p>
-                    <p>Option 6 Votes :   0 of 500(V) - 0%</p>
-                    <br/>
-              </div>
 
+}}
 
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div><!-- row end -->
-
-</section>
-<?php
 
   } //while loop ends
 
@@ -212,7 +275,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 </main>
 
 <script>
-/*
+
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Casting...";
@@ -222,7 +285,7 @@ function toggle(change) {
             document.getElementById("submit").classList.remove("disabled");
     }
 }
-*/
+
 function changeVote()
 {
   //  toggle(true);
@@ -254,6 +317,16 @@ function changeVote()
             document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
         }
     });
+    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=poll', function(data) {
+        if(data["status"]=='true'){
+            if(document.getElementById("checker") == null){
+
+            }else {
+            document.getElementById("vote_container").innerHTML = '<p>You have voted "'+data["vote"]+'".</p>';
+            }
+
+        }
+    });
 }
 function Delete(id)
 {
@@ -266,7 +339,7 @@ function Delete(id)
 }
 window.onload = function()
 {
-    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>', function(data) {
+    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=poll', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){
 

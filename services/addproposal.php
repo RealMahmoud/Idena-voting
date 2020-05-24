@@ -3,9 +3,14 @@ session_start();
 include(dirname(__FILE__)."/../common/_config.php");
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
-if($credits < 1){
-  die('{"success":false}');
-}
+$sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    if($row['credits'] < 1){
+      die('{"success":false}');
+    }
+  }}
 
 if(!empty($_SESSION["addr"]))
 {

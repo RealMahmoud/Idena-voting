@@ -173,7 +173,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option1'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
@@ -191,7 +191,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option2'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
@@ -209,7 +209,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option3'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
@@ -227,7 +227,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option4'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
@@ -245,7 +245,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option5'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>
@@ -263,7 +263,7 @@ echo '<div id="checker"></div>
             <div class="row">
             <div class="col-10 col-sm-10 bordered-col">
             <h4 class="info_block__accent"> Option : '.$row['option6'].'</h4>
-            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllVotesCount'].'</p>
+            <p>All Votes Count : <span style="color: #5B2C6F ">'.$json['All'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates ||  <span style="color: #50b6ff ">Accounts </span>: '.$json2['AllAccountsCount'].'</p>
             <p>Validated Votes Count : <span style="color: #5B2C6F ">'.$json['Validated'].'</span> Of <span style="color: #D98880"> '.$json2['AllVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['ValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$ValidatedCount.'</p>
             <p>Not Validated Count : <span style="color: #5B2C6F ">'.$json['NotValidated'].'</span> Of <span style="color: #D98880"> '.$json2['NoneValidatedVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['NoneValidatedCount'].' || <span style="color: #148F77 ">Network</span> : '.$NotValidatedCount.'</p>
             <p>Humans Votes Count : <span style="color: #5B2C6F ">'.$json['Human'].'</span> Of <span style="color: #D98880"> '.$json2['HumansVotesCount'].'</span> Total Participates || <span style="color: #50b6ff ">Accounts </span> : '.$json2['HumansCount'].' || <span style="color: #148F77 ">Network</span> : '.$HumanCount.'</p>

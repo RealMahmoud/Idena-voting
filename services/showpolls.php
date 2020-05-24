@@ -15,8 +15,9 @@ if(!empty($_SESSION["addr"])) {
                 while($row = $result_acct->fetch_assoc()) {
                     $polls[] = array('description' => mb_strimwidth($row['pdesc'], 0, 35, '...'),'id' => $row['id']);
                 }
-                $entries = $result = array('entries' => $polls);
-                echo json_encode($entries);
+
     }
+    $entries = $result = array('entries' => $polls);
+    echo json_encode($entries);
 }
 ?>

@@ -24,7 +24,7 @@ if(!empty($_SESSION["addr"]))
           $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`) VALUES ('".$description."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."')";
 
           $result = $conn->query($sql);
-          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`addr` = '$_SESSION["addr"]';";
+          $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`addr` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
           echo '{"success":true}';
         } else {

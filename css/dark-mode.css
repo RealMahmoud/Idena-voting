@@ -275,3 +275,9 @@
     color: #50b6ff !important;
     background-color: #191c1e !important;
 }
+
+.darkmode .header_nav__item .header_nav__link:hover {
+    color: #ffffff !important;
+    background: #2a2c2e !important;
+    border-radius: 4rem;
+}

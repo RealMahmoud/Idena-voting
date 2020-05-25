@@ -46,28 +46,30 @@
           </a>
         </div>
       </div>
-      <li class="nav-item header_nav__item">
-              <a href='./polls.php'class="nav-link header_nav__link appslink" title="Polls" descriptioncontent="Polls">
-                Polls
-              </a>
-            </li>
-            <li class="nav-item header_nav__item">
-            <a href='./proposals.php' class="nav-link header_nav__link appslink" title="Proposals" descriptioncontent="Proposals">
-              Proposals
-            </a>
-          </li>
 
-          <li class="nav-item header_nav__item">
-            <a class="nav-link header_nav__link appslink" title="Registrations" descriptioncontent="Registrations">
-              Registrations
-            </a>
-          </li>
+        
+        
+                <!-- search bar starts -->
+        <div class="col">
+            <form action="" class="form_search">
+            <div class="input-group">
+                <div class="input-addon">
+                    <button type="submit" class="btn btn-icon">
+                        <i class="icon icon--search"></i>
+                    </button>
+                </div>
+                <input type="search" value="" placeholder="Polls, Proposals ..." class="form-control"/>
+            </div>
+            </form>
+        </div>
+        
+        <!-- search bar ends -->
 
+        <?php if(!empty($_SESSION["addr"])) { ?>
       <div class="col-auto">
-          <?php if(!empty($_SESSION["addr"])) { ?>
           <div class="btn-group">
               <a href=" " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div  class="user-pic">
+                  <div  class="user-pic" style="margin-right: 0px;">
                       <img  class="user-avatar" src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="40">
                       </div>
               </a>
@@ -90,7 +92,28 @@
 
     </div>
   </div>
+  
+  <div class="container">
+      <div class="row justify-content-between align-items-center">
+          <div class="col-12 col=md-12 text-center">
+                <ul class="header_nav nav justify-content-center">
+                  <li class="nav-item header_nav__item">
+                    <a href='./polls.php'class="nav-link header_nav__link" title="Polls" descriptioncontent="Polls">Polls</a>
+                  </li>
+        
+                  <li class="nav-item header_nav__item">
+                    <a href='./proposals.php' class="nav-link header_nav__link" title="Proposals" descriptioncontent="Proposals">Proposals</a>
+                  </li>
+        
+                  <li class="nav-item header_nav__item">
+                    <a href="#" class="nav-link header_nav__link" title="Registrations" descriptioncontent="Registrations">Registrations</a>
+                  </li>
+                </ul>
+          </div>
+      </div>
+    </div>
 </header>
+    
 
   <main class="main">
     <div class="container">

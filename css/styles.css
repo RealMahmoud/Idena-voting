@@ -632,3 +632,47 @@ h1, .h1 {
 .show {
     display: block;
 }
+
+/*** navigation css ***/
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.header_nav {
+    margin-bottom: 0px;
+    margin-top: 0.3em;
+    padding: 0.2em 0;
+}
+
+.header_nav__link {
+    padding: 0.5rem 1.25rem;
+}
+
+.header_nav__link {
+    display: block;
+}
+
+.header_nav__item .header_nav__link {
+    color: #96999E;
+    cursor: pointer;
+    position: relative;
+}
+
+.header_nav__item {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.header_nav__item .header_nav__link:hover {
+    color: #53565C;
+    background: #fff;
+    border-radius: 4rem;
+}

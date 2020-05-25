@@ -11,15 +11,12 @@ function curl_get($url){
     return json_decode($data,true);
 }
 
-if (!empty($inn_token)){
-  $_SESSION["token"] =  $conn->real_escape_string($_GET['token']);
-}
 
-$token = $_SESSION["token"];
 
-if(!empty($token)) {
 
-    $sql = "SELECT * FROM `auth` WHERE `token` = '".$token."' LIMIT 1;";
+if(!empty($_SESSION["token"])) {
+
+    $sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."' LIMIT 1;";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -35,10 +32,8 @@ if(!empty($token)) {
          }
 
     }
+}
 
-    if(empty($_SESSION["addr"])) {
-        header("location:signin.php");
-    }
 
 
     if(!empty($_SESSION["addr"])) {
@@ -74,7 +69,8 @@ if(!empty($token)) {
     }
     }
 
-} elseif (empty($token)){
+
+if(empty($_SESSION["addr"])) {
     header("location:signin.php");
 }
 

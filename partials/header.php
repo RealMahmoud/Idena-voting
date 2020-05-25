@@ -39,33 +39,114 @@
 <header class="header">
   <div class="container">
     <div class="row justify-content-between align-items-center">
+
+
       <div class="col-auto">
+        <div class="dropdown">
         <div class="header_logo">
           <a class="" href="./index.php">
-            <img src="./images/idena-logo.svg" alt="Idena" width="40px">
+            <img   src="./images/idena-logo.svg" alt="Idena" width="40px">
           </a>
         </div>
-      </div>
 
-        
-        
+          <div style="left: -10% !important;"class=" dropdown-content dropdown-menu show justify-content-between align-items-center" aria-hidden="true" role="menu" x-placement="bottom-start" >
+                    <li>
+                        <a class="btn btn-small justify-content-between" href="./polls.php"><span>Polls</span></a>
+                    </li>
+                    <li class="brake"></li>
+                    <li>
+                        <a class="btn btn-small" href="./proposals.php"><span>Proposals</span></a>
+                    </li>
+                      <li class="brake"></li>
+                    <li>
+                        <a class="btn btn-small" href="./flipvsflip.php"><span>Flips Vs Flip</span></a>
+                    </li>  <li class="brake"></li>
+                    <li>
+                        <a class="btn btn-small" href="./donate.php"><span>Donate</span></a>
+                    </li>
+        </div>
+      </div>
+</div>
+
+<style>
+input[type=text] {
+  width: 100%;
+  -webkit-transition: width 0.6s ease-in-out;
+  justify-content: center;
+    align-items: center;
+    transition: 0.6s ease-in-out;
+
+   border-radius: 40px;
+
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:hover {
+  width: 100%;
+}
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+
                 <!-- search bar starts -->
-        <div class="col">
-            <form action="" class="form_search">
-            <div class="input-group">
+        <div id="searchbari" style="width:50%;">
+
+            <div class="input-group" >
                 <div class="input-addon">
                     <button type="submit" class="btn btn-icon">
                         <i class="icon icon--search"></i>
                     </button>
                 </div>
-                <input type="search" value="" placeholder="Polls, Proposals ..." class="form-control"/>
+                <input type="text" name="search" value="" id='searchbar'placeholder="Polls, Proposals ..." class="form-control "/>
             </div>
-            </form>
+
         </div>
-        
+
+
+
         <!-- search bar ends -->
 
-        <?php if(!empty($_SESSION["addr"])) { ?>
+        <?php if(!empty($_SESSION["addr"])) {
+        ?>
       <div class="col-auto">
           <div class="btn-group">
               <a href=" " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,28 +173,8 @@
 
     </div>
   </div>
-  
-  <div class="container">
-      <div class="row justify-content-between align-items-center">
-          <div class="col-12 col=md-12 text-center">
-                <ul class="header_nav nav justify-content-center">
-                  <li class="nav-item header_nav__item">
-                    <a href='./polls.php'class="nav-link header_nav__link" title="Polls" descriptioncontent="Polls">Polls</a>
-                  </li>
-        
-                  <li class="nav-item header_nav__item">
-                    <a href='./proposals.php' class="nav-link header_nav__link" title="Proposals" descriptioncontent="Proposals">Proposals</a>
-                  </li>
-        
-                  <li class="nav-item header_nav__item">
-                    <a href="#" class="nav-link header_nav__link" title="Registrations" descriptioncontent="Registrations">Registrations</a>
-                  </li>
-                </ul>
-          </div>
-      </div>
-    </div>
 </header>
-    
+
 
   <main class="main">
     <div class="container">

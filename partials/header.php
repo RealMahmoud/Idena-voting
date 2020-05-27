@@ -57,13 +57,12 @@
                     <li>
                         <a class="btn btn-small" href="./proposals.php"><span>Proposals</span></a>
                     </li>
-                      <li class="brake"></li>
-                    <li>
-                        <a class="btn btn-small" href="./flipvsflip.php"><span>Flips Vs Flip</span></a>
-                    </li>  <li class="brake"></li>
+
+                    <li class="brake"></li>
                     <li>
                         <a class="btn btn-small" href="./donate.php"><span>Donate</span></a>
                     </li>
+                  
         </div>
       </div>
 </div>

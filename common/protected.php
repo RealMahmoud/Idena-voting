@@ -64,8 +64,13 @@ if(!empty($_SESSION["token"])) {
           if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
           $_SESSION["state"] = $row['state'];
+        //score  $_SESSION["score"] = $row['score'];
+        $_SESSION["password"] = $row['password'];
           $_SESSION["age"] = $row['age'];}}
+
+
     }
+
     }
     }
 

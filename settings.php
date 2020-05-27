@@ -56,6 +56,12 @@ include(dirname(__FILE__)."/partials/header.php");
                         <br/>
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $_SESSION["age"]; ?></p>
+                        <br/>
+                        <h4 class="info_block__accent">Current Secret Token</h4>
+                        <p>  <?php echo $_SESSION["password"];?></p>
+
+
+
                   </div>
 
                   <div class="col-12 col-sm-9 bordered-col">
@@ -79,7 +85,9 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         </form>
                         <br>
-                        <h4 class="info_block__accent">Change Secret Token</h4>
+
+                        <h4 class="info_block__accent">Change Secret Token : </h4>
+
                         <form id="name_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
                                 <input type="text" name="password" class="formVal form-control" value="" placeholder="Please type confirm"/>

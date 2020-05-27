@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $password = $conn->real_escape_string($_POST['password']);
 
-if(($password = 'confirm') && !empty($_SESSION["addr"]))
+if(($password == 'confirm') && !empty($_SESSION["addr"]))
 {
     $sql1 = "SELECT `password` FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
     $result_acct = $conn->query($sql1);

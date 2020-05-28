@@ -1,6 +1,8 @@
 <?php
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
+
+$pagetitle = 'Mobile Login';
 include(dirname(__FILE__)."/partials/header.php");
 
 ?>

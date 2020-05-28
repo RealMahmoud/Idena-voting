@@ -1,6 +1,7 @@
 <?php
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
+$pagetitle = 'Errot 404';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
       <section class="section section_info">
@@ -14,11 +15,11 @@ include(dirname(__FILE__)."/partials/header.php");
                 </div>
         </div>
       </section>
-  
- <!-- this is to close main, div opened in the header -->     
+
+ <!-- this is to close main, div opened in the header -->
  </div>
 </main>
 
-<?php 
+<?php
 include(dirname(__FILE__)."/partials/footer.php");
 ?>

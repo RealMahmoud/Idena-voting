@@ -56,9 +56,9 @@ if(!empty($_SESSION["token"])) {
             $age_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"].'/age';
             $jsonArrayResponse = curl_get($age_url);
             if( isset( $jsonArrayResponse['result'])){
-              $newstate = $jsonArrayResponse["result"];
+              $newage = $jsonArrayResponse["result"];
 }else{
-  $newstate = '0';
+  $newage = '0';
 }
 
             // update

@@ -2,6 +2,7 @@
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
 include(dirname(__FILE__)."/common/protected.php");
+$pagetitle = 'Create Poll';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 

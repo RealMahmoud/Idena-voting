@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charSet="UTF-8"/>
-  <title id="title">Idena Polls - Make Polls Great Again!</Title>
+  <title id="title"><?php echo $pagetitle;?></Title>
 
   <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
@@ -49,21 +49,7 @@
           </a>
         </div>
 
-          <div style="left: -10% !important;"class=" dropdown-content dropdown-menu show justify-content-between align-items-center" aria-hidden="true" role="menu" x-placement="bottom-start" >
-                    <li>
-                        <a class="btn btn-small justify-content-between" href="./polls.php"><span>Polls</span></a>
-                    </li>
-                    <li class="brake"></li>
-                    <li>
-                        <a class="btn btn-small" href="./proposals.php"><span>Proposals</span></a>
-                    </li>
 
-                    <li class="brake"></li>
-                    <li>
-                        <a class="btn btn-small" href="./donate.php"><span>Donate</span></a>
-                    </li>
-
-        </div>
       </div>
 </div>
 
@@ -125,9 +111,26 @@ input[type=text]:hover {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
+<div class="col-auto">
+<li class="nav-item header_nav__item">
+<a class="nav-link header_nav__link appslink" href="./polls.php" title="Polls" descriptioncontent="
+Polls">
+Polls
+</a>
+<li class="nav-item header_nav__item">
+            <a class="nav-link header_nav__link appslink"href="./proposals.php" title="Proposals" descriptioncontent="Proposals">
+              Proposals
+            </a>
+          </li>
+          <li class="nav-item header_nav__item">
+            <a class="nav-link header_nav__link appslink" href="./fvf.php" title="Flip Vs Flip" descriptioncontent="Flip Vs Flip">
+              FvF
+            </a>
+          </li>
 
-                <!-- search bar starts -->
-        <div id="searchbari" style="width:50%;">
+</li>
+</div>
+      <?php /*  <div id="searchbari" style="width:50%;">
 
             <div class="input-group" >
                 <div class="input-addon">
@@ -140,7 +143,7 @@ input[type=text]:hover {
 
         </div>
 
-
+*/ ?>
 
         <!-- search bar ends -->
   <div class="col-auto">
@@ -157,6 +160,10 @@ input[type=text]:hover {
               <div class="dropdown-menu" aria-hidden="true" role="menu">
                     <li>
                         <a class="btn btn-small" href="./profile.php"><span>My Profile</span></a>
+                    </li>
+                    <li class="brake"></li>
+                    <li>
+                        <a class="btn btn-small" href="./settings.php"><span>Settings</span></a>
                     </li>
                     <li class="brake"></li>
                     <li>

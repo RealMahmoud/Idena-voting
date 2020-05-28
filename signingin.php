@@ -3,6 +3,7 @@ session_start();
 session_destroy();
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
+$pagetitle = 'Sign In';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
       <section class="section section_info">

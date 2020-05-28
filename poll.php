@@ -2,6 +2,10 @@
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
 include(dirname(__FILE__)."/common/protected.php");
+if(empty($conn->real_escape_string($_GET["id"]))){
+  header("location:index.php");
+}
+$pagetitle = 'Poll - '.$_GET['id'];
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 

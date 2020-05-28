@@ -2,6 +2,8 @@
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
 include(dirname(__FILE__)."/common/protected.php");
+
+$pagetitle = 'My Profile';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
@@ -30,6 +32,9 @@ include(dirname(__FILE__)."/partials/header.php");
                     </a>
                     <a class="btn btn-small btn-primary" href="./create-proposal.php">
                         <span>Create New Proposal</span>
+                    </a>
+                    <a class="btn btn-small btn-primary" href="./create-fvf.php">
+                        <span>Create New FvF</span>
                     </a>
                 </div>
             </div>

@@ -2,6 +2,10 @@
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
 include(dirname(__FILE__)."/common/protected.php");
+if(empty($conn->real_escape_string($_GET["id"]))){
+  header("location:index.php");
+}
+$pagetitle = 'Proposal - '.$_GET['id'];
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
@@ -64,7 +68,7 @@ $owner = $row['addr'];
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
                     <?php if ($owner == $_SESSION["addr"]){
-                
+
                     echo '<div class="col-4 col-sm-4 bordered-col">
                       <h4>Administration</h4>
                       <div class="input-group">

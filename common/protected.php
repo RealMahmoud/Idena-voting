@@ -42,22 +42,32 @@ if(!empty($_SESSION["token"])) {
       if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
           if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['age'] == '0'){
+
+
             $identity_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"];
             $jsonArrayResponse = curl_get($identity_url);
-            if(!empty($jsonArrayResponse)){
-                $newstate = $jsonArrayResponse["result"]["state"];
-              }
+            if( isset( $jsonArrayResponse['result']["state"])){
+              $newstate = $jsonArrayResponse["result"]["state"];
+}else{
+  $newstate = 'Undefined';
+}
+
+
             $age_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"].'/age';
             $jsonArrayResponse = curl_get($age_url);
-            if(!empty($jsonArrayResponse)){
-                $newage = $jsonArrayResponse["result"];
-
-            }
+            if( isset( $jsonArrayResponse['result'])){
+              $newstate = $jsonArrayResponse["result"];
+}else{
+  $newstate = '0';
+}
 
             // update
             $sql3 = "UPDATE `accounts` SET `state` = '".$newstate."',`age`='".$newage."',`lastseen`= NOW()  WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 
             $result3 = $conn->query($sql3);
+
+
+
           }
           $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
           $result = $conn->query($sql);

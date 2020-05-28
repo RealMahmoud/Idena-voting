@@ -55,8 +55,9 @@ if ($result->num_rows > 0) {
         if ($result_acct->num_rows == 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
-                $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `status`, `username`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'undefined', '".mb_strimwidth($address, 0, 10, '')."');";
+                $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `state`, `username`,`password`) VALUES
+    ('".$address."', '".$timestamp."', 0, 'undefined', '".mb_strimwidth($address, 0, 10, '')."','".substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"),0,20)."');";
+  
                 $result2 = $conn->query($sql2);
         }
       echo '{"success":true,"data":{"authenticated":true}}';

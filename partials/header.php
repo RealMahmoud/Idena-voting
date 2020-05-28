@@ -62,7 +62,7 @@
                     <li>
                         <a class="btn btn-small" href="./donate.php"><span>Donate</span></a>
                     </li>
-                  
+
         </div>
       </div>
 </div>
@@ -143,10 +143,10 @@ input[type=text]:hover {
 
 
         <!-- search bar ends -->
-
+  <div class="col-auto">
         <?php if(!empty($_SESSION["addr"])) {
         ?>
-      <div class="col-auto">
+
           <div class="btn-group">
               <a href=" " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div  class="user-pic" style="margin-right: 0px;">
@@ -166,7 +166,12 @@ input[type=text]:hover {
 
 
             </div>
-            <?php } ?>
+          <?php }else{
+          echo '<a class="btn btn-signin" href="./signin.php">
+                    <img alt="signin" class="icon icon-logo-white-small" src="https://scan.idena.io/static/images/idena_white_small.svg" width="24px">
+                    <span style="color: #fff;">Sign-in</span>
+                    </a>';
+          } ?>
 
       </div>
 

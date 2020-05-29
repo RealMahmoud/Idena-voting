@@ -18,7 +18,9 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
-
+.nav-link.active {
+    color: #333 !important;
+}
 
 @media (max-width: 576px) {
     .container {

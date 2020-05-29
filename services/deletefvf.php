@@ -7,9 +7,9 @@ $id = $conn->real_escape_string($_GET['id']);
 
 if(!empty($id)){
 
-                    $sql = "DELETE from `proposals` WHERE `id` = '".$id."' AND `addr` ='".$_SESSION["addr"]."';";
+                    $sql = "DELETE from `fvfs` WHERE `id` = '".$id."' AND `addr` ='".$_SESSION["addr"]."';";
                     $result = $conn->query($sql);
-                    $sql = "DELETE FROM `votes` WHERE `votes`.`pid` = '".$id."' AND `type` = 'proposal';";
+                    $sql = "DELETE FROM `votes` WHERE `votes`.`pid` = '".$id."' AND `type` = 'fvf';";
                     $result = $conn->query($sql);
 
                     echo '{"status": "success"}';

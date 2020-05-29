@@ -54,7 +54,7 @@ $owner = $row['addr'];
                         </p>
                         <br>
                         <div class="row">
-                        <div class="col-4 col-sm-4 bordered-col">
+                        <div class="col-12 col-sm-7 bordered-col">
                           <h4 class="info_block__accent">Proposal</h4>
                           <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
@@ -119,7 +119,7 @@ $owner = $row['addr'];
                                           if (!date(strtotime('now')) < Date(strtotime($row['endtime']))&&isset($_SESSION["addr"])){
 echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
-        <div class="input-group" style="width: 60%;">';
+        <div class="input-group">';
                                           if (!$row['option1'] == null){
                                           echo $row['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked/><br>';
                                           }
@@ -293,168 +293,172 @@ $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
 
 } ?>
 
+                <section class="section section_tabs">
+                   <div class="tabs">
+                      <div class="section__header">
+                         <div class="row align-items-center justify-content-between">
+                            <div class="col">
+                               <ul class="nav nav-tabs" role="tablist">
+                                 <li class="nav-item">
+                                    <a onclick="Change('Va');" id='VaNav'class="nav-link active">
+                                       <h3>Validated</h3>
+                                    </a>
+                                 </li>
+                                  <li class="nav-item">
+                                     <a onclick="Change('H');" id='HNav' class="nav-link ">
+                                        <h3>Humans</h3>
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a onclick="Change('V');" id='VNav' class="nav-link ">
+                                        <h3>Verified</h3>
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a onclick="Change('N');" id='NNav'class="nav-link ">
+                                        <h3>Newbies</h3>
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a onclick="Change('HAndV');"id='HAndVNav' class="nav-link ">
+                                        <h3>Humans And Verified</h3>
+                                     </a>
+                                  </li>
 
-<section class="section section_tabs">
-   <div class="tabs">
-      <div class="section__header">
-         <div class="row align-items-center justify-content-between">
-            <div class="col">
-               <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item">
-                     <a onclick="Change('H');" id='HNav' class="nav-link active">
-                        <h3>Humans</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('V');" id='VNav' class="nav-link ">
-                        <h3>Verified</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('N');" id='NNav'class="nav-link ">
-                        <h3>Newbies</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('HAndV');"id='HAndVNav' class="nav-link ">
-                        <h3>Humans And Verified</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('Va');" id='VaNav'class="nav-link ">
-                        <h3>Validated</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('All');"id='AllNav' class="nav-link ">
-                        <h3>All</h3>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
-                        <h3>Not Validated</h3>
-                     </a>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </div>
-      <div class="tab-content">
-         <div class="tab-pane active" id="HCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Humans</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartH" width="400" height="400"></canvas>
-                           <div>
+
+                                  <li class="nav-item">
+                                     <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
+                                        <h3>Not Validated</h3>
+                                     </a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a onclick="Change('All');"id='AllNav' class="nav-link ">
+                                        <h3>All</h3>
+                                     </a>
+                                  </li>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="VaCon">
+                           <div class="card">
+                              <div>
+                                 <div class="row">
+                                    <div class="col-10 col-sm-10 bordered-col">
+                                       <h4 class="info_block__accent">Validated</h4>
+                                       <div style="width:40%; height:40%">
+                                          <canvas id="ChartVa" width="400" height="400"></canvas>
+                                          <div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="VCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Verified</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartV" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="NCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Newbies</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartN" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="HAndVCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Humans And Verified</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartHAndV" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="VaCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Validated</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartVa" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="AllCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">All</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartAll" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="tab-pane" id="NotVaCon">
-            <div class="card">
-               <div>
-                  <div class="row">
-                     <div class="col-10 col-sm-10 bordered-col">
-                        <h4 class="info_block__accent">Not Validated</h4>
-                        <div style="width:40%; height:40%">
-                           <canvas id="ChartNotVa" width="400" height="400"></canvas>
-                           <div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
+                         <div class="tab-pane " id="HCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">Humans</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartH" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane" id="VCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">Verified - (Humans + Verified + Newbies)</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartV" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane" id="NCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">Newbies</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartN" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane" id="HAndVCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">Humans And Verified</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartHAndV" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+
+
+                         <div class="tab-pane" id="NotVaCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">Not Validated</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartNotVa" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="tab-pane" id="AllCon">
+                            <div class="card">
+                               <div>
+                                  <div class="row">
+                                     <div class="col-10 col-sm-10 bordered-col">
+                                        <h4 class="info_block__accent">All</h4>
+                                        <div style="width:40%; height:40%">
+                                           <canvas id="ChartAll" width="400" height="400"></canvas>
+                                           <div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </section>
+
 
 
 
@@ -579,7 +583,7 @@ var myChart = new Chart(ctx, {
         ],borderWidth: 1}]},});
 </script>
 
-// Script of Changing
+
 <script>
    function Change(Newl) {
        if(Newl == 'H') {

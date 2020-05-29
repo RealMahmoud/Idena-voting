@@ -328,8 +328,13 @@ if ($result->num_rows > 0)
                          <div class="row align-items-center justify-content-between">
                             <div class="col">
                                <ul class="nav nav-tabs" role="tablist">
+                                 <li class="nav-item">
+                                    <a onclick="Change('Va');" id='VaNav'class="nav-link active">
+                                       <h3>Validated</h3>
+                                    </a>
+                                 </li>
                                   <li class="nav-item">
-                                     <a onclick="Change('H');" id='HNav' class="nav-link active">
+                                     <a onclick="Change('H');" id='HNav' class="nav-link ">
                                         <h3>Humans</h3>
                                      </a>
                                   </li>
@@ -348,9 +353,11 @@ if ($result->num_rows > 0)
                                         <h3>Humans And Verified</h3>
                                      </a>
                                   </li>
+
+
                                   <li class="nav-item">
-                                     <a onclick="Change('Va');" id='VaNav'class="nav-link ">
-                                        <h3>Validated</h3>
+                                     <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
+                                        <h3>Not Validated</h3>
                                      </a>
                                   </li>
                                   <li class="nav-item">
@@ -358,17 +365,28 @@ if ($result->num_rows > 0)
                                         <h3>All</h3>
                                      </a>
                                   </li>
-                                  <li class="nav-item">
-                                     <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
-                                        <h3>Not Validated</h3>
-                                     </a>
-                                  </li>
                                </ul>
                             </div>
                          </div>
                       </div>
                       <div class="tab-content">
-                         <div class="tab-pane active" id="HCon">
+                        <div class="tab-pane active" id="VaCon">
+                           <div class="card">
+                              <div>
+                                 <div class="row">
+                                    <div class="col-10 col-sm-10 bordered-col">
+                                       <h4 class="info_block__accent">Validated</h4>
+                                       <div style="width:40%; height:40%">
+                                          <canvas id="ChartVa" width="400" height="400"></canvas>
+                                          <div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                         <div class="tab-pane " id="HCon">
                             <div class="card">
                                <div>
                                   <div class="row">
@@ -389,7 +407,7 @@ if ($result->num_rows > 0)
                                <div>
                                   <div class="row">
                                      <div class="col-10 col-sm-10 bordered-col">
-                                        <h4 class="info_block__accent">Verified</h4>
+                                        <h4 class="info_block__accent">Verified - (Humans + Verified + Newbies)</h4>
                                         <div style="width:40%; height:40%">
                                            <canvas id="ChartV" width="400" height="400"></canvas>
                                            <div>
@@ -432,14 +450,16 @@ if ($result->num_rows > 0)
                                </div>
                             </div>
                          </div>
-                         <div class="tab-pane" id="VaCon">
+
+
+                         <div class="tab-pane" id="NotVaCon">
                             <div class="card">
                                <div>
                                   <div class="row">
                                      <div class="col-10 col-sm-10 bordered-col">
-                                        <h4 class="info_block__accent">Validated</h4>
+                                        <h4 class="info_block__accent">Not Validated</h4>
                                         <div style="width:40%; height:40%">
-                                           <canvas id="ChartVa" width="400" height="400"></canvas>
+                                           <canvas id="ChartNotVa" width="400" height="400"></canvas>
                                            <div>
                                            </div>
                                         </div>
@@ -456,22 +476,6 @@ if ($result->num_rows > 0)
                                         <h4 class="info_block__accent">All</h4>
                                         <div style="width:40%; height:40%">
                                            <canvas id="ChartAll" width="400" height="400"></canvas>
-                                           <div>
-                                           </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="tab-pane" id="NotVaCon">
-                            <div class="card">
-                               <div>
-                                  <div class="row">
-                                     <div class="col-10 col-sm-10 bordered-col">
-                                        <h4 class="info_block__accent">Not Validated</h4>
-                                        <div style="width:40%; height:40%">
-                                           <canvas id="ChartNotVa" width="400" height="400"></canvas>
                                            <div>
                                            </div>
                                         </div>
@@ -607,7 +611,7 @@ if ($result->num_rows > 0)
                         ],borderWidth: 1}]},});
                 </script>
 
-                // Script of Changing
+
                 <script>
                    function Change(Newl) {
                        if(Newl == 'H') {

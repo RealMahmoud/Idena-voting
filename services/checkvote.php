@@ -1,6 +1,5 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/../common/_config.php");
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 
@@ -16,8 +15,13 @@ if(!empty($id)){
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                     while($row2 = $result->fetch_assoc()) {
-                    echo '{"status": "true", "vote": "'.$row2["option".$row["vote"]].'"}'; }}
+                      if($type == 'fvf'){
+                          echo '{"status": "true", "vote": "'.$row["vote"].'"}';
+                      }else{
+                          echo '{"status": "true", "vote": "'.$row2["option".$row["vote"]].'"}';
+                      }
 
+}}
                   }
         } else {
            echo '{"status": "false", "data": "0"}';

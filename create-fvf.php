@@ -1,6 +1,5 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
 include(dirname(__FILE__)."/common/protected.php");
 $pagetitle = 'Create FvF';
 include(dirname(__FILE__)."/partials/header.php");
@@ -9,7 +8,7 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./profile.php">
+          			<a class="btn btn-small btn-nav" href="./myprofile.php">
             		<i class="icon icon--thin_arrow_left"></i>
             		<span id="back">Back to Profile</span>
             		</a>
@@ -50,13 +49,18 @@ include(dirname(__FILE__)."/partials/header.php");
               <div>
                 <div class="row">
 
-                    <div class="col-12 col-sm-12 bordered-col">
-                        <h4 class="info_block__accent">Status</h4>
-                        <p><?php echo $_SESSION["state"]; ?></p>
-                        <br/>
+                  <div class="col-12 col-sm-12 bordered-col">
+
+                      <h4 class="info_block__accent">Credits</h4>
+                      <p><?php echo $_SESSION["credits"]; ?></p>
+                      <br/>
+                      <h4 class="info_block__accent">Status</h4>
+                      <p><?php echo $_SESSION["state"]; ?></p>
+                      <br/>
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $_SESSION["age"]; ?></p>
-                    </div>
+
+                  </div>
 
 
                 </div>

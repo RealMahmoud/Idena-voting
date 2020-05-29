@@ -5,16 +5,16 @@ include(dirname(__FILE__)."/common/_config.php");
 if(empty($conn->real_escape_string($_GET["id"]))){
   header("location:index.php");
 }
-$pagetitle = 'Proposal - '.$_GET['id'];
+$pagetitle = 'FvF - '.$_GET['id'];
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./proposals.php">
+          			<a class="btn btn-small btn-nav" href="./fvfs.php">
             		<i class="icon icon--thin_arrow_left"></i>
-            		<span id="back">Back to Proposals</span>
+            		<span id="back">Back to FvFs</span>
             		</a>
           </div>
     </div>
@@ -23,7 +23,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
 <?php
 $id = $conn->real_escape_string($_GET["id"]);
-$sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
+$sql = "SELECT * FROM `fvfs` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -54,7 +54,7 @@ $owner = $row['addr'];
                         <br>
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
-                          <h4 class="info_block__accent">Proposal</h4>
+                          <h4 class="info_block__accent">fvf</h4>
                           <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
@@ -87,54 +87,74 @@ $owner = $row['addr'];
                           <p>'.$row['fundaddr'].'</p>
                         </div>
                       </div>';}?>
-                      <?php if (strlen($row['amount']) > 0){
 
-
-                      echo '<div class="row">
-                          <div class=" bordered-col">
-                            <p class="info_block__accent">Amount Required</p>
-                              <p>'.$row['amount'].' DNA</p>
-                            </div>
-                          </div>';}?>
                       </div>
                         <br/>
                   </div>
 
 
-                  <div class="col-12 col-sm-5 bordered-col">
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div><!-- row end -->
+
+</section>
+
+<section class="section section_info">
+
+    <div class="row " >
+
+
+
+          <div class="col-12 col-sm-12 ">
+            <div class="card col-auto">
+              <div>
+
+
+
+
+
+                  <div class="bordered-col ">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
                         </div>
 
                         <h4 class="info_block__accent">Add your vote below</h4>
-                        <div id="vote_container"><?php
+
+                      <?php
                                       $id = $conn->real_escape_string($_GET["id"]);
-                                      $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
+                                      $sql = "SELECT * FROM `fvfs` WHERE `id` = '".$id."' LIMIT 1;";
                                       $result = $conn->query($sql);
 
                                       if ($result->num_rows > 0) {
                                         while($row = $result->fetch_assoc()) {
-                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))&&isset($_SESSION["addr"])){
-echo '<div id="checker"></div>
-<form id="vote_form" METHOD="POST">
-        <div class="input-group" style="width: 60%;">';
-                                          if (!$row['option1'] == null){
-                                          echo $row['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked/><br>';
-                                          }
-                                          if (!$row['option2'] == null){
-                                          echo $row['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
-                                          }
+                                        echo '<img style="margin-right:10%; width: 40%;" src="'.$row['location1'].'" alt="Paris">';
 
-                                      echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
-                                        <input type="hidden" class="formVal" name="type" value="proposal"/>
+                                         echo '<img style="margin-left:10%; width: 40%;" src="'.$row['location2'].'" alt="Paris">';
+                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))&&isset($_SESSION["addr"])){
+?>
+<div id="checker"></div>
+<form id="vote_form" METHOD="POST">
+
+  <div id="vote_container">
+      <div class="input-group">
+       Left <input type="radio" class="formVal" name="vote" value="1" checked/><br>
+        Right <input type="radio" class="formVal" name="vote" value="2" /><br>
+                                      <input type="hidden" class="formVal" name="id" value="<?php echo $id;?>"/>
+                                        <input type="hidden" class="formVal" name="type" value="fvf"/>
                                         <div class="input-group">
                                         <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
                                             <span id="text_submit">Cast My Vote</span>
                                             <i class="icon icon--thin_arrow_right"></i>
                                         </a>
                                         </div>
-                                            </div>';
+                                            </div>
+                                            <?php
                                       }elseif(!isset($_SESSION["addr"])) {
                                           echo "<p>You have to be signed in to vote</p>";
                                       }}}
@@ -151,7 +171,7 @@ echo '<div id="checker"></div>
 
                   </div>
 
-                </div>
+
               </div>
             </div>
           </div>
@@ -162,13 +182,12 @@ echo '<div id="checker"></div>
 
 <?php
 $id = $conn->real_escape_string($_GET["id"]);
-$sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
+$sql = "SELECT * FROM `fvfs` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 
-
-$json = curl_get($url.'services/stats.php?pid='.$id.'&type=proposal');
+$json = curl_get($url.'services/stats.php?pid='.$id.'&type=fvf');
 
 $labelsHuman  =array();
 if(!empty($json['result']['option1']['Desc'])){
@@ -452,7 +471,7 @@ function changeVote()
 }
 function Delete(id)
 {
-  ajax_get('./services/deleteproposal.php?id='+id, function(data) {
+  ajax_get('./services/deletefvf.php?id='+id, function(data) {
 
 
       window.location.replace("<?php echo $url;?>");
@@ -461,12 +480,18 @@ function Delete(id)
 }
 window.onload = function()
 {
-    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
+    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){
 
             }else {
-            document.getElementById("vote_container").innerHTML = '<p>You have voted "'+data["vote"]+'".</p>';
+              if(data["vote"] == 1){
+                document.getElementById("vote_container").innerHTML = '<h3>You have voted "Left".</h3>';
+              }
+              if(data["vote"] == 2){
+                document.getElementById("vote_container").innerHTML = '<h3>You have voted "Right".</h3>';
+              }
+
             }
 
         }

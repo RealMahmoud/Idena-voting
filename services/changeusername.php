@@ -1,6 +1,5 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/../common/_config.php");
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 
@@ -12,7 +11,7 @@ if(!empty($nickname) && !empty($_SESSION["addr"]))
     $result_acct = $conn->query($sql1);
 
     if ($result_acct->num_rows == 0) {
-          
+
     } else {
             $sql = "UPDATE `accounts` SET `username` = '".$nickname."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
             $result = $conn->query($sql);

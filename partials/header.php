@@ -26,7 +26,9 @@
   <meta property="og:title" content=""/>
   <meta name="description" content=""/>
   <meta property="og:description" content=""/>
-
+  <script src="./js/Chart.min.js"></script>
+		<script src="./js/Chart.js"></script>
+	<script src="./js/utils.js"></script>
   <link href="./css/index.css" rel="stylesheet"/>
   <link href="./css/styles.css" rel="stylesheet"/>
   <link href="./css/dark-mode.css" rel="stylesheet"/>
@@ -123,7 +125,7 @@ Polls
             </a>
           </li>
           <li class="nav-item header_nav__item">
-            <a class="nav-link header_nav__link appslink" href="./fvf.php" title="Flip Vs Flip" descriptioncontent="Flip Vs Flip">
+            <a class="nav-link header_nav__link appslink" href="./fvfs.php" title="Flip Vs Flip" descriptioncontent="Flip Vs Flip">
               FvF
             </a>
           </li>
@@ -159,7 +161,7 @@ Polls
 
               <div class="dropdown-menu" aria-hidden="true" role="menu">
                     <li>
-                        <a class="btn btn-small" href="./profile.php"><span>My Profile</span></a>
+                        <a class="btn btn-small" href="./myprofile.php"><span>My Profile</span></a>
                     </li>
                     <li class="brake"></li>
                     <li>

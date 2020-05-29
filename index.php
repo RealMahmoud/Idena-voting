@@ -1,7 +1,5 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
-
 if(!empty($_GET['logged'])){
   include(dirname(__FILE__)."/common/protected.php");
 }

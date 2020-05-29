@@ -1,7 +1,7 @@
 <?php
 session_start();
+
 include(dirname(__FILE__)."/common/_config.php");
-include(dirname(__FILE__)."/common/protected.php");
 
 $pagetitle = 'Top Polls';
 include(dirname(__FILE__)."/partials/header.php");

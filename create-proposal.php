@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
+
 include(dirname(__FILE__)."/common/protected.php");
 $pagetitle = 'Create Proposal';
 include(dirname(__FILE__)."/partials/header.php");
@@ -9,7 +9,7 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./profile.php">
+          			<a class="btn btn-small btn-nav" href="./myprofile.php">
             		<i class="icon icon--thin_arrow_left"></i>
             		<span id="back">Back to Profile</span>
             		</a>
@@ -51,11 +51,16 @@ include(dirname(__FILE__)."/partials/header.php");
                 <div class="row">
 
                     <div class="col-12 col-sm-12 bordered-col">
+
+                        <h4 class="info_block__accent">Credits</h4>
+                        <p><?php echo $_SESSION["credits"]; ?></p>
+                        <br/>
                         <h4 class="info_block__accent">Status</h4>
                         <p><?php echo $_SESSION["state"]; ?></p>
                         <br/>
-                        <h4 class="info_block__accent">Age</h4>
-                        <p><?php echo $_SESSION["age"]; ?></p>
+                          <h4 class="info_block__accent">Age</h4>
+                          <p><?php echo $_SESSION["age"]; ?></p>
+
                     </div>
 
 
@@ -80,7 +85,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Start a new proposal</h4>
                         <form id="proposal_form" METHOD="POST">
                             <div class="input-group" style="width: 60%;">
-                            <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" value="Will DNA beat BTC?"></textarea><br>
+                            <p>Proposal :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" >Will DNA beat BTC?</textarea><br>
                           <br>  <p> DeadLine :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">

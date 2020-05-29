@@ -1,7 +1,7 @@
 <?php
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
-include(dirname(__FILE__)."/common/protected.php");
+
 if(empty($conn->real_escape_string($_GET["id"]))){
   header("location:index.php");
 }
@@ -54,28 +54,36 @@ $owner = $row['addr'];
                         <br>
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
-                          <h4>Description</h4>
+                          <h4 class="info_block__accent">Question</h4>
                             <p><?php echo  nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
-                        <h4>Start Time</h4>
+                        <h4 class="info_block__accent">Start Time</h4>
                         <p><?php echo  date('Y-m-d H:i A', strtotime($row['addtime'])); ?></p>
                       </div>
                       <div class="col-4 col-sm-4 bordered-col">
-                      <h4>End Time</h4>
+                      <h4 class="info_block__accent">End Time</h4>
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
-                    <?php if ($owner == $_SESSION["addr"]){
-                  echo '<div class="col-4 col-sm-4 bordered-col">
-                    <h4>Administration</h4>
-                    <div class="input-group">
-                    <a class="btn btn-secondary btn-small" href="#"  onclick="Delete('.$row['id'].');" style="margin-top: 1em;">
-                        <span>DELETE</span>
-                    </a>
-                    </div>
-                  </div>';} ?>
+                    <?php
+
+if(isset($_SESSION["addr"])){
+  if ($owner == $_SESSION["addr"]){
+echo '<div class="col-4 col-sm-4 bordered-col">
+  <h4 class="info_block__accent">Administration</h4>
+  <div class="input-group">
+  <a class="btn btn-secondary btn-small" href="#"  onclick="Delete('.$row['id'].');" style="margin-top: 1em;">
+      <span>DELETE</span>
+  </a>
+  </div>
+</div>';}
+}
+
+
+
+                   ?>
 
                       </div>
                         <br/>
@@ -96,7 +104,7 @@ $owner = $row['addr'];
 
                                       if ($result->num_rows > 0) {
                                         while($row = $result->fetch_assoc()) {
-                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))){
+                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))&&isset($_SESSION["addr"])){
 echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
         <div class="input-group" style="width: 60%;">';
@@ -127,8 +135,9 @@ echo '<div id="checker"></div>
                                         </a>
                                         </div>
                                             </div>';
-                                      }else{echo "<h2>Poll Ended</h2>";}}
-                                      }
+                                      }elseif(!isset($_SESSION["addr"])) {
+                                          echo "<p>You have to be signed in to vote</p>";
+                                      }}}
 
                                         ?>
 
@@ -155,135 +164,282 @@ echo '<div id="checker"></div>
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $json2 = curl_get($url.'/services/stats.php?pid='.$id.'&type=poll');
 
-        $sql = "SELECT * FROM `net` WHERE `Epoch` = '44' LIMIT 1;";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-          while($row2 = $result->fetch_assoc()) {
-    $NotValidatedCount = $row2['NotValidated'];
-     $ValidatedCount =  $row2['Validated'];
-     $HumanCount = $row2['Human'];
-    $VerifiedCount =  $row2['Verified'];
-    $NewbieCount =  $row2['Newbie'];
-    }}
-      if (!$row['option1'] == null){
-        $json = curl_get($url.'/services/option-stats.php?pid='.$id.'&vote=1&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option1'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
-      if (!$row['option2'] == null){
-        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=2&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option2'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
-      if (!$row['option3'] == null){
-        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=3&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option3'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
-      if (!$row['option4'] == null){
-        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=4&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option4'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
-      if (!$row['option5'] == null){
-        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=5&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option5'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
-      if (!$row['option6'] == null){
-        $json = curl_get('http://127.0.0.1/Idena-voting/services/option-stats.php?pid='.$id.'&vote=6&type=poll');
-      echo '<section class="section section_info">
-            <div class="row">
-            <div class="col-12 col-sm-12">
-            <div class="card">
-            <div>
-            <div class="row">
-            <div class="col-10 col-sm-10 bordered-col">
-            <h4 class="info_block__accent"> Option : '.$row['option6'].'</h4>
-            <p>All Votes Count : '.$json['All'].' Of  '.$json2['AllVotesCount'].' Total Participates ||  Accounts : '.$json2['AllAccountsCount'].'</p>
-            <p>Validated Votes Count : '.$json['Validated'].' Of  '.$json2['AllVotesCount'].' Total Participates || Accounts  : '.$json2['ValidatedCount'].' || Network : '.$ValidatedCount.'</p>
-            <p>Not Validated Count : '.$json['NotValidated'].' Of  '.$json2['NoneValidatedVotesCount'].' Total Participates || Accounts  : '.$json2['NoneValidatedCount'].' || Network : '.$NotValidatedCount.'</p>
-            <p>Humans Votes Count : '.$json['Human'].' Of  '.$json2['HumansVotesCount'].' Total Participates || Accounts  : '.$json2['HumansCount'].' || Network : '.$HumanCount.'</p>
-            <p>Verified Count : '.$json['Verified'].' Of  '.$json2['VerifiedVotesCount'].' Total Participates || Accounts  : '.$json2['VerifiedCount'].' || Network : '.$VerifiedCount.'</p>
-            <p>Newbies Count : '.$json['Newbie'].' Of  '.$json2['NewbieVotesCount'].' Total Participates || Accounts  : '.$json2['NewbieCount'].' || Network : '.$NewbieCount.'</p>
-            </div></div></div></div></div></div></section>';
-      }
+
+    $json = curl_get($url.'services/stats.php?pid='.$id.'&type=poll');
+
+    $labelsHuman  =array();
+    if(!empty($json['result']['option1']['Desc'])){
+    array_push($labelsHuman,$json['result']['option1']['Desc']);
+    }
+    if(!empty($json['result']['option2']['Desc'])){
+      array_push($labelsHuman,$json['result']['option2']['Desc']);
+    }
+    if(!empty($json['result']['option3']['Desc'])){
+      array_push($labelsHuman,$json['result']['option3']['Desc']);
+    }
+    if(!empty($json['result']['option4']['Desc'])){
+      array_push($labelsHuman,$json['result']['option4']['Desc']);
+    }
+    if(!empty($json['result']['option5']['Desc'])){
+      array_push($labelsHuman,$json['result']['option5']['Desc']);
+    }
+    if(!empty($json['result']['option6']['Desc'])){
+      array_push($labelsHuman,$json['result']['option6']['Desc']);
+    }
+$labelsHuman=  substr(json_encode($labelsHuman), 1, -1);
+
+
+$DataHuman  =array();
+
+array_push($DataHuman,$json['result']['option1']['Human']);
+array_push($DataHuman,$json['result']['option2']['Human']);
+array_push($DataHuman,$json['result']['option3']['Human']);
+array_push($DataHuman,$json['result']['option4']['Human']);
+array_push($DataHuman,$json['result']['option5']['Human']);
+array_push($DataHuman,$json['result']['option6']['Human']);
+
+$DataHuman=  substr(json_encode($DataHuman), 1, -1);
+
+  echo '<section class="section section_info">
+        <div class="row">
+        <div class="col-12 col-sm-12">
+        <div class="card">
+        <div>
+        <div class="row">
+        <div class="col-10 col-sm-10 bordered-col">
+        <h4 class="info_block__accent">Humans</h4>
+        <div style="width:40%; height:40%">
+       <canvas id="ChartHuman" width="400" height="400"></canvas>
+       <div>
+        <p></p>
+        </div></div></div></div></div></div></section>';
+
+    echo "<script>
+    var ctx = document.getElementById('ChartHuman').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [".$labelsHuman."],
+            datasets: [{
+                label: '# of Votes',
+                data: [".$DataHuman."],
+                backgroundColor: [
+  						window.chartColors.purple,
+  						window.chartColors.orange,
+  						window.chartColors.yellow,
+  						window.chartColors.green,
+  						window.chartColors.blue,
+              window.chartColors.red,
+  					],borderWidth: 1}]},});
+    </script>";
 
 
 
-}}
 
 
-  } //while loop ends
 
-} ?>
+
+
+    $labelsVerified  =array();
+    if(!empty($json['result']['option1']['Desc'])){
+    array_push($labelsVerified,$json['result']['option1']['Desc']);
+    }
+    if(!empty($json['result']['option2']['Desc'])){
+    	array_push($labelsVerified,$json['result']['option2']['Desc']);
+    }
+    if(!empty($json['result']['option3']['Desc'])){
+    	array_push($labelsVerified,$json['result']['option3']['Desc']);
+    }
+    if(!empty($json['result']['option4']['Desc'])){
+    	array_push($labelsVerified,$json['result']['option4']['Desc']);
+    }
+    if(!empty($json['result']['option5']['Desc'])){
+    	array_push($labelsVerified,$json['result']['option5']['Desc']);
+    }
+    if(!empty($json['result']['option6']['Desc'])){
+    	array_push($labelsVerified,$json['result']['option6']['Desc']);
+    }
+    $labelsVerified=  substr(json_encode($labelsVerified), 1, -1);
+
+
+    $DataVerified  =array();
+
+    array_push($DataVerified,$json['result']['option1']['Verified']);
+    array_push($DataVerified,$json['result']['option2']['Verified']);
+    array_push($DataVerified,$json['result']['option3']['Verified']);
+    array_push($DataVerified,$json['result']['option4']['Verified']);
+    array_push($DataVerified,$json['result']['option5']['Verified']);
+    array_push($DataVerified,$json['result']['option6']['Verified']);
+
+    $DataVerified=  substr(json_encode($DataVerified), 1, -1);
+
+    echo '<section class="section section_info">
+    		<div class="row">
+    		<div class="col-12 col-sm-12">
+    		<div class="card">
+    		<div>
+    		<div class="row">
+    		<div class="col-10 col-sm-10 bordered-col">
+    		<h4 class="info_block__accent">Verified</h4>
+    		<div style="width:40%; height:40%">
+    	 <canvas id="ChartVerified" width="400" height="400"></canvas>
+    	 <div>
+    		<p></p>
+    		</div></div></div></div></div></div></section>';
+
+    echo "<script>
+    var ctx = document.getElementById('ChartVerified').getContext('2d');
+    var myChart = new Chart(ctx, {
+    		type: 'pie',
+    		data: {
+    				labels: [".$labelsVerified."],
+    				datasets: [{
+    						label: '# of Votes',
+    						data: [".$DataVerified."],
+    						backgroundColor: [
+    					window.chartColors.purple,
+    					window.chartColors.orange,
+    					window.chartColors.yellow,
+    					window.chartColors.green,
+    					window.chartColors.blue,
+    					window.chartColors.red,
+    				],borderWidth: 1}]},});
+    </script>";
+
+    $labelsNewbie  =array();
+    if(!empty($json['result']['option1']['Desc'])){
+    array_push($labelsNewbie,$json['result']['option1']['Desc']);
+    }
+    if(!empty($json['result']['option2']['Desc'])){
+    	array_push($labelsNewbie,$json['result']['option2']['Desc']);
+    }
+    if(!empty($json['result']['option3']['Desc'])){
+    	array_push($labelsNewbie,$json['result']['option3']['Desc']);
+    }
+    if(!empty($json['result']['option4']['Desc'])){
+    	array_push($labelsNewbie,$json['result']['option4']['Desc']);
+    }
+    if(!empty($json['result']['option5']['Desc'])){
+    	array_push($labelsNewbie,$json['result']['option5']['Desc']);
+    }
+    if(!empty($json['result']['option6']['Desc'])){
+    	array_push($labelsNewbie,$json['result']['option6']['Desc']);
+    }
+    $labelsNewbie=  substr(json_encode($labelsNewbie), 1, -1);
+
+
+    $DataNewbie  =array();
+
+    array_push($DataNewbie,$json['result']['option1']['Newbie']);
+    array_push($DataNewbie,$json['result']['option2']['Newbie']);
+    array_push($DataNewbie,$json['result']['option3']['Newbie']);
+    array_push($DataNewbie,$json['result']['option4']['Newbie']);
+    array_push($DataNewbie,$json['result']['option5']['Newbie']);
+    array_push($DataNewbie,$json['result']['option6']['Newbie']);
+
+    $DataNewbie=  substr(json_encode($DataNewbie), 1, -1);
+
+    echo '<section class="section section_info">
+    		<div class="row">
+    		<div class="col-12 col-sm-12">
+    		<div class="card">
+    		<div>
+    		<div class="row">
+    		<div class="col-10 col-sm-10 bordered-col">
+    		<h4 class="info_block__accent">Newbies</h4>
+    		<div style="width:40%; height:40%">
+    	 <canvas id="ChartNewbie" width="400" height="400"></canvas>
+    	 <div>
+    		<p></p>
+    		</div></div></div></div></div></div></section>';
+
+    echo "<script>
+    var ctx = document.getElementById('ChartNewbie').getContext('2d');
+    var myChart = new Chart(ctx, {
+    		type: 'pie',
+    		data: {
+    				labels: [".$labelsNewbie."],
+    				datasets: [{
+    						label: '# of Votes',
+    						data: [".$DataNewbie."],
+    						backgroundColor: [
+    					window.chartColors.purple,
+    					window.chartColors.orange,
+    					window.chartColors.yellow,
+    					window.chartColors.green,
+    					window.chartColors.blue,
+    					window.chartColors.red,
+    				],borderWidth: 1}]},});
+    </script>";
+
+    $labelsHumanAndVerified  =array();
+    if(!empty($json['result']['option1']['Desc'])){
+    array_push($labelsHumanAndVerified,$json['result']['option1']['Desc']);
+    }
+    if(!empty($json['result']['option2']['Desc'])){
+    	array_push($labelsHumanAndVerified,$json['result']['option2']['Desc']);
+    }
+    if(!empty($json['result']['option3']['Desc'])){
+    	array_push($labelsHumanAndVerified,$json['result']['option3']['Desc']);
+    }
+    if(!empty($json['result']['option4']['Desc'])){
+    	array_push($labelsHumanAndVerified,$json['result']['option4']['Desc']);
+    }
+    if(!empty($json['result']['option5']['Desc'])){
+    	array_push($labelsHumanAndVerified,$json['result']['option5']['Desc']);
+    }
+    if(!empty($json['result']['option6']['Desc'])){
+    	array_push($labelsHumanAndVerified,$json['result']['option6']['Desc']);
+    }
+    $labelsHumanAndVerified=  substr(json_encode($labelsHumanAndVerified), 1, -1);
+
+
+    $DataHumanAndVerified  =array();
+
+    array_push($DataHumanAndVerified,$json['result']['option1']['HumanAndVerified']);
+    array_push($DataHumanAndVerified,$json['result']['option2']['HumanAndVerified']);
+    array_push($DataHumanAndVerified,$json['result']['option3']['HumanAndVerified']);
+    array_push($DataHumanAndVerified,$json['result']['option4']['HumanAndVerified']);
+    array_push($DataHumanAndVerified,$json['result']['option5']['HumanAndVerified']);
+    array_push($DataHumanAndVerified,$json['result']['option6']['HumanAndVerified']);
+
+    $DataHumanAndVerified=  substr(json_encode($DataHumanAndVerified), 1, -1);
+
+    echo '<section class="section section_info">
+    		<div class="row">
+    		<div class="col-12 col-sm-12">
+    		<div class="card">
+    		<div>
+    		<div class="row">
+    		<div class="col-10 col-sm-10 bordered-col">
+    		<h4 class="info_block__accent">Humans And Verified</h4>
+    		<div style="width:40%; height:40%">
+    	 <canvas id="ChartHumanAndVerified" width="400" height="400"></canvas>
+    	 <div>
+    		<p></p>
+    		</div></div></div></div></div></div></section>';
+
+    echo "<script>
+    var ctx = document.getElementById('ChartHumanAndVerified').getContext('2d');
+    var myChart = new Chart(ctx, {
+    		type: 'pie',
+    		data: {
+    				labels: [".$labelsHumanAndVerified."],
+    				datasets: [{
+    						label: '# of Votes',
+    						data: [".$DataHumanAndVerified."],
+    						backgroundColor: [
+    					window.chartColors.purple,
+    					window.chartColors.orange,
+    					window.chartColors.yellow,
+    					window.chartColors.green,
+    					window.chartColors.blue,
+    					window.chartColors.red,
+    				],borderWidth: 1}]},});
+    </script>";
+
+  }}}} ?>
 
 
 <?php

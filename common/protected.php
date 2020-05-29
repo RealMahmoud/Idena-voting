@@ -1,19 +1,5 @@
 <?php
-function curl_get($url){
-    $cURLConnection = curl_init();
-
-    curl_setopt($cURLConnection, CURLOPT_URL, $url);
-    curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
-
-    $data = curl_exec($cURLConnection);
-    curl_close($cURLConnection);
-
-    return json_decode($data,true);
-}
-
-
-
-
+include(dirname(__FILE__)."/_config.php");
 if(!empty($_SESSION["token"])) {
 
     $sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."' LIMIT 1;";
@@ -76,6 +62,7 @@ if(!empty($_SESSION["token"])) {
           $_SESSION["state"] = $row['state'];
         //score  $_SESSION["score"] = $row['score'];
         $_SESSION["password"] = $row['password'];
+          $_SESSION["credits"] = $row['credits'];
           $_SESSION["age"] = $row['age'];}}
 
 

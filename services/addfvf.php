@@ -1,6 +1,5 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/../common/_config.php");
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
@@ -25,7 +24,7 @@ if(!empty($_SESSION["addr"]))
           $endtime= $conn->real_escape_string($_POST['endtime']);
           $pdesc = $conn->real_escape_string($_POST['desc']);
           $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
-          $sql = "INSERT INTO `flips`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."')";
+          $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."')";
 
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";

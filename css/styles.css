@@ -148,7 +148,7 @@ select {
 .mini-card .user-pic img {
     margin-top: 20px;
 
-  
+
 
 }
 
@@ -645,9 +645,7 @@ h1, .h1 {
     padding: 0.2em 0;
 }
 
-.header_nav__link {
-    padding: 0.5rem 1.25rem;
-}
+
 
 .header_nav__link {
     display: block;

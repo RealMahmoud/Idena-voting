@@ -2,19 +2,19 @@
 session_start();
 include(dirname(__FILE__)."/../common/_config.php");
 header('Content-Type: application/json');
-$polls = array();
+$fvfs = array();
 $entries = array();
 ?>
 <?php
-    $sql1 = "SELECT * FROM `fvfs`";
+$sql1 = "SELECT `id` ,`pdesc`, (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie')AND `type` = 'fvf' AND `pid`= `fvfs`.`id` )AS 'count' FROM fvfs ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Verified' AND `type` = 'fvf' AND `pid`= `fvfs`.`id`) DESC";
     $result_acct = $conn->query($sql1);
     if ($result_acct->num_rows > 0) {
         // output data of each row
                 while($row = $result_acct->fetch_assoc()) {
-                    $polls[] = array('description' => mb_strimwidth($row['pdesc'], 0, 35, '...'),'id' => $row['id'],'addr' => $row['addr']);
+                    $fvfs[] = array('description' => mb_strimwidth($row['pdesc'], 0, 25, '...'),'id' => $row['id'],'count' => $row['count']);
                 }
 
     }
-    $entries = $result = array('entries' => $polls);
+    $entries = $result = array('entries' => $fvfs);
     echo json_encode($entries);
 ?>

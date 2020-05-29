@@ -21,6 +21,7 @@ include(dirname(__FILE__)."/partials/header.php");
 </section>
 
 
+
 <?php
 $id = $conn->real_escape_string($_GET["id"]);
 $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
@@ -107,7 +108,7 @@ $owner = $row['addr'];
                         <div class="success rem" id="success">
                         </div>
 
-                        <h4 class="info_block__accent">Add your vote below</h4>
+                        <h4 class="info_block__accent">Voting Panel</h4>
                         <div id="vote_container"><?php
                                       $id = $conn->real_escape_string($_GET["id"]);
                                       $sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
@@ -170,6 +171,7 @@ if ($result->num_rows > 0) {
 
 $json = curl_get($url.'services/stats.php?pid='.$id.'&type=proposal');
 
+
 $labelsHuman  =array();
 if(!empty($json['result']['option1']['Desc'])){
 array_push($labelsHuman,$json['result']['option1']['Desc']);
@@ -177,53 +179,11 @@ array_push($labelsHuman,$json['result']['option1']['Desc']);
 if(!empty($json['result']['option2']['Desc'])){
   array_push($labelsHuman,$json['result']['option2']['Desc']);
 }
-
 $labelsHuman=  substr(json_encode($labelsHuman), 1, -1);
-
-
 $DataHuman  =array();
-
 array_push($DataHuman,$json['result']['option1']['Human']);
 array_push($DataHuman,$json['result']['option2']['Human']);
-
 $DataHuman=  substr(json_encode($DataHuman), 1, -1);
-
-echo '<section class="section section_info">
-    <div class="row">
-    <div class="col-12 col-sm-12">
-    <div class="card">
-    <div>
-    <div class="row">
-    <div class="col-10 col-sm-10 bordered-col">
-    <h4 class="info_block__accent">Humans</h4>
-    <div style="width:40%; height:40%">
-   <canvas id="ChartHuman" width="400" height="400"></canvas>
-   <div>
-    <p></p>
-    </div></div></div></div></div></div></section>';
-
-echo "<script>
-var ctx = document.getElementById('ChartHuman').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [".$labelsHuman."],
-        datasets: [{
-            label: '# of Votes',
-            data: [".$DataHuman."],
-            backgroundColor: [
-          window.chartColors.purple,
-          window.chartColors.orange,
-          window.chartColors.yellow,
-          window.chartColors.green,
-          window.chartColors.blue,
-          window.chartColors.red,
-        ],borderWidth: 1}]},});
-</script>";
-
-
-
-
 
 
 
@@ -235,49 +195,15 @@ array_push($labelsVerified,$json['result']['option1']['Desc']);
 if(!empty($json['result']['option2']['Desc'])){
   array_push($labelsVerified,$json['result']['option2']['Desc']);
 }
-
 $labelsVerified=  substr(json_encode($labelsVerified), 1, -1);
-
-
 $DataVerified  =array();
-
 array_push($DataVerified,$json['result']['option1']['Verified']);
 array_push($DataVerified,$json['result']['option2']['Verified']);
 
 $DataVerified=  substr(json_encode($DataVerified), 1, -1);
 
-echo '<section class="section section_info">
-    <div class="row">
-    <div class="col-12 col-sm-12">
-    <div class="card">
-    <div>
-    <div class="row">
-    <div class="col-10 col-sm-10 bordered-col">
-    <h4 class="info_block__accent">Verified</h4>
-    <div style="width:40%; height:40%">
-   <canvas id="ChartVerified" width="400" height="400"></canvas>
-   <div>
-    <p></p>
-    </div></div></div></div></div></div></section>';
 
-echo "<script>
-var ctx = document.getElementById('ChartVerified').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [".$labelsVerified."],
-        datasets: [{
-            label: '# of Votes',
-            data: [".$DataVerified."],
-            backgroundColor: [
-          window.chartColors.purple,
-          window.chartColors.orange,
-          window.chartColors.yellow,
-          window.chartColors.green,
-          window.chartColors.blue,
-          window.chartColors.red,
-        ],borderWidth: 1}]},});
-</script>";
+
 
 $labelsNewbie  =array();
 if(!empty($json['result']['option1']['Desc'])){
@@ -286,50 +212,14 @@ array_push($labelsNewbie,$json['result']['option1']['Desc']);
 if(!empty($json['result']['option2']['Desc'])){
   array_push($labelsNewbie,$json['result']['option2']['Desc']);
 }
-
 $labelsNewbie=  substr(json_encode($labelsNewbie), 1, -1);
-
-
 $DataNewbie  =array();
-
 array_push($DataNewbie,$json['result']['option1']['Newbie']);
 array_push($DataNewbie,$json['result']['option2']['Newbie']);
-
-
 $DataNewbie=  substr(json_encode($DataNewbie), 1, -1);
 
-echo '<section class="section section_info">
-    <div class="row">
-    <div class="col-12 col-sm-12">
-    <div class="card">
-    <div>
-    <div class="row">
-    <div class="col-10 col-sm-10 bordered-col">
-    <h4 class="info_block__accent">Newbies</h4>
-    <div style="width:40%; height:40%">
-   <canvas id="ChartNewbie" width="400" height="400"></canvas>
-   <div>
-    <p></p>
-    </div></div></div></div></div></div></section>';
 
-echo "<script>
-var ctx = document.getElementById('ChartNewbie').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [".$labelsNewbie."],
-        datasets: [{
-            label: '# of Votes',
-            data: [".$DataNewbie."],
-            backgroundColor: [
-          window.chartColors.purple,
-          window.chartColors.orange,
-          window.chartColors.yellow,
-          window.chartColors.green,
-          window.chartColors.blue,
-          window.chartColors.red,
-        ],borderWidth: 1}]},});
-</script>";
+
 
 $labelsHumanAndVerified  =array();
 if(!empty($json['result']['option1']['Desc'])){
@@ -338,50 +228,58 @@ array_push($labelsHumanAndVerified,$json['result']['option1']['Desc']);
 if(!empty($json['result']['option2']['Desc'])){
   array_push($labelsHumanAndVerified,$json['result']['option2']['Desc']);
 }
-
 $labelsHumanAndVerified=  substr(json_encode($labelsHumanAndVerified), 1, -1);
-
-
 $DataHumanAndVerified  =array();
-
 array_push($DataHumanAndVerified,$json['result']['option1']['HumanAndVerified']);
 array_push($DataHumanAndVerified,$json['result']['option2']['HumanAndVerified']);
-
-
 $DataHumanAndVerified=  substr(json_encode($DataHumanAndVerified), 1, -1);
 
-echo '<section class="section section_info">
-    <div class="row">
-    <div class="col-12 col-sm-12">
-    <div class="card">
-    <div>
-    <div class="row">
-    <div class="col-10 col-sm-10 bordered-col">
-    <h4 class="info_block__accent">Humans And Verified</h4>
-    <div style="width:40%; height:40%">
-   <canvas id="ChartHumanAndVerified" width="400" height="400"></canvas>
-   <div>
-    <p></p>
-    </div></div></div></div></div></div></section>';
 
-echo "<script>
-var ctx = document.getElementById('ChartHumanAndVerified').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [".$labelsHumanAndVerified."],
-        datasets: [{
-            label: '# of Votes',
-            data: [".$DataHumanAndVerified."],
-            backgroundColor: [
-          window.chartColors.purple,
-          window.chartColors.orange,
-          window.chartColors.yellow,
-          window.chartColors.green,
-          window.chartColors.blue,
-          window.chartColors.red,
-        ],borderWidth: 1}]},});
-</script>";
+$labelsAll  =array();
+if(!empty($json['result']['option1']['Desc'])){
+array_push($labelsAll,$json['result']['option1']['Desc']);
+}
+if(!empty($json['result']['option2']['Desc'])){
+  array_push($labelsAll,$json['result']['option2']['Desc']);
+}
+$labelsAll=  substr(json_encode($labelsAll), 1, -1);
+$DataAll  =array();
+array_push($DataAll,$json['result']['option1']['HumanAndVerified']);
+array_push($DataAll,$json['result']['option2']['HumanAndVerified']);
+$DataAll=  substr(json_encode($DataAll), 1, -1);
+
+
+$labelsValidated  =array();
+if(!empty($json['result']['option1']['Desc'])){
+array_push($labelsValidated,$json['result']['option1']['Desc']);
+}
+if(!empty($json['result']['option2']['Desc'])){
+  array_push($labelsValidated,$json['result']['option2']['Desc']);
+}
+$labelsValidated=  substr(json_encode($labelsValidated), 1, -1);
+$DataValidated  =array();
+array_push($DataValidated,$json['result']['option1']['HumanAndVerified']);
+array_push($DataValidated,$json['result']['option2']['HumanAndVerified']);
+$DataValidated=  substr(json_encode($DataValidated), 1, -1);
+
+
+
+$labelsNotValidated  =array();
+if(!empty($json['result']['option1']['Desc'])){
+array_push($labelsNotValidated,$json['result']['option1']['Desc']);
+}
+if(!empty($json['result']['option2']['Desc'])){
+  array_push($labelsNotValidated,$json['result']['option2']['Desc']);
+}
+$labelsNotValidated=  substr(json_encode($labelsNotValidated), 1, -1);
+$DataNotValidated  =array();
+array_push($DataNotValidated,$json['result']['option1']['HumanAndVerified']);
+array_push($DataNotValidated,$json['result']['option2']['HumanAndVerified']);
+$DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
+
+
+
+
 
 
 
@@ -396,6 +294,436 @@ var myChart = new Chart(ctx, {
 } ?>
 
 
+<section class="section section_tabs">
+   <div class="tabs">
+      <div class="section__header">
+         <div class="row align-items-center justify-content-between">
+            <div class="col">
+               <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                     <a onclick="Change('H');" id='HNav' class="nav-link active">
+                        <h3>Humans</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('V');" id='VNav' class="nav-link ">
+                        <h3>Verified</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('N');" id='NNav'class="nav-link ">
+                        <h3>Newbies</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('HAndV');"id='HAndVNav' class="nav-link ">
+                        <h3>Humans And Verified</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('Va');" id='VaNav'class="nav-link ">
+                        <h3>Validated</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('All');"id='AllNav' class="nav-link ">
+                        <h3>All</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
+                        <h3>Not Validated</h3>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="tab-content">
+         <div class="tab-pane active" id="HCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Humans</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartH" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="VCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Verified</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartV" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="NCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Newbies</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartN" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="HAndVCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Humans And Verified</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartHAndV" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="VaCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Validated</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartVa" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="AllCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">All</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartAll" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="tab-pane" id="NotVaCon">
+            <div class="card">
+               <div>
+                  <div class="row">
+                     <div class="col-10 col-sm-10 bordered-col">
+                        <h4 class="info_block__accent">Not Validated</h4>
+                        <div style="width:40%; height:40%">
+                           <canvas id="ChartNotVa" width="400" height="400"></canvas>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+
+<script>
+var ctx = document.getElementById('ChartH').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsHuman; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataHuman;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartV').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsVerified; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataVerified;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartN').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsNewbie; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataNewbie;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartVa').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsValidated; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataValidated;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartAll').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsAll; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataAll;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartNotVa').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsNotValidated; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataNotValidated;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+var ctx = document.getElementById('ChartHAndV').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [<?php echo $labelsHumanAndVerified; ?>],
+        datasets: [{
+            label: '# of Votes',
+            data: [<?php echo $DataHumanAndVerified;?>],
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+</script>
+
+// Script of Changing
+<script>
+   function Change(Newl) {
+       if(Newl == 'H') {
+            document.getElementById("HCon").classList.add("active");
+			document.getElementById("HNav").classList.add("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+            document.getElementById("NotVaCon").classList.remove("active");
+			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+            document.getElementById("NotVaNav").classList.remove("active");
+
+
+       }
+
+
+
+   	   if(Newl == 'V') {
+		    document.getElementById("VCon").classList.add("active");
+			document.getElementById("VNav").classList.add("active");
+
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+            document.getElementById("NotVaCon").classList.remove("active");
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+            document.getElementById("NotVaNav").classList.remove("active");
+       }
+
+
+
+   	   if(Newl == 'N') {
+		    document.getElementById("NCon").classList.add("active");
+			document.getElementById("NNav").classList.add("active");
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+            document.getElementById("NotVaCon").classList.remove("active");
+
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+            document.getElementById("NotVaNav").classList.remove("active");
+       }
+
+
+
+
+   	   if(Newl == 'HAndV') {
+		    document.getElementById("HAndVCon").classList.add("active");
+			document.getElementById("HAndVNav").classList.add("active");
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+            document.getElementById("NotVaCon").classList.remove("active");
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+            document.getElementById("NotVaNav").classList.remove("active");
+       }
+
+   	   if(Newl == 'Va') {
+		    document.getElementById("VaCon").classList.add("active");
+			document.getElementById("VaNav").classList.add("active");
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+            document.getElementById("NotVaCon").classList.remove("active");
+
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+            document.getElementById("NotVaNav").classList.remove("active");
+       }
+   	if(Newl == 'All') {
+		    document.getElementById("AllCon").classList.add("active");
+			  document.getElementById("AllNav").classList.add("active");
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("NotVaCon").classList.remove("active");
+
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("NotVaNav").classList.remove("active");
+       }
+   	   if(Newl == 'NotVa') {
+		    document.getElementById("NotVaCon").classList.add("active");
+			document.getElementById("NotVaNav").classList.add("active");
+
+            document.getElementById("HCon").classList.remove("active");
+   			document.getElementById("VCon").classList.remove("active");
+   			document.getElementById("NCon").classList.remove("active");
+   			document.getElementById("HAndVCon").classList.remove("active");
+   			document.getElementById("VaCon").classList.remove("active");
+   			document.getElementById("AllCon").classList.remove("active");
+
+
+            document.getElementById("HNav").classList.remove("active");
+   			document.getElementById("VNav").classList.remove("active");
+   			document.getElementById("NNav").classList.remove("active");
+   			document.getElementById("HAndVNav").classList.remove("active");
+   			document.getElementById("VaNav").classList.remove("active");
+   			document.getElementById("AllNav").classList.remove("active");
+
+       }
+
+   }
+
+</script>
 
 
 <?php
@@ -455,7 +783,7 @@ function Delete(id)
   ajax_get('./services/deleteproposal.php?id='+id, function(data) {
 
 
-      window.location.replace("<?php echo $url;?>");
+      window.location.replace("<?php echo $url;?>proposals.php");
 
   });
 }
@@ -466,7 +794,7 @@ window.onload = function()
             if(document.getElementById("checker") == null){
 
             }else {
-            document.getElementById("vote_container").innerHTML = '<p>You have voted "'+data["vote"]+'".</p>';
+            document.getElementById("vote_container").innerHTML = '<br><h3 style="text-align: center;">You have voted "'+data["vote"]+'".</h3>';
             }
 
         }

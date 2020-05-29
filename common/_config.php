@@ -2,12 +2,12 @@
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
-$url = 'http://idena.vote/';
+$url = 'http://127.0.0.1/Idena-voting/';
 $site_name = 'Idena Voting';
 
 $servername = "localhost";
-$username = "work";
-$password = "zPd6Me@mAmAUE!V";
+$username = "root";
+$password = "";
 $dbname = "voting";
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}

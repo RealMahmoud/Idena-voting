@@ -27,6 +27,13 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option1->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option1->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option1->Validated=$row[0];
+
 
   $Option2 =(object)array();
   $vote='2';
@@ -45,7 +52,12 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified'  ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option2->HumanAndVerified=$row[0];
-
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option2->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option2->Validated=$row[0];
 
 
   $Option3 =(object)array();
@@ -65,6 +77,12 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option3->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option3->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option3->Validated=$row[0];
 
 
   $Option4 =(object)array();
@@ -84,7 +102,12 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified'  ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option4->HumanAndVerified=$row[0];
-
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option4->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option4->Validated=$row[0];
 
 
   $Option5 =(object)array();
@@ -104,7 +127,12 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option5->HumanAndVerified=$row[0];
-
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option5->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option5->Validated=$row[0];
 
 
 
@@ -125,6 +153,12 @@ if($type=='poll'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option6->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option6->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='poll' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option6->Validated=$row[0];
 
   $sql = "SELECT * FROM `polls` WHERE `id` = '".$pid."' LIMIT 1;";
   $result = $conn->query($sql);
@@ -176,6 +210,13 @@ if($type=='proposal'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option1->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option1->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option1->Validated=$row[0];
+
 
   $Option2 =(object)array();
   $vote='2';
@@ -194,7 +235,12 @@ if($type=='proposal'){
   $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified'  ) AND `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
   $row = $result->fetch_row();
   $Option2->HumanAndVerified=$row[0];
-
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option2->All=$row[0];
+    $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='proposal' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Option2->Validated=$row[0];
 
 
 
@@ -220,6 +266,91 @@ if($type=='proposal'){
   	"result" => array(
   	"option1" =>  $Option1,
   	"option2" =>  $Option2,
+
+  	)
+  );
+
+  echo json_encode($final);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if($type=='fvf'){
+
+
+  $Left =(object)array();
+  $vote='1';
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Human' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->Human=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Verified' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->Verified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Newbie' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->Newbie=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` <> 'Human' AND `state` <> 'Verified' AND `state` <> 'Newbie' )AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->NotValidated=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' ) AND `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->All=$row[0];
+
+
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Left->Validated=$row[0];
+
+  $Right =(object)array();
+  $vote='2';
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Human' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Right->Human=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Verified' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Right->Verified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Newbie' AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Right->Newbie=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` <> 'Human' AND `state` <> 'Verified' AND `state` <> 'Newbie' )AND `pid` = '".$pid."' AND `type` = 'fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Right->NotValidated=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified'  ) AND `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+  $row = $result->fetch_row();
+  $Right->HumanAndVerified=$row[0];
+  $result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+    $row = $result->fetch_row();
+    $Right->All=$row[0];
+$result = $conn->query("SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Human' OR `state` = 'Verified' OR `state` = 'Newbie' ) AND `pid` = '".$pid."' AND `type` ='fvf' AND `vote` = '".$vote."';");
+    $row = $result->fetch_row();
+    $Right->Validated=$row[0];
+
+
+
+  $Left->Desc='Left';
+  $Right->Desc='Right';
+
+
+  $final = array(
+  	"result" => array(
+  	"Left" =>  $Left,
+  	"Right" =>  $Right,
 
   	)
   );

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(empty($_SESSION["addr"])){
+  die('Error : Not signed in');
+}
+
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 

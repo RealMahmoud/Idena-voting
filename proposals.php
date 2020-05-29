@@ -49,13 +49,14 @@ window.onload = function() {
 
           data["entries"].forEach(function(obj) {
 
-           proposalcontent = proposalcontent + '<div class="col-12 col-sm-3 entry">'
+           proposalcontent = proposalcontent + '<div class="col-3 col-sm-3 entry">'
                                           +'<div class="mini-card">'
-                                          +'<p class="desc" style="padding-bottom: 20px;">'
+                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                            +obj.description
                                           +'</p>'
+                                          +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                            +'<span>Check out proposal</span>'
+                                            +'<span>Check out Proposal</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
                                           +'</a>'
                                           +'</div>'

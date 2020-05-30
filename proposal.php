@@ -244,8 +244,8 @@ if(!empty($json['result']['option2']['Desc'])){
 }
 $labelsAll=  substr(json_encode($labelsAll), 1, -1);
 $DataAll  =array();
-array_push($DataAll,$json['result']['option1']['HumanAndVerified']);
-array_push($DataAll,$json['result']['option2']['HumanAndVerified']);
+array_push($DataAll,$json['result']['option1']['All']);
+array_push($DataAll,$json['result']['option2']['All']);
 $DataAll=  substr(json_encode($DataAll), 1, -1);
 
 
@@ -258,8 +258,8 @@ if(!empty($json['result']['option2']['Desc'])){
 }
 $labelsValidated=  substr(json_encode($labelsValidated), 1, -1);
 $DataValidated  =array();
-array_push($DataValidated,$json['result']['option1']['HumanAndVerified']);
-array_push($DataValidated,$json['result']['option2']['HumanAndVerified']);
+array_push($DataValidated,$json['result']['option1']['Validated']);
+array_push($DataValidated,$json['result']['option2']['Validated']);
 $DataValidated=  substr(json_encode($DataValidated), 1, -1);
 
 
@@ -273,8 +273,8 @@ if(!empty($json['result']['option2']['Desc'])){
 }
 $labelsNotValidated=  substr(json_encode($labelsNotValidated), 1, -1);
 $DataNotValidated  =array();
-array_push($DataNotValidated,$json['result']['option1']['HumanAndVerified']);
-array_push($DataNotValidated,$json['result']['option2']['HumanAndVerified']);
+array_push($DataNotValidated,$json['result']['option1']['NotValidated']);
+array_push($DataNotValidated,$json['result']['option2']['NotValidated']);
 $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
 
 
@@ -346,7 +346,7 @@ $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
                               <div>
                                  <div class="row">
                                     <div class="col-10 col-sm-10 bordered-col">
-                                       <h4 class="info_block__accent">Validated</h4>
+                                       <h4 class="info_block__accent">Validated - (Humans + Verified + Newbies)</h4>
                                        <div style="width:40%; height:40%">
                                           <canvas id="ChartVa" width="400" height="400"></canvas>
                                           <div>
@@ -378,7 +378,7 @@ $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
                                <div>
                                   <div class="row">
                                      <div class="col-10 col-sm-10 bordered-col">
-                                        <h4 class="info_block__accent">Verified - (Humans + Verified + Newbies)</h4>
+                                        <h4 class="info_block__accent">Verified</h4>
                                         <div style="width:40%; height:40%">
                                            <canvas id="ChartV" width="400" height="400"></canvas>
                                            <div>

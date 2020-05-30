@@ -81,6 +81,27 @@ include(dirname(__FILE__)."/partials/header.php");
 
 </section>
 
+<section class="section section_info">
+
+        <h3 id="page_title3" class="info_block__accent rem">My FvF</h3>
+
+          <div class="fvf">
+
+            <div class="card" id="empty_card3" style="text-align:center;height:30vh">
+                        <div>
+                            <h3 class="info_block__accent" style="margin-top: 3em;">Your FvFs</h3>
+                            <div class="text_block" id="none3">Loading... please wait</div>
+                         </div>
+            </div>
+
+            <div class="row row-fluid" id="fvf-list">
+            </div>
+
+          </div><!-- polls end -->
+
+
+</section>
+
 <?php
 include(dirname(__FILE__)."/partials/donation.php");
 ?>
@@ -94,6 +115,9 @@ var polllist = document.getElementById("poll-list");
 var pollcontent = '';
 var proposallist = document.getElementById("proposal-list");
 var proposalcontent = '';
+
+var fvflist = document.getElementById("fvf-list");
+var fvfcontent = '';
 
 function checkusername() {
     ajax_get('./services/checkusername.php', function(data) {
@@ -112,17 +136,18 @@ checkusername();
 
           data["entries"].forEach(function(obj) {
 
-           pollcontent = pollcontent + '<div class="col-12 col-sm-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="desc" style="padding-bottom: 20px;">'
-                                           +obj.description
-                                          +'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                            +'<span>Check out poll</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
+           pollcontent = pollcontent +  '<div class="col-3 col-sm-3 entry">'
+                                             +'<div class="mini-card">'
+                                             +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                              +obj.description
+                                             +'</p>'
+                                             +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                             +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                               +'<span>Check out Proposal</span>'
+                                               +'<i class="icon icon--thin_arrow_right"></i>'
+                                             +'</a>'
+                                             +'</div>'
+                                           +'</div>';
 
          });//retrieve all user polls
 
@@ -142,17 +167,18 @@ ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', f
 
         data["entries"].forEach(function(obj) {
 
-         proposalcontent = proposalcontent + '<div class="col-12 col-sm-3 entry">'
-                                        +'<div class="mini-card">'
-                                        +'<p class="desc" style="padding-bottom: 20px;">'
-                                         +obj.description
-                                        +'</p>'
-                                        +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                          +'<span>Check out proposal</span>'
-                                          +'<i class="icon icon--thin_arrow_right"></i>'
-                                        +'</a>'
-                                        +'</div>'
-                                      +'</div>';
+          proposalcontent = proposalcontent + '<div class="col-3 col-sm-3 entry">'
+                                         +'<div class="mini-card">'
+                                         +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                          +obj.description
+                                         +'</p>'
+                                         +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                         +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                           +'<span>Check out Proposal</span>'
+                                           +'<i class="icon icon--thin_arrow_right"></i>'
+                                         +'</a>'
+                                         +'</div>'
+                                       +'</div>';
 
        });//retrieve all user polls
 
@@ -162,6 +188,42 @@ ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', f
 
     proposallist.innerHTML = proposalcontent;
 });
+
+
+
+
+//load all polls
+ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+
+    if(data["entries"].length > 0){
+        document.getElementById("page_title3").classList.remove("rem");
+        document.getElementById("empty_card3").classList.add("rem");
+
+        data["entries"].forEach(function(obj) {
+
+         fvfcontent = fvfcontent +  '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.description
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                             +'<span>Check out Proposal</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+
+       });//retrieve all user polls
+
+    } else {
+       document.getElementById("none3").innerHTML = "No FvFs made yet. Create a FvF";
+    }
+
+    fvflist.innerHTML = fvfcontent;
+});
+
+
 }
 
 </script>

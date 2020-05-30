@@ -272,8 +272,8 @@ if ($result->num_rows > 0)
                 }
                 $labelsAll=  substr(json_encode($labelsAll), 1, -1);
                 $DataAll  =array();
-                array_push($DataAll,$json['result']['Left']['HumanAndVerified']);
-                array_push($DataAll,$json['result']['Right']['HumanAndVerified']);
+                array_push($DataAll,$json['result']['Left']['All']);
+                array_push($DataAll,$json['result']['Right']['All']);
                 $DataAll=  substr(json_encode($DataAll), 1, -1);
 
 
@@ -286,8 +286,8 @@ if ($result->num_rows > 0)
                 }
                 $labelsValidated=  substr(json_encode($labelsValidated), 1, -1);
                 $DataValidated  =array();
-                array_push($DataValidated,$json['result']['Left']['HumanAndVerified']);
-                array_push($DataValidated,$json['result']['Right']['HumanAndVerified']);
+                array_push($DataValidated,$json['result']['Left']['Validated']);
+                array_push($DataValidated,$json['result']['Right']['Validated']);
                 $DataValidated=  substr(json_encode($DataValidated), 1, -1);
 
 
@@ -301,8 +301,8 @@ if ($result->num_rows > 0)
                 }
                 $labelsNotValidated=  substr(json_encode($labelsNotValidated), 1, -1);
                 $DataNotValidated  =array();
-                array_push($DataNotValidated,$json['result']['Left']['HumanAndVerified']);
-                array_push($DataNotValidated,$json['result']['Right']['HumanAndVerified']);
+                array_push($DataNotValidated,$json['result']['Left']['NotValidated']);
+                array_push($DataNotValidated,$json['result']['Right']['NotValidated']);
                 $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
 
 
@@ -375,7 +375,7 @@ if ($result->num_rows > 0)
                               <div>
                                  <div class="row">
                                     <div class="col-10 col-sm-10 bordered-col">
-                                       <h4 class="info_block__accent">Validated</h4>
+                                       <h4 class="info_block__accent">Validated - (Humans + Verified + Newbies)</h4>
                                        <div style="width:40%; height:40%">
                                           <canvas id="ChartVa" width="400" height="400"></canvas>
                                           <div>
@@ -407,7 +407,7 @@ if ($result->num_rows > 0)
                                <div>
                                   <div class="row">
                                      <div class="col-10 col-sm-10 bordered-col">
-                                        <h4 class="info_block__accent">Verified - (Humans + Verified + Newbies)</h4>
+                                        <h4 class="info_block__accent">Verified</h4>
                                         <div style="width:40%; height:40%">
                                            <canvas id="ChartV" width="400" height="400"></canvas>
                                            <div>

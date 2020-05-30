@@ -322,12 +322,12 @@ echo '<div id="checker"></div>
     }
     $labelsAll=  substr(json_encode($labelsAll), 1, -1);
     $DataAll  =array();
-    array_push($DataAll,$json['result']['option1']['HumanAndVerified']);
-    array_push($DataAll,$json['result']['option2']['HumanAndVerified']);
-    array_push($DataAll,$json['result']['option3']['HumanAndVerified']);
-    array_push($DataAll,$json['result']['option4']['HumanAndVerified']);
-    array_push($DataAll,$json['result']['option5']['HumanAndVerified']);
-    array_push($DataAll,$json['result']['option6']['HumanAndVerified']);
+    array_push($DataAll,$json['result']['option1']['All']);
+    array_push($DataAll,$json['result']['option2']['All']);
+    array_push($DataAll,$json['result']['option3']['All']);
+    array_push($DataAll,$json['result']['option4']['All']);
+    array_push($DataAll,$json['result']['option5']['All']);
+    array_push($DataAll,$json['result']['option6']['All']);
     $DataAll=  substr(json_encode($DataAll), 1, -1);
 
 
@@ -354,12 +354,12 @@ echo '<div id="checker"></div>
     }
     $labelsValidated=  substr(json_encode($labelsValidated), 1, -1);
     $DataValidated  =array();
-    array_push($DataValidated,$json['result']['option1']['HumanAndVerified']);
-    array_push($DataValidated,$json['result']['option2']['HumanAndVerified']);
-    array_push($DataValidated,$json['result']['option3']['HumanAndVerified']);
-    array_push($DataValidated,$json['result']['option4']['HumanAndVerified']);
-    array_push($DataValidated,$json['result']['option5']['HumanAndVerified']);
-    array_push($DataValidated,$json['result']['option6']['HumanAndVerified']);
+    array_push($DataValidated,$json['result']['option1']['Validated']);
+    array_push($DataValidated,$json['result']['option2']['Validated']);
+    array_push($DataValidated,$json['result']['option3']['Validated']);
+    array_push($DataValidated,$json['result']['option4']['Validated']);
+    array_push($DataValidated,$json['result']['option5']['Validated']);
+    array_push($DataValidated,$json['result']['option6']['Validated']);
     $DataValidated=  substr(json_encode($DataValidated), 1, -1);
 
 
@@ -387,12 +387,12 @@ echo '<div id="checker"></div>
     }
     $labelsNotValidated=  substr(json_encode($labelsNotValidated), 1, -1);
     $DataNotValidated  =array();
-    array_push($DataNotValidated,$json['result']['option1']['HumanAndVerified']);
-    array_push($DataNotValidated,$json['result']['option2']['HumanAndVerified']);
-    array_push($DataNotValidated,$json['result']['option3']['HumanAndVerified']);
-    array_push($DataNotValidated,$json['result']['option4']['HumanAndVerified']);
-    array_push($DataNotValidated,$json['result']['option5']['HumanAndVerified']);
-    array_push($DataNotValidated,$json['result']['option6']['HumanAndVerified']);
+    array_push($DataNotValidated,$json['result']['option1']['NotValidated']);
+    array_push($DataNotValidated,$json['result']['option2']['NotValidated']);
+    array_push($DataNotValidated,$json['result']['option3']['NotValidated']);
+    array_push($DataNotValidated,$json['result']['option4']['NotValidated']);
+    array_push($DataNotValidated,$json['result']['option5']['NotValidated']);
+    array_push($DataNotValidated,$json['result']['option6']['NotValidated']);
     $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
 
 
@@ -469,7 +469,7 @@ echo '<div id="checker"></div>
                                   <div>
                                      <div class="row">
                                         <div class="col-10 col-sm-10 bordered-col">
-                                           <h4 class="info_block__accent">Validated</h4>
+                                           <h4 class="info_block__accent">Validated - (Humans + Verified + Newbies)</h4>
                                            <div style="width:40%; height:40%">
                                               <canvas id="ChartVa" width="400" height="400"></canvas>
                                               <div>
@@ -501,7 +501,7 @@ echo '<div id="checker"></div>
                                    <div>
                                       <div class="row">
                                          <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Verified - (Humans + Verified + Newbies)</h4>
+                                            <h4 class="info_block__accent">Verified</h4>
                                             <div style="width:40%; height:40%">
                                                <canvas id="ChartV" width="400" height="400"></canvas>
                                                <div>

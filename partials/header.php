@@ -46,7 +46,7 @@
       <div class="col-auto">
         <div class="dropdown">
         <div class="header_logo">
-          <a class="" href="./index.php">
+          <a class="" href="./">
             <img   src="./images/idena-logo.svg" alt="Idena" width="40px">
           </a>
         </div>
@@ -119,6 +119,8 @@ input[type=text]:hover {
 Polls">
 Polls
 </a>
+</li>
+<?php  /*
 <li class="nav-item header_nav__item">
             <a class="nav-link header_nav__link appslink"href="./proposals.php" title="Proposals" descriptioncontent="Proposals">
               Proposals
@@ -130,22 +132,9 @@ Polls
             </a>
           </li>
 
-</li>
-</div>
-      <?php /*  <div id="searchbari" style="width:50%;">
-
-            <div class="input-group" >
-                <div class="input-addon">
-                    <button type="submit" class="btn btn-icon">
-                        <i class="icon icon--search"></i>
-                    </button>
-                </div>
-                <input type="text" name="search" value="" id='searchbar'placeholder="Polls, Proposals ..." class="form-control "/>
-            </div>
-
-        </div>
-
 */ ?>
+</div>
+
 
         <!-- search bar ends -->
   <div class="col-auto">

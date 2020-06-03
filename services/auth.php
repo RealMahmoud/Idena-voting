@@ -25,15 +25,17 @@ function verifySignature($message, $signature, $address) {
 
 $json = file_get_contents('php://input');
 $data = (array) json_decode($json);
+$dataToken = $conn->real_escape_string($data['token']);
+$dataSig = $conn->real_escape_string($data['signature']);
 
-if (empty($data['token'])){
+if (empty($dataToken)){
 die();
 };
-if (empty($data['signature'])){
+if (empty($dataSig)){
 die();
 };
 
-$sql = "SELECT * FROM `auth` WHERE `token` = '".$data['token']."' LIMIT 1;";
+$sql = "SELECT * FROM `auth` WHERE `token` = '".$dataToken."' LIMIT 1;";
 $result = $conn->query($sql);
 header('Content-Type: application/json');
 
@@ -45,7 +47,7 @@ if ($result->num_rows > 0) {
     $signature = $data['signature'];
 
     if (verifySignature($message, $signature, $address)) {
-      $sql = "UPDATE `auth` SET `sig` = '".$data['signature']."', `authenticated` = 1 WHERE `token` = '".$data['token']."' LIMIT 1;";
+      $sql = "UPDATE `auth` SET `sig` = '"$dataSig."', `authenticated` = 1 WHERE `token` = '".$dataToken."' LIMIT 1;";
 
       $conn->query($sql);
 
@@ -56,8 +58,8 @@ if ($result->num_rows > 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
                 $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `state`, `username`,`password`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'undefined', '".mb_strimwidth($address, 0, 10, '')."','".substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"),0,20)."');";
-  
+    ('".$address."', '".$timestamp."', 0, 'zero', '".mb_strimwidth($address, 0, 10, '')."','".substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"),0,20)."');";
+
                 $result2 = $conn->query($sql2);
         }
       echo '{"success":true,"data":{"authenticated":true}}';

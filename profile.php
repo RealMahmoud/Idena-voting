@@ -2,8 +2,9 @@
 session_start();
 include(dirname(__FILE__)."/common/protected.php");
 
-$pagetitle = 'My Profile';
+$pagetitle = 'Profile';
 include(dirname(__FILE__)."/partials/header.php");
+$address = $conn->real_escape_string($_GET['address']);
 ?>
 
 
@@ -11,14 +12,12 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image">
-                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="120"/>
+                <img src="https://robohash.org/<?php echo $address; ?>" alt="pic" width="120"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
-                    <h1 class="section_main__title">
-                        <?php echo $_SESSION["addr"]; ?>
-
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$address;?>"><?php echo$address; ?></a>
                       <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
                     </div>
@@ -29,13 +28,12 @@ include(dirname(__FILE__)."/partials/header.php");
                     <a class="btn btn-small btn-primary" href="./create-poll.php">
                         <span>Create New Poll</span>
                     </a>
-                    <?php /*
                     <a class="btn btn-small btn-primary" href="./create-proposal.php">
                         <span>Create New Proposal</span>
                     </a>
                     <a class="btn btn-small btn-primary" href="./create-fvf.php">
                         <span>Create New FvF</span>
-                    </a> */?>
+                    </a>
                 </div>
             </div>
 </section>
@@ -129,7 +127,7 @@ window.onload = function() {
 checkusername();
 
   //load all polls
-  ajax_get('./services/showpolls.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+  ajax_get('./services/showpolls.php?addr=<?php echo$address; ?>', function(data) {
 
       if(data["entries"].length > 0){
           document.getElementById("page_title").classList.remove("rem");
@@ -143,8 +141,8 @@ checkusername();
                                               +obj.description
                                              +'</p>'
                                              +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                             +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                               +'<span>Check out Poll</span>'
+                                             +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                               +'<span>Check out Proposal</span>'
                                                +'<i class="icon icon--thin_arrow_right"></i>'
                                              +'</a>'
                                              +'</div>'
@@ -160,7 +158,7 @@ checkusername();
   });
 
 
-ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+ajax_get('./services/showproposals.php?addr=<?php echo$address; ?>', function(data) {
 
     if(data["entries"].length > 0){
         document.getElementById("page_title2").classList.remove("rem");
@@ -194,7 +192,7 @@ ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', f
 
 
 //load all polls
-ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+ajax_get('./services/showfvfs.php?addr=<?php echo$address; ?>', function(data) {
 
     if(data["entries"].length > 0){
         document.getElementById("page_title3").classList.remove("rem");
@@ -202,18 +200,18 @@ ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', functi
 
         data["entries"].forEach(function(obj) {
 
-          fvfcontent = fvfcontent +  '<div class="col-3 col-sm-3 entry">'
-                                            +'<div class="mini-card">'
-                                            +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                             +obj.description
-                                            +'</p>'
-                                            +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                            +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
-                                              +'<span>Check out FvF</span>'
-                                              +'<i class="icon icon--thin_arrow_right"></i>'
-                                            +'</a>'
-                                            +'</div>'
-                                          +'</div>';
+         fvfcontent = fvfcontent +  '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.description
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
+                                             +'<span>Check out FvF</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
 
        });//retrieve all user polls
 

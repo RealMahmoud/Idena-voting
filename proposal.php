@@ -1,11 +1,23 @@
 <?php
 session_start();
-
+die("404");
 include(dirname(__FILE__)."/common/_config.php");
+
 if(empty($conn->real_escape_string($_GET["id"]))){
   header("location:index.php");
 }
-$pagetitle = 'Proposal - '.$_GET['id'];
+
+$id = $conn->real_escape_string($_GET["id"]);
+$sql = "SELECT * FROM `proposals` WHERE `id` = '".$id."' LIMIT 1;";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+}else{
+  header("location:404.php");
+}
+
+$pagetitle = 'Proposal - '.$conn->real_escape_string($_GET["id"]);
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 

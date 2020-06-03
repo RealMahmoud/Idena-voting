@@ -1,5 +1,6 @@
 <?php
 session_start();
+die("404");
 include(dirname(__FILE__)."/common/_config.php");
 $pagetitle = 'fvfs';
 include(dirname(__FILE__)."/partials/header.php");
@@ -7,13 +8,13 @@ include(dirname(__FILE__)."/partials/header.php");
 
 <section class="section section_info">
 
-        <h3 id="page_title" class="info_block__accent rem">All fvfs</h3>
+        <h3 id="page_title" class="info_block__accent rem">All FvFs</h3>
 
           <div class="fvfs">
 
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
                         <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">All fvf</h3>
+                            <h3 class="info_block__accent" style="margin-top: 3em;">All FvF</h3>
                             <div class="text_block" id="none">Loading... please wait</div>
                          </div>
             </div>
@@ -40,7 +41,7 @@ var fvfcontent = '';
 
 
 window.onload = function() {
-  //load all fvfs
+
   ajax_get('./services/showAllfvfs.php', function(data) {
 
       if(data["entries"].length > 0){

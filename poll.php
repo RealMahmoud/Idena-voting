@@ -5,7 +5,17 @@ include(dirname(__FILE__)."/common/_config.php");
 if(empty($conn->real_escape_string($_GET["id"]))){
   header("location:index.php");
 }
-$pagetitle = 'Poll - '.$_GET['id'];
+
+$id = $conn->real_escape_string($_GET["id"]);
+$sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+}else{
+  header("location:404.php");
+}
+$pagetitle = 'Poll - '.$conn->real_escape_string($_GET["id"]);
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
@@ -459,6 +469,7 @@ echo '<div id="checker"></div>
                                             <h3>All</h3>
                                          </a>
                                       </li>
+
                                    </ul>
                                 </div>
                              </div>
@@ -920,7 +931,7 @@ function Delete(id)
   ajax_get('./services/deletepoll.php?id='+id, function(data) {
 
 
-      window.location.replace("<?php echo $url;?>/polls.php");
+      window.location.replace("<?php echo $url;?>polls.php");
 
   });
 }

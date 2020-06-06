@@ -21,19 +21,30 @@ $address = $conn->real_escape_string($_GET['address']);
                       <span class="badge badge-secondary" id="nick_name">Loading...</span>
                     </h1>
                     </div>
-                    <a class="btn btn-small btn-primary" href="./settings.php">
-                        <span>Edit Settings</span>
-                    </a>
 
-                    <a class="btn btn-small btn-primary" href="./create-poll.php">
-                        <span>Create New Poll</span>
+
+
+                    <a class="btn btn-small btn-primary" href="dna://send/v1?address=<?php echo $address?>&amount=10&comment=Tip">
+                        <span>Donate 10 DNA</span>
                     </a>
-                    <a class="btn btn-small btn-primary" href="./create-proposal.php">
-                        <span>Create New Proposal</span>
+                    <a class="btn btn-small btn-primary" id="reachout" href="">
+                        <span>Reach Out</span>
                     </a>
-                    <a class="btn btn-small btn-primary" href="./create-fvf.php">
-                        <span>Create New FvF</span>
-                    </a>
+                    <br>
+                    <br>
+
+                    <div class="card">
+                    <div class="info_block">
+                    <div class="control-label"  id="bio"title="Bio">Loading...</div>
+                    <br>
+                    <div class="control-label"  id="lastlogin"title="LastLogin">Loading...</div>
+
+                    </div>
+                     </div>
+
+
+
+
                 </div>
             </div>
 </section>
@@ -41,13 +52,13 @@ $address = $conn->real_escape_string($_GET['address']);
 
 <section class="section section_info">
 
-        <h3 id="page_title" class="info_block__accent rem">My Polls</h3>
+        <h3 id="page_title" class="info_block__accent rem"> Polls</h3>
 
           <div class="polls">
 
             <div class="card" id="empty_card" style="text-align:center;height:30vh">
                         <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your Polls</h3>
+                            <h3 class="info_block__accent" style="margin-top: 3em;"> Polls</h3>
                             <div class="text_block" id="none">Loading... please wait</div>
                          </div>
             </div>
@@ -61,13 +72,13 @@ $address = $conn->real_escape_string($_GET['address']);
 </section>
 <section class="section section_info">
 
-        <h3 id="page_title2" class="info_block__accent rem">My Proposals</h3>
+        <h3 id="page_title2" class="info_block__accent rem"> Proposals</h3>
 
           <div class="proposals">
 
             <div class="card" id="empty_card2" style="text-align:center;height:30vh">
                         <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your Proposals</h3>
+                            <h3 class="info_block__accent" style="margin-top: 3em;"> Proposals</h3>
                             <div class="text_block" id="none2">Loading... please wait</div>
                          </div>
             </div>
@@ -82,13 +93,13 @@ $address = $conn->real_escape_string($_GET['address']);
 
 <section class="section section_info">
 
-        <h3 id="page_title3" class="info_block__accent rem">My FvF</h3>
+        <h3 id="page_title3" class="info_block__accent rem"> FvF</h3>
 
           <div class="fvf">
 
             <div class="card" id="empty_card3" style="text-align:center;height:30vh">
                         <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your FvFs</h3>
+                            <h3 class="info_block__accent" style="margin-top: 3em;"> FvFs</h3>
                             <div class="text_block" id="none3">Loading... please wait</div>
                          </div>
             </div>
@@ -119,15 +130,34 @@ var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
 
 function checkusername() {
-    ajax_get('./services/checkusername.php', function(data) {
+    ajax_get('./services/checkusername.php?addr=<?php echo $address; ?>', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
     });
 }
+function checkbio() {
+    ajax_get('./services/checkbio.php?addr=<?php echo $address; ?>', function(data) {
+            document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
+    });
+}
+function checklastlogin() {
+    ajax_get('./services/checklastlogin.php?addr=<?php echo $address; ?>', function(data) {
+            document.getElementById("lastlogin").innerHTML = 'Last Login : ' + data["lastlogin"];
+    });
+}
+function checkreachout() {
+    ajax_get('./services/checkreachout.php?addr=<?php echo $address; ?>', function(data) {
+            document.getElementById("reachout").href = data["reachout"];
+    });
+}
+
+
+
 window.onload = function() {
 checkusername();
-
-  //load all polls
-  ajax_get('./services/showpolls.php?addr=<?php echo$address; ?>', function(data) {
+checkbio();
+checklastlogin();
+ checkreachout();
+  ajax_get('./services/showpolls.php?addr=<?php echo $address; ?>', function(data) {
 
       if(data["entries"].length > 0){
           document.getElementById("page_title").classList.remove("rem");
@@ -192,7 +222,7 @@ ajax_get('./services/showproposals.php?addr=<?php echo$address; ?>', function(da
 
 
 //load all polls
-ajax_get('./services/showfvfs.php?addr=<?php echo$address; ?>', function(data) {
+ajax_get('./services/showfvfs.php?addr=<?php echo $address; ?>', function(data) {
 
     if(data["entries"].length > 0){
         document.getElementById("page_title3").classList.remove("rem");

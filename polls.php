@@ -7,6 +7,9 @@ $pagetitle = 'Top Polls';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
+
+
+
 <section class="section section_info">
 
         <h3 id="page_title" class="info_block__accent rem">All Polls</h3>
@@ -27,6 +30,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
 </section>
+
 
 <?php
 include(dirname(__FILE__)."/partials/donation.php");

@@ -106,6 +106,29 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         </form>
 
+
+
+                        <br>
+
+                        <h4 class="info_block__accent">Change Bio : </h4>
+
+                        <form id="name_form" METHOD="POST">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="bio" class="formVal form-control" value="" placeholder="Bio"/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeBio(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit"> Change</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
+
+
+
+
                   </div>
 
                 </div>
@@ -175,6 +198,33 @@ function changeST()
     });
 }
 
+function changeBio()
+{
+    toggle(true);
+    var elements = document.getElementsByClassName("formVal");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+
+    ajax_post('./services/changeBio.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Bio changed successfully';
+            checkusername();
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+        }
+    });
+}
+
+
+
 function toggle(change) {
     if(change == true) {
             document.getElementById("text_submit").innerHTML = "Changing...";
@@ -186,9 +236,8 @@ function toggle(change) {
 }
 
 function checkusername() {
-    ajax_get('./services/checkusername.php', function(data) {
+    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
-
     });
 }
 window.onload = function() {

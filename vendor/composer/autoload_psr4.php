@@ -9,6 +9,7 @@ return array(
     'kornrunner\\' => array($vendorDir . '/kornrunner/keccak/src'),
     'Web3p\\RLP\\' => array($vendorDir . '/web3p/rlp/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Protobuf\\' => array($vendorDir . '/protobuf-php/protobuf/src'),
     'Elliptic\\' => array($vendorDir . '/simplito/elliptic-php/lib'),
     'BN\\' => array($vendorDir . '/simplito/bn-php/lib'),
     'BI\\' => array($vendorDir . '/simplito/bigint-wrapper-php/lib'),

@@ -1,6 +1,6 @@
 <?php
 session_start();
-die("404");
+
 include(dirname(__FILE__)."/common/protected.php");
 $pagetitle = 'Create Proposal';
 include(dirname(__FILE__)."/partials/header.php");

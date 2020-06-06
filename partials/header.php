@@ -120,7 +120,7 @@ Polls">
 Polls
 </a>
 </li>
-<?php  /*
+
 <li class="nav-item header_nav__item">
             <a class="nav-link header_nav__link appslink"href="./proposals.php" title="Proposals" descriptioncontent="Proposals">
               Proposals
@@ -132,7 +132,7 @@ Polls
             </a>
           </li>
 
-*/ ?>
+
 </div>
 
 

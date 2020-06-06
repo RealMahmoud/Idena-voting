@@ -23,6 +23,10 @@ class ComposerStaticInitf4c1ce772059189868f2fc87080cc4d4
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
+        'P' => 
+        array (
+            'Protobuf\\' => 9,
+        ),
         'E' => 
         array (
             'Elliptic\\' => 9,
@@ -46,6 +50,10 @@ class ComposerStaticInitf4c1ce772059189868f2fc87080cc4d4
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Protobuf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/protobuf-php/protobuf/src',
         ),
         'Elliptic\\' => 
         array (

@@ -2,6 +2,7 @@
     "require": {
         "simplito/elliptic-php": "^1.0",
         "kornrunner/keccak": "^1.0",
-        "web3p/rlp": "^0.3.2"
+        "web3p/rlp": "^0.3.2",
+        "protobuf-php/protobuf": "^0.1.3"
     }
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-die("404");
+
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";

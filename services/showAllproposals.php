@@ -6,7 +6,7 @@ $proposals = array();
 $entries = array();
 ?>
 <?php
-$sql1 = "SELECT `id` ,`pdesc`, (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie')AND `type` = 'proposal' AND `pid`= `proposals`.`id` )AS 'count' FROM proposals ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Verified' AND `type` = 'proposal' AND `pid`= `proposals`.`id`) DESC";
+$sql1 = "SELECT `id` ,`pdesc`, (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie')AND `type` = 'proposal' AND `pid`= `proposals`.`id` )AS 'count' FROM proposals ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `state` = 'Verified' AND `type` = 'proposal' AND `pid`= `proposals`.`id`) DESC LIMIT 50";
     $result_acct = $conn->query($sql1);
     if ($result_acct->num_rows > 0) {
         // output data of each row

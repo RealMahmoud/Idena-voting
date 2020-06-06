@@ -1,6 +1,6 @@
 <?php
 session_start();
-die("404");
+
 include(dirname(__FILE__)."/common/_config.php");
 
 if(empty($conn->real_escape_string($_GET["id"]))){

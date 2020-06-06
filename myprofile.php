@@ -29,13 +29,23 @@ include(dirname(__FILE__)."/partials/header.php");
                     <a class="btn btn-small btn-primary" href="./create-poll.php">
                         <span>Create New Poll</span>
                     </a>
-                    <?php /*
+
                     <a class="btn btn-small btn-primary" href="./create-proposal.php">
                         <span>Create New Proposal</span>
                     </a>
                     <a class="btn btn-small btn-primary" href="./create-fvf.php">
                         <span>Create New FvF</span>
-                    </a> */?>
+                    </a>
+<br>
+<br>
+<div class="card">
+<div class="info_block">
+<div class="control-label"  id="bio"title="Bio">Loading...</div>
+<br>
+<div class="control-label"  id="lastlogin"title="LastLogin">Loading...</div>
+
+</div>
+ </div>
                 </div>
             </div>
 </section>
@@ -121,12 +131,28 @@ var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
 
 function checkusername() {
-    ajax_get('./services/checkusername.php', function(data) {
+    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
             document.getElementById("nick_name").innerHTML = data["nickname"];
     });
 }
+function checkbio() {
+    ajax_get('./services/checkbio.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+            document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
+    });
+}
+function checklastlogin() {
+    ajax_get('./services/checklastlogin.php?addr=<?php echo $_SESSION["addr"];?>', function(data) {
+            document.getElementById("lastlogin").innerHTML = 'Last Login : ' + data["lastlogin"];
+    });
+}
+
+
+
 window.onload = function() {
 checkusername();
+checkbio();
+checklastlogin();
+
 
   //load all polls
   ajax_get('./services/showpolls.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {

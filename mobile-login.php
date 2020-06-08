@@ -16,7 +16,7 @@ include(dirname(__FILE__)."/partials/header.php");
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
 
                          <h4 class="info_block__accent"style="margin-top: 3em;">Login With Secret Token</h4>
-                         <form id="name_form" METHOD="POST">
+                         <form id="name_form" METHOD="POST" onsubmit="MobileLogin(); return false;">
                            <div class="warning rem" id="warning">
                            </div>
                            <div class="success rem" id="success">

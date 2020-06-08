@@ -75,9 +75,9 @@ include(dirname(__FILE__)."/partials/header.php");
                         </div>
 
                         <h4 class="info_block__accent">Change username</h4>
-                        <form id="name_form" METHOD="POST">
+                        <form id="name_form" METHOD="POST"onsubmit="changeName(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="username" class="formVal form-control" value="" placeholder="your new nickname goes here..."/>
+                                <input type="text" name="username" class="formVal form-control" value="" placeholder="your new username goes here..."/>
                             </div>
 
                             <div class="input-group">
@@ -92,7 +92,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <h4 class="info_block__accent">Change Secret Token : </h4>
 
-                        <form id="name_form" METHOD="POST">
+                        <form id="name_form" METHOD="POST" onsubmit="changeST(); return false;">
                             <div class="input-group" style="width: 60%;">
                                 <input type="text" name="password" class="formVal form-control" value="" placeholder="Please type confirm"/>
                             </div>
@@ -112,7 +112,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <h4 class="info_block__accent">Change Bio : </h4>
 
-                        <form id="name_form" METHOD="POST">
+                        <form id="name_form" METHOD="POST" onsubmit="changeBio(); return false;">
                             <div class="input-group" style="width: 60%;">
                                 <input type="text" name="bio" class="formVal form-control" value="" placeholder="Bio"/>
                             </div>
@@ -164,7 +164,7 @@ function changeName()
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Nickname changed successfully';
+            document.getElementById("success").innerHTML = '&#x2705; username changed successfully';
             checkusername();
         } else {
             document.getElementById("success").classList.add("rem");
@@ -237,7 +237,7 @@ function toggle(change) {
 
 function checkusername() {
     ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("nick_name").innerHTML = data["nickname"];
+            document.getElementById("nick_name").innerHTML = data["username"];
     });
 }
 window.onload = function() {

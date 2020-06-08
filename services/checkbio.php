@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/../common/protected.php");
+include(dirname(__FILE__)."/../common/_config.php");
 header('Content-Type: application/json');
 $addressg = $conn->real_escape_string($_GET['addr']);
 $sql1 = "SELECT `bio` FROM `accounts` WHERE `address` = '".$addressg."' LIMIT 1;";

@@ -16,10 +16,9 @@ include(dirname(__FILE__)."/partials/header.php");
         </div>
             <div class="col">
                 <div class="section_main__group">
-                    <h1 class="section_main__title">
-                        <?php echo $_SESSION["addr"]; ?>
+                      <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
 
-                      <span class="badge badge-secondary" id="nick_name">Loading...</span>
+                      <span class="badge badge-secondary" id="user_name">Loading...</span>
                     </h1>
                     </div>
                     <a class="btn btn-small btn-primary" href="./settings.php">
@@ -42,7 +41,7 @@ include(dirname(__FILE__)."/partials/header.php");
 <div class="info_block">
 <div class="control-label"  id="bio"title="Bio">Loading...</div>
 <br>
-<div class="control-label"  id="lastlogin"title="LastLogin">Loading...</div>
+<div class="control-label"  id="lastseen"title="lastseen">Loading...</div>
 
 </div>
  </div>
@@ -51,67 +50,139 @@ include(dirname(__FILE__)."/partials/header.php");
 </section>
 
 
-<section class="section section_info">
 
-        <h3 id="page_title" class="info_block__accent rem">My Polls</h3>
 
-          <div class="polls">
 
-            <div class="card" id="empty_card" style="text-align:center;height:30vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your Polls</h3>
-                            <div class="text_block" id="none">Loading... please wait</div>
-                         </div>
+
+
+
+<section class="section section_tabs">
+   <div class="tabs">
+      <div class="section__header">
+         <div class="row align-items-center justify-content-between">
+            <div class="col">
+               <ul class="nav nav-tabs" role="tablist">
+                 <li class="nav-item">
+                    <a onclick="Change('1');" id='1Nav'class="nav-link active">
+                       <h3>My Polls</h3>
+                    </a>
+                 </li>
+                  <li class="nav-item">
+                     <a onclick="Change('2');" id='2Nav' class="nav-link ">
+                        <h3>My Proposals</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('3');" id='3Nav' class="nav-link ">
+                        <h3>My FvFs</h3>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a onclick="Change('4');" id='4Nav'class="nav-link ">
+                        <h3>My Pages</h3>
+                     </a>
+                  </li>
+
+               </ul>
             </div>
-
-            <div class="row row-fluid" id="poll-list">
-            </div>
-
-          </div><!-- polls end -->
+         </div>
+      </div>
+      <div class="tab-content">
 
 
+
+
+
+        <div class="tab-pane active" id="1Con">
+                       <div class="row row-fluid" id="poll-list">
+                       </div>
+        </div>
+        <div class="tab-pane " id="2Con">
+          <div class="row row-fluid" id="proposal-list">
+          </div>
+        </div>
+        <div class="tab-pane " id="3Con">
+          <div class="row row-fluid" id="fvf-list">
+          </div>
+        </div>
+        <div class="tab-pane " id="4Con">
+          <div class="row row-fluid" id="page-list">
+          </div>
+        </div>
+
+
+
+
+      </div>
+   </div>
 </section>
-<section class="section section_info">
-
-        <h3 id="page_title2" class="info_block__accent rem">My Proposals</h3>
-
-          <div class="proposals">
-
-            <div class="card" id="empty_card2" style="text-align:center;height:30vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your Proposals</h3>
-                            <div class="text_block" id="none2">Loading... please wait</div>
-                         </div>
-            </div>
-
-            <div class="row row-fluid" id="proposal-list">
-            </div>
-
-          </div><!-- polls end -->
 
 
-</section>
+<script>
+   function Change(Newl) {
+     if(Newl == '1') {
+    document.getElementById("1Con").classList.add("active");
+    document.getElementById("1Nav").classList.add("active");
 
-<section class="section section_info">
+    document.getElementById("2Nav").classList.remove("active");
+    document.getElementById("2Con").classList.remove("active");
+    document.getElementById("3Nav").classList.remove("active");
+    document.getElementById("3Con").classList.remove("active");
+    document.getElementById("4Nav").classList.remove("active");
+    document.getElementById("4Con").classList.remove("active");
 
-        <h3 id="page_title3" class="info_block__accent rem">My FvF</h3>
+     }
+     if(Newl == '2') {
+    document.getElementById("2Con").classList.add("active");
+    document.getElementById("2Nav").classList.add("active");
 
-          <div class="fvf">
+    document.getElementById("1Nav").classList.remove("active");
+    document.getElementById("1Con").classList.remove("active");
+    document.getElementById("3Nav").classList.remove("active");
+    document.getElementById("3Con").classList.remove("active");
+    document.getElementById("4Nav").classList.remove("active");
+    document.getElementById("4Con").classList.remove("active");
 
-            <div class="card" id="empty_card3" style="text-align:center;height:30vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Your FvFs</h3>
-                            <div class="text_block" id="none3">Loading... please wait</div>
-                         </div>
-            </div>
+     }
+     if(Newl == '3') {
+    document.getElementById("3Con").classList.add("active");
+    document.getElementById("3Nav").classList.add("active");
 
-            <div class="row row-fluid" id="fvf-list">
-            </div>
+    document.getElementById("2Nav").classList.remove("active");
+    document.getElementById("2Con").classList.remove("active");
+    document.getElementById("1Nav").classList.remove("active");
+    document.getElementById("1Con").classList.remove("active");
+    document.getElementById("4Nav").classList.remove("active");
+    document.getElementById("4Con").classList.remove("active");
 
-          </div><!-- polls end -->
+     }
+     if(Newl == '4') {
+    document.getElementById("4Con").classList.add("active");
+    document.getElementById("4Nav").classList.add("active");
+
+    document.getElementById("2Nav").classList.remove("active");
+    document.getElementById("2Con").classList.remove("active");
+    document.getElementById("3Nav").classList.remove("active");
+    document.getElementById("3Con").classList.remove("active");
+    document.getElementById("1Nav").classList.remove("active");
+    document.getElementById("1Con").classList.remove("active");
+
+     }
 
 
-</section>
+
+
+
+}
+
+
+</script>
+
+
+
+
+
+
 
 <?php
 include(dirname(__FILE__)."/partials/donation.php");
@@ -132,7 +203,7 @@ var fvfcontent = '';
 
 function checkusername() {
     ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("nick_name").innerHTML = data["nickname"];
+            document.getElementById("user_name").innerHTML = data["username"];
     });
 }
 function checkbio() {
@@ -140,9 +211,9 @@ function checkbio() {
             document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
     });
 }
-function checklastlogin() {
-    ajax_get('./services/checklastlogin.php?addr=<?php echo $_SESSION["addr"];?>', function(data) {
-            document.getElementById("lastlogin").innerHTML = 'Last Login : ' + data["lastlogin"];
+function checklastseen() {
+    ajax_get('./services/checklastseen.php?addr=<?php echo $_SESSION["addr"];?>', function(data) {
+            document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
     });
 }
 
@@ -151,15 +222,14 @@ function checklastlogin() {
 window.onload = function() {
 checkusername();
 checkbio();
-checklastlogin();
+checklastseen();
 
 
   //load all polls
   ajax_get('./services/showpolls.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
 
       if(data["entries"].length > 0){
-          document.getElementById("page_title").classList.remove("rem");
-          document.getElementById("empty_card").classList.add("rem");
+
 
           data["entries"].forEach(function(obj) {
 
@@ -179,8 +249,18 @@ checklastlogin();
          });//retrieve all user polls
 
       } else {
-         document.getElementById("none").innerHTML = "No Polls made yet. Create a poll";
+        if(pollcontent == ''){
+          pollcontent = '<div class="card" id="empty_card" style="text-align:center;">'
+  +'<div>'
+  +'<h3 class="info_block__accent" style="margin-top: 3em;">No Polls</h3>'
+  +'<div class="text_block" id="none"></div>'
+  +'</div>'
+  +'</div>';
+  polllist.classList.remove("row");
+
+        }
       }
+
 
       polllist.innerHTML = pollcontent;
   });
@@ -189,8 +269,7 @@ checklastlogin();
 ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
 
     if(data["entries"].length > 0){
-        document.getElementById("page_title2").classList.remove("rem");
-        document.getElementById("empty_card2").classList.add("rem");
+
 
         data["entries"].forEach(function(obj) {
 
@@ -210,10 +289,19 @@ ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', f
        });//retrieve all user polls
 
     } else {
-       document.getElementById("none2").innerHTML = "No Proposals made yet. Create a Proposal";
+      if(proposalcontent == ''){
+        proposalcontent = '<div class="card" id="empty_card" style="text-align:center;">'
++'<div>'
++'<h3 class="info_block__accent" style="margin-top: 3em;">No Proposals</h3>'
++'<div class="text_block" id="none"></div>'
++'</div>'
++'</div>';
+proposallist.classList.remove("row");
+      }
     }
 
-    proposallist.innerHTML = proposalcontent;
+
+proposallist.innerHTML = proposalcontent;
 });
 
 
@@ -223,8 +311,7 @@ ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', f
 ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
 
     if(data["entries"].length > 0){
-        document.getElementById("page_title3").classList.remove("rem");
-        document.getElementById("empty_card3").classList.add("rem");
+
 
         data["entries"].forEach(function(obj) {
 
@@ -244,8 +331,17 @@ ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', functi
        });//retrieve all user polls
 
     } else {
-       document.getElementById("none3").innerHTML = "No FvFs made yet. Create a FvF";
+      if(fvfcontent == ''){
+        fvfcontent = '<div class="card" id="empty_card" style="text-align:center;">'
++'<div>'
++'<h3 class="info_block__accent" style="margin-top: 3em;">No FvFs</h3>'
++'<div class="text_block" id="none"></div>'
++'</div>'
++'</div>';
+fvflist.classList.remove("row");
+      }
     }
+
 
     fvflist.innerHTML = fvfcontent;
 });

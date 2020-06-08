@@ -17,13 +17,15 @@ if ($result->num_rows > 0) {
 if(!empty($_SESSION["addr"]))
 {
         if ($_POST['type'] == 'proposal'){
-        $description = nl2br($conn->real_escape_string($_POST['desc']));
+          $pdesc = $conn->real_escape_string($_POST['desc']);
+          $title = $conn->real_escape_string($_POST['title']);
+          $category = $conn->real_escape_string($_POST['category']);
           $option1 = $conn->real_escape_string($_POST['option1']);
           $option2 = $conn->real_escape_string($_POST['option2']);
           $amount = $conn->real_escape_string($_POST['amount']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
            $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
-          $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`) VALUES ('".$description."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."')";
+          $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."')";
 
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`addr` = '".$_SESSION["addr"]."';";

@@ -24,8 +24,10 @@ if(!empty($_SESSION["addr"]))
           $location2 = $conn->real_escape_string($_POST['location2']);
           $endtime= $conn->real_escape_string($_POST['endtime']);
           $pdesc = $conn->real_escape_string($_POST['desc']);
+          $title = $conn->real_escape_string($_POST['title']);
+          $category = $conn->real_escape_string($_POST['category']);
           $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
-          $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."')";
+          $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr` ,  `title`,`category`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."' ,'".$title."','".$category."')";
 
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";

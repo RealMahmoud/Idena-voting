@@ -51,24 +51,36 @@ $owner = $row['addr'];
 
 
           <div class="col-12 col-sm-12">
+
             <div class="card">
+              <h4 style="text-align:center;"class="info_block__accent"><?php echo $row['title']; ?>  - <a href="./polls.php?cat=<?php echo $row['category']; ?>">#<?php echo $row['category']; ?></a></h4>
+
               <div>
                 <div class="row">
 
                   <div class="col-12 col-sm-7 bordered-col">
 
+
+
+
+
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
                             <img class="user-pic user-avatar" src="https://robohash.org/<?php echo  $owner; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
-                            <?php echo  $owner; ?>
+                            <a href="<?php echo $url.'profile.php?address='.$owner;?>"><?php echo $owner; ?></a>
                         </p>
-                        <br>
+
+
+
+
                         <div class="row">
-                        <div class="col-12 col-sm-7 bordered-col">
-                          <h4 class="info_block__accent">Question</h4>
-                            <p><?php echo  nl2br($row['pdesc']); ?></p>
+                      <div class="col-12 col-sm-7 bordered-col">
+                          <h4 class="info_block__accent">Description</h4>
+                          <p><?php echo nl2br($row['pdesc']); ?></p>
                           </div>
                         </div>
+                        <br>
+
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
                         <h4 class="info_block__accent">Start Time</h4>

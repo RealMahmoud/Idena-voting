@@ -25,12 +25,12 @@ include(dirname(__FILE__)."/partials/header.php");
             </div>
         </div>
             <div class="col">
-                <div class="section_main__group">
-                    <h1 class="section_main__title">
-                        <?php echo $_SESSION["addr"]; ?>
-                        <span class="badge badge-secondary" id="nick_name">Loading...</span>
-                    </h1>
-                    </div>
+              <div class="section_main__group">
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
+
+                    <span class="badge badge-secondary" id="user_name">Loading...</span>
+                  </h1>
+                  </div>
                     <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
                         <i class="icon icon--coins"></i><span>Address details on explorer</span>
                     </a>
@@ -83,12 +83,14 @@ include(dirname(__FILE__)."/partials/header.php");
                         </div>
 
                         <h4 class="info_block__accent">Start a new Flip Vs Flips</h4>
-                        <form id="fvf_form" METHOD="POST">
+                        <form id="fvf_form" METHOD="POST" onsubmit="createfvf(); return false;">
                             <div class="input-group" style="width: 60%;">
+                              <p>Title :</p><input name="title" id="title" class="formVal form-control" value="Round 1 Discord FvF"></input><br>
                               <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" value="">Round 1 .. Set vs BroBot</textarea><br>
+                                <p>Category :</p><input name="category" id="category" class="formVal form-control" value="Idena"></input><br>
                           <br><p> Flip location 1 :</p><input type="text"name="location1" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
                             <br><p> Flip location2 :</p><input type="text"name="location2" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
-                              <br>  <p> DeadLine :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
+                              <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="">
 
                             <input type="hidden" name="type" class="formVal" value="fvf"/>
@@ -158,9 +160,8 @@ function toggle(change) {
     }
 }
 function checkusername() {
-    ajax_get('./services/checkusername.php', function(data) {
-            document.getElementById("nick_name").innerHTML = data["nickname"];
-
+    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+            document.getElementById("user_name").innerHTML = data["username"];
     });
 }
 window.onload = function() {

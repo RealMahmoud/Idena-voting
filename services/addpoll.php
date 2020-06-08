@@ -18,7 +18,9 @@ if ($result->num_rows > 0) {
 if(!empty($_SESSION["addr"]))
 {
         if ($_POST['type'] == 'poll'){
-          $description = $conn->real_escape_string($_POST['desc']);
+          $pdesc = $conn->real_escape_string($_POST['desc']);
+          $title = $conn->real_escape_string($_POST['title']);
+          $category = $conn->real_escape_string($_POST['category']);
           $option1 = $conn->real_escape_string($_POST['option1']);
           $option2 = $conn->real_escape_string($_POST['option2']);
           $option3 = $conn->real_escape_string($_POST['option3']);
@@ -27,7 +29,7 @@ if(!empty($_SESSION["addr"]))
           $option6 = $conn->real_escape_string($_POST['option6']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
 
-          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`) VALUES ('".$description."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."')";
+          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."')";
 
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-1 WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";

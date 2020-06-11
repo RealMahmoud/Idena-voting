@@ -11,16 +11,17 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image">
-                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="120"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["username"]; ?>" alt="pic" width="120"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
-                      <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
+                      <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?user='.$_SESSION["username"];?>"><?php echo $_SESSION["username"]; ?></a>
 
-                      <span class="badge badge-secondary" id="user_name">Loading...</span>
-                    </h1>
+
+
                     </div>
+
                     <a class="btn btn-small btn-primary" href="./settings.php">
                         <span>Edit Settings</span>
                     </a>
@@ -39,6 +40,12 @@ include(dirname(__FILE__)."/partials/header.php");
 <br>
 <div class="card">
 <div class="info_block">
+<div class="control-label"  id="address"title="Address">Address : <?php echo $_SESSION['addr'];?></div>
+<br>
+<div class="control-label"  id="Status"title="Status">Status : <?php echo $_SESSION['state'];?></div>
+<br>
+<div class="control-label"  id="Age"title="Age">Age : <?php echo $_SESSION['age'];?></div>
+<br>
 <div class="control-label"  id="bio"title="Bio">Loading...</div>
 <br>
 <div class="control-label"  id="lastseen"title="lastseen">Loading...</div>

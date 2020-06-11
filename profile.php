@@ -1,11 +1,16 @@
 
 <?php
+if(!isset($_GET['user'])){
+  header("location:./404.php");
+}
 session_start();
 include(dirname(__FILE__)."/common/_config.php");
-
 $pagetitle = 'Profile';
 include(dirname(__FILE__)."/partials/header.php");
-$address = $conn->real_escape_string($_GET['address']);
+if(!isset($_GET['user'])){
+  header("location:.././404.php");
+}
+$username = $conn->real_escape_string($_GET['user']);
 
 ?>
 
@@ -14,19 +19,21 @@ $address = $conn->real_escape_string($_GET['address']);
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image">
-                <img src="https://robohash.org/<?php echo $address; ?>" alt="pic" width="120"/>
+                <img src="https://robohash.org/<?php echo $username; ?>" alt="pic" width="120"/>
             </div>
         </div>
             <div class="col">
                 <div class="section_main__group">
-                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$address;?>"><?php echo $address; ?></a>
-                      <span class="badge badge-secondary" id="user_name">Loading...</span>
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?user='.$username;?>"><?php echo $username; ?></a>
+                        
+
                     </h1>
                     </div>
 
 
 
-                    <a class="btn btn-small btn-primary" href="dna://send/v1?address=<?php echo $address?>&amount=10&comment=Tip">
+
+                    <a class="btn btn-small btn-primary" href="dna://send/v1?username=<?php echo $username?>&amount=10&comment=Tip">
                         <span>Donate 10 DNA</span>
                     </a>
                     <a class="btn btn-small btn-primary" id="reachout" href="">
@@ -201,18 +208,14 @@ var proposalcontent = '';
 var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
 
-function checkusername() {
-    ajax_get('./services/checkusername.php?addr=<?php echo $address; ?>', function(data) {
-            document.getElementById("user_name").innerHTML = data["username"];
-    });
-}
+
 function checkbio() {
-    ajax_get('./services/checkbio.php?addr=<?php echo $address; ?>', function(data) {
+    ajax_get('./services/checkbio.php?user=<?php echo $username; ?>', function(data) {
             document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
     });
 }
 function checklastseen() {
-    ajax_get('./services/checklastseen.php?addr=<?php echo $address;?>', function(data) {
+    ajax_get('./services/checklastseen.php?user=<?php echo $username;?>', function(data) {
             document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
     });
 }
@@ -220,13 +223,13 @@ function checklastseen() {
 
 
 window.onload = function() {
-checkusername();
+
 checkbio();
 checklastseen();
 
 
   //load all polls
-  ajax_get('./services/showpolls.php?addr=<?php echo $address; ?>', function(data) {
+  ajax_get('./services/showpolls.php?user=<?php echo $username; ?>', function(data) {
 
       if(data["entries"].length > 0){
 
@@ -266,7 +269,7 @@ checklastseen();
   });
 
 
-ajax_get('./services/showproposals.php?addr=<?php echo $address; ?>', function(data) {
+ajax_get('./services/showproposals.php?user=<?php echo $username; ?>', function(data) {
 
     if(data["entries"].length > 0){
 
@@ -308,7 +311,7 @@ proposallist.innerHTML = proposalcontent;
 
 
 //load all polls
-ajax_get('./services/showfvfs.php?addr=<?php echo $address; ?>', function(data) {
+ajax_get('./services/showfvfs.php?user=<?php echo $username; ?>', function(data) {
 
     if(data["entries"].length > 0){
 

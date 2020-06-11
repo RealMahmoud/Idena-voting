@@ -91,8 +91,8 @@ include(dirname(__FILE__)."/partials/header.php");
                           <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">
-                            <br><p> Required Amount :</p><input type="text"name="amount" class="formVal form-control" value="1000">
-                            <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="<?php echo $_SESSION["addr"];?>">
+                            <br><p> Required Amount :</p><input type="text"name="amount" class="formVal form-control" value="100">
+                            <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="">
                             <input type="hidden" name="type" class="formVal" value="proposal"/>
                             </div>
 

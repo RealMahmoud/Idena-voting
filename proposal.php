@@ -42,7 +42,12 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data  Of each row
   while($row = $result->fetch_assoc()) {
-$owner = $row['addr'];
+
+
+    $resultf = $conn->query("SELECT `username` FROM `accounts` WHERE `address` = '".$row['addr']."';");
+    $rowf = $resultf->fetch_row();
+
+$owner = $rowf[0];
 ?>
 
 
@@ -62,7 +67,7 @@ $owner = $row['addr'];
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
                             <img class="user-pic user-avatar" src="https://robohash.org/<?php echo  $owner; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
-                              <a href="<?php echo $url.'profile.php?address='.$owner;?>"><?php echo $owner; ?></a>
+                              <a href="<?php echo $url.'profile.php?user='.$owner;?>"><?php echo $owner; ?></a>
                         </p>
 
 
@@ -813,7 +818,7 @@ window.onload = function()
             if(document.getElementById("checker") == null){
 
             }else {
-            document.getElementById("vote_container").innerHTML = '<br><h3 style="text-align: center;">You have voted "'+data["vote"]+'".</h3>';
+            document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
             }
 
         }

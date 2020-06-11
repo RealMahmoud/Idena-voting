@@ -2,7 +2,7 @@
 session_start();
 
 include(dirname(__FILE__)."/common/protected.php");
-$pagetitle = 'Settings Page';
+$pagetitle = 'Settings';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 
@@ -21,14 +21,14 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image" style="width: 7rem;height: 7rem;">
-                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="80"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["username"]; ?>" alt="pic" width="80"/>
             </div>
         </div>
             <div class="col">
               <div class="section_main__group">
-                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?user='.$_SESSION["username"];?>"><?php echo $_SESSION["username"]; ?></a>
 
-                    <span class="badge badge-secondary" id="user_name">Loading...</span>
+
                   </h1>
                   </div>
                     <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
@@ -63,6 +63,9 @@ include(dirname(__FILE__)."/partials/header.php");
                         <br/>
                         <h4 class="info_block__accent">Current Secret Token</h4>
                         <p>  <?php echo $_SESSION["password"];?></p>
+                        <br/>
+                        <h4 class="info_block__accent">Current Hidden Status</h4>
+                        <p>  <?php echo $_SESSION["hidden"];?></p>
 
 
 
@@ -114,7 +117,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeBio(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="bio" class="formVal form-control" value="" placeholder="Bio"/>
+                                <input type="text" name="bio" class="formVal form-control" value="" placeholder="Your new Bio goes here"/>
                             </div>
 
                             <div class="input-group">
@@ -125,8 +128,40 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                         </form>
+                        <br>
 
+                        <h4 class="info_block__accent">Change Account Hidden Status : </h4>
 
+                        <form id="name_form" METHOD="POST" onsubmit="changeH(); return false;">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="hidden" class="formVal form-control" value="" placeholder="Please type true or false"/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeH(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit"> Change</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
+                        <br>
+
+                        <h4 class="info_block__accent">Add Credits : </h4>
+
+                        <form id="name_form" METHOD="POST" onsubmit="addCredits(); return false;">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="amount" class="formVal form-control" id='amount'value="" placeholder="Please type the amount"/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="addCredits(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit"> Add</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
 
 
                   </div>
@@ -221,6 +256,12 @@ function changeBio()
             document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
         }
     });
+}
+
+function addCredits()
+{
+    setTimeout(() => {  window.location.replace("dna://send/v1?address=0xa27da2afe2c8e9866ea143b7f495868346090007&amount="+document.getElementById("amount").value+"&comment=<?php echo $_SESSION['addr']; ?>"); }, 500);
+
 }
 
 

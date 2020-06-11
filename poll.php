@@ -932,7 +932,7 @@ function changeVote()
             if(document.getElementById("checker") == null){
 
             }else {
-            document.getElementById("vote_container").innerHTML = '<br><h3 style="text-align: center;">You have voted "'+data["vote"]+'".</h3>';
+            document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
             }
 
         }

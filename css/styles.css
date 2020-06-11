@@ -116,7 +116,8 @@ select {
 	font-weight: 500;
 	color: #333;
 	padding: 9px;
-	background: #f0f0f0;
+  border-radius: 4px !important;
+	background: #dadada6b;
 }
 
 .mini-card {
@@ -453,7 +454,7 @@ h1, .h1 {
 }
 
 .section_main__title {
-  
+
     margin-bottom: 0.5625rem;
 }
 

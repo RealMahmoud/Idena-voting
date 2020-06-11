@@ -11,7 +11,7 @@ function pubKeyToAddress($pubkey) {
 
 function verifySignature($message, $signature, $address) {
    $rlp = new RLP;
-    $hash   = Keccak::hash(hex2bin("ab".bin2hex($message)), 256);
+    $hash   =  Keccak::hash( pack("H*", Keccak::hash(pack("H*", bin2hex($message)), 256))  ,256);
     $sign   = ["r" => substr($signature, 2, 64),
                "s" => substr($signature, 66, 64)];
     $recid  = ord(hex2bin(substr($signature, 130, 2)));
@@ -25,15 +25,16 @@ function verifySignature($message, $signature, $address) {
 
 $json = file_get_contents('php://input');
 $data = (array) json_decode($json);
+if (!isset($data['token'])){
+die();
+};
+if (!isset($data['signature'])){
+die();
+};
 $dataToken = $conn->real_escape_string($data['token']);
 $dataSig = $conn->real_escape_string($data['signature']);
 
-if (empty($dataToken)){
-die();
-};
-if (empty($dataSig)){
-die();
-};
+
 
 $sql = "SELECT * FROM `auth` WHERE `token` = '".$dataToken."' LIMIT 1;";
 $result = $conn->query($sql);
@@ -47,7 +48,7 @@ if ($result->num_rows > 0) {
     $signature = $data['signature'];
 
     if (verifySignature($message, $signature, $address)) {
-      $sql = "UPDATE `auth` SET `sig` = '"$dataSig."', `authenticated` = 1 WHERE `token` = '".$dataToken."' LIMIT 1;";
+      $sql = "UPDATE `auth` SET `sig` = '".$dataSig."', `authenticated` = 1 WHERE `token` = '".$dataToken."' LIMIT 1;";
 
       $conn->query($sql);
 

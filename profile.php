@@ -64,22 +64,22 @@ $address = $conn->real_escape_string($_GET['address']);
                <ul class="nav nav-tabs" role="tablist">
                  <li class="nav-item">
                     <a onclick="Change('1');" id='1Nav'class="nav-link active">
-                       <h3>My Polls</h3>
+                       <h3> Polls</h3>
                     </a>
                  </li>
                   <li class="nav-item">
                      <a onclick="Change('2');" id='2Nav' class="nav-link ">
-                        <h3>My Proposals</h3>
+                        <h3> Proposals</h3>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a onclick="Change('3');" id='3Nav' class="nav-link ">
-                        <h3>My FvFs</h3>
+                        <h3> FvFs</h3>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a onclick="Change('4');" id='4Nav'class="nav-link ">
-                        <h3>My Pages</h3>
+                        <h3> Pages</h3>
                      </a>
                   </li>
 

@@ -25,12 +25,12 @@ include(dirname(__FILE__)."/partials/header.php");
             </div>
         </div>
             <div class="col">
-                <div class="section_main__group">
-                    <h1 class="section_main__title">
-                        <?php echo $_SESSION["addr"]; ?>
-                        <span class="badge badge-secondary" id="nick_name">Loading...</span>
-                    </h1>
-                    </div>
+              <div class="section_main__group">
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
+
+                    <span class="badge badge-secondary" id="user_name">Loading...</span>
+                  </h1>
+                  </div>
                     <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
                         <i class="icon icon--coins"></i><span>Address details on explorer</span>
                     </a>
@@ -237,7 +237,7 @@ function toggle(change) {
 
 function checkusername() {
     ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("nick_name").innerHTML = data["username"];
+            document.getElementById("user_name").innerHTML = data["username"];
     });
 }
 window.onload = function() {

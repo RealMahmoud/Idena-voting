@@ -112,7 +112,6 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
 
-
       </div>
    </div>
 </section>

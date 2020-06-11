@@ -69,10 +69,16 @@
     background-color: #191c1e !important;
 }
 
+.darkmode .mini-card .vip {
+    background-color: #FFD700 !important;
+}
+
 .darkmode .mini-card {
     color: #d4d4d4 !important;
     background-color: #292c2e !important;
 }
+
+
 
 .darkmode .header {
     background: #393c3e !important;
@@ -106,7 +112,7 @@
 .darkmode .btn-icon:hover {
     color: #fff !important;
 }
- 
+
 
 .darkmode hr {
     border-bottom: 1px solid #444 !important;
@@ -200,11 +206,11 @@
 
 .darkmode .table td {
     color: #e4e4e4 !important;
-    border-top: solid 1px #444 !important;   
+    border-top: solid 1px #444 !important;
 }
 
 .darkmode .nav-link.active {
-    color: #efefef !important;
+    color: #ffe4a5 !important;
 }
 
 .darkmode .table td a {
@@ -227,7 +233,7 @@
 }
 
 /** for button on address page **/
-.darkmode .main .btn-nav, .darkmode .main .btn-secondary {
+.darkmode .main .btn-nav, .darkmode .main .btn-secondary  {
     background-color: #33373a !important;
     color: #50b6ff !important;
 }

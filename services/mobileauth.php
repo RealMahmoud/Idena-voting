@@ -14,6 +14,20 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 
   $_SESSION["addr"] = $row['address'];
+  $_SESSION["state"] = $row['state'];
+//score  $_SESSION["score"] = $row['score'];
+$_SESSION["password"] = $row['password'];
+$_SESSION["username"] = $row['username'];
+if($row['hidden'] == 1 ){
+
+    $_SESSION["hidden"] = 'True';
+}else{
+  $_SESSION["hidden"] = 'False';
+}
+
+  $_SESSION["credits"] = $row['credits'];
+  $_SESSION["age"] = $row['age'];
+  
  echo '{"success":true}';
 
 

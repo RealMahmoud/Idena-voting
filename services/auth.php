@@ -52,14 +52,14 @@ if ($result->num_rows > 0) {
 
       $conn->query($sql);
 
-        $sql1 = "SELECT `username` FROM `accounts` WHERE `address` = '".$address."' LIMIT 1;";
+        $sql1 = "SELECT * FROM `accounts` WHERE `address` = '".$address."' LIMIT 1;";
         $result_acct = $conn->query($sql1);
 
         if ($result_acct->num_rows == 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
                 $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `state`, `username`,`password`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'zero', '".mb_strimwidth($address, 0, 10, '')."','".substr(str_shuffle("qwertyuiopasdfghjklzxcvbnm"),0,20)."');";
+    ('".$address."', '".$timestamp."', 0, 'zero', '".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,15)."','".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,50)."');";
 
                 $result2 = $conn->query($sql2);
         }

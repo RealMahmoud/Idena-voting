@@ -5,17 +5,17 @@ header('Content-Type: application/json');
 
 $username = $conn->real_escape_string($_POST['username']);
 
-if(!empty($username) && !empty($_SESSION["addr"]))
+if(!empty($username))
 {
-    $sql1 = "SELECT `username` FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+    $sql1 = "SELECT `username` FROM `accounts` WHERE `username` = '".$username."' LIMIT 1;";
     $result_acct = $conn->query($sql1);
 
     if ($result_acct->num_rows == 0) {
-
+      $sql = "UPDATE `accounts` SET `username` = '".$username."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
+      $result = $conn->query($sql);
+      echo '{"success":true}';
     } else {
-            $sql = "UPDATE `accounts` SET `username` = '".$username."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
-            $result = $conn->query($sql);
-            echo '{"success":true}';
+              echo '{"success":false}';
     }
 } else {
     echo '{"success":false}';

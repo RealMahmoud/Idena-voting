@@ -50,11 +50,12 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
 
 
         <div class="tab-pane active" id="1Con">
-          <div id="none1">  <div class="card" id="empty_card" style="text-align:center;height:60vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Running Polls</h3>
-                            <div class="text_block" id="none">No Polls Available</div>
-                         </div>
+          <div id="none1">
+            <div class="card" id="empty_card" style="text-align:center;height:60vh">
+            <div>
+            <h3 class="info_block__accent" style="margin-top: 3em;">Running Polls</h3>
+            <div class="text_block" id="none">No Polls Available</div>
+            </div>
             </div>
           </div>
           <div class="row row-fluid" id="poll-list-running-vip">

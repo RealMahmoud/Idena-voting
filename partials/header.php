@@ -128,7 +128,7 @@ Polls
           </li>
           <li class="nav-item header_nav__item">
             <a class="nav-link header_nav__link appslink" href="./fvfs.php" title="Flip Vs Flip" descriptioncontent="Flip Vs Flip">
-              FvF
+              FvFs
             </a>
           </li>
 

@@ -38,9 +38,15 @@ $sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
+  // output data  Of each row
   while($row = $result->fetch_assoc()) {
-$owner = $row['addr'];
+
+
+    $resultf = $conn->query("SELECT `username`,`address` FROM `accounts` WHERE `address` = '".$row['addr']."';");
+    $rowf = $resultf->fetch_row();
+
+$owner = $rowf[0];
+$owneraddress = $rowf[1];
 ?>
 
 
@@ -67,7 +73,7 @@ $owner = $row['addr'];
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
                             <img class="user-pic user-avatar" src="https://robohash.org/<?php echo  $owner; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
-                            <a href="<?php echo $url.'profile.php?address='.$owner;?>"><?php echo $owner; ?></a>
+                            <a href="<?php echo $url.'profile.php?user='.$owner;?>"><?php echo $owner; ?></a>
                         </p>
 
 
@@ -90,10 +96,10 @@ $owner = $row['addr'];
                       <h4 class="info_block__accent">End Time</h4>
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
-                    <?php
 
-if(isset($_SESSION["addr"])){
-  if ($owner == $_SESSION["addr"]){
+
+                    <?php if(isset($_SESSION["addr"])){
+                      if ($owneraddress == $_SESSION["addr"]){
 echo '<div class="col-4 col-sm-4 bordered-col">
   <h4 class="info_block__accent">Administration</h4>
   <div class="input-group">
@@ -556,12 +562,15 @@ echo '<div id="checker"></div>
                                    <div>
                                       <div class="row">
                                          <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Humans And Verified</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartHAndV" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
+                                           <h4 class="info_block__accent">Humans And Verified</h4>
+                                           <div class="row"style="width:50%; height:50%">
+                                            <div style="width:50%; height:50%">
+                                            <canvas id="ChartHAndV" width="100%" height="100%"></canvas>
                                             </div>
+                                            <div style="width:50%; height:50%">
+                                            <canvas id="BarHAndV" width="100%" height="100%"></canvas>
+                                          </div>
+                                          </div>
                                          </div>
                                       </div>
                                    </div>
@@ -728,6 +737,57 @@ echo '<div id="checker"></div>
               window.chartColors.red,
             ],borderWidth: 1}]},});
     </script>
+
+
+
+
+
+<script>
+var ctx = document.getElementById('BarHAndV').getContext('2d');
+window.myMixedChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Epoch 1', 'Epoch 2', 'Epoch 4','Epoch 7','Epoch 10','Epoch 15','Epoch 20','Epoch 25','Epoch 30','Epoch 35','Epoch 40','Epoch 45'],
+    datasets: [{
+      type: 'bar',
+      label: 'Voters',
+      backgroundColor: window.chartColors.yellow,
+      data: [
+1,1,1,1,1,1,1,1,1,1,1,1
+
+      ],
+      borderColor: 'white',
+      borderWidth: 2
+    } ]
+
+  },
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'Total Voters By Age'
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+    }
+  }
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <script>
@@ -954,7 +1014,7 @@ window.onload = function()
             if(document.getElementById("checker") == null){
 
             }else {
-            document.getElementById("vote_container").innerHTML = '<p>You have voted "'+data["vote"]+'".</p>';
+            document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
             }
 
         }

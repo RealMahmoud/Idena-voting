@@ -38,12 +38,16 @@ $id = $conn->real_escape_string($_GET["id"]);
 $sql = "SELECT * FROM `fvfs` WHERE `id` = '" . $id . "' LIMIT 1;";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0)
-{
-    // output data  Of each row
-    while ($row = $result->fetch_assoc())
-    {
-        $owner = $row['addr'];
+if ($result->num_rows > 0) {
+  // output data  Of each row
+  while($row = $result->fetch_assoc()) {
+
+
+    $resultf = $conn->query("SELECT `username`,`address` FROM `accounts` WHERE `address` = '".$row['addr']."';");
+    $rowf = $resultf->fetch_row();
+
+$owner = $rowf[0];
+$owneraddress = $rowf[1];
 ?>
 
 
@@ -89,7 +93,7 @@ if ($result->num_rows > 0)
 
                     <?php if (isset($_SESSION["addr"]))
         {
-            if ($owner == $_SESSION["addr"])
+            if ($owneraddress == $_SESSION["addr"])
             {
                 echo '<div class="col-4 col-sm-4 bordered-col">
                       <h4 class="info_block__accent">Administration</h4>

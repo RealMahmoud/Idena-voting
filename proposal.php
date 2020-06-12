@@ -44,10 +44,11 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
 
 
-    $resultf = $conn->query("SELECT `username` FROM `accounts` WHERE `address` = '".$row['addr']."';");
+    $resultf = $conn->query("SELECT `username`,`address` FROM `accounts` WHERE `address` = '".$row['addr']."';");
     $rowf = $resultf->fetch_row();
 
 $owner = $rowf[0];
+$owneraddress = $rowf[1];
 ?>
 
 
@@ -89,7 +90,7 @@ $owner = $rowf[0];
                       <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
                     <?php if(isset($_SESSION["addr"])){
-                      if ($owner == $_SESSION["addr"]){
+                      if ($owneraddress == $_SESSION["addr"]){
                     echo '<div class="col-4 col-sm-4 bordered-col">
                       <h4 class="info_block__accent">Administration</h4>
                       <div class="input-group">
@@ -799,6 +800,16 @@ function changeVote()
             document.getElementById("warning").classList.remove("rem");
             document.getElementById("submit").classList.add("disabled");
             document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
+        }
+    });
+    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
+        if(data["status"]=='true'){
+            if(document.getElementById("checker") == null){
+
+            }else {
+            document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
+            }
+
         }
     });
 }

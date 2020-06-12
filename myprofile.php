@@ -1,7 +1,6 @@
 <?php
 session_start();
 include(dirname(__FILE__)."/common/protected.php");
-
 $pagetitle = 'My Profile';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
@@ -25,6 +24,9 @@ include(dirname(__FILE__)."/partials/header.php");
                     <a class="btn btn-small btn-primary" href="./settings.php">
                         <span>Edit Settings</span>
                     </a>
+                    <a class="btn btn-small btn-primary" href="./profile.php">
+                        <span>Public Profile</span>
+                    </a>
 
                     <a class="btn btn-small btn-primary" href="./create-poll.php">
                         <span>Create New Poll</span>
@@ -36,15 +38,16 @@ include(dirname(__FILE__)."/partials/header.php");
                     <a class="btn btn-small btn-primary" href="./create-fvf.php">
                         <span>Create New FvF</span>
                     </a>
+
 <br>
 <br>
 <div class="card">
 <div class="info_block">
-<div class="control-label"  id="address"title="Address">Address : <?php echo $_SESSION['addr'];?></div>
+<div class="control-label"  id="address"title="Address">Loading...</div>
 <br>
-<div class="control-label"  id="Status"title="Status">Status : <?php echo $_SESSION['state'];?></div>
+<div class="control-label"  id="state"title="Status">Loading...</div>
 <br>
-<div class="control-label"  id="Age"title="Age">Age : <?php echo $_SESSION['age'];?></div>
+<div class="control-label"  id="age"title="Age">Loading...</div>
 <br>
 <div class="control-label"  id="bio"title="Bio">Loading...</div>
 <br>
@@ -207,32 +210,44 @@ var proposalcontent = '';
 var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
 
-function checkusername() {
-    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("user_name").innerHTML = data["username"];
-    });
-}
+
 function checkbio() {
-    ajax_get('./services/checkbio.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+    ajax_get('./services/checkbio.php?user=<?php echo $_SESSION["username"]; ?>', function(data) {
             document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
     });
 }
 function checklastseen() {
-    ajax_get('./services/checklastseen.php?addr=<?php echo $_SESSION["addr"];?>', function(data) {
+    ajax_get('./services/checklastseen.php?user=<?php echo $_SESSION["username"];?>', function(data) {
             document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
+    });
+}
+function checkaddress() {
+    ajax_get('./services/checkaddress.php?user=<?php echo $_SESSION["username"];?>', function(data) {
+            document.getElementById("address").innerHTML = 'Address : ' + data["address"];
+    });
+}
+function checkstate() {
+    ajax_get('./services/checkstate.php?user=<?php echo $_SESSION["username"];?>', function(data) {
+            document.getElementById("state").innerHTML = 'Status : ' + data["state"];
+    });
+}
+function checkage() {
+    ajax_get('./services/checkage.php?user=<?php echo $_SESSION["username"];?>', function(data) {
+            document.getElementById("age").innerHTML = 'Age : ' + data["age"];
     });
 }
 
 
-
 window.onload = function() {
-checkusername();
+checkage();
+checkstate();
+checkaddress();
 checkbio();
 checklastseen();
 
 
   //load all polls
-  ajax_get('./services/showpolls.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+  ajax_get('./services/getPollsUser.php?user=<?php echo $_SESSION["username"]; ?>', function(data) {
 
       if(data["entries"].length > 0){
 
@@ -272,7 +287,7 @@ checklastseen();
   });
 
 
-ajax_get('./services/showproposals.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+ajax_get('./services/getProposalsUser.php?user=<?php echo $_SESSION["username"]; ?>', function(data) {
 
     if(data["entries"].length > 0){
 
@@ -314,7 +329,7 @@ proposallist.innerHTML = proposalcontent;
 
 
 //load all polls
-ajax_get('./services/showfvfs.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+ajax_get('./services/getFvfsUser.php?user=<?php echo $_SESSION["username"]; ?>', function(data) {
 
     if(data["entries"].length > 0){
 

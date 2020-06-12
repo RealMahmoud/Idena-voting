@@ -50,7 +50,7 @@ include(dirname(__FILE__)."/partials/header.php");
               <div>
                 <div class="row">
 
-                    <div class="col-12 col-sm-3 bordered-col">
+                    <div class="col-12 col-sm-4 bordered-col">
 
                       <h4 class="info_block__accent">Credits</h4>
                       <p><?php echo $_SESSION["credits"]; ?></p>
@@ -71,7 +71,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                   </div>
 
-                  <div class="col-12 col-sm-9 bordered-col">
+                  <div class="col-12 col-sm-8 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
@@ -80,7 +80,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Change username</h4>
                         <form id="name_form" METHOD="POST"onsubmit="changeName(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="username" class="formVal form-control" value="" placeholder="your new username goes here..."/>
+                                <input type="text" name="username" class="formValUsername form-control" value="" placeholder="your new username goes here..."/>
                             </div>
 
                             <div class="input-group">
@@ -97,7 +97,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeST(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="password" class="formVal form-control" value="" placeholder="Please type confirm"/>
+                                <input type="text" name="password" class="formValST form-control" value="" placeholder="Please type confirm"/>
                             </div>
 
                             <div class="input-group">
@@ -117,7 +117,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeBio(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="bio" class="formVal form-control" value="" placeholder="Your new Bio goes here"/>
+                                <input type="text" name="bio" class="formValBio form-control" value="" placeholder="Your new Bio goes here"/>
                             </div>
 
                             <div class="input-group">
@@ -132,13 +132,13 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <h4 class="info_block__accent">Change Account Hidden Status : </h4>
 
-                        <form id="name_form" METHOD="POST" onsubmit="changeH(); return false;">
+                        <form id="name_form" METHOD="POST" onsubmit="ChangeHidden(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="hidden" class="formVal form-control" value="" placeholder="Please type true or false"/>
+                                <input type="text" name="hidden" class="formValHidden form-control" value="" placeholder="Please type true or false"/>
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeH(); return false;" style="margin-top: 1em;">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
@@ -151,7 +151,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="addCredits(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="amount" class="formVal form-control" id='amount'value="" placeholder="Please type the amount"/>
+                                <input type="text" name="amount" class="form-control" id='amount'value="" placeholder="Please type the amount"/>
                             </div>
 
                             <div class="input-group">
@@ -187,7 +187,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 function changeName()
 {
     toggle(true);
-    var elements = document.getElementsByClassName("formVal");
+    var elements = document.getElementsByClassName("formValUsername");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
     {
@@ -200,7 +200,7 @@ function changeName()
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
             document.getElementById("success").innerHTML = '&#x2705; username changed successfully';
-            checkusername();
+
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");
@@ -208,10 +208,60 @@ function changeName()
         }
     });
 }
+
+function changedonate()
+{
+    toggle(true);
+    var elements = document.getElementsByClassName("formValDonate");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+
+    ajax_post('./services/changedonate.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Donate Address changed successfully';
+
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+        }
+    });
+}
+function ChangeHidden()
+{
+    toggle(true);
+    var elements = document.getElementsByClassName("formValHidden");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+
+    ajax_post('./services/changehidden.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Hidden Status changed successfully';
+
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+        }
+    });
+}
+
 function changeST()
 {
     toggle(true);
-    var elements = document.getElementsByClassName("formVal");
+    var elements = document.getElementsByClassName("formValST");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
     {
@@ -224,7 +274,7 @@ function changeST()
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
             document.getElementById("success").innerHTML = '&#x2705; The Secret Token changed successfully';
-            checkusername();
+
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");
@@ -236,7 +286,7 @@ function changeST()
 function changeBio()
 {
     toggle(true);
-    var elements = document.getElementsByClassName("formVal");
+    var elements = document.getElementsByClassName("formValBio");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
     {
@@ -249,7 +299,7 @@ function changeBio()
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
             document.getElementById("success").innerHTML = '&#x2705; Bio changed successfully';
-            checkusername();
+
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");
@@ -282,7 +332,7 @@ function checkusername() {
     });
 }
 window.onload = function() {
-checkusername();
+
 }
 </script>
 <?php

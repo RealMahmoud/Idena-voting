@@ -38,12 +38,15 @@ include(dirname(__FILE__)."/partials/header.php");
                     <a class="btn btn-small btn-primary" id='RO'href="">
                         <span>Reach Out</span>
                     </a>
+                    <a class="btn btn-small btn-primary" id="address1" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
+                        <i class="icon icon--coins"></i><span>Address details on explorer</span>
+                    </a>
 
 <br>
 <br>
 <div class="card">
 <div class="info_block">
-<div class="control-label"  id="address"title="Address">Loading...</div>
+<div class="control-label"  id="address2"title="Address">Loading...</div>
 <br>
 <div class="control-label"  id="state"title="Status">Loading...</div>
 <br>
@@ -228,7 +231,14 @@ function checklastseen() {
 }
 function checkaddress() {
     ajax_get('./services/checkaddress.php?user=<?php echo $usernamea;?>', function(data) {
-            document.getElementById("address").innerHTML = 'Address : ' + data["address"];
+      if(data["address"] == ' - '){
+        document.getElementById("address1").classList.add("rem");
+        document.getElementById("address2").classList.add("rem");
+      }else{
+        document.getElementById("address1").href = 'https://scan.idena.io/address/' + data["address"];
+        document.getElementById("address2").innerHTML = 'Address : ' + data["address"];
+      }
+
     });
 }
 function checkstate() {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea52cce37e99fc414e906b520a28c0e7",
+    "content-hash": "8fda7d239f8a525c8995e40270caec02",
     "packages": [
         {
             "name": "kornrunner/keccak",
@@ -322,42 +322,6 @@
                 }
             ],
             "time": "2020-03-09T19:04:49+00:00"
-        },
-        {
-            "name": "web3p/rlp",
-            "version": "0.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web3p/rlp.git",
-                "reference": "bc9e29f7a1f658408f25322ea21ff5687a851470"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web3p/rlp/zipball/bc9e29f7a1f658408f25322ea21ff5687a851470",
-                "reference": "bc9e29f7a1f658408f25322ea21ff5687a851470",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Web3p\\RLP\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "sc0Vu",
-                    "email": "alk03073135@gmail.com"
-                }
-            ],
-            "description": "Recursive Length Prefix Encoding in PHP.",
-            "time": "2019-11-23T08:20:30+00:00"
         }
     ],
     "packages-dev": [],

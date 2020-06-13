@@ -15,10 +15,6 @@ class ComposerStaticInitf4c1ce772059189868f2fc87080cc4d4
         array (
             'kornrunner\\' => 11,
         ),
-        'W' => 
-        array (
-            'Web3p\\RLP\\' => 10,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -42,10 +38,6 @@ class ComposerStaticInitf4c1ce772059189868f2fc87080cc4d4
         'kornrunner\\' => 
         array (
             0 => __DIR__ . '/..' . '/kornrunner/keccak/src',
-        ),
-        'Web3p\\RLP\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/web3p/rlp/src',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (

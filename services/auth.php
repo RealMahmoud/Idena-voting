@@ -10,7 +10,6 @@ function pubKeyToAddress($pubkey) {
 }
 
 function verifySignature($message, $signature, $address) {
-   $rlp = new RLP;
     $hash   =  Keccak::hash( pack("H*", Keccak::hash(pack("H*", bin2hex($message)), 256))  ,256);
     $sign   = ["r" => substr($signature, 2, 64),
                "s" => substr($signature, 66, 64)];

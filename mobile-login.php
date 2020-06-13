@@ -49,7 +49,7 @@ function MobileLogin()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/mobileauth.php', formData, function(data) {
+    ajax_post('./services/mobileAuth.php', formData, function(data) {
 
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");

@@ -9,7 +9,7 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./myprofile.php">
+          			<a class="btn btn-small btn-nav" href="./profile.php">
             		<i class="icon icon--thin_arrow_left"></i>
             		<span id="back">Back to Profile</span>
             		</a>
@@ -162,7 +162,7 @@ function toggle(change) {
     }
 }
 function checkusername() {
-    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+    ajax_get('./services/checkUsername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
             document.getElementById("user_name").innerHTML = data["username"];
     });
 }

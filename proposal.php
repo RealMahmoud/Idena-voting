@@ -1798,7 +1798,7 @@ function changeVote()
           document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
       }
   });
-  ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
+  ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
       if(data["status"]=='true'){
           if(document.getElementById("checker") == null){
 
@@ -1811,7 +1811,7 @@ function changeVote()
 }
 function Delete(id)
 {
-ajax_get('./services/deleteproposal.php?id='+id, function(data) {
+ajax_get('./services/deleteProposal.php?id='+id, function(data) {
 
 
     window.location.replace("<?php echo $url;?>proposals.php");
@@ -1843,7 +1843,7 @@ loadBarN();
 loadBarHAndV();
 loadBarAll();
 
-  ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
+  ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
       if(data["status"]=='true'){
           if(document.getElementById("checker") == null){
 

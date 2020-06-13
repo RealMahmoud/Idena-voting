@@ -1825,7 +1825,7 @@ function changeVote()
           document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
       }
   });
-  ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
+  ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
       if(data["status"]=='true'){
           if(document.getElementById("checker") == null){
 
@@ -1838,7 +1838,7 @@ function changeVote()
 }
 function Delete(id)
 {
-ajax_get('./services/deletefvf.php?id='+id, function(data) {
+ajax_get('./services/deleteFvf.php?id='+id, function(data) {
 
 
     window.location.replace("<?php echo $url;?>fvfs.php");
@@ -1870,7 +1870,7 @@ loadBarN();
 loadBarHAndV();
 loadBarAll();
 
-  ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
+  ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
       if(data["status"]=='true'){
           if(document.getElementById("checker") == null){
 

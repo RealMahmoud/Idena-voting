@@ -149,10 +149,15 @@ Polls
               </a>
 
               <div class="dropdown-menu" aria-hidden="true" role="menu">
-                    <li>
-                        <a class="btn btn-small" href="./myprofile.php"><span>My Profile</span></a>
-                    </li>
-                    <li class="brake"></li>
+                <li class="brake"></li>
+                <li>
+                    <a class="btn btn-small" href="./profile.php"><span>My Profile</span></a>
+                </li>
+                <li class="brake"></li>
+                <li>
+                    <a class="btn btn-small" href="./addCredits.php"><span>Add Credits</span></a>
+                </li>
+                <li class="brake"></li>
                     <li>
                         <a class="btn btn-small" href="./settings.php"><span>Settings</span></a>
                     </li>
@@ -160,6 +165,7 @@ Polls
                     <li>
                         <a class="btn btn-small" href="./logout.php"><span>Log out</span></a>
                     </li>
+
               </div>
 
 

@@ -6,7 +6,15 @@ $usernamea = $_GET['user'];
 }
 if(empty($usernamea) && isset($_SESSION['username'])){
   $usernamea = $_SESSION['username'];
+  $owner = true;
 }
+  if(isset($usernamea) && isset($_SESSION['username'])){
+    if($usernamea==$_SESSION['username']){
+      $owner = true;
+    }
+  }
+
+
 if(empty($usernamea)){
   header("location:.././404.php");
 }
@@ -31,22 +39,37 @@ include(dirname(__FILE__)."/partials/header.php");
 
                     </div>
 
+                   <?php if(!isset($owner)){
+                     echo '  <a class="btn btn-small btn-primary" href="'.$url.'donate.php?user='.$usernamea.'">
+                           <span>Donate</span>
+                       </a>
+                       <a class="btn btn-small btn-primary" id="RO"href="'.$url.'reachout.php?user='.$usernamea.'">
+                           <span>Reach Out</span>
+                       </a>';
 
-                    <a class="btn btn-small btn-primary" href="<?php echo $url.'donate.php?user='.$usernamea;?>">
-                        <span>Donate</span>
-                    </a>
-                    <a class="btn btn-small btn-primary" id='RO'href="">
-                        <span>Reach Out</span>
-                    </a>
-                    <a class="btn btn-small btn-primary" id="address1" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
-                        <i class="icon icon--coins"></i><span>Address details on explorer</span>
-                    </a>
+                 }else{
+echo '  <a class="btn btn-small btn-primary" href="./settings.php">
+      <span>Edit Settings</span>
+  </a>
+  <a class="btn btn-small btn-primary" href="./create-poll.php">
+      <span>Create New Poll</span>
+  </a>
+
+  <a class="btn btn-small btn-primary" href="./create-proposal.php">
+      <span>Create New Proposal</span>
+  </a>
+  <a class="btn btn-small btn-primary" href="./create-fvf.php">
+      <span>Create New FvF</span>
+  </a>';
+}?>
+
+
 
 <br>
 <br>
 <div class="card">
 <div class="info_block">
-<div class="control-label"  id="address2"title="Address">Loading...</div>
+<h4 class="control-label"  id="address2"title="Address">Loading...</h4>
 <br>
 <div class="control-label"  id="state"title="Status">Loading...</div>
 <br>
@@ -212,12 +235,6 @@ var proposalcontent = '';
 
 var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
-function checkreachout() {
-    ajax_get('./services/checkReachout.php?user=<?php echo $usernamea; ?>', function(data) {
-            document.getElementById("RO").href =  data["reachout"];
-    });
-}
-
 
 function checkbio() {
     ajax_get('./services/checkBio.php?user=<?php echo $usernamea; ?>', function(data) {
@@ -232,17 +249,20 @@ function checklastseen() {
 function checkaddress() {
     ajax_get('./services/checkAddress.php?user=<?php echo $usernamea;?>', function(data) {
       if(data["address"] == ' - '){
-        document.getElementById("address1").classList.add("rem");
-        document.getElementById("address2").classList.add("rem");
+
+        document.getElementById("address2").innerHTML = 'Address : - ';
       }else{
-        document.getElementById("address1").href = 'https://scan.idena.io/address/' + data["address"];
-        document.getElementById("address2").innerHTML = 'Address : ' + data["address"];
+
+
+
+        document.getElementById("address2").innerHTML = 'Address : <a href="https://scan.idena.io/identity/' + data["address"] + '"> '+data["address"]+'</a>';
+
       }
 
     });
 }
 function checkstate() {
-    ajax_get('./services/checkstate.php?user=<?php echo $usernamea;?>', function(data) {
+    ajax_get('./services/checkState.php?user=<?php echo $usernamea;?>', function(data) {
             document.getElementById("state").innerHTML = 'Status : ' + data["state"];
     });
 }
@@ -255,7 +275,7 @@ function checkage() {
 
 window.onload = function() {
 checkage();
-checkreachout();
+
 checkstate();
 checkaddress();
 checkbio();

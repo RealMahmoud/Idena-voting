@@ -7,7 +7,7 @@ if(isset($_GET['user'])){
 }else{
   $username = '';
 }
-$sql1 = "SELECT `donate` FROM `accounts` WHERE `address` = '".$username."' LIMIT 1;";
+$sql1 = "SELECT `donate` FROM `accounts` WHERE `username` = '".$username."' LIMIT 1;";
 $result_acct = $conn->query($sql1);
 if ($result_acct->num_rows > 0) {
     // output data of each row
@@ -18,8 +18,8 @@ if ($result_acct->num_rows > 0) {
             $donate = $row['donate'];
         }
     }
-    echo '{"donate":"'.$donate.'"}';
+    echo '{"donateAddress":"'.$donate.'"}';
 }else{
-  echo '{"donate":" - "}';
+  echo '{"donateAddress":" - "}';
 }
 ?>

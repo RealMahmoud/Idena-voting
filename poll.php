@@ -2063,7 +2063,7 @@ function changeVote()
             document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
         }
     });
-    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=poll', function(data) {
+    ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=poll', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){
 
@@ -2076,7 +2076,7 @@ function changeVote()
 }
 function Delete(id)
 {
-  ajax_get('./services/deletepoll.php?id='+id, function(data) {
+  ajax_get('./services/deletePoll.php?id='+id, function(data) {
 
 
       window.location.replace("<?php echo $url;?>polls.php");
@@ -2108,7 +2108,7 @@ window.onload = function()
   loadBarHAndV();
   loadBarAll();
 
-    ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=poll', function(data) {
+    ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=poll', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){
 

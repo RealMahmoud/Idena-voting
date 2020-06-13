@@ -9,7 +9,7 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_info">
     <div class="row">
           <div class="col-12 col-sm-7">
-          			<a class="btn btn-small btn-nav" href="./myprofile.php">
+          			<a class="btn btn-small btn-nav" href="./profile.php">
             		<i class="icon icon--thin_arrow_left"></i>
             		<span id="back">Back to Profile</span>
             		</a>
@@ -158,21 +158,8 @@ include(dirname(__FILE__)."/partials/header.php");
                         </form>
                         <br>
 
-                        <h4 class="info_block__accent">Add Credits : </h4>
+                      
 
-                        <form id="name_form" METHOD="POST" onsubmit="addCredits(); return false;">
-                            <div class="input-group" style="width: 60%;">
-                                <input type="text" name="amount" class="form-control" id='amount'value="" placeholder="Please type the amount"/>
-                            </div>
-
-                            <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="addCredits(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit"> Add</span>
-                                <i class="icon icon--thin_arrow_right"></i>
-                            </a>
-                            </div>
-
-                        </form>
 
 
                   </div>
@@ -319,11 +306,7 @@ function changeBio()
     });
 }
 
-function addCredits()
-{
-    setTimeout(() => {  window.location.replace("dna://send/v1?address=0xa27da2afe2c8e9866ea143b7f495868346090007&amount="+document.getElementById("amount").value+"&comment=<?php echo $_SESSION['addr']; ?>"); }, 500);
 
-}
 
 
 
@@ -338,7 +321,7 @@ function toggle(change) {
 }
 
 function checkusername() {
-    ajax_get('./services/checkusername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
+    ajax_get('./services/checkUsername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
             document.getElementById("user_name").innerHTML = data["username"];
     });
 }

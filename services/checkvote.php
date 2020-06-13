@@ -19,6 +19,9 @@ if(!empty($id)){
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                     while($row2 = $result->fetch_assoc()) {
+                      if(Date(strtotime('now')) > Date(strtotime($row2['endtime']))&&isset($_SESSION["addr"])){
+                      die('{"status": "ended", "data": "0"}');
+                    }
                       if($type == 'fvf'){
                           echo '{"status": "true", "vote": "'.$row["vote"].'"}';
                       }else{
@@ -28,7 +31,30 @@ if(!empty($id)){
 }}
                   }
         } else {
-           echo '{"status": "false", "data": "0"}';
+
+
+
+
+          $sql = "SELECT * FROM `".$type."s` WHERE `id` = '".$id."' LIMIT 1;";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+          while($row2 = $result->fetch_assoc()) {
+            if(Date(strtotime('now')) > Date(strtotime($row2['endtime']))&&isset($_SESSION["addr"])){
+            die('{"status": "ended", "data": "0"}');
+          }else{
+            echo '{"status": "false", "data": "0"}';
+          }
+        }}
+
+
+
+
+
+
+
+
+
+
         }
 }
 ?>

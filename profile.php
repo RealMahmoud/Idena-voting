@@ -77,7 +77,9 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
 <br>
 <div class="control-label"  id="bio"title="Bio">Loading...</div>
 <br>
-<div class="control-label"  id="lastseen"title="lastseen">Loading...</div>
+<div class="control-label"  id="credits"title="Credits">Loading...</div>
+<br>
+<div class="control-label"  id="lastseen"title="Lastseen">Loading...</div>
 
 </div>
  </div>
@@ -113,11 +115,7 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
                         <h3>FvFs</h3>
                      </a>
                   </li>
-                  <li class="nav-item">
-                     <a onclick="Change('4');" id='4Nav'class="nav-link ">
-                        <h3>Pages</h3>
-                     </a>
-                  </li>
+
 
                </ul>
             </div>
@@ -163,8 +161,7 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
     document.getElementById("2Con").classList.remove("active");
     document.getElementById("3Nav").classList.remove("active");
     document.getElementById("3Con").classList.remove("active");
-    document.getElementById("4Nav").classList.remove("active");
-    document.getElementById("4Con").classList.remove("active");
+
 
      }
      if(Newl == '2') {
@@ -175,8 +172,7 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
     document.getElementById("1Con").classList.remove("active");
     document.getElementById("3Nav").classList.remove("active");
     document.getElementById("3Con").classList.remove("active");
-    document.getElementById("4Nav").classList.remove("active");
-    document.getElementById("4Con").classList.remove("active");
+
 
      }
      if(Newl == '3') {
@@ -187,22 +183,10 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
     document.getElementById("2Con").classList.remove("active");
     document.getElementById("1Nav").classList.remove("active");
     document.getElementById("1Con").classList.remove("active");
-    document.getElementById("4Nav").classList.remove("active");
-    document.getElementById("4Con").classList.remove("active");
+
 
      }
-     if(Newl == '4') {
-    document.getElementById("4Con").classList.add("active");
-    document.getElementById("4Nav").classList.add("active");
 
-    document.getElementById("2Nav").classList.remove("active");
-    document.getElementById("2Con").classList.remove("active");
-    document.getElementById("3Nav").classList.remove("active");
-    document.getElementById("3Con").classList.remove("active");
-    document.getElementById("1Nav").classList.remove("active");
-    document.getElementById("1Con").classList.remove("active");
-
-     }
 
 
 
@@ -246,6 +230,11 @@ function checklastseen() {
             document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
     });
 }
+function checkCredits() {
+    ajax_get('./services/checkCredits.php?user=<?php echo $usernamea;?>', function(data) {
+            document.getElementById("credits").innerHTML = 'Credits : ' + data["credits"];
+    });
+}
 function checkaddress() {
     ajax_get('./services/checkAddress.php?user=<?php echo $usernamea;?>', function(data) {
       if(data["address"] == ' - '){
@@ -280,7 +269,7 @@ checkstate();
 checkaddress();
 checkbio();
 checklastseen();
-
+checkCredits();
 
   //load all polls
   ajax_get('./services/getPollsUser.php?user=<?php echo $usernamea; ?>', function(data) {

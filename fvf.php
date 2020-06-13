@@ -1796,7 +1796,7 @@ function castVote(vote)
           document.getElementById("success"+vote).classList.add("rem");
           document.getElementById("warning"+vote).classList.remove("rem");
           document.getElementById("submit"+vote).classList.add("disabled");
-          document.getElementById("warning"+vote).innerHTML = '&#x274C; Your have already voted on this!';
+          document.getElementById("warning"+vote).innerHTML = '&#x274C; Error!';
       }
   });
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
@@ -1811,9 +1811,15 @@ function castVote(vote)
     }
           document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
             document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
-}if(data["status"]=='login'){
+}
+if(data["status"]=='login'){
   document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
   document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+}
+
+if(data["status"]=='ended'){
+    document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">FvF Ended</h4>';
+    document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">FvF Ended</h4>';
 }})
 
 
@@ -1855,18 +1861,24 @@ loadBarAll();
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
     var  vop
-      if(data["status"]=='true'){
-if(data["vote"] == '1'){
+    if(data["status"]=='true'){
+  if(data["vote"] == '1'){
   vop = 'Left';
-}else{
-    vop = 'Right';
-}
-          document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
+  }else{
+  vop = 'Right';
+  }
+        document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
           document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
-        }if(data["status"]=='login'){
-          document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
-          document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
-        }})
+}
+if(data["status"]=='login'){
+document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+}
+
+if(data["status"]=='ended'){
+  document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">FvF Ended</h4>';
+  document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">FvF Ended</h4>';
+}})
 
 
 

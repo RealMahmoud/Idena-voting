@@ -137,7 +137,7 @@ $owneraddress = $rowf[1];
 
                                       if ($result->num_rows > 0) {
                                         while($row = $result->fetch_assoc()) {
-                                          if (!date(strtotime('now')) < Date(strtotime($row['endtime']))&&isset($_SESSION["addr"])){
+
 echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
         <div class="input-group">';
@@ -157,9 +157,7 @@ echo '<div id="checker"></div>
                                         </a>
                                         </div>
                                             </div>';
-                                      }elseif(!isset($_SESSION["addr"])) {
-                                          echo "<p>You have to be signed in to vote</p>";
-                                      }}}
+                                      }}
 
                                         ?>
 
@@ -1806,18 +1804,20 @@ function castVote()
           document.getElementById("success").classList.add("rem");
           document.getElementById("warning").classList.remove("rem");
           document.getElementById("submit").classList.add("disabled");
-          document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
+          document.getElementById("warning").innerHTML = '&#x274C; Error!';
       }
   });
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
-      if(data["status"]=='true'){
-          if(document.getElementById("checker") == null){
+    if(data["status"]=='true'){
+        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
+    }
+    if(data["status"]=='login'){
+      document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
 
-          }else {
-          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
-          }
-
-      }
+    }
+    if(data["status"]=='ended'){
+        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">Proposal Ended ".</h4>';
+    }
   });
 }
 function Delete(id)
@@ -1855,14 +1855,16 @@ loadBarHAndV();
 loadBarAll();
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
-      if(data["status"]=='true'){
-          if(document.getElementById("checker") == null){
+    if(data["status"]=='true'){
+        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
+    }
+    if(data["status"]=='login'){
+      document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
 
-          }else {
-          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
-          }
-
-      }
+    }
+    if(data["status"]=='ended'){
+        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">Proposal Ended</h4>';
+    }
   });
 }
 

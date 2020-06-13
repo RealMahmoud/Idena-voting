@@ -1,5 +1,6 @@
 <?php
 include(dirname(__FILE__)."/_public.php");
+include(dirname(__FILE__)."/cron.php");
 if(!empty($_SESSION["token"])) {
 
     $sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."' LIMIT 1;";

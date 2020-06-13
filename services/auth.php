@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__)."/../common/_config.php");
+include_once(dirname(__FILE__)."/../common/_public.php");
 require_once(dirname(__FILE__)."/../vendor/autoload.php");
 use Elliptic\EC;
 use kornrunner\Keccak;
@@ -59,7 +59,7 @@ if ($result->num_rows > 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
                 $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `state`, `username`,`password`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'zero', '".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,15)."','".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,35)."');";
+    ('".$address."', '".$timestamp."', 0, 'zero', '".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,15)."','".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,30)."');";
 
                 $result2 = $conn->query($sql2);
         }

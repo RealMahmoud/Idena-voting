@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once(dirname(__FILE__)."./common/_config.php");
+include_once(dirname(__FILE__)."./common/_public.php");
 if(empty($_GET['password'])){
   die('GO OUT');
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
+include(dirname(__FILE__)."/common/_public.php");
 if(isset($_GET['user'])){
 $usernamea = $_GET['user'];
 }
@@ -220,17 +220,17 @@ function checkreachout() {
 
 
 function checkbio() {
-    ajax_get('./services/checkbio.php?user=<?php echo $usernamea; ?>', function(data) {
+    ajax_get('./services/checkBio.php?user=<?php echo $usernamea; ?>', function(data) {
             document.getElementById("bio").innerHTML = 'Bio : ' + data["bio"];
     });
 }
 function checklastseen() {
-    ajax_get('./services/checklastseen.php?user=<?php echo $usernamea;?>', function(data) {
+    ajax_get('./services/checkLastseen.php?user=<?php echo $usernamea;?>', function(data) {
             document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
     });
 }
 function checkaddress() {
-    ajax_get('./services/checkaddress.php?user=<?php echo $usernamea;?>', function(data) {
+    ajax_get('./services/checkAddress.php?user=<?php echo $usernamea;?>', function(data) {
       if(data["address"] == ' - '){
         document.getElementById("address1").classList.add("rem");
         document.getElementById("address2").classList.add("rem");
@@ -247,7 +247,7 @@ function checkstate() {
     });
 }
 function checkage() {
-    ajax_get('./services/checkage.php?user=<?php echo $usernamea;?>', function(data) {
+    ajax_get('./services/checkAge.php?user=<?php echo $usernamea;?>', function(data) {
             document.getElementById("age").innerHTML = 'Age : ' + data["age"];
     });
 }

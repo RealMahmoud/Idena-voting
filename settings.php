@@ -45,12 +45,12 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
 
-          <div class="col-12 col-sm-12">
-            <div class="card">
-              <div>
-                <div class="row">
+      <div class="col-12 col-sm-4">
+        <div class="card">
+          <div>
+            <div class="row">
 
-                    <div class="col-12 col-sm-4 bordered-col">
+                <div class=" bordered-col">
 
                       <h4 class="info_block__accent">Credits</h4>
                       <p><?php echo $_SESSION["credits"]; ?></p>
@@ -69,9 +69,20 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
 
-                  </div>
+                      </div>
 
-                  <div class="col-12 col-sm-8 bordered-col">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-8">
+              <div class="card">
+                <div>
+                  <div class="row">
+
+                    <div class="col-12 col-sm-12 bordered-col">
                         <div class="warning rem" id="warning">
                         </div>
                         <div class="success rem" id="success">
@@ -194,7 +205,7 @@ function changeName()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/changeusername.php', formData, function(data) {
+    ajax_post('./services/changeUsername.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
@@ -219,7 +230,7 @@ function changedonate()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/changedonate.php', formData, function(data) {
+    ajax_post('./services/changeDonate.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
@@ -243,7 +254,7 @@ function ChangeHidden()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/changehidden.php', formData, function(data) {
+    ajax_post('./services/changeHidden.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");

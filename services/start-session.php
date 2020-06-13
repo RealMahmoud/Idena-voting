@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__FILE__)."/../common/_config.php");
+include_once(dirname(__FILE__)."/../common/_public.php");
 
 // Take the raw data from the request
 $json = file_get_contents('php://input');

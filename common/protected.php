@@ -1,5 +1,5 @@
 <?php
-include(dirname(__FILE__)."/_config.php");
+include(dirname(__FILE__)."/_public.php");
 if(!empty($_SESSION["token"])) {
 
     $sql = "SELECT * FROM `auth` WHERE `token` = '".$_SESSION["token"]."' LIMIT 1;";
@@ -83,6 +83,7 @@ if(!empty($_SESSION["token"])) {
         }
 
           $_SESSION["credits"] = $row['credits'];
+          $_SESSION["banned"] = $row['banned'];
           $_SESSION["age"] = $row['age'];}}
 
 

@@ -21,14 +21,14 @@ include(dirname(__FILE__)."/partials/header.php");
     <div class="row">
         <div class="col-auto">
             <div class="section_main__image" style="width: 7rem;height: 7rem;">
-                <img src="https://robohash.org/<?php echo $_SESSION["addr"]; ?>" alt="pic" width="80"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["username"]; ?>" alt="pic" width="80"/>
             </div>
         </div>
             <div class="col">
               <div class="section_main__group">
-                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?address='.$_SESSION["addr"];?>"><?php echo $_SESSION["addr"]; ?></a>
+                    <h1 class="section_main__title"><a href="<?php echo $url.'profile.php?user='.$_SESSION["username"];?>"><?php echo $_SESSION["username"]; ?></a>
 
-                    <span class="badge badge-secondary" id="user_name">Loading...</span>
+
                   </h1>
                   </div>
                     <a class="btn btn-small btn-primary" href="https://scan.idena.io/address/<?php echo $_SESSION["addr"]; ?>" target="_blank">
@@ -50,16 +50,18 @@ include(dirname(__FILE__)."/partials/header.php");
               <div>
                 <div class="row">
 
-                    <div class="col-12 col-sm-12 bordered-col">
+                    <div class="col-3 col-sm-3 bordered-col">
 
-                        <h4 class="info_block__accent">Credits</h4>
-                        <p><?php echo $_SESSION["credits"]; ?></p>
-                        <br/>
-                        <h4 class="info_block__accent">Status</h4>
-                        <p><?php echo $_SESSION["state"]; ?></p>
-                        <br/>
-                          <h4 class="info_block__accent">Age</h4>
-                          <p><?php echo $_SESSION["age"]; ?></p>
+                      <h4 class="info_block__accent">Credits</h4>
+                      <p><?php echo $_SESSION["credits"]; ?></p>
+                      <br/>
+                      <h4 class="info_block__accent">Status</h4>
+                      <p><?php echo $_SESSION["state"]; ?></p>
+                      <br/>
+                        <h4 class="info_block__accent">Age</h4>
+                        <p><?php echo $_SESSION["age"]; ?></p>
+                        
+
 
                     </div>
 
@@ -135,7 +137,7 @@ function createproposal()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/addproposal.php', formData, function(data) {
+    ajax_post('./services/addProposal.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");

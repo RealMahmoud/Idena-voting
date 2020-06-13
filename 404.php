@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_config.php");
+include(dirname(__FILE__)."/common/_public.php");
 $pagetitle = 'Errot 404';
 include(dirname(__FILE__)."/partials/header.php");
 ?>

@@ -12,6 +12,7 @@ if(isset($_GET['user'])){
 }
 
 
+
 $sql1 = "SELECT `age` FROM `accounts` WHERE `username` = '".$username."' LIMIT 1;";
 $result_acct = $conn->query($sql1);
 if ($result_acct->num_rows > 0) {

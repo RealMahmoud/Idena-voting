@@ -16,6 +16,7 @@ if ($result->num_rows > 0) {
   }
 if(!empty($_SESSION["addr"]))
 {
+  
         if ($_POST['type'] == 'proposal'){
           $pdesc = $conn->real_escape_string($_POST['desc']);
           $title = $conn->real_escape_string($_POST['title']);
@@ -25,6 +26,12 @@ if(!empty($_SESSION["addr"]))
           $amount = $conn->real_escape_string($_POST['amount']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
            $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
+           $sql = "SELECT * FROM `proposals` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
+           $result = $conn->query($sql);
+
+           if ($result->num_rows > 0) {
+           die('{"success":false}');
+           }
           $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."')";
 
           $result = $conn->query($sql);

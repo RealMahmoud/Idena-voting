@@ -28,7 +28,12 @@ if(!empty($_SESSION["addr"]))
           $option5 = $conn->real_escape_string($_POST['option5']);
           $option6 = $conn->real_escape_string($_POST['option6']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
+          $sql = "SELECT * FROM `polls` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
+          $result = $conn->query($sql);
 
+          if ($result->num_rows > 0) {
+          die('{"success":false}');
+          }
           $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."')";
 
           $result = $conn->query($sql);

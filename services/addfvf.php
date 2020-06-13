@@ -14,11 +14,13 @@ if ($result->num_rows > 0) {
   if(empty($conn->real_escape_string($_POST['desc']))) {
     die('{"success":false}');
   }
+  if(empty($conn->real_escape_string($_POST['title']))) {
+    die('{"success":false}');
+  }
 
 if(!empty($_SESSION["addr"]))
 {
         if ($_POST['type'] == 'fvf'){
-
           $addr = $conn->real_escape_string($_SESSION["addr"]);
           $location1 = $conn->real_escape_string($_POST['location1']);
           $location2 = $conn->real_escape_string($_POST['location2']);
@@ -27,6 +29,13 @@ if(!empty($_SESSION["addr"]))
           $title = $conn->real_escape_string($_POST['title']);
           $category = $conn->real_escape_string($_POST['category']);
           $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
+
+          $sql = "SELECT * FROM `fvfs` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+          die('{"success":false}');
+          }
           $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr` ,  `title`,`category`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."' ,'".$title."','".$category."')";
 
           $result = $conn->query($sql);

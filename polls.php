@@ -188,7 +188,7 @@ if(isset($_GET['cat'])){
 
 
 window.onload = function() {
-  ajax_get('./services/getpollsrunning.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getPollsRunning.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -217,7 +217,7 @@ window.onload = function() {
   });
 
 
-  ajax_get('./services/getpollsended.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getPollsEnded.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -247,7 +247,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getpollsrunning.php'+cat, function(data) {
+  ajax_get('./services/getPollsRunning.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -276,7 +276,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getpollsended.php'+cat, function(data) {
+  ajax_get('./services/getPollsEnded.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 

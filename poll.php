@@ -188,595 +188,371 @@ echo '<div id="checker"></div>
     </div>
 </section>
   <?php
-  $id = $conn->real_escape_string($_GET["id"]);
-  $sql = "SELECT * FROM `polls` WHERE `id` = '".$id."' LIMIT 1;";
-  $result = $conn->query($sql);
-  if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-
-
-    $json = curl_get($url.'services/stats.php?pid='.$id.'&type=poll');
-
-
-
-    $labelsHuman  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsHuman,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsHuman,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsHuman,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsHuman,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsHuman,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsHuman,$json['result']['option6']['Desc']);
-    }
-    $labelsHuman=  substr(json_encode($labelsHuman), 1, -1);
-    $DataHuman  =array();
-    array_push($DataHuman,$json['result']['option1']['Human']);
-    array_push($DataHuman,$json['result']['option2']['Human']);
-    array_push($DataHuman,$json['result']['option3']['Human']);
-    array_push($DataHuman,$json['result']['option4']['Human']);
-    array_push($DataHuman,$json['result']['option5']['Human']);
-    array_push($DataHuman,$json['result']['option6']['Human']);
-    $DataHuman=  substr(json_encode($DataHuman), 1, -1);
-
-
-
-
-    $labelsVerified  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsVerified,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsVerified,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsVerified,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsVerified,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsVerified,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsVerified,$json['result']['option6']['Desc']);
-    }
-
-    $labelsVerified=  substr(json_encode($labelsVerified), 1, -1);
-    $DataVerified  =array();
-    array_push($DataVerified,$json['result']['option1']['Verified']);
-    array_push($DataVerified,$json['result']['option2']['Verified']);
-    array_push($DataVerified,$json['result']['option3']['Verified']);
-    array_push($DataVerified,$json['result']['option4']['Verified']);
-    array_push($DataVerified,$json['result']['option5']['Verified']);
-    array_push($DataVerified,$json['result']['option6']['Verified']);
-
-    $DataVerified=  substr(json_encode($DataVerified), 1, -1);
-
-
-
-
-    $labelsNewbie  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsNewbie,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsNewbie,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsNewbie,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsNewbie,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsNewbie,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsNewbie,$json['result']['option6']['Desc']);
-    }
-    $labelsNewbie=  substr(json_encode($labelsNewbie), 1, -1);
-    $DataNewbie  =array();
-    array_push($DataNewbie,$json['result']['option1']['Newbie']);
-    array_push($DataNewbie,$json['result']['option2']['Newbie']);
-    array_push($DataNewbie,$json['result']['option3']['Newbie']);
-    array_push($DataNewbie,$json['result']['option4']['Newbie']);
-    array_push($DataNewbie,$json['result']['option5']['Newbie']);
-    array_push($DataNewbie,$json['result']['option6']['Newbie']);
-    $DataNewbie=  substr(json_encode($DataNewbie), 1, -1);
-
-
-
-
-    $labelsHumanAndVerified  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsHumanAndVerified,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsHumanAndVerified,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsHumanAndVerified,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsHumanAndVerified,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsHumanAndVerified,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsHumanAndVerified,$json['result']['option6']['Desc']);
-    }
-    $labelsHumanAndVerified=  substr(json_encode($labelsHumanAndVerified), 1, -1);
-    $DataHumanAndVerified  =array();
-    array_push($DataHumanAndVerified,$json['result']['option1']['HumanAndVerified']);
-    array_push($DataHumanAndVerified,$json['result']['option2']['HumanAndVerified']);
-    array_push($DataHumanAndVerified,$json['result']['option3']['HumanAndVerified']);
-    array_push($DataHumanAndVerified,$json['result']['option4']['HumanAndVerified']);
-    array_push($DataHumanAndVerified,$json['result']['option5']['HumanAndVerified']);
-    array_push($DataHumanAndVerified,$json['result']['option6']['HumanAndVerified']);
-    $DataHumanAndVerified=  substr(json_encode($DataHumanAndVerified), 1, -1);
-
-
-
-
-    $labelsAll  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsAll,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsAll,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsAll,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsAll,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsAll,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsAll,$json['result']['option6']['Desc']);
-    }
-    $labelsAll=  substr(json_encode($labelsAll), 1, -1);
-    $DataAll  =array();
-    array_push($DataAll,$json['result']['option1']['All']);
-    array_push($DataAll,$json['result']['option2']['All']);
-    array_push($DataAll,$json['result']['option3']['All']);
-    array_push($DataAll,$json['result']['option4']['All']);
-    array_push($DataAll,$json['result']['option5']['All']);
-    array_push($DataAll,$json['result']['option6']['All']);
-    $DataAll=  substr(json_encode($DataAll), 1, -1);
-
-
-
-
-    $labelsValidated  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsValidated,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsValidated,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsValidated,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsValidated,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsValidated,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsValidated,$json['result']['option6']['Desc']);
-    }
-    $labelsValidated=  substr(json_encode($labelsValidated), 1, -1);
-    $DataValidated  =array();
-    array_push($DataValidated,$json['result']['option1']['Validated']);
-    array_push($DataValidated,$json['result']['option2']['Validated']);
-    array_push($DataValidated,$json['result']['option3']['Validated']);
-    array_push($DataValidated,$json['result']['option4']['Validated']);
-    array_push($DataValidated,$json['result']['option5']['Validated']);
-    array_push($DataValidated,$json['result']['option6']['Validated']);
-    $DataValidated=  substr(json_encode($DataValidated), 1, -1);
-
-
-
-
-
-    $labelsNotValidated  =array();
-    if(!empty($json['result']['option1']['Desc'])){
-    array_push($labelsNotValidated,$json['result']['option1']['Desc']);
-    }
-    if(!empty($json['result']['option2']['Desc'])){
-      array_push($labelsNotValidated,$json['result']['option2']['Desc']);
-    }
-    if(!empty($json['result']['option3']['Desc'])){
-      array_push($labelsNotValidated,$json['result']['option3']['Desc']);
-    }
-    if(!empty($json['result']['option4']['Desc'])){
-      array_push($labelsNotValidated,$json['result']['option4']['Desc']);
-    }
-    if(!empty($json['result']['option5']['Desc'])){
-      array_push($labelsNotValidated,$json['result']['option5']['Desc']);
-    }
-    if(!empty($json['result']['option6']['Desc'])){
-      array_push($labelsNotValidated,$json['result']['option6']['Desc']);
-    }
-    $labelsNotValidated=  substr(json_encode($labelsNotValidated), 1, -1);
-    $DataNotValidated  =array();
-    array_push($DataNotValidated,$json['result']['option1']['NotValidated']);
-    array_push($DataNotValidated,$json['result']['option2']['NotValidated']);
-    array_push($DataNotValidated,$json['result']['option3']['NotValidated']);
-    array_push($DataNotValidated,$json['result']['option4']['NotValidated']);
-    array_push($DataNotValidated,$json['result']['option5']['NotValidated']);
-    array_push($DataNotValidated,$json['result']['option6']['NotValidated']);
-    $DataNotValidated=  substr(json_encode($DataNotValidated), 1, -1);
-
-
-
-
-
-
-
-
-
-
-    }}
-
-
-    } //while loop ends
-
-    } ?>
-
-
-
-
-
-
-                    <section class="section section_tabs">
-                       <div class="tabs">
-                          <div class="section__header">
-                             <div class="row align-items-center justify-content-between">
-                                <div class="col">
-                                   <ul class="nav nav-tabs" role="tablist">
-                                     <li class="nav-item">
-                                        <a onclick="Change('Va');" id='VaNav'class="nav-link active">
-                                           <h3>Validated</h3>
-                                        </a>
-                                     </li>
-                                      <li class="nav-item">
-                                         <a onclick="Change('H');" id='HNav' class="nav-link ">
-                                            <h3>Humans</h3>
-                                         </a>
-                                      </li>
-                                      <li class="nav-item">
-                                         <a onclick="Change('V');" id='VNav' class="nav-link ">
-                                            <h3>Verified</h3>
-                                         </a>
-                                      </li>
-                                      <li class="nav-item">
-                                         <a onclick="Change('N');" id='NNav'class="nav-link ">
-                                            <h3>Newbies</h3>
-                                         </a>
-                                      </li>
-                                      <li class="nav-item">
-                                         <a onclick="Change('HAndV');"id='HAndVNav' class="nav-link ">
-                                            <h3>Humans And Verified</h3>
-                                         </a>
-                                      </li>
-
-
-                                      <li class="nav-item">
-                                         <a onclick="Change('NotVa');"id='NotVaNav' class="nav-link ">
-                                            <h3>Not Validated</h3>
-                                         </a>
-                                      </li>
-                                      <li class="nav-item">
-                                         <a onclick="Change('All');"id='AllNav' class="nav-link ">
-                                            <h3>All</h3>
-                                         </a>
-                                      </li>
-
-                                   </ul>
-                                </div>
-                             </div>
-                          </div>
-                          <div class="tab-content">
-                            <div class="tab-pane active" id="VaCon">
-                               <div class="card">
-                                  <div>
-                                     <div class="row">
-                                        <div class="col-10 col-sm-10 bordered-col">
-                                           <h4 class="info_block__accent">Validated - (Humans + Verified + Newbies)</h4>
-                                           <div style="width:40%; height:40%">
-                                              <canvas id="ChartVa" width="400" height="400"></canvas>
-                                              <div>
-                                              </div>
-                                           </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-                             <div class="tab-pane " id="HCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Humans</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartH" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="tab-pane" id="VCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Verified</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartV" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="tab-pane" id="NCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Newbies</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartN" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="tab-pane" id="HAndVCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                           <h4 class="info_block__accent">Humans And Verified</h4>
-                                           <div class="row"style="width:50%; height:50%">
-                                            <div style="width:50%; height:50%">
-                                            <canvas id="ChartHAndV" width="100%" height="100%"></canvas>
-                                            </div>
-                                            <div style="width:50%; height:50%">
-                                            <canvas id="BarHAndV" width="100%" height="100%"></canvas>
-                                          </div>
-                                          </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-
-
-                             <div class="tab-pane" id="NotVaCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">Not Validated</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartNotVa" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="tab-pane" id="AllCon">
-                                <div class="card">
-                                   <div>
-                                      <div class="row">
-                                         <div class="col-10 col-sm-10 bordered-col">
-                                            <h4 class="info_block__accent">All</h4>
-                                            <div style="width:40%; height:40%">
-                                               <canvas id="ChartAll" width="400" height="400"></canvas>
-                                               <div>
-                                               </div>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                       </div>
-                    </section>
-
-
-
-
-    <script>
-    var ctx = document.getElementById('ChartH').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsHuman; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataHuman;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartV').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsVerified; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataVerified;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartN').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsNewbie; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataNewbie;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartVa').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsValidated; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataValidated;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartAll').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsAll; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataAll;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartNotVa').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsNotValidated; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataNotValidated;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-
-    var ctx = document.getElementById('ChartHAndV').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: [<?php echo $labelsHumanAndVerified; ?>],
-            datasets: [{
-                label: '# of Votes',
-                data: [<?php echo $DataHumanAndVerified;?>],
-                backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue,
-              window.chartColors.red,
-            ],borderWidth: 1}]},});
-    </script>
-
-
-
-
-
-<script>
-var ctx = document.getElementById('BarHAndV').getContext('2d');
-window.myMixedChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Epoch 1', 'Epoch 2', 'Epoch 4','Epoch 7','Epoch 10','Epoch 15','Epoch 20','Epoch 25','Epoch 30','Epoch 35','Epoch 40','Epoch 45'],
-    datasets: [{
-      type: 'bar',
-      label: 'Voters',
-      backgroundColor: window.chartColors.yellow,
-      data: [
-1,1,1,1,1,1,1,1,1,1,1,1
-
-      ],
-      borderColor: 'white',
-      borderWidth: 2
-    } ]
-
-  },
-  options: {
-    responsive: true,
-    title: {
-      display: true,
-      text: 'Total Voters By Age'
-    },
-    tooltips: {
-      mode: 'index',
-      intersect: true
-    }
-  }
-});
-
-
-
-</script>
+  $id = $conn->real_escape_string($_GET["id"]);}} ?>
+
+
+
+
+
+
+    <section class="section section_tabs">
+      <div class="tabs">
+        <div class="section__header">
+          <div class="row align-items-center justify-content-between">
+            <div class="col">
+              <ul class="nav nav-tabs row justify-content-between align-items-center" role="tablist">
+                <li class="nav-item">
+                  <a onclick="Change('Va');" id='VaNav' class="nav-link active">
+                    <h3>Validated</h3>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="Change('H');" id='HNav' class="nav-link ">
+                    <h3>Humans</h3>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="Change('V');" id='VNav' class="nav-link ">
+                    <h3>Verified</h3>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="Change('N');" id='NNav' class="nav-link ">
+                    <h3>Newbies</h3>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="Change('HAndV');" id='HAndVNav' class="nav-link ">
+                    <h3>Humans And Verified</h3>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a onclick="Change('All');" id='AllNav' class="nav-link ">
+                    <h3>All identities</h3>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="VaCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartVa" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartVa(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="VaAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarVa" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreVa(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                      <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
+                      <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                      <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
+                      <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                      <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeVa" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="tab-pane" id="HCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartH" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartH(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="HAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarH" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreH(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                      <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeH" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="tab-pane" id="VCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartV" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartV(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="VAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarV" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreV(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                      <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeV" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="tab-pane" id="NCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartN" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartN(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="NAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarN" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreN(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                      <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeN" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="tab-pane" id="HAndVCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartHAndV" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartHAndV(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="HAndVAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarHAndV" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreHAndV(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                      <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
+                      <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                      <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeHAndV" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="tab-pane" id="AllCon">
+            <div class="card">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+              <div class="row">
+                <div class="col-12 col-sm-6 bordered-col">
+                  <canvas id="ChartAll" width="100%" height="70%"></canvas>
+                </div>
+                <div class="col-12 col-sm-6 bordered-col">
+                  <form id="name_form" METHOD="POST" oninput="changeChartAll(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <input type="number" name="age" style="text-align:center;" id="AllAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+
+              <div class="row">
+                <div class="col-12 col-sm-8 bordered-col">
+                  <canvas id="BarAll" width="100%" height="60%"></canvas>
+                </div>
+                <div class="col-12 col-sm-4 bordered-col">
+                  <br>
+                  <form id="name_form" METHOD="POST" oninput="changeScoreAll(); return false;">
+                    <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                    <div class="input-group" style="width: 60%;margin: 0 auto;">
+                      <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                      <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
+                      <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                      <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
+                      <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                      <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12 col-sm-12 bordered-col">
+                  <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+                  <canvas id="BarAgeAll" width="100%" height="30%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -800,13 +576,13 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("HAndVCon").classList.remove("active");
        			document.getElementById("VaCon").classList.remove("active");
        			document.getElementById("AllCon").classList.remove("active");
-                document.getElementById("NotVaCon").classList.remove("active");
+
     			document.getElementById("VNav").classList.remove("active");
        			document.getElementById("NNav").classList.remove("active");
        			document.getElementById("HAndVNav").classList.remove("active");
        			document.getElementById("VaNav").classList.remove("active");
        			document.getElementById("AllNav").classList.remove("active");
-                document.getElementById("NotVaNav").classList.remove("active");
+
 
 
            }
@@ -822,14 +598,14 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("HAndVCon").classList.remove("active");
        			document.getElementById("VaCon").classList.remove("active");
        			document.getElementById("AllCon").classList.remove("active");
-                document.getElementById("NotVaCon").classList.remove("active");
+
 
                 document.getElementById("HNav").classList.remove("active");
        			document.getElementById("NNav").classList.remove("active");
        			document.getElementById("HAndVNav").classList.remove("active");
        			document.getElementById("VaNav").classList.remove("active");
        			document.getElementById("AllNav").classList.remove("active");
-                document.getElementById("NotVaNav").classList.remove("active");
+
            }
 
 
@@ -842,7 +618,7 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("HAndVCon").classList.remove("active");
        			document.getElementById("VaCon").classList.remove("active");
        			document.getElementById("AllCon").classList.remove("active");
-                document.getElementById("NotVaCon").classList.remove("active");
+
 
 
                 document.getElementById("HNav").classList.remove("active");
@@ -850,7 +626,7 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("HAndVNav").classList.remove("active");
        			document.getElementById("VaNav").classList.remove("active");
        			document.getElementById("AllNav").classList.remove("active");
-                document.getElementById("NotVaNav").classList.remove("active");
+
            }
 
 
@@ -864,14 +640,14 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("NCon").classList.remove("active");
        			document.getElementById("VaCon").classList.remove("active");
        			document.getElementById("AllCon").classList.remove("active");
-                document.getElementById("NotVaCon").classList.remove("active");
+
 
                 document.getElementById("HNav").classList.remove("active");
        			document.getElementById("VNav").classList.remove("active");
        			document.getElementById("NNav").classList.remove("active");
        			document.getElementById("VaNav").classList.remove("active");
        			document.getElementById("AllNav").classList.remove("active");
-                document.getElementById("NotVaNav").classList.remove("active");
+
            }
 
        	   if(Newl == 'Va') {
@@ -882,7 +658,7 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("NCon").classList.remove("active");
        			document.getElementById("HAndVCon").classList.remove("active");
        			document.getElementById("AllCon").classList.remove("active");
-                document.getElementById("NotVaCon").classList.remove("active");
+
 
 
                 document.getElementById("HNav").classList.remove("active");
@@ -890,7 +666,7 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("NNav").classList.remove("active");
        			document.getElementById("HAndVNav").classList.remove("active");
        			document.getElementById("AllNav").classList.remove("active");
-                document.getElementById("NotVaNav").classList.remove("active");
+
            }
        	if(Newl == 'All') {
     		    document.getElementById("AllCon").classList.add("active");
@@ -900,26 +676,7 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("NCon").classList.remove("active");
        			document.getElementById("HAndVCon").classList.remove("active");
        			document.getElementById("VaCon").classList.remove("active");
-       			document.getElementById("NotVaCon").classList.remove("active");
 
-
-                document.getElementById("HNav").classList.remove("active");
-       			document.getElementById("VNav").classList.remove("active");
-       			document.getElementById("NNav").classList.remove("active");
-       			document.getElementById("HAndVNav").classList.remove("active");
-       			document.getElementById("VaNav").classList.remove("active");
-       			document.getElementById("NotVaNav").classList.remove("active");
-           }
-       	   if(Newl == 'NotVa') {
-    		    document.getElementById("NotVaCon").classList.add("active");
-    			document.getElementById("NotVaNav").classList.add("active");
-
-                document.getElementById("HCon").classList.remove("active");
-       			document.getElementById("VCon").classList.remove("active");
-       			document.getElementById("NCon").classList.remove("active");
-       			document.getElementById("HAndVCon").classList.remove("active");
-       			document.getElementById("VaCon").classList.remove("active");
-       			document.getElementById("AllCon").classList.remove("active");
 
 
                 document.getElementById("HNav").classList.remove("active");
@@ -927,7 +684,6 @@ window.myMixedChart = new Chart(ctx, {
        			document.getElementById("NNav").classList.remove("active");
        			document.getElementById("HAndVNav").classList.remove("active");
        			document.getElementById("VaNav").classList.remove("active");
-       			document.getElementById("AllNav").classList.remove("active");
 
            }
 
@@ -944,7 +700,1327 @@ include(dirname(__FILE__)."/partials/donation.php");
  </div>
 </main>
 
+
+
 <script>
+function changeScoreVa(){
+$('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+var humanValue = document.getElementById("1-H").value;
+var verifiedValue = document.getElementById("1-V").value;
+var newbieValue = document.getElementById("1-N").value;
+let chartdata = [];
+let chartlabels = [];
+var humansCount = 0;
+var verifiedCount = 0;
+var newbieCount = 0;
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
+(Number(data['result']['option1']['Verified'])* verifiedValue) +
+(Number(data['result']['option1']['Newbie'])* newbieValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
+(Number(data['result']['option2']['Verified'])* verifiedValue) +
+(Number(data['result']['option2']['Newbie'])* newbieValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Human'])* humanValue) +
+(Number(data['result']['option3']['Verified'])* verifiedValue) +
+(Number(data['result']['option3']['Newbie'])* newbieValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Human'])* humanValue) +
+(Number(data['result']['option4']['Verified'])* verifiedValue) +
+(Number(data['result']['option4']['Newbie'])* newbieValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Human'])* humanValue) +
+(Number(data['result']['option5']['Verified'])* verifiedValue) +
+(Number(data['result']['option5']['Newbie'])* newbieValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Human'])* humanValue) +
+(Number(data['result']['option6']['Verified'])* verifiedValue) +
+(Number(data['result']['option6']['Newbie'])* newbieValue));
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarVa').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+function changeScoreH(){
+$('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+var humanValue = document.getElementById("2-H").value;
+let chartdata = [];
+let chartlabels = [];
+var humansCount = 0;
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Human'])* humanValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Human'])* humanValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Human'])* humanValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Human'])* humanValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Human'])* humanValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Human'])* humanValue));
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarH').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+function changeScoreV(){
+$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+var verifiedValue = document.getElementById("3-V").value;
+
+let chartdata = [];
+let chartlabels = [];
+var verifiedCount = 0;
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Verified'])* verifiedValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Verified'])* verifiedValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Verified'])* verifiedValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Verified'])* verifiedValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Verified'])* verifiedValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Verified'])* verifiedValue));
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarV').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+function changeScoreN(){
+$('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+
+var newbieValue = document.getElementById("4-N").value;
+let chartdata = [];
+let chartlabels = [];
+var newbieCount = 0;
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Newbie'])* newbieValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Newbie'])* newbieValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Newbie'])* newbieValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Newbie'])* newbieValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Newbie'])* newbieValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Newbie'])* newbieValue));
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarN').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+function changeScoreHAndV(){
+$('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+var humanValue = document.getElementById("5-H").value;
+var verifiedValue = document.getElementById("5-V").value;
+let chartdata = [];
+let chartlabels = [];
+var humansCount = 0;
+var verifiedCount = 0;
+var newbieCount = 0;
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
+(Number(data['result']['option1']['Verified'])* verifiedValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
+(Number(data['result']['option2']['Verified'])* verifiedValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Human'])* humanValue) +
+(Number(data['result']['option3']['Verified'])* verifiedValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Human'])* humanValue) +
+(Number(data['result']['option4']['Verified'])* verifiedValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Human'])* humanValue) +
+(Number(data['result']['option5']['Verified'])* verifiedValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Human'])* humanValue) +
+(Number(data['result']['option6']['Verified'])* verifiedValue));
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarHAndV').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+function changeScoreAll(){
+$('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+var humanValue = document.getElementById("6-H").value;
+var verifiedValue = document.getElementById("6-V").value;
+var newbieValue = document.getElementById("6-N").value;
+
+let chartdata = [];
+let chartlabels = [];
+var humansCount = 0;
+var verifiedCount = 0;
+var newbieCount = 0;
+
+ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+// option 1
+chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
+(Number(data['result']['option1']['Verified'])* verifiedValue) +
+(Number(data['result']['option1']['Newbie'])* newbieValue));
+//option2
+chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
+(Number(data['result']['option2']['Verified'])* verifiedValue) +
+(Number(data['result']['option2']['Newbie'])* newbieValue));
+//option3
+chartdata.push((Number(data['result']['option3']['Human'])* humanValue) +
+(Number(data['result']['option3']['Verified'])* verifiedValue) +
+(Number(data['result']['option3']['Newbie'])* newbieValue));
+//option4
+chartdata.push((Number(data['result']['option4']['Human'])* humanValue) +
+(Number(data['result']['option4']['Verified'])* verifiedValue) +
+(Number(data['result']['option4']['Newbie'])* newbieValue));
+//option5
+chartdata.push((Number(data['result']['option5']['Human'])* humanValue) +
+(Number(data['result']['option5']['Verified'])* verifiedValue) +
+(Number(data['result']['option5']['Newbie'])* newbieValue));
+//option6
+chartdata.push((Number(data['result']['option6']['Human'])* humanValue) +
+(Number(data['result']['option6']['Verified'])* verifiedValue) +
+(Number(data['result']['option6']['Newbie'])* newbieValue));
+
+if(!data['result']['option1']['Desc'] == ''){
+chartlabels.push(data['result']['option1']['Desc']);
+}
+if(!data['result']['option2']['Desc'] == ''){
+chartlabels.push(data['result']['option2']['Desc']);
+}
+if(!data['result']['option3']['Desc'] == ''){
+chartlabels.push(data['result']['option3']['Desc']);
+}
+if(!data['result']['option4']['Desc'] == ''){
+chartlabels.push(data['result']['option4']['Desc']);
+}
+if(!data['result']['option5']['Desc'] == ''){
+chartlabels.push(data['result']['option5']['Desc']);
+}
+if(!data['result']['option6']['Desc'] == ''){
+chartlabels.push(data['result']['option6']['Desc']);
+}
+var ctx = document.getElementById('BarAll').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+</script>
+
+
+<script>
+
+function loadBarVa(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
+var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
+var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
+var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
+var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
+var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
+var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
+var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Human']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeVa').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+
+function loadBarH(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total = Number(data['result']['Human']['E0To2']);
+var _E3To6Total = Number(data['result']['Human']['E3To6']);
+var _E7To11Total = Number(data['result']['Human']['E7To11']);
+var _E12To17Total = Number(data['result']['Human']['E12To17']);
+var _E18To25Total = Number(data['result']['Human']['E18To25']);
+var _E26To32Total = Number(data['result']['Human']['E26To32']);
+var _E33To40Total = Number(data['result']['Human']['E33To40']);
+var _E41To47Total = Number(data['result']['Human']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Human']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeH').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+
+function loadBarV(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total =  Number(data['result']['Verified']['E0To2']);
+var _E3To6Total = Number(data['result']['Verified']['E3To6']);
+var _E7To11Total =  Number(data['result']['Verified']['E7To11']);
+var _E12To17Total =  Number(data['result']['Verified']['E12To17']);
+var _E18To25Total =  Number(data['result']['Verified']['E18To25']);
+var _E26To32Total =  Number(data['result']['Verified']['E26To32']);
+var _E33To40Total = Number(data['result']['Verified']['E33To40']);
+var _E41To47Total =  Number(data['result']['Verified']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Verified']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeV').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+
+
+
+function loadBarN(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total = Number(data['result']['Newbie']['E0To2']);
+var _E3To6Total =  Number(data['result']['Newbie']['E3To6']);
+var _E7To11Total = Number(data['result']['Newbie']['E7To11']);
+var _E12To17Total = Number(data['result']['Newbie']['E12To17']);
+var _E18To25Total =  Number(data['result']['Newbie']['E18To25']);
+var _E26To32Total =  Number(data['result']['Newbie']['E26To32']);
+var _E33To40Total = Number(data['result']['Newbie']['E33To40']);
+var _E41To47Total =  Number(data['result']['Newbie']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Human']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeN').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+
+
+
+function loadBarHAndV(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']);
+var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']);
+var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']);
+var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']);
+var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']);
+var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']);
+var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']);
+var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Human']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeHAndV').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+
+
+function loadBarAll(){
+
+let chartdata = [];
+let chartlabels = [];
+
+ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+// option 1
+
+var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
+var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
+var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
+var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
+var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
+var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
+var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
+var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
+
+
+chartdata.push(_E0To2Total);
+chartdata.push(_E3To6Total);
+chartdata.push(_E7To11Total);
+chartdata.push(_E12To17Total);
+chartdata.push(_E18To25Total);
+chartdata.push(_E26To32Total);
+chartdata.push(_E33To40Total);
+chartdata.push(_E41To47Total);
+
+
+for(k in data['result']['Human']) {
+  chartlabels.push(k)
+}
+
+
+var ctx = document.getElementById('BarAgeAll').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
+options: {
+  responsive: true,
+  title: {
+    display: true,
+
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
+}
+}
+}
+);
+});
+}
+
+
+
+function changeChartVa(age){
+    $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
+age = document.getElementById("VaAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['Validated'] == 0){
+    chartdata.push(data['result']['option1']['Validated']);
+  }
+  if(!data['result']['option2']['Validated'] == 0){
+    chartdata.push(data['result']['option2']['Validated']);
+  }
+  if(!data['result']['option3']['Validated'] == 0){
+    chartdata.push(data['result']['option3']['Validated']);
+  }
+  if(!data['result']['option4']['Validated'] == 0){
+    chartdata.push(data['result']['option4']['Validated']);
+  }
+  if(!data['result']['option5']['Validated'] == 0){
+    chartdata.push(data['result']['option5']['Validated']);
+  }
+  if(!data['result']['option6']['Validated'] == 0){
+    chartdata.push(data['result']['option6']['Validated']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartVa').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+
+
+
+      }
+  );
+}
+function changeChartH(age){
+    $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
+  age = document.getElementById("HAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['Human'] == 0){
+    chartdata.push(data['result']['option1']['Human']);
+  }
+  if(!data['result']['option2']['Human'] == 0){
+    chartdata.push(data['result']['option2']['Human']);
+  }
+  if(!data['result']['option3']['Human'] == 0){
+    chartdata.push(data['result']['option3']['Human']);
+  }
+  if(!data['result']['option4']['Human'] == 0){
+    chartdata.push(data['result']['option4']['Human']);
+  }
+  if(!data['result']['option5']['Human'] == 0){
+    chartdata.push(data['result']['option5']['Human']);
+  }
+  if(!data['result']['option6']['Human'] == 0){
+    chartdata.push(data['result']['option6']['Human']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartH').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+
+
+
+      }
+  );
+}
+function changeChartV(age){
+  $('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
+  age = document.getElementById("VAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['Verified'] == 0){
+    chartdata.push(data['result']['option1']['Verified']);
+  }
+  if(!data['result']['option2']['Verified'] == 0){
+    chartdata.push(data['result']['option2']['Verified']);
+  }
+  if(!data['result']['option3']['Verified'] == 0){
+    chartdata.push(data['result']['option3']['Verified']);
+  }
+  if(!data['result']['option4']['Verified'] == 0){
+    chartdata.push(data['result']['option4']['Verified']);
+  }
+  if(!data['result']['option5']['Verified'] == 0){
+    chartdata.push(data['result']['option5']['Verified']);
+  }
+  if(!data['result']['option6']['Verified'] == 0){
+    chartdata.push(data['result']['option6']['Verified']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartV').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+
+
+
+      }
+  );
+}
+function changeChartN(age){
+    $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
+  age = document.getElementById("NAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['Newbie'] == 0){
+    chartdata.push(data['result']['option1']['Newbie']);
+  }
+  if(!data['result']['option2']['Newbie'] == 0){
+    chartdata.push(data['result']['option2']['Newbie']);
+  }
+  if(!data['result']['option3']['Newbie'] == 0){
+    chartdata.push(data['result']['option3']['Newbie']);
+  }
+  if(!data['result']['option4']['Newbie'] == 0){
+    chartdata.push(data['result']['option4']['Newbie']);
+  }
+  if(!data['result']['option5']['Newbie'] == 0){
+    chartdata.push(data['result']['option5']['Newbie']);
+  }
+  if(!data['result']['option6']['Newbie'] == 0){
+    chartdata.push(data['result']['option6']['Newbie']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartN').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]}
+        ,});
+
+
+
+
+      }
+  );
+}
+function changeChartHAndV(age){
+    $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
+  age = document.getElementById("HAndVAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option1']['HumanAndVerified']);
+  }
+  if(!data['result']['option2']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option2']['HumanAndVerified']);
+  }
+  if(!data['result']['option3']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option3']['HumanAndVerified']);
+  }
+  if(!data['result']['option4']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option4']['HumanAndVerified']);
+  }
+  if(!data['result']['option5']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option5']['HumanAndVerified']);
+  }
+  if(!data['result']['option6']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option6']['HumanAndVerified']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartHAndV').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+
+
+
+      }
+  );
+}
+
+function changeChartAll(age){
+    $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
+  age = document.getElementById("AllAge").value;
+let chartdata = [];
+let chartlabels = [];
+  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+// Count
+  if(!data['result']['option1']['All'] == 0){
+    chartdata.push(data['result']['option1']['All']);
+  }
+  if(!data['result']['option2']['All'] == 0){
+    chartdata.push(data['result']['option2']['All']);
+  }
+  if(!data['result']['option3']['All'] == 0){
+    chartdata.push(data['result']['option3']['All']);
+  }
+  if(!data['result']['option4']['All'] == 0){
+    chartdata.push(data['result']['option4']['All']);
+  }
+  if(!data['result']['option5']['All'] == 0){
+    chartdata.push(data['result']['option5']['All']);
+  }
+  if(!data['result']['option6']['All'] == 0){
+    chartdata.push(data['result']['option6']['All']);
+  }
+// Description
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+  if(!data['result']['option3']['Desc'] == ''){
+    chartlabels.push(data['result']['option3']['Desc']);
+  }
+  if(!data['result']['option4']['Desc'] == ''){
+    chartlabels.push(data['result']['option4']['Desc']);
+  }
+  if(!data['result']['option5']['Desc'] == ''){
+    chartlabels.push(data['result']['option5']['Desc']);
+  }
+  if(!data['result']['option6']['Desc'] == ''){
+    chartlabels.push(data['result']['option6']['Desc']);
+  }
+
+
+var ctx = document.getElementById('ChartAll').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
+
+
+
+
+      }
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function toggle(change) {
     if(change == true) {
@@ -1009,6 +2085,29 @@ function Delete(id)
 }
 window.onload = function()
 {
+  changeChartVa(0);
+  changeChartH(0);
+  changeChartV(0);
+  changeChartN(0);
+  changeChartHAndV(0);
+  changeChartAll(0);
+
+  changeScoreVa();
+  changeScoreH();
+  changeScoreV();
+  changeScoreN();
+  changeScoreHAndV();
+  changeScoreAll();
+
+
+
+  loadBarVa();
+  loadBarH();
+  loadBarV();
+  loadBarN();
+  loadBarHAndV();
+  loadBarAll();
+
     ajax_get('./services/checkvote.php?id=<?php echo $id; ?>&type=poll', function(data) {
         if(data["status"]=='true'){
             if(document.getElementById("checker") == null){

@@ -213,7 +213,7 @@ var proposalcontent = '';
 var fvflist = document.getElementById("fvf-list");
 var fvfcontent = '';
 function checkreachout() {
-    ajax_get('./services/checkreachout.php?user=<?php echo $usernamea; ?>', function(data) {
+    ajax_get('./services/checkReachout.php?user=<?php echo $usernamea; ?>', function(data) {
             document.getElementById("RO").href =  data["reachout"];
     });
 }

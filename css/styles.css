@@ -622,7 +622,7 @@ h1, .h1 {
     display: none;
     box-shadow: 0 2px 4px 0 rgba(83, 86, 92, 0.06);
     border-radius: 5px 5px 5px 5px;
-    max-height: 144px;
+    max-height: 160px;
     z-index: 10;
     padding: 0;
     top: 40px !important;

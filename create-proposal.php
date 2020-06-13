@@ -60,7 +60,7 @@ include(dirname(__FILE__)."/partials/header.php");
                       <br/>
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $_SESSION["age"]; ?></p>
-                        
+
 
 
                     </div>
@@ -143,7 +143,7 @@ function createproposal()
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
             document.getElementById("success").innerHTML = '&#x2705; proposal created successfully';
-            checkusername();
+
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");
@@ -161,14 +161,8 @@ function toggle(change) {
             document.getElementById("submit").classList.remove("disabled");
     }
 }
-function checkusername() {
-    ajax_get('./services/checkUsername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("user_name").innerHTML = data["username"];
-    });
-}
-window.onload = function() {
-checkusername();
-}
+
+
 </script>
 <?php
 include(dirname(__FILE__)."/partials/footer.php");

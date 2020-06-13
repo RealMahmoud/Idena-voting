@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_SESSION["addr"])){
-  die('Error : Not signed in');
+  die('{"status": "login", "data": "0"}');
 }
 
 include(dirname(__FILE__)."/../common/protected.php");

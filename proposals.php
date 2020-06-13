@@ -187,7 +187,7 @@ if(isset($_GET['cat'])){
 
 
 window.onload = function() {
-  ajax_get('./services/getproposalsrunning.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getProposalsRunning.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -216,7 +216,7 @@ window.onload = function() {
   });
 
 
-  ajax_get('./services/getproposalsended.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getProposalsEnded.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -246,7 +246,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getproposalsrunning.php'+cat, function(data) {
+  ajax_get('./services/getProposalsRunning.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -275,7 +275,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getproposalsended.php'+cat, function(data) {
+  ajax_get('./services/getProposalsEnded.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -305,7 +305,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getproposalscat.php', function(data) {
+  ajax_get('./services/getProposalsCat.php', function(data) {
 
       if(data["entries"].length > 0){
 

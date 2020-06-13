@@ -96,7 +96,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeName(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit"> Change</span>
+                                <span id="text_submit-username"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -113,7 +113,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeST(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit"> Change</span>
+                                <span id="text_submit-ST"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -133,7 +133,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeBio(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit"> Change</span>
+                                <span id="text_submit-bio"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -150,7 +150,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit"> Change</span>
+                                <span id="text_submit-hidden"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -158,7 +158,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         </form>
                         <br>
 
-                      
+
 
 
 
@@ -184,7 +184,7 @@ include(dirname(__FILE__)."/partials/donation.php");
 <script type="text/javascript">
 function changeName()
 {
-    toggle(true);
+    toggle(true,'username');
     var elements = document.getElementsByClassName("formValUsername");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -193,7 +193,7 @@ function changeName()
     }
 
     ajax_post('./services/changeUsername.php', formData, function(data) {
-        toggle(false);
+        toggle(false,'username');
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
@@ -209,7 +209,7 @@ function changeName()
 
 function changedonate()
 {
-    toggle(true);
+    toggle(true,'donate');
     var elements = document.getElementsByClassName("formValDonate");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -218,7 +218,7 @@ function changedonate()
     }
 
     ajax_post('./services/changeDonate.php', formData, function(data) {
-        toggle(false);
+        toggle(false,'donate');
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
@@ -233,7 +233,7 @@ function changedonate()
 }
 function ChangeHidden()
 {
-    toggle(true);
+    toggle(true,'hidden');
     var elements = document.getElementsByClassName("formValHidden");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -242,7 +242,7 @@ function ChangeHidden()
     }
 
     ajax_post('./services/changeHidden.php', formData, function(data) {
-        toggle(false);
+        toggle(false,'hidden');
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
@@ -258,7 +258,7 @@ function ChangeHidden()
 
 function changeST()
 {
-    toggle(true);
+    toggle(true,'ST');
     var elements = document.getElementsByClassName("formValST");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -267,7 +267,7 @@ function changeST()
     }
 
     ajax_post('./services/changeST.php', formData, function(data) {
-        toggle(false);
+        toggle(false,'ST');
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
@@ -283,7 +283,7 @@ function changeST()
 
 function changeBio()
 {
-    toggle(true);
+    toggle(true,'bio');
     var elements = document.getElementsByClassName("formValBio");
     var formData = new FormData();
     for(var i=0; i<elements.length; i++)
@@ -292,7 +292,7 @@ function changeBio()
     }
 
     ajax_post('./services/changeBio.php', formData, function(data) {
-        toggle(false);
+        toggle(false,'bio');
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
@@ -310,13 +310,13 @@ function changeBio()
 
 
 
-function toggle(change) {
+function toggle(change,k) {
     if(change == true) {
-            document.getElementById("text_submit").innerHTML = "Changing...";
-            document.getElementById("submit").classList.add("disabled");
+            document.getElementById("text_submit-"+k).innerHTML = "Changing...";
+            document.getElementById("submit-"+k).classList.add("disabled");
     } else {
-            document.getElementById("text_submit").innerHTML = "Change";
-            document.getElementById("submit").classList.remove("disabled");
+            document.getElementById("text_submit-"+k).innerHTML = "Change";
+            document.getElementById("submit-"+k).classList.remove("disabled");
     }
 }
 

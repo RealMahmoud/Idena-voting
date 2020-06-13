@@ -187,7 +187,7 @@ if(isset($_GET['cat'])){
 
 
 window.onload = function() {
-  ajax_get('./services/getfvfsrunning.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getFvfsRunning.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -216,7 +216,7 @@ window.onload = function() {
   });
 
 
-  ajax_get('./services/getfvfsended.php?vip=1'+catv, function(data) {
+  ajax_get('./services/getFvfsEnded.php?vip=1'+catv, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -246,7 +246,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getfvfsrunning.php'+cat, function(data) {
+  ajax_get('./services/getFvfsRunning.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 
@@ -275,7 +275,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getfvfsended.php'+cat, function(data) {
+  ajax_get('./services/getFvfsEnded.php'+cat, function(data) {
 
       if(data["entries"].length > 0){
 

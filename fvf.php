@@ -133,81 +133,55 @@ $owneraddress = $rowf[1];
 </section>
 
 <section class="section section_info">
+   <div class="row " >
+   <div class="col-12 col-sm-6 ">
+      <div class="card col-auto">
+               <img style="width: 100%; height:100%" src="http://127.0.0.1/Idena-voting/images/idena-logo-dark.svg" alt="Right">
+               <form id="vote_form">
+                  <div id="vote_container1">
+                    <br>
+                    <div class="warning rem" id="warning1">
+                    </div>
+                    <div class="success rem" id="success1">
+                    </div>
+                        <div class="input-group">
+                           <a class="btn btn-secondary btn-small" href="#" id="submit1" onclick="castVote(1); return false;" >
+                           <span id="text_submit1">Choose</span>
+                           <i class="icon icon--thin_arrow_right"></i>
+                           </a>
 
-    <div class="row " >
+                     </div>
+               </form>
+             </div>
+             </div>
+                </div>
+               <div class="col-12 col-sm-6">
+                  <div class="card col-auto">
+                 <img style="width: 100%; height:100%"src="https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg" alt="Left">
 
-          <div class="col-12 col-sm-12 ">
-            <div class="card col-auto">
-              <div>
+               <form id="vote_form">
+                  <div id="vote_container2">
+                    <br>
+                    <div class="warning rem" id="warning2">
+                    </div>
+                    <div class="success rem" id="success2">
+                    </div>
+                        <div class="input-group">
+                           <a class="vertical-center btn btn-secondary btn-small" href="#" id="submit2" onclick="castVote(2); return false;" >
+                           <span id="text_submit2">Choose</span>
+                           <i class="icon icon--thin_arrow_right"></i>
+                           </a>
 
-                  <div class="bordered-col ">
-                        <div class="warning rem" id="warning">
-                        </div>
-                        <div class="success rem" id="success">
-                        </div>
-
-                      <h4 class="info_block__accent">Voting Panel</h4>
-
-                      <?php
-        $id = $conn->real_escape_string($_GET["id"]);
-        $sql = "SELECT * FROM `fvfs` WHERE `id` = '" . $id . "' LIMIT 1;";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0)
-        {
-            while ($row = $result->fetch_assoc())
-            {
-                echo '<img style="margin-right:10%; width: 40%;" src="' . $row['location1'] . '" alt="Paris">';
-
-                echo '<img style="margin-left:10%; width: 40%;" src="' . $row['location2'] . '" alt="Paris">';
-                if (!date(strtotime('now')) < Date(strtotime($row['endtime'])) && isset($_SESSION["addr"]))
-                {
-?>
-<div id="checker"></div>
-<form id="vote_form" METHOD="POST">
-
-  <div id="vote_container">
-      <div class="input-group">
-       Left <input type="radio" class="formVal" name="vote" value="1" checked/><br>
-        Right <input type="radio" class="formVal" name="vote" value="2" /><br>
-                                      <input type="hidden" class="formVal" name="id" value="<?php echo $id; ?>"/>
-                                        <input type="hidden" class="formVal" name="type" value="fvf"/>
-                                        <div class="input-group">
-                                        <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
-                                            <span id="text_submit">Cast My Vote</span>
-                                            <i class="icon icon--thin_arrow_right"></i>
-                                        </a>
-                                        </div>
-                                            </div>
-                                            <?php
-                }
-                elseif (!isset($_SESSION["addr"]))
-                {
-                    echo "<p>You have to be signed in to vote</p>";
-                }
-            }
-        }
-
-?>
-
-
-
-
-</form>
-
-</div>
-
-
-                  </div>
-
-
-              </div>
-            </div>
-          </div>
-
-
+                     </div>
+               </form>
+               </div>
+      </div>
+   </div>
+      </div>
 
 </section>
+
+
 
 <?php
 $id = $conn->real_escape_string($_GET["id"]);}} ?>
@@ -289,10 +263,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -344,6 +321,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -393,6 +371,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -442,6 +421,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -491,8 +471,10 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -545,10 +527,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
 
                   </div>
                 </form>
@@ -1782,59 +1767,57 @@ var myChart = new Chart(ctx, {
 
 
 
-
-
-function toggle(change) {
-  if(change == true) {
-          document.getElementById("text_submit").innerHTML = "Casting...";
-          document.getElementById("submit").classList.add("disabled");
-  } else {
-          document.getElementById("text_submit").innerHTML = "Cast my Vote";
-          document.getElementById("submit").classList.remove("disabled");
-  }
+function toggle(change,id) {
+    if(change == true) {
+            document.getElementById("text_submit"+id).innerHTML = "Casting...";
+            document.getElementById("submit"+id).classList.add("disabled");
+    } else {
+            document.getElementById("text_submit"+id).innerHTML = "Choose";
+            document.getElementById("submit"+id).classList.remove("disabled");
+    }
 }
 
-function changeVote()
+
+
+function castVote(vote)
 {
-//  toggle(true);
-  var elements = document.getElementsByClassName("formVal");
+  toggle(true,vote)
   var formData = new FormData();
-  for(var i=0; i<elements.length; i++)
-  {
+  formData.append('vote',vote);
+  formData.append('id',<?php echo $id;?>);
+  formData.append('type','fvf');
+  ajax_post('./services/vote.php',formData, function(data) {
 
-    if (elements[i].name == 'vote'){
-      if (elements[i].checked){
-          formData.append(elements[i].name, elements[i].value);
-      }
-    }else {
-      formData.append(elements[i].name, elements[i].value);
-    }
-
-  }
-
-  ajax_post('./services/vote.php', formData, function(data) {
-      toggle(false);
       if(data["success"]){
-          document.getElementById("success").classList.remove("rem");
-          document.getElementById("warning").classList.add("rem");
-          document.getElementById("success").innerHTML = '&#x2705; Vote made successfully';
+          document.getElementById("success"+vote).classList.remove("rem");
+          document.getElementById("warning"+vote).classList.add("rem");
+          document.getElementById("success"+vote).innerHTML = '&#x2705; Vote made successfully';
       } else {
-          document.getElementById("success").classList.add("rem");
-          document.getElementById("warning").classList.remove("rem");
-          document.getElementById("submit").classList.add("disabled");
-          document.getElementById("warning").innerHTML = '&#x274C; Your have already voted on this!';
+          document.getElementById("success"+vote).classList.add("rem");
+          document.getElementById("warning"+vote).classList.remove("rem");
+          document.getElementById("submit"+vote).classList.add("disabled");
+          document.getElementById("warning"+vote).innerHTML = '&#x274C; Your have already voted on this!';
       }
   });
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
+    toggle(false,1)
+    toggle(false,2)
+    var  vop
       if(data["status"]=='true'){
-          if(document.getElementById("checker") == null){
+    if(data["vote"] == '1'){
+    vop = 'Left';
+    }else{
+    vop = 'Right';
+    }
+          document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
+            document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
+}if(data["status"]=='login'){
+  document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+  document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+}})
 
-          }else {
-          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
-          }
 
-      }
-  });
+
 }
 function Delete(id)
 {
@@ -1871,15 +1854,22 @@ loadBarHAndV();
 loadBarAll();
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
+    var  vop
       if(data["status"]=='true'){
-          if(document.getElementById("checker") == null){
+if(data["vote"] == '1'){
+  vop = 'Left';
+}else{
+    vop = 'Right';
+}
+          document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
+          document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+vop+'".</h4>';
+        }if(data["status"]=='login'){
+          document.getElementById("vote_container1").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+          document.getElementById("vote_container2").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+        }})
 
-          }else {
-          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
-          }
 
-      }
-  });
+
 }
 
 

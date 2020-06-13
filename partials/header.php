@@ -165,7 +165,7 @@ Polls
                     <li>
                         <a class="btn btn-small" href="./logout.php"><span>Log out</span></a>
                     </li>
-                    <li class="brake"></li>
+                    
 
               </div>
 

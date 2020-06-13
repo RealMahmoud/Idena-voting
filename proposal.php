@@ -151,7 +151,7 @@ echo '<div id="checker"></div>
                                       echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
                                         <input type="hidden" class="formVal" name="type" value="proposal"/>
                                         <div class="input-group">
-                                        <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeVote(); return false;" style="margin-top: 1em;">
+                                        <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="castVote(); return false;" style="margin-top: 1em;">
                                             <span id="text_submit">Cast My Vote</span>
                                             <i class="icon icon--thin_arrow_right"></i>
                                         </a>
@@ -262,10 +262,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -317,6 +320,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -366,6 +370,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -415,6 +420,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -464,8 +470,10 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                   </div>
                 </form>
 
@@ -518,10 +526,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                   <div class="input-group" style="width: 60%;margin: 0 auto;">
                     <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
                     <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
                     <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
                     <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
                     <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
 
                   </div>
                 </form>
@@ -1767,9 +1778,9 @@ function toggle(change) {
   }
 }
 
-function changeVote()
+function castVote()
 {
-//  toggle(true);
+  toggle(true);
   var elements = document.getElementsByClassName("formVal");
   var formData = new FormData();
   for(var i=0; i<elements.length; i++)

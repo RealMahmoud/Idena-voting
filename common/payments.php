@@ -34,7 +34,7 @@ $data = json_decode($data, true);
   curl_close( $ch );
 
   if($data['result']['to'] == '0xa27da2afe2c8e9866ea143b7f495868346090007'){
-echo hex2bin(substr($data['result']['payload'],2));
+
 $conn->query("UPDATE `accounts` SET `credits` =  `credits` + '".intval($data['result']['amount']) / 0.25."' where `address` = '".hex2bin(substr($data['result']['payload'],2))."'");
    $conn->query("INSERT INTO `payments`(`sender`, `amount`, `paid`,`credits`,`hash`,`account`) VALUES (
      '".$data['result']['from']."',

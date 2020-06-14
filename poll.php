@@ -132,28 +132,28 @@ echo '<div class="col-4 col-sm-4 bordered-col">
                                       $result = $conn->query($sql);
 
                                       if ($result->num_rows > 0) {
-                                        while($row = $result->fetch_assoc()) {
+                                        while($row2 = $result->fetch_assoc()) {
 
 echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
         <div class="input-group" >';
-                                          if (!$row['option1'] == null){
-                                          echo $row['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked /><br>';
+                                          if (!$row2['option1'] == null){
+                                          echo $row2['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked /><br>';
                                           }
-                                          if (!$row['option2'] == null){
-                                          echo $row['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
+                                          if (!$row2['option2'] == null){
+                                          echo $row2['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
                                           }
-                                          if (!$row['option3'] == null){
-                                          echo $row['option3'].'  <input type="radio" class="formVal" name="vote" value="3" /><br>';
+                                          if (!$row2['option3'] == null){
+                                          echo $row2['option3'].'  <input type="radio" class="formVal" name="vote" value="3" /><br>';
                                           }
-                                          if (!$row['option4'] == null){
-                                          echo $row['option4'].'  <input type="radio" class="formVal" name="vote" value="4" /><br>';
+                                          if (!$row2['option4'] == null){
+                                          echo $row2['option4'].'  <input type="radio" class="formVal" name="vote" value="4" /><br>';
                                           }
-                                          if (!$row['option5'] == null){
-                                          echo $row['option5'].'  <input type="radio" class="formVal" name="vote" value="5" /><br>';
+                                          if (!$row2['option5'] == null){
+                                          echo $row2['option5'].'  <input type="radio" class="formVal" name="vote" value="5" /><br>';
                                           }
-                                          if (!$row['option6'] == null){
-                                          echo $row['option6'].'  <input type="radio" class="formVal" name="vote" value="6" /><br>';
+                                          if (!$row2['option6'] == null){
+                                          echo $row2['option6'].'  <input type="radio" class="formVal" name="vote" value="6" /><br>';
                                         }
                                       echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
                                         <input type="hidden" class="formVal" name="type" value="poll"/>
@@ -167,15 +167,48 @@ echo '<div id="checker"></div>
                                       }}
 
                                         ?>
-
-
-
-
-
-
                                 </form>
                         </div>
+                        <br>
+                        <h4 class="info_block__accent">Share</h4>
+                         <input type="text" class="form-control" name="shareurl" value="<?php echo $url.'poll.php?id='.$id;?>"/>
+                         <!-- I got these buttons from simplesharebuttons.com -->
+                         <br>
+<div id="share-buttons" style="margin-left:20%;margin-right:20%"class="row justify-content-between align-items-center">
 
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=<?php echo $url.'poll.php?id='.$id;?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=<?php echo $url.'poll.php?id='.$id;?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $url.'poll.php?id='.$id;?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+
+
+    <!-- Reddit -->
+    <a href="http://reddit.com/submit?url=<?php echo $url.'poll.php?id='.$id;?>&amp;title=<?php echo $row['title'];?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+    </a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=<?php echo $url.'poll.php?id='.$id;?>&amp;text=<?php echo $row['title'];?>&amp;hashtags=<?php echo $row['category'];?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+
+    <!-- VK -->
+    <a href="http://vkontakte.ru/share.php?url=<?php echo $url.'poll.php?id='.$id;?>" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+    </a>
+
+
+</div>
                   </div>
 
                 </div>

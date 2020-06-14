@@ -54,7 +54,17 @@
 
       </div>
 </div>
+<style type="text/css">
 
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+
+</style>
 <style>
 input[type=text] {
   width: 100%;

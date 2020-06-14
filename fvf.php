@@ -60,7 +60,7 @@ $owneraddress = $rowf[1];
               <div>
                 <div class="row">
 
-                  <div class="col-12 col-sm-12 bordered-col">
+                  <div class="col-12 col-sm-7 bordered-col">
 
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
@@ -119,6 +119,48 @@ $owneraddress = $rowf[1];
                       </div>
                         <br/>
                   </div>
+<div class="col-12 col-sm-5 bordered-col">
+  <br>
+  <h4 class="info_block__accent">Share</h4>
+   <input type="text" class="form-control" name="shareurl" value="<?php echo $url.'fvf.php?id='.$id;?>"/>
+   <!-- I got these buttons from simplesharebuttons.com -->
+   <br>
+<div id="share-buttons" style="margin-left:20%;margin-right:20%"class="row justify-content-between align-items-center">
+
+<!-- Facebook -->
+<a href="http://www.facebook.com/sharer.php?u=<?php echo $url.'fvf.php?id='.$id;?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+</a>
+
+<!-- Google+ -->
+<a href="https://plus.google.com/share?url=<?php echo $url.'fvf.php?id='.$id;?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+</a>
+
+<!-- LinkedIn -->
+<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $url.'fvf.php?id='.$id;?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+</a>
+
+
+<!-- Reddit -->
+<a href="http://reddit.com/submit?url=<?php echo $url.'fvf.php?id='.$id;?>&amp;title=<?php echo $row['title'];?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+</a>
+
+<!-- Twitter -->
+<a href="https://twitter.com/share?url=<?php echo $url.'fvf.php?id='.$id;?>&amp;text=<?php echo $row['title'];?>&amp;hashtags=<?php echo $row['category'];?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+</a>
+
+<!-- VK -->
+<a href="http://vkontakte.ru/share.php?url=<?php echo $url.'fvf.php?id='.$id;?>" target="_blank">
+<img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+</a>
+
+
+</div>
+</div>
 
 
 

@@ -95,6 +95,7 @@ include(dirname(__FILE__)."/partials/header.php");
                             <br><p> Option 4 :</p><input type="text"name="option4" class="formVal form-control" value="">
                             <br><p> Option 5 :</p><input type="text"name="option5" class="formVal form-control" value="">
                             <br><p> Option 6 :</p><input type="text"name="option6" class="formVal form-control" value="">
+                            <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
                             <input type="hidden" name="type" class="formVal" value="poll"/>
                             </div>
 
@@ -136,7 +137,12 @@ function createPoll()
     {
         formData.append(elements[i].name, elements[i].value);
     }
+    if(document.getElementById("vip").checked == true){
 
+    formData.append("vip",'1');
+  }else{
+    formData.append("vip",'0');
+  }
     ajax_post('./services/addPoll.php', formData, function(data) {
         toggle(false);
         if(data["success"]){

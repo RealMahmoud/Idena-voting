@@ -16,14 +16,14 @@ include(dirname(__FILE__)."/partials/header.php");
 
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
 
-              <h4 class="info_block__accent">Donate DNA To : <?php echo $usernamea?></h4>
+              <h4 class="info_block__accent">Donate DNA To User : <?php echo $usernamea?></h4>
               <div class="warning rem" id="warning">
               </div>
               <div class="success rem" id="success">
               </div>
               <form id="fvf_form" METHOD="POST" onsubmit="SendDna(); return false;"style="margin-left:20%;margin-right:20%;">
                   <div class="input-group">
-                    <p>Amount</p><input id="amount"type="number" class="formVal form-control" value="1"></input><br>
+                    <p>Amount</p><input id="amount"type="number" class="formVal form-control" style="text-align:center;"value="1"></input><br>
                     <p>Comment</p><input id="comment" class="formVal form-control" value="Hello ,<?php echo $usernamea;?> I have just sent you some DNA"></input><br>
                   </div>
                   <div class="input-group">
@@ -59,7 +59,7 @@ function SendDna()
 
           document.getElementById("success").classList.add("rem");
           document.getElementById("warning").classList.remove("rem");
-          document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+          document.getElementById("warning").innerHTML = '&#x274C; There is no donation address set for this user';
         }
 
       });

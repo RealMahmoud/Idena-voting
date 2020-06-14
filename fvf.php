@@ -136,7 +136,7 @@ $owneraddress = $rowf[1];
    <div class="row " >
    <div class="col-12 col-sm-6 ">
       <div class="card col-auto">
-               <img style="width: 100%; height:100%" src="http://127.0.0.1/Idena-voting/images/idena-logo-dark.svg" alt="Right">
+               <img style="width: 100%; height:100%" src="<?php echo $row['location1'];?>" alt="Right">
                <form id="vote_form">
                   <div id="vote_container1">
                     <br>
@@ -157,7 +157,7 @@ $owneraddress = $rowf[1];
                 </div>
                <div class="col-12 col-sm-6">
                   <div class="card col-auto">
-                 <img style="width: 100%; height:100%"src="https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg" alt="Left">
+                 <img style="width: 100%; height:100%"src="<?php echo $row['location2'];?>" alt="Left">
 
                <form id="vote_form">
                   <div id="vote_container2">

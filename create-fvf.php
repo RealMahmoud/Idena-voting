@@ -93,6 +93,8 @@ include(dirname(__FILE__)."/partials/header.php");
                             <br><p> Flip location2 :</p><input type="text"name="location2" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
                               <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
                             <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="">
+                            <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
+
 
                             <input type="hidden" name="type" class="formVal" value="fvf"/>
                             </div>
@@ -135,14 +137,19 @@ function createfvf()
     {
         formData.append(elements[i].name, elements[i].value);
     }
+    if(document.getElementById("vip").checked == true){
 
+    formData.append("vip",'1');
+  }else{
+    formData.append("vip",'0');
+  }
     ajax_post('./services/addFvf.php', formData, function(data) {
         toggle(false);
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");
             document.getElementById("warning").classList.add("rem");
             document.getElementById("success").innerHTML = '&#x2705; FvF created successfully';
-            
+
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");

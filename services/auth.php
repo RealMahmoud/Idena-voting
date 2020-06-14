@@ -57,8 +57,8 @@ if ($result->num_rows > 0) {
         if ($result_acct->num_rows == 0) {
                 $t=time();
                 $timestamp = date("yy-m-d h:m:s",$t);
-                $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `votescount`, `state`, `username`,`password`,`dailyCredits`) VALUES
-    ('".$address."', '".$timestamp."', 0, 'zero', '".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,15)."','".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,30)."','".strtotime('-1 days')."');";
+                $sql2 = "INSERT INTO `accounts` (`address`, `lastlogin`, `state`, `username`,`password`,`dailyCredits`) VALUES
+    ('".$address."', '".$timestamp."',  'zero', '".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,15)."','".substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,30)."','".date("Y-m-d", strtotime("yesterday"))."');";
 
                 $result2 = $conn->query($sql2);
         }

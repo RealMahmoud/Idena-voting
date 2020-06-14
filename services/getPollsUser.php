@@ -13,7 +13,7 @@ $sql1 = "SELECT `id` ,`pdesc`, `title`,`category`,`endtime`, (SELECT COUNT(*) FR
     if ($result_acct->num_rows > 0) {
         // output data of each row
                 while($row = $result_acct->fetch_assoc()) {
-                    $polls[] = array('description' => mb_strimwidth($row['pdesc'], 0, 25, '...'),'id' => $row['id'],'count' => $row['count'],'title' => $row['title'],'category' =>  $row['category'] , `endtime` => $row['endtime']);
+                    $polls[] = array('id' => $row['id'],'count' => $row['count'],'title' => mb_strimwidth(mb_strimwidth($row['title'], 0, 25, '...'), 0, 25, '...'),'category' =>  $row['category'] , `endtime` => $row['endtime']);
                 }
 
     }

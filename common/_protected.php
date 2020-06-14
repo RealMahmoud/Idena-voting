@@ -25,6 +25,7 @@ if(!empty($_SESSION["token"])) {
 
 
     if(!empty($_SESSION["addr"])) {
+      
       $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
@@ -69,6 +70,7 @@ if(!empty($_SESSION["token"])) {
               $sql3 = "UPDATE `accounts` SET `lastseen`= NOW()  WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
                 $result3 = $conn->query($sql3);
           }
+
           $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {

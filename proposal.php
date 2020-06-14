@@ -215,7 +215,7 @@ echo '<div id="checker"></div>
                 </div>
               </div>
             </div>
-          </div>
+          
 
     </div><!-- row end -->
 
@@ -229,368 +229,398 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
 
 
-  <section class="section section_tabs">
-    <div class="tabs">
-      <div class="section__header">
-        <div class="row align-items-center justify-content-between">
-          <div class="col">
-            <ul class="nav nav-tabs row justify-content-between align-items-center" role="tablist">
-              <li class="nav-item">
-                <a onclick="Change('Va');" id='VaNav' class="nav-link active">
-                  <h3>Validated</h3>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a onclick="Change('H');" id='HNav' class="nav-link ">
-                  <h3>Humans</h3>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a onclick="Change('V');" id='VNav' class="nav-link ">
-                  <h3>Verified</h3>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a onclick="Change('N');" id='NNav' class="nav-link ">
-                  <h3>Newbies</h3>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a onclick="Change('HAndV');" id='HAndVNav' class="nav-link ">
-                  <h3>Humans And Verified</h3>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a onclick="Change('All');" id='AllNav' class="nav-link ">
-                  <h3>All identities</h3>
-                </a>
-              </li>
-            </ul>
-          </div>
+<section class="section section_tabs">
+  <div class="tabs">
+    <div class="section__header">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="nav nav-tabs row justify-content-between align-items-center" role="tablist">
+            <li class="nav-item">
+              <a onclick="Change('Va');" id='VaNav' class="nav-link active">
+                <h3>Validated</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="Change('H');" id='HNav' class="nav-link ">
+                <h3>Humans</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="Change('V');" id='VNav' class="nav-link ">
+                <h3>Verified</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="Change('N');" id='NNav' class="nav-link ">
+                <h3>Newbies</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="Change('HAndV');" id='HAndVNav' class="nav-link ">
+                <h3>Humans And Verified</h3>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="Change('All');" id='AllNav' class="nav-link ">
+                <h3>All identities</h3>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="tab-content">
-        <div class="tab-pane active" id="VaCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartVa" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartVa(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="VaAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="VaCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartVa" width="100%" height="70%"></canvas>
             </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarVa" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreVa(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
+            <div class="col-12 col-sm-6 bordered-col">
 
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
-                    <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
-<br>
-                    <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
-                    <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
-<br>
-                    <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
-                    <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
-<br>
-                  </div>
-                </form>
-
-              </div>
-            </div>
-
-          </div>
-
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeVa" width="100%" height="30%"></canvas>
+              <form id="name_form" METHOD="POST" oninput="changeChartVa(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="VaAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+               <br><br><br>
+              <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+              <div class="input-group" style="width: 60%;margin: 0 auto;">
+              <h4 style="text-align:center;">Only validated identities counted</h4>
               </div>
             </div>
           </div>
         </div>
-
-
-
-        <div class="tab-pane" id="HCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartH" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartH(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="HAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarVa" width="100%" height="60%"></canvas>
             </div>
-          </div>
-          <div class="card">
-
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarH" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreH(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreVa(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
-                    <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
-<br>
-                  </div>
-                </form>
 
-              </div>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
+                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
+                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                  <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
+                </div>
+              </form>
+
             </div>
           </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeH" width="100%" height="30%"></canvas>
-              </div>
-            </div>
-          </div>
+
         </div>
 
-
-
-        <div class="tab-pane" id="VCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartV" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartV(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="VAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarV" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreV(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
-                    <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
-<br>
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeV" width="100%" height="30%"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="tab-pane" id="NCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartN" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartN(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="NAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarN" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreN(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
-                    <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
-<br>
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeN" width="100%" height="30%"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="tab-pane" id="HAndVCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartHAndV" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartHAndV(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="HAndVAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarHAndV" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreHAndV(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
-                    <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
-<br>
-                    <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
-                    <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
-<br>
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeHAndV" width="100%" height="30%"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-        <div class="tab-pane" id="AllCon">
-          <div class="card">
-            <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
-            <div class="row">
-              <div class="col-12 col-sm-6 bordered-col">
-                <canvas id="ChartAll" width="100%" height="70%"></canvas>
-              </div>
-              <div class="col-12 col-sm-6 bordered-col">
-                <form id="name_form" METHOD="POST" oninput="changeChartAll(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <input type="number" name="age" style="text-align:center;" id="AllAge" class="formVal form-control" value="1" placeholder="Minimum age" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-
-            <div class="row">
-              <div class="col-12 col-sm-8 bordered-col">
-                <canvas id="BarAll" width="100%" height="60%"></canvas>
-              </div>
-              <div class="col-12 col-sm-4 bordered-col">
-                <br>
-                <form id="name_form" METHOD="POST" oninput="changeScoreAll(); return false;">
-                  <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
-                  <div class="input-group" style="width: 60%;margin: 0 auto;">
-                    <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
-                    <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
-<br>
-                    <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
-                    <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
-<br>
-                    <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
-                    <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
-<br>
-
-                  </div>
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12 col-sm-12 bordered-col">
-                <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-                <canvas id="BarAgeAll" width="100%" height="30%"></canvas>
-              </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeVa" width="100%" height="30%"></canvas>
             </div>
           </div>
         </div>
       </div>
-  </section>
 
+
+
+      <div class="tab-pane" id="HCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartH" width="100%" height="70%"></canvas>
+            </div>
+            <div class="col-12 col-sm-6 bordered-col">
+              <form id="name_form" METHOD="POST" oninput="changeChartH(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="HAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+              <br><br><br>
+             <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+             <div class="input-group" style="width: 60%;margin: 0 auto;">
+             <h4 style="text-align:center;">Only Humans counted</h4>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarH" width="100%" height="60%"></canvas>
+            </div>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreH(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeH" width="100%" height="30%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="tab-pane" id="VCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartV" width="100%" height="70%"></canvas>
+            </div>
+            <div class="col-12 col-sm-6 bordered-col">
+              <form id="name_form" METHOD="POST" oninput="changeChartV(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="VAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+              <br><br><br>
+             <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+             <div class="input-group" style="width: 60%;margin: 0 auto;">
+             <h4 style="text-align:center;">Only Verified counted</h4>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarV" width="100%" height="60%"></canvas>
+            </div>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreV(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeV" width="100%" height="30%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="tab-pane" id="NCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartN" width="100%" height="70%"></canvas>
+            </div>
+            <div class="col-12 col-sm-6 bordered-col">
+              <form id="name_form" METHOD="POST" oninput="changeChartN(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="NAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+              <br><br><br>
+             <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+             <div class="input-group" style="width: 60%;margin: 0 auto;">
+             <h4 style="text-align:center;">Only Newbies counted</h4>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarN" width="100%" height="60%"></canvas>
+            </div>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreN(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                  <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeN" width="100%" height="30%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="tab-pane" id="HAndVCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartHAndV" width="100%" height="70%"></canvas>
+            </div>
+            <div class="col-12 col-sm-6 bordered-col">
+              <form id="name_form" METHOD="POST" oninput="changeChartHAndV(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="HAndVAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+              <br><br><br>
+             <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+             <div class="input-group" style="width: 60%;margin: 0 auto;">
+             <h4 style="text-align:center;">Only Humans And Verifed counted</h4>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarHAndV" width="100%" height="60%"></canvas>
+            </div>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreHAndV(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
+                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeHAndV" width="100%" height="30%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="tab-pane" id="AllCon">
+        <div class="card">
+          <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
+          <div class="row">
+            <div class="col-12 col-sm-6 bordered-col">
+              <canvas id="ChartAll" width="100%" height="70%"></canvas>
+            </div>
+            <div class="col-12 col-sm-6 bordered-col">
+              <form id="name_form" METHOD="POST" oninput="changeChartAll(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="AllAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+              </form>
+              <br><br><br>
+             <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+             <div class="input-group" style="width: 60%;margin: 0 auto;">
+             <h4 style="text-align:center;">All identities counted</h4>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+
+          <div class="row">
+            <div class="col-12 col-sm-8 bordered-col">
+              <canvas id="BarAll" width="100%" height="60%"></canvas>
+            </div>
+            <div class="col-12 col-sm-4 bordered-col">
+              <br>
+              <form id="name_form" METHOD="POST" oninput="changeScoreAll(); return false;">
+                <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
+<br>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
+<br>
+                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
+<br>
+                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                  <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
+<br>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12 col-sm-12 bordered-col">
+              <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
+              <canvas id="BarAgeAll" width="100%" height="30%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
 
 

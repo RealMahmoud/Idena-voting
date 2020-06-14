@@ -275,12 +275,18 @@ echo '<div id="checker"></div>
                   <canvas id="ChartVa" width="100%" height="70%"></canvas>
                 </div>
                 <div class="col-12 col-sm-6 bordered-col">
+
                   <form id="name_form" METHOD="POST" oninput="changeChartVa(); return false;">
                     <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                     <div class="input-group" style="width: 60%;margin: 0 auto;">
                       <input type="number" name="age" style="text-align:center;" id="VaAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                   <br><br><br>
+                  <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                  <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <h4 style="text-align:center;">Only validated identities counted</h4>
+                  </div>
                 </div>
               </div>
             </div>
@@ -339,6 +345,11 @@ echo '<div id="checker"></div>
                       <input type="number" name="age" style="text-align:center;" id="HAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                  <br><br><br>
+                 <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                 <div class="input-group" style="width: 60%;margin: 0 auto;">
+                 <h4 style="text-align:center;">Only Humans counted</h4>
+                 </div>
                 </div>
               </div>
             </div>
@@ -389,6 +400,11 @@ echo '<div id="checker"></div>
                       <input type="number" name="age" style="text-align:center;" id="VAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                  <br><br><br>
+                 <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                 <div class="input-group" style="width: 60%;margin: 0 auto;">
+                 <h4 style="text-align:center;">Only Verified counted</h4>
+                 </div>
                 </div>
               </div>
             </div>
@@ -439,6 +455,11 @@ echo '<div id="checker"></div>
                       <input type="number" name="age" style="text-align:center;" id="NAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                  <br><br><br>
+                 <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                 <div class="input-group" style="width: 60%;margin: 0 auto;">
+                 <h4 style="text-align:center;">Only Newbies counted</h4>
+                 </div>
                 </div>
               </div>
             </div>
@@ -489,6 +510,11 @@ echo '<div id="checker"></div>
                       <input type="number" name="age" style="text-align:center;" id="HAndVAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                  <br><br><br>
+                 <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                 <div class="input-group" style="width: 60%;margin: 0 auto;">
+                 <h4 style="text-align:center;">Only Humans And Verifed counted</h4>
+                 </div>
                 </div>
               </div>
             </div>
@@ -545,6 +571,11 @@ echo '<div id="checker"></div>
                       <input type="number" name="age" style="text-align:center;" id="AllAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                     </div>
                   </form>
+                  <br><br><br>
+                 <h3 class="info_block__accent" style="text-align:center;">Notice</h3>
+                 <div class="input-group" style="width: 60%;margin: 0 auto;">
+                 <h4 style="text-align:center;">All identities counted</h4>
+                 </div>
                 </div>
               </div>
             </div>

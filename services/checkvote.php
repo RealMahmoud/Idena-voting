@@ -4,7 +4,7 @@ if(empty($_SESSION["addr"])){
   die('{"status": "login", "data": "0"}');
 }
 
-include(dirname(__FILE__)."/../common/protected.php");
+include(dirname(__FILE__)."/../common/_protected.php");
 header('Content-Type: application/json');
 
 $id = $conn->real_escape_string($_GET['id']);

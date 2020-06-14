@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include(dirname(__FILE__)."/../common/protected.php");
+include(dirname(__FILE__)."/../common/_protected.php");
 header('Content-Type: application/json');
 
 $id = $conn->real_escape_string($_POST['id']);

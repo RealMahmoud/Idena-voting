@@ -2,7 +2,7 @@
 session_start();
 
 
-include(dirname(__FILE__)."/../common/protected.php");
+include(dirname(__FILE__)."/../common/_protected.php");
 header('Content-Type: application/json');
 
 $sql1 = "SELECT `username` FROM `accounts` WHERE `address` = '".$_SESSION['addr']."' LIMIT 1;";

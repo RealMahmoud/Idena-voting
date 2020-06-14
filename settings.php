@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include(dirname(__FILE__)."/common/protected.php");
+include(dirname(__FILE__)."/common/_protected.php");
 $pagetitle = 'Settings';
 include(dirname(__FILE__)."/partials/header.php");
 ?>

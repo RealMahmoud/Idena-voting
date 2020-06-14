@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!empty($_GET['logged'])){
-  include(dirname(__FILE__)."/common/protected.php");
+  include(dirname(__FILE__)."/common/_protected.php");
 }
 $pagetitle = 'FAQ';
 include(dirname(__FILE__)."/partials/header.php");

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include(dirname(__FILE__)."/../common/protected.php");
+include(dirname(__FILE__)."/../common/_protected.php");
 header('Content-Type: application/json');
 if(!isset($_POST['vip'])) {
   die('{"success":false,"data":"need to choose vip ot not"}');

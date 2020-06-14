@@ -42,11 +42,10 @@ include(dirname(__FILE__)."/partials/header.php");
                    <?php if(!isset($owner)){
                      echo '  <a class="btn btn-small btn-primary" href="'.$url.'donate.php?user='.$usernamea.'">
                            <span>Donate</span>
-                       </a>
-                       <a class="btn btn-small btn-primary" id="RO"href="'.$url.'reachout.php?user='.$usernamea.'">
-                           <span>Reach Out</span>
                        </a>';
-
+//    <a class="btn btn-small btn-primary" id="RO"href="'.$url.'reachout.php?user='.$usernamea.'">
+    //   <span>Reach Out</span>
+  // </a>
                  }else{
 echo '  <a class="btn btn-small btn-primary" href="./settings.php">
       <span>Edit Settings</span>

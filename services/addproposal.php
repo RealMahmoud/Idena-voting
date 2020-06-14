@@ -70,7 +70,7 @@ if(!empty($_SESSION["addr"]))
            if ($result->num_rows > 0) {
            die('{"success":false, "data": "This Propsal already exist before"}');
            }
-          $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."')";
+          $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`,`vip`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."','".$vip."')";
 
           $result = $conn->query($sql);
           // discord
@@ -111,7 +111,8 @@ if(!empty($_SESSION["addr"]))
           curl_close( $ch );
 // end discord
 
-          $sql = "UPDATE `accounts` SET `credits` = `credits`-".$cost." WHERE `accounts`.`addr` = '".$_SESSION["addr"]."';";
+          $sql = "UPDATE `accounts` SET `credits` = `credits`-".$cost." WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
+
          $conn->query($sql);
           echo '{"success":true,"data":"Proposl created successfully"}';
         } else {

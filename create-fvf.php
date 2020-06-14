@@ -91,7 +91,7 @@ include(dirname(__FILE__)."/partials/header.php");
                                 <p>Category :</p><input name="category" id="category" class="formVal form-control" value="Idena"></input><br>
                           <br><p> Flip location 1 :</p><input type="text"name="location1" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
                             <br><p> Flip location2 :</p><input type="text"name="location2" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
-                              <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
+                              <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
                             <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="">
                             <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
 

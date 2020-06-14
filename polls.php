@@ -58,9 +58,6 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
             </div>
             </div>
           </div>
-          <div class="row row-fluid" id="poll-list-running-vip">
-
-          </div>
           <div class="row row-fluid" id="poll-list-running">
           </div>
         </div>
@@ -72,9 +69,6 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
                             <div class="text_block" id="none">No Polls Available</div>
                          </div>
             </div>
-          </div>
-          <div class="row row-fluid" id="poll-list-ended-vip">
-
           </div>
           <div class="row row-fluid" id="poll-list-ended">
 
@@ -163,14 +157,10 @@ include(dirname(__FILE__)."/partials/donation.php");
 
 <script type="text/javascript">
 var pollsrunninglist = document.getElementById("poll-list-running");
-var pollsrunningviplist = document.getElementById("poll-list-running-vip");
 var pollsrunningcontent = '';
-var pollsrunningvipcontent = '';
 
 var pollsendedlist = document.getElementById("poll-list-ended");
-var pollsendedviplist = document.getElementById("poll-list-ended-vip");
 var pollsendedcontent = '';
-var pollsendedvipcontent = '';
 
 
 
@@ -189,66 +179,6 @@ if(isset($_GET['cat'])){
 
 
 window.onload = function() {
-  ajax_get('./services/getPollsRunning.php?vip=1'+catv, function(data) {
-
-      if(data["entries"].length > 0){
-
-
-          data["entries"].forEach(function(obj) {
-
-           pollsrunningvipcontent = pollsrunningvipcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                            +'<span>Check out poll</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
-
-         });//retrieve all user polls
-  document.getElementById("none1").innerHTML = '';
-   pollsrunningviplist.innerHTML =   pollsrunningvipcontent;
-      }
-
-  });
-
-
-  ajax_get('./services/getPollsEnded.php?vip=1'+catv, function(data) {
-
-      if(data["entries"].length > 0){
-
-
-          data["entries"].forEach(function(obj) {
-
-           pollsendedvipcontent = pollsendedvipcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                            +'<span>Check out poll</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
-
-         });//retrieve all user polls
-         document.getElementById("none2").innerHTML = '';
-           pollsendedviplist.innerHTML =  pollsendedvipcontent;
-      }
-  });
-
-
-
 
   ajax_get('./services/getPollsRunning.php'+cat, function(data) {
 
@@ -256,20 +186,38 @@ window.onload = function() {
 
 
           data["entries"].forEach(function(obj) {
+          if(obj.vip == 1){
+            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
+                                             +'<span>Check out poll</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }else{
+            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
+                                             +'<span>Check out poll</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }
 
-           pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                            +'<span>Check out poll</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
 
          });//retrieve all user polls
          document.getElementById("none1").innerHTML = '';
@@ -285,20 +233,38 @@ window.onload = function() {
 
 
           data["entries"].forEach(function(obj) {
+          if(obj.vip == 1){
+            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
+                                             +'<span>Check out poll</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }else{
+            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color:  #84ce84;"> - Normal - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
+                                             +'<span>Check out poll</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }
 
-           pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
-                                            +'<span>Check out poll</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
 
          });//retrieve all user polls
          document.getElementById("none2").innerHTML = '';
@@ -309,7 +275,7 @@ window.onload = function() {
 
 
 
-  ajax_get('./services/getpollscat.php', function(data) {
+  ajax_get('./services/getPollsCat.php', function(data) {
 
       if(data["entries"].length > 0){
 
@@ -317,7 +283,7 @@ window.onload = function() {
           data["entries"].forEach(function(obj) {
 
            catcontent = catcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
+                                          +'<div class="mini-card">'
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
 
                                           +'</p>'

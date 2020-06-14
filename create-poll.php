@@ -88,7 +88,7 @@ include(dirname(__FILE__)."/partials/header.php");
                               <p>Title :</p><input name="title" id="title" class="formVal form-control" value="Will DNA beat BTC?"></input><br>
                               <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" >Will Idena beat BTC At 2022 ?</textarea><br>
                               <p>Category :</p><input name="category" id="category" class="formVal form-control" value="Idena"></input><br>
-                          <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+12 hours'));?>">
+                          <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
                             <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">
                             <br><p> Option 3 :</p><input type="text"name="option3" class="formVal form-control" value="">

@@ -78,7 +78,7 @@ if(!empty($_SESSION["addr"]))
           if ($result->num_rows > 0) {
           die('{"success":false,"data":"Duplicate Data"}');
           }
-          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."')";
+          $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`,`vip`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."','".$vip."')";
 
           $result = $conn->query($sql);
           // discord
@@ -118,7 +118,7 @@ if(!empty($_SESSION["addr"]))
           $response = curl_exec( $ch );
           curl_close( $ch );
 // end discord
-          $sql = "UPDATE `accounts` SET `credits` = `credits`-".$cost." WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
+          $sql = "UPDATE `accounts` SET `credits` = `credits`- ".$cost." WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
           echo '{"success":true}';
         } else {

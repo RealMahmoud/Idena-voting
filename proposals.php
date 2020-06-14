@@ -9,9 +9,9 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
 if(isset($_GET["cat"])){
-$title = '<h3 id="page_title" class="info_block__accent rem">Top proposals '.'- <a href="./proposals.php?cat='.$conn->real_escape_string($_GET["cat"]).'">#'.$conn->real_escape_string($_GET["cat"]).'</a></h3>';
+$title = '<h3 id="page_title" class="info_block__accent rem">Top Proposals '.'- <a href="./proposals.php?cat='.$conn->real_escape_string($_GET["cat"]).'">#'.$conn->real_escape_string($_GET["cat"]).'</a></h3>';
 }else {
-  $title = '<h3 id="page_title" class="info_block__accent rem">Top proposals</h3>';
+  $title = '<h3 id="page_title" class="info_block__accent rem">Top Proposals</h3>';
 }
 ?>
 
@@ -50,29 +50,25 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top proposals '.'- 
 
 
         <div class="tab-pane active" id="1Con">
-          <div id="none1">  <div class="card" id="empty_card" style="text-align:center;height:60vh">
-                        <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Running proposals</h3>
-                            <div class="text_block" id="none">No proposals Available</div>
-                         </div>
+          <div id="none1">
+            <div class="card" id="empty_card" style="text-align:center;height:60vh">
+            <div>
+            <h3 class="info_block__accent" style="margin-top: 3em;">Running Proposals</h3>
+            <div class="text_block" id="none">No Proposals Available</div>
+            </div>
             </div>
           </div>
-          <div class="row row-fluid" id="proposal-list-running-vip">
-          </div>
           <div class="row row-fluid" id="proposal-list-running">
-
           </div>
         </div>
 
         <div class="tab-pane " id="2Con">
           <div id="none2">  <div class="card" id="empty_card" style="text-align:center;height:60vh">
                         <div>
-                            <h3 class="info_block__accent" style="margin-top: 3em;">Ended proposals</h3>
-                            <div class="text_block" id="none">No proposals Available</div>
+                            <h3 class="info_block__accent" style="margin-top: 3em;">Ended Proposals</h3>
+                            <div class="text_block" id="none">No Proposals Available</div>
                          </div>
             </div>
-          </div>
-          <div class="row row-fluid" id="proposal-list-ended-vip">
           </div>
           <div class="row row-fluid" id="proposal-list-ended">
 
@@ -161,14 +157,10 @@ include(dirname(__FILE__)."/partials/donation.php");
 
 <script type="text/javascript">
 var proposalsrunninglist = document.getElementById("proposal-list-running");
-var proposalsrunningviplist = document.getElementById("proposal-list-running-vip");
 var proposalsrunningcontent = '';
-var proposalsrunningvipcontent = '';
 
 var proposalsendedlist = document.getElementById("proposal-list-ended");
-var proposalsendedviplist = document.getElementById("proposal-list-ended-vip");
 var proposalsendedcontent = '';
-var proposalsendedvipcontent = '';
 
 
 
@@ -187,66 +179,6 @@ if(isset($_GET['cat'])){
 
 
 window.onload = function() {
-  ajax_get('./services/getProposalsRunning.php?vip=1'+catv, function(data) {
-
-      if(data["entries"].length > 0){
-
-
-          data["entries"].forEach(function(obj) {
-
-           proposalsrunningvipcontent = proposalsrunningvipcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                         +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                            +'<span>Check out proposal</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
-
-         });//retrieve all user proposals
-  document.getElementById("none1").innerHTML = '';
-   proposalsrunningviplist.innerHTML =   proposalsrunningvipcontent;
-      }
-
-  });
-
-
-  ajax_get('./services/getProposalsEnded.php?vip=1'+catv, function(data) {
-
-      if(data["entries"].length > 0){
-
-
-          data["entries"].forEach(function(obj) {
-
-           proposalsendedvipcontent = proposalsendedvipcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                        +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                            +'<span>Check out proposal</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
-
-         });//retrieve all user proposals
-         document.getElementById("none2").innerHTML = '';
-           proposalsendedviplist.innerHTML =  proposalsendedvipcontent;
-      }
-  });
-
-
-
 
   ajax_get('./services/getProposalsRunning.php'+cat, function(data) {
 
@@ -254,22 +186,40 @@ window.onload = function() {
 
 
           data["entries"].forEach(function(obj) {
+          if(obj.vip == 1){
+            proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                             +'<span>Check out Proposal</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }else{
+            proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                             +'<span>Check out Proposal</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }
 
-           proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                            +'<span>Check out proposal</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
 
-         });//retrieve all user proposals
+         });
          document.getElementById("none1").innerHTML = '';
            proposalsrunninglist.innerHTML =  proposalsrunningcontent;
       }
@@ -283,22 +233,40 @@ window.onload = function() {
 
 
           data["entries"].forEach(function(obj) {
+          if(obj.vip == 1){
+            proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                             +'<span>Check out Proposal</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }else{
+            proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                            +obj.title
+                                           +'</p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color:  #84ce84;"> - Normal - </p>'
+                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
+                                             +'<span>Check out Proposal</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
+          }
 
-           proposalsendedcontent = proposalsendedcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
-                                          +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
-                                            +'<span>Check out proposal</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
-                                          +'</div>'
-                                        +'</div>';
 
-         });//retrieve all user proposals
+         });
          document.getElementById("none2").innerHTML = '';
            proposalsendedlist.innerHTML =  proposalsendedcontent;
       }
@@ -315,20 +283,20 @@ window.onload = function() {
           data["entries"].forEach(function(obj) {
 
            catcontent = catcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
+                                          +'<div class="mini-card">'
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
 
                                           +'</p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Proposals Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./proposals.php?cat='+obj.category+'">'
-                                            +'<span>proposals</span>'
+                                            +'<span>Proposals</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
                                           +'</a>'
                                           +'</div>'
                                         +'</div>';
 
-         });//retrieve all user proposals
+         });//retrieve all user Proposals
   document.getElementById("none3").innerHTML = '';
    catlist.innerHTML =   catcontent;
       }

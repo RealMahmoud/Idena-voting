@@ -40,7 +40,7 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
                         <h3>Website Settings</h3>
                      </a>
                   </li>
-                
+
 
 
                </ul>
@@ -110,28 +110,6 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
                           </form>
 
 
-
-                          <br>
-
-                          <h4 class="info_block__accent">Add Credits</h4>
-
-                          <form id="name_form" method="POST" onsubmit="addCredits(); return false;">
-                            <div class="input-group" >
-                                <input type="text" name="address" class="formVal form-control" value="" placeholder="Address">
-                            </div>
-                            <br>
-                            <div class="input-group" >
-                                <input type="text" name="credits" class="formVal form-control" value="" placeholder="Credits">
-                            </div>
-
-                              <div class="input-group">
-                              <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="addCredits(); return false;" style="margin-top: 1em;">
-                                  <span id="text_submit"> Add Credits</span>
-                                  <i class="icon icon--thin_arrow_right"></i>
-                              </a>
-                              </div>
-
-                          </form>
 
 
 

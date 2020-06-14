@@ -167,7 +167,7 @@ $owneraddress = $rowf[1];
                     <div class="success rem" id="success2">
                     </div>
                         <div class="input-group">
-                           <a class="vertical-center btn btn-secondary btn-small" href="#" id="submit2" onclick="castVote(2); return false;" >
+                           <a class=" btn btn-secondary btn-small" href="#" id="submit2" onclick="castVote(2); return false;" >
                            <span id="text_submit2">Choose</span>
                            <i class="icon icon--thin_arrow_right"></i>
                            </a>
@@ -699,807 +699,71 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
   </script>
 
 
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
-
-<!-- this is to close main, div opened in the header -->
-</div>
-</main>
-
-
-
-<script>
-function changeScoreVa(){
-$('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
-var humanValue = document.getElementById("1-H").value;
-var verifiedValue = document.getElementById("1-V").value;
-var newbieValue = document.getElementById("1-N").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
-(Number(data['result']['Left']['Verified'])* verifiedValue) +
-(Number(data['result']['Left']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
-(Number(data['result']['Right']['Verified'])* verifiedValue) +
-(Number(data['result']['Right']['Newbie'])* newbieValue));
-
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-var ctx = document.getElementById('BarVa').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-function changeScoreH(){
-$('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
-var humanValue = document.getElementById("2-H").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Human'])* humanValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Human'])* humanValue));
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-var ctx = document.getElementById('BarH').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-function changeScoreV(){
-$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
-var verifiedValue = document.getElementById("3-V").value;
-
-let chartdata = [];
-let chartlabels = [];
-var verifiedCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Verified'])* verifiedValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Verified'])* verifiedValue));
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-
-var ctx = document.getElementById('BarV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-function changeScoreN(){
-$('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
-
-var newbieValue = document.getElementById("4-N").value;
-let chartdata = [];
-let chartlabels = [];
-var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Newbie'])* newbieValue));
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-var ctx = document.getElementById('BarN').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-function changeScoreHAndV(){
-$('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
-var humanValue = document.getElementById("5-H").value;
-var verifiedValue = document.getElementById("5-V").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
-(Number(data['result']['Left']['Verified'])* verifiedValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
-(Number(data['result']['Right']['Verified'])* verifiedValue));
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-var ctx = document.getElementById('BarHAndV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-function changeScoreAll(){
-$('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
-var humanValue = document.getElementById("6-H").value;
-var verifiedValue = document.getElementById("6-V").value;
-var newbieValue = document.getElementById("6-N").value;
-
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
-
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=0', function(data) {
-// option 1
-chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
-(Number(data['result']['Left']['Verified'])* verifiedValue) +
-(Number(data['result']['Left']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
-(Number(data['result']['Right']['Verified'])* verifiedValue) +
-(Number(data['result']['Right']['Newbie'])* newbieValue));
-
-if(!data['result']['Left']['Desc'] == ''){
-chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
-chartlabels.push(data['result']['Right']['Desc']);
-}
-
-var ctx = document.getElementById('BarAll').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-</script>
-
-
-<script>
-
-function loadBarVa(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
-var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
-var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
-var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
-var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
-var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
-var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
-var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Human']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeVa').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-
-function loadBarH(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total = Number(data['result']['Human']['E0To2']);
-var _E3To6Total = Number(data['result']['Human']['E3To6']);
-var _E7To11Total = Number(data['result']['Human']['E7To11']);
-var _E12To17Total = Number(data['result']['Human']['E12To17']);
-var _E18To25Total = Number(data['result']['Human']['E18To25']);
-var _E26To32Total = Number(data['result']['Human']['E26To32']);
-var _E33To40Total = Number(data['result']['Human']['E33To40']);
-var _E41To47Total = Number(data['result']['Human']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Human']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeH').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-
-function loadBarV(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total =  Number(data['result']['Verified']['E0To2']);
-var _E3To6Total = Number(data['result']['Verified']['E3To6']);
-var _E7To11Total =  Number(data['result']['Verified']['E7To11']);
-var _E12To17Total =  Number(data['result']['Verified']['E12To17']);
-var _E18To25Total =  Number(data['result']['Verified']['E18To25']);
-var _E26To32Total =  Number(data['result']['Verified']['E26To32']);
-var _E33To40Total = Number(data['result']['Verified']['E33To40']);
-var _E41To47Total =  Number(data['result']['Verified']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Verified']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-
-
-
-function loadBarN(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total = Number(data['result']['Newbie']['E0To2']);
-var _E3To6Total =  Number(data['result']['Newbie']['E3To6']);
-var _E7To11Total = Number(data['result']['Newbie']['E7To11']);
-var _E12To17Total = Number(data['result']['Newbie']['E12To17']);
-var _E18To25Total =  Number(data['result']['Newbie']['E18To25']);
-var _E26To32Total =  Number(data['result']['Newbie']['E26To32']);
-var _E33To40Total = Number(data['result']['Newbie']['E33To40']);
-var _E41To47Total =  Number(data['result']['Newbie']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Human']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeN').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-
-
-
-function loadBarHAndV(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']);
-var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']);
-var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']);
-var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']);
-var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']);
-var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']);
-var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']);
-var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Human']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeHAndV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-
-
-function loadBarAll(){
-
-let chartdata = [];
-let chartlabels = [];
-
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf', function(data) {
-// option 1
-
-var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
-var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
-var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
-var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
-var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
-var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
-var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
-var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
-
-
-chartdata.push(_E0To2Total);
-chartdata.push(_E3To6Total);
-chartdata.push(_E7To11Total);
-chartdata.push(_E12To17Total);
-chartdata.push(_E18To25Total);
-chartdata.push(_E26To32Total);
-chartdata.push(_E33To40Total);
-chartdata.push(_E41To47Total);
-
-
-for(k in data['result']['Human']) {
-chartlabels.push(k)
-}
-
-
-var ctx = document.getElementById('BarAgeAll').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'bar',
-data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
-options: {
-responsive: true,
-title: {
-  display: true,
-
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
-}
-}
-}
-);
-});
-}
-
-
-
-function changeChartVa(age){
-  $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
-age = document.getElementById("VaAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['Validated'] == 0){
-  chartdata.push(data['result']['Left']['Validated']);
-}
-if(!data['result']['Right']['Validated'] == 0){
-  chartdata.push(data['result']['Right']['Validated']);
-}
-
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  <?php
+  include(dirname(__FILE__)."/partials/donation.php");
+  ?>
+
+  <!-- this is to close main, div opened in the header -->
+  </div>
+  </main>
+
+
+
+  <script>
+  var scoreurl = "./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age=1";
+  var ageurl = "./services/ageStats.php?pid=<?php echo $id; ?>&type=fvf&age=1";
+  function httpGet(theUrl)
+  {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+      xmlHttp.send( null );
+      return xmlHttp.responseText;
+  }
+
+  var scoreData = httpGet(scoreurl);
+  var chartData = scoreData;
+  var ageData = httpGet(ageurl);
+
+  function changeScoreVa(useData){
+
+  var humanValue = document.getElementById("1-H").value;
+  var verifiedValue = document.getElementById("1-V").value;
+  var newbieValue = document.getElementById("1-N").value;
+  let chartdata = [];
+  let chartlabels = [];
+  var humansCount = 0;
+  var verifiedCount = 0;
+  var newbieCount = 0;
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+    data = JSON.parse(scoreData);
+    $('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+  }
+
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
+  (Number(data['result']['Left']['Verified'])* verifiedValue) +
+  (Number(data['result']['Left']['Newbie'])* newbieValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
+  (Number(data['result']['Right']['Verified'])* verifiedValue) +
+  (Number(data['result']['Right']['Newbie'])* newbieValue));
+
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-
-var ctx = document.getElementById('ChartVa').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarVa').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1508,45 +772,54 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
 
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
 
+  }
+  function changeScoreH(useData){
 
+  var humanValue = document.getElementById("2-H").value;
+  let chartdata = [];
+  let chartlabels = [];
+  var humansCount = 0;
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+    data = JSON.parse(scoreData);
+    $('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+  }
 
-    }
-);
-}
-function changeChartH(age){
-  $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
-age = document.getElementById("HAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['Human'] == 0){
-  chartdata.push(data['result']['Left']['Human']);
-}
-if(!data['result']['Right']['Human'] == 0){
-  chartdata.push(data['result']['Right']['Human']);
-}
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Human'])* humanValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Human'])* humanValue));
 
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-
-var ctx = document.getElementById('ChartH').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarH').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1555,45 +828,54 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
 
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
 
+  }
+  function changeScoreV(useData){
 
+  var verifiedValue = document.getElementById("3-V").value;
 
-    }
-);
-}
-function changeChartV(age){
-$('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
-age = document.getElementById("VAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['Verified'] == 0){
-  chartdata.push(data['result']['Left']['Verified']);
-}
-if(!data['result']['Right']['Verified'] == 0){
-  chartdata.push(data['result']['Right']['Verified']);
-}
+  let chartdata = [];
+  let chartlabels = [];
+  var verifiedCount = 0;
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+    data = JSON.parse(scoreData);
+  $('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+  }
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Verified'])* verifiedValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Verified'])* verifiedValue));
 
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-
-var ctx = document.getElementById('ChartV').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarV').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1602,45 +884,54 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+  function changeScoreN(useData){
 
 
+  var newbieValue = document.getElementById("4-N").value;
+  let chartdata = [];
+  let chartlabels = [];
+  var newbieCount = 0;
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+  data = JSON.parse(scoreData);
+    $('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+  }
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Newbie'])* newbieValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Newbie'])* newbieValue));
 
-
-    }
-);
-}
-function changeChartN(age){
-  $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
-age = document.getElementById("NAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['Newbie'] == 0){
-  chartdata.push(data['result']['Left']['Newbie']);
-}
-if(!data['result']['Right']['Newbie'] == 0){
-  chartdata.push(data['result']['Right']['Newbie']);
-}
-
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-
-var ctx = document.getElementById('ChartN').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarN').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1649,45 +940,61 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]}
-      ,});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+  function changeScoreHAndV(useData){
+
+  var humanValue = document.getElementById("5-H").value;
+  var verifiedValue = document.getElementById("5-V").value;
+  let chartdata = [];
+  let chartlabels = [];
+  var humansCount = 0;
+  var verifiedCount = 0;
+  var newbieCount = 0;
+
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+    data = JSON.parse(scoreData);
+    $('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+  }
 
 
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
+  (Number(data['result']['Left']['Verified'])* verifiedValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
+  (Number(data['result']['Right']['Verified'])* verifiedValue));
 
-
-    }
-);
-}
-function changeChartHAndV(age){
-  $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
-age = document.getElementById("HAndVAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['HumanAndVerified'] == 0){
-  chartdata.push(data['result']['Left']['HumanAndVerified']);
-}
-if(!data['result']['Right']['HumanAndVerified'] == 0){
-  chartdata.push(data['result']['Right']['HumanAndVerified']);
-}
-
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-var ctx = document.getElementById('ChartHAndV').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarHAndV').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1696,46 +1003,64 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+  function changeScoreAll(useData){
+
+  var humanValue = document.getElementById("6-H").value;
+  var verifiedValue = document.getElementById("6-V").value;
+  var newbieValue = document.getElementById("6-N").value;
+
+  let chartdata = [];
+  let chartlabels = [];
+  var humansCount = 0;
+  var verifiedCount = 0;
+  var newbieCount = 0;
+  if(!useData == '0'){
+    data = JSON.parse(scoreData);
+  }else{
+    data = JSON.parse(scoreData);
+    $('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+  }
+
+  // option 1
+  chartdata.push((Number(data['result']['Left']['Human'])* humanValue) +
+  (Number(data['result']['Left']['Verified'])* verifiedValue) +
+  (Number(data['result']['Left']['Newbie'])* newbieValue));
+  //Right
+  chartdata.push((Number(data['result']['Right']['Human'])* humanValue) +
+  (Number(data['result']['Right']['Verified'])* verifiedValue) +
+  (Number(data['result']['Right']['Newbie'])* newbieValue));
 
 
-
-
-    }
-);
-}
-
-function changeChartAll(age){
-  $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
-age = document.getElementById("AllAge").value;
-let chartdata = [];
-let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age, function(data) {
-// Count
-if(!data['result']['Left']['All'] == 0){
-  chartdata.push(data['result']['Left']['All']);
-}
-if(!data['result']['Right']['All'] == 0){
-  chartdata.push(data['result']['Right']['All']);
-}
-
-// Description
-if(!data['result']['Left']['Desc'] == ''){
+  if(!data['result']['Left']['Desc'] == ''){
   chartlabels.push(data['result']['Left']['Desc']);
-}
-if(!data['result']['Right']['Desc'] == ''){
+  }
+  if(!data['result']['Right']['Desc'] == ''){
   chartlabels.push(data['result']['Right']['Desc']);
-}
+  }
 
-
-
-var ctx = document.getElementById('ChartAll').getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'pie',
+  var ctx = document.getElementById('BarAll').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'horizontalBar',
   data: {
       labels: chartlabels,
       datasets: [{
-          label: '# of Votes',
+          label: 'Score',
           data: chartdata,
           backgroundColor: [
         window.chartColors.purple,
@@ -1744,16 +1069,780 @@ var myChart = new Chart(ctx, {
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},});
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+  </script>
+
+
+  <script>
+
+  function loadBarVa(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+
+    data = JSON.parse(ageData);
+
+
+  // option 1
+
+  var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
+  var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
+  var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
+  var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
+  var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
+  var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
+  var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
+  var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Human']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeVa').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
 
 
 
 
+  function loadBarH(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+    data = JSON.parse(ageData);
+  // option 1
+
+  var _E0To2Total = Number(data['result']['Human']['E0To2']);
+  var _E3To6Total = Number(data['result']['Human']['E3To6']);
+  var _E7To11Total = Number(data['result']['Human']['E7To11']);
+  var _E12To17Total = Number(data['result']['Human']['E12To17']);
+  var _E18To25Total = Number(data['result']['Human']['E18To25']);
+  var _E26To32Total = Number(data['result']['Human']['E26To32']);
+  var _E33To40Total = Number(data['result']['Human']['E33To40']);
+  var _E41To47Total = Number(data['result']['Human']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Human']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeH').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+
+  function loadBarV(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+    data = JSON.parse(ageData);
+  // option 1
+
+  var _E0To2Total =  Number(data['result']['Verified']['E0To2']);
+  var _E3To6Total = Number(data['result']['Verified']['E3To6']);
+  var _E7To11Total =  Number(data['result']['Verified']['E7To11']);
+  var _E12To17Total =  Number(data['result']['Verified']['E12To17']);
+  var _E18To25Total =  Number(data['result']['Verified']['E18To25']);
+  var _E26To32Total =  Number(data['result']['Verified']['E26To32']);
+  var _E33To40Total = Number(data['result']['Verified']['E33To40']);
+  var _E41To47Total =  Number(data['result']['Verified']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Verified']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeV').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+
+
+
+  function loadBarN(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+    data = JSON.parse(ageData);
+  // option 1
+
+  var _E0To2Total = Number(data['result']['Newbie']['E0To2']);
+  var _E3To6Total =  Number(data['result']['Newbie']['E3To6']);
+  var _E7To11Total = Number(data['result']['Newbie']['E7To11']);
+  var _E12To17Total = Number(data['result']['Newbie']['E12To17']);
+  var _E18To25Total =  Number(data['result']['Newbie']['E18To25']);
+  var _E26To32Total =  Number(data['result']['Newbie']['E26To32']);
+  var _E33To40Total = Number(data['result']['Newbie']['E33To40']);
+  var _E41To47Total =  Number(data['result']['Newbie']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Human']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeN').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+
+
+
+  function loadBarHAndV(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+    data = JSON.parse(ageData);
+  // option 1
+
+  var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']);
+  var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']);
+  var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']);
+  var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']);
+  var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']);
+  var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']);
+  var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']);
+  var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Human']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeHAndV').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+
+
+  function loadBarAll(){
+
+  let chartdata = [];
+  let chartlabels = [];
+
+    data = JSON.parse(ageData);
+  // option 1
+
+  var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
+  var _E3To6Total = Number(data['result']['Human']['E3To6']) + Number(data['result']['Verified']['E3To6']) + Number(data['result']['Newbie']['E3To6']);
+  var _E7To11Total = Number(data['result']['Human']['E7To11']) + Number(data['result']['Verified']['E7To11']) + Number(data['result']['Newbie']['E7To11']);
+  var _E12To17Total = Number(data['result']['Human']['E12To17']) + Number(data['result']['Verified']['E12To17']) + Number(data['result']['Newbie']['E12To17']);
+  var _E18To25Total = Number(data['result']['Human']['E18To25']) + Number(data['result']['Verified']['E18To25']) + Number(data['result']['Newbie']['E18To25']);
+  var _E26To32Total = Number(data['result']['Human']['E26To32']) + Number(data['result']['Verified']['E26To32']) + Number(data['result']['Newbie']['E26To32']);
+  var _E33To40Total = Number(data['result']['Human']['E33To40']) + Number(data['result']['Verified']['E33To40']) + Number(data['result']['Newbie']['E33To40']);
+  var _E41To47Total = Number(data['result']['Human']['E41To47']) + Number(data['result']['Verified']['E41To47']) + Number(data['result']['Newbie']['E41To47']);
+
+
+  chartdata.push(_E0To2Total);
+  chartdata.push(_E3To6Total);
+  chartdata.push(_E7To11Total);
+  chartdata.push(_E12To17Total);
+  chartdata.push(_E18To25Total);
+  chartdata.push(_E26To32Total);
+  chartdata.push(_E33To40Total);
+  chartdata.push(_E41To47Total);
+
+
+  for(k in data['result']['Human']) {
+    chartlabels.push(k)
+  }
+
+
+  var ctx = document.getElementById('BarAgeAll').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: chartlabels,
+      datasets: [{
+          label: 'Age',
+          data: chartdata,
+          backgroundColor: [
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+        window.chartColors.red,
+      ],borderWidth: 1}]},
+  options: {
+    responsive: true,
+    title: {
+      display: true,
+
+    },
+    tooltips: {
+      mode: 'index',
+      intersect: true
+  }
+  }
+  }
+  );
+
+  }
+
+
+
+  function changeChartVa(age,useData){
+
+  age = document.getElementById("VaAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+
+
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
+  }
+
+  // Count
+    if(!data['result']['Left']['Validated'] == 0){
+      chartdata.push(data['result']['Left']['Validated']);
     }
-);
-}
+    if(!data['result']['Right']['Validated'] == 0){
+      chartdata.push(data['result']['Right']['Validated']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+    if(!data['result']['Right']['Desc'] == ''){
+      chartlabels.push(data['result']['Right']['Desc']);
+    }
 
 
+
+  var ctx = document.getElementById('ChartVa').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]},});
+
+
+
+
+
+  }
+  function changeChartH(age,useData){
+
+    age = document.getElementById("HAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+
+
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
+  }
+
+
+  // Count
+    if(!data['result']['Left']['Human'] == 0){
+      chartdata.push(data['result']['Left']['Human']);
+    }
+    if(!data['result']['Right']['Human'] == 0){
+      chartdata.push(data['result']['Right']['Human']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+
+
+
+  var ctx = document.getElementById('ChartH').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]},});
+
+
+
+
+
+  }
+  function changeChartV(age,useData){
+
+    age = document.getElementById("VAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
+  }
+
+  // Count
+    if(!data['result']['Left']['Verified'] == 0){
+      chartdata.push(data['result']['Left']['Verified']);
+    }
+    if(!data['result']['Right']['Verified'] == 0){
+      chartdata.push(data['result']['Right']['Verified']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+    if(!data['result']['Right']['Desc'] == ''){
+      chartlabels.push(data['result']['Right']['Desc']);
+    }
+
+
+
+  var ctx = document.getElementById('ChartV').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]},});
+
+
+
+
+
+  }
+  function changeChartN(age,useData){
+
+    age = document.getElementById("NAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
+  }
+
+  // Count
+    if(!data['result']['Left']['Newbie'] == 0){
+      chartdata.push(data['result']['Left']['Newbie']);
+    }
+    if(!data['result']['Right']['Newbie'] == 0){
+      chartdata.push(data['result']['Right']['Newbie']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+    if(!data['result']['Right']['Desc'] == ''){
+      chartlabels.push(data['result']['Right']['Desc']);
+    }
+
+
+
+  var ctx = document.getElementById('ChartN').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]}
+          ,});
+
+
+
+
+
+  }
+  function changeChartHAndV(age,useData){
+    age = document.getElementById("HAndVAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
+  }
+
+  // Count
+    if(!data['result']['Left']['HumanAndVerified'] == 0){
+      chartdata.push(data['result']['Left']['HumanAndVerified']);
+    }
+    if(!data['result']['Right']['HumanAndVerified'] == 0){
+      chartdata.push(data['result']['Right']['HumanAndVerified']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+    if(!data['result']['Right']['Desc'] == ''){
+      chartlabels.push(data['result']['Right']['Desc']);
+    }
+
+
+
+  var ctx = document.getElementById('ChartHAndV').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]},});
+
+
+
+
+        }
+
+
+  function changeChartAll(age,useData){
+
+    age = document.getElementById("AllAge").value;
+  let chartdata = [];
+  let chartlabels = [];
+  if(!useData == '0'){
+    data = JSON.parse(chartData);
+  }else{
+    data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=fvf&age='+age);
+    data = JSON.parse(data);
+    $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
+  }
+
+  // Count
+    if(!data['result']['Left']['All'] == 0){
+      chartdata.push(data['result']['Left']['All']);
+    }
+    if(!data['result']['Right']['All'] == 0){
+      chartdata.push(data['result']['Right']['All']);
+    }
+
+  // Description
+    if(!data['result']['Left']['Desc'] == ''){
+      chartlabels.push(data['result']['Left']['Desc']);
+    }
+    if(!data['result']['Right']['Desc'] == ''){
+      chartlabels.push(data['result']['Right']['Desc']);
+    }
+
+
+
+  var ctx = document.getElementById('ChartAll').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: chartlabels,
+          datasets: [{
+              label: '# of Votes',
+              data: chartdata,
+              backgroundColor: [
+            window.chartColors.purple,
+            window.chartColors.orange,
+            window.chartColors.yellow,
+            window.chartColors.green,
+            window.chartColors.blue,
+            window.chartColors.red,
+          ],borderWidth: 1}]},});
+
+
+
+
+        }
 
 
 
@@ -1836,28 +1925,29 @@ ajax_get('./services/deleteFvf.php?id='+id, function(data) {
 }
 window.onload = function()
 {
-changeChartVa(0);
-changeChartH(0);
-changeChartV(0);
-changeChartN(0);
-changeChartHAndV(0);
-changeChartAll(0);
+  changeChartVa(0,chartData);
+  changeChartH(0,chartData);
+  changeChartV(0,chartData);
+  changeChartN(0,chartData);
+  changeChartHAndV(0,chartData);
+  changeChartAll(0,chartData);
 
-changeScoreVa();
-changeScoreH();
-changeScoreV();
-changeScoreN();
-changeScoreHAndV();
-changeScoreAll();
+  changeScoreVa(scoreData);
+  changeScoreH(scoreData);
+  changeScoreV(scoreData);
+  changeScoreN(scoreData);
+  changeScoreHAndV(scoreData);
+  changeScoreAll(scoreData);
 
 
 
-loadBarVa();
-loadBarH();
-loadBarV();
-loadBarN();
-loadBarHAndV();
-loadBarAll();
+  loadBarVa();
+  loadBarH();
+  loadBarV();
+  loadBarN();
+  loadBarHAndV();
+  loadBarAll();
+
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=fvf', function(data) {
     var  vop

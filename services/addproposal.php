@@ -53,14 +53,14 @@ if(!empty($_SESSION["addr"]))
 
 
 
-           $pdesc = $conn->htmlspecialchars($pdesc);
-           $title = $conn->htmlspecialchars($title);
-           $category = $conn->htmlspecialchars($category);
-           $option1 = $conn->htmlspecialchars($option1);
-           $option2 = $conn->htmlspecialchars($option2);
-          $amount = $conn->htmlspecialchars($amount);
-           $endtime = $conn->htmlspecialchars($endtime);
-                $fundaddr = $conn->htmlspecialchars($fundaddr);
+           $pdesc = htmlspecialchars($pdesc);
+           $title = htmlspecialchars($title);
+           $category = htmlspecialchars($category);
+           $option1 = htmlspecialchars($option1);
+           $option2 = htmlspecialchars($option2);
+          $amount = htmlspecialchars($amount);
+           $endtime = htmlspecialchars($endtime);
+                $fundaddr = htmlspecialchars($fundaddr);
 
 
 

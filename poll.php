@@ -712,8 +712,22 @@ include(dirname(__FILE__)."/partials/donation.php");
 
 
 <script>
-function changeScoreVa(){
-$('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+var scoreurl = "./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=1";
+var ageurl = "./services/ageStats.php?pid=<?php echo $id; ?>&type=poll&age=1";
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+var scoreData = httpGet(scoreurl);
+var chartData = scoreData;
+var ageData = httpGet(ageurl);
+
+function changeScoreVa(useData){
+
 var humanValue = document.getElementById("1-H").value;
 var verifiedValue = document.getElementById("1-V").value;
 var newbieValue = document.getElementById("1-N").value;
@@ -722,7 +736,13 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+}
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue) +
@@ -794,15 +814,21 @@ options: {
 }
 }
 );
-});
+
 }
-function changeScoreH(){
-$('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+function changeScoreH(useData){
+
 var humanValue = document.getElementById("2-H").value;
 let chartdata = [];
 let chartlabels = [];
 var humansCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+}
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue));
 //option2
@@ -862,16 +888,21 @@ options: {
 }
 }
 );
-});
+
 }
-function changeScoreV(){
-$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+function changeScoreV(useData){
+
 var verifiedValue = document.getElementById("3-V").value;
 
 let chartdata = [];
 let chartlabels = [];
 var verifiedCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+}
 // option 1
 chartdata.push((Number(data['result']['option1']['Verified'])* verifiedValue));
 //option2
@@ -931,16 +962,21 @@ options: {
 }
 }
 );
-});
+
 }
-function changeScoreN(){
-$('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+function changeScoreN(useData){
+
 
 var newbieValue = document.getElementById("4-N").value;
 let chartdata = [];
 let chartlabels = [];
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+data = JSON.parse(scoreData);
+  $('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+}
 // option 1
 chartdata.push((Number(data['result']['option1']['Newbie'])* newbieValue));
 //option2
@@ -1000,10 +1036,10 @@ options: {
 }
 }
 );
-});
+
 }
-function changeScoreHAndV(){
-$('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+function changeScoreHAndV(useData){
+
 var humanValue = document.getElementById("5-H").value;
 var verifiedValue = document.getElementById("5-V").value;
 let chartdata = [];
@@ -1011,7 +1047,15 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
+
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+}
+
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue));
@@ -1077,10 +1121,10 @@ options: {
 }
 }
 );
-});
+
 }
-function changeScoreAll(){
-$('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+function changeScoreAll(useData){
+
 var humanValue = document.getElementById("6-H").value;
 var verifiedValue = document.getElementById("6-V").value;
 var newbieValue = document.getElementById("6-N").value;
@@ -1090,8 +1134,13 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+}
 
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age=0', function(data) {
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue) +
@@ -1164,7 +1213,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1179,7 +1228,10 @@ function loadBarVa(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+
+  data = JSON.parse(ageData);
+
+
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
@@ -1238,7 +1290,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1249,7 +1301,7 @@ function loadBarH(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']);
@@ -1308,7 +1360,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1319,7 +1371,7 @@ function loadBarV(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total =  Number(data['result']['Verified']['E0To2']);
@@ -1378,7 +1430,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1391,7 +1443,7 @@ function loadBarN(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Newbie']['E0To2']);
@@ -1450,7 +1502,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1463,7 +1515,7 @@ function loadBarHAndV(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']);
@@ -1522,7 +1574,7 @@ options: {
 }
 }
 );
-});
+
 }
 
 
@@ -1534,7 +1586,7 @@ function loadBarAll(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=poll', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
@@ -1593,17 +1645,26 @@ options: {
 }
 }
 );
-});
+
 }
 
 
 
-function changeChartVa(age){
-    $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
+function changeChartVa(age,useData){
+
 age = document.getElementById("VaAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
+}
+
 // Count
   if(!data['result']['option1']['Validated'] == 0){
     chartdata.push(data['result']['option1']['Validated']);
@@ -1664,15 +1725,24 @@ var myChart = new Chart(ctx, {
 
 
 
-      }
-  );
+
 }
-function changeChartH(age){
-    $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
+function changeChartH(age,useData){
+
   age = document.getElementById("HAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
+}
+
+
 // Count
   if(!data['result']['option1']['Human'] == 0){
     chartdata.push(data['result']['option1']['Human']);
@@ -1733,15 +1803,22 @@ var myChart = new Chart(ctx, {
 
 
 
-      }
-  );
+
 }
-function changeChartV(age){
-  $('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
+function changeChartV(age,useData){
+
   age = document.getElementById("VAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
+}
+
 // Count
   if(!data['result']['option1']['Verified'] == 0){
     chartdata.push(data['result']['option1']['Verified']);
@@ -1802,15 +1879,22 @@ var myChart = new Chart(ctx, {
 
 
 
-      }
-  );
+
 }
-function changeChartN(age){
-    $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
+function changeChartN(age,useData){
+
   age = document.getElementById("NAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
+}
+
 // Count
   if(!data['result']['option1']['Newbie'] == 0){
     chartdata.push(data['result']['option1']['Newbie']);
@@ -1872,15 +1956,21 @@ var myChart = new Chart(ctx, {
 
 
 
-      }
-  );
+
 }
-function changeChartHAndV(age){
-    $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
+function changeChartHAndV(age,useData){
   age = document.getElementById("HAndVAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
+}
+
 // Count
   if(!data['result']['option1']['HumanAndVerified'] == 0){
     chartdata.push(data['result']['option1']['HumanAndVerified']);
@@ -1942,15 +2032,21 @@ var myChart = new Chart(ctx, {
 
 
       }
-  );
-}
 
-function changeChartAll(age){
-    $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
+
+function changeChartAll(age,useData){
+
   age = document.getElementById("AllAge").value;
 let chartdata = [];
 let chartlabels = [];
-  ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age, function(data) {
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=poll&age='+age);
+  data = JSON.parse(data);
+  $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
+}
+
 // Count
   if(!data['result']['option1']['All'] == 0){
     chartdata.push(data['result']['option1']['All']);
@@ -2012,8 +2108,7 @@ var myChart = new Chart(ctx, {
 
 
       }
-  );
-}
+
 
 
 
@@ -2097,19 +2192,19 @@ function Delete(id)
 }
 window.onload = function()
 {
-  changeChartVa(0);
-  changeChartH(0);
-  changeChartV(0);
-  changeChartN(0);
-  changeChartHAndV(0);
-  changeChartAll(0);
+  changeChartVa(0,chartData);
+  changeChartH(0,chartData);
+  changeChartV(0,chartData);
+  changeChartN(0,chartData);
+  changeChartHAndV(0,chartData);
+  changeChartAll(0,chartData);
 
-  changeScoreVa();
-  changeScoreH();
-  changeScoreV();
-  changeScoreN();
-  changeScoreHAndV();
-  changeScoreAll();
+  changeScoreVa(scoreData);
+  changeScoreH(scoreData);
+  changeScoreV(scoreData);
+  changeScoreN(scoreData);
+  changeScoreHAndV(scoreData);
+  changeScoreAll(scoreData);
 
 
 

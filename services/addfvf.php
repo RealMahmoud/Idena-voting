@@ -60,15 +60,15 @@ if(!empty($_SESSION["addr"]))
           $vip = $conn->real_escape_string($_POST['vip']);
 
 
-          $addr = $conn->htmlspecialchars($addr);
-          $location1 = $conn->htmlspecialchars($location1);
-          $location2 = $conn->htmlspecialchars($location2);
-          $endtime= $conn->htmlspecialchars($endtime);
-          $pdesc = $conn->htmlspecialchars($pdesc);
-          $title = $conn->htmlspecialchars($title);
-          $category = $conn->htmlspecialchars($category);
-          $fundaddr = $conn->htmlspecialchars($fundaddr);
-          $vip = $conn->htmlspecialchars($vip);
+          $addr = htmlspecialchars($addr);
+          $location1 = htmlspecialchars($location1);
+          $location2 = htmlspecialchars($location2);
+          $endtime= htmlspecialchars($endtime);
+          $pdesc = htmlspecialchars($pdesc);
+          $title = htmlspecialchars($title);
+          $category = htmlspecialchars($category);
+          $fundaddr = htmlspecialchars($fundaddr);
+          $vip = htmlspecialchars($vip);
 
 
 

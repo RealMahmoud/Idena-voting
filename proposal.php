@@ -707,8 +707,22 @@ include(dirname(__FILE__)."/partials/donation.php");
 
 
 <script>
-function changeScoreVa(){
-$('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+var scoreurl = "./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=1";
+var ageurl = "./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal&age=1";
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+var scoreData = httpGet(scoreurl);
+var chartData = scoreData;
+var ageData = httpGet(ageurl);
+
+function changeScoreVa(useData){
+
 var humanValue = document.getElementById("1-H").value;
 var verifiedValue = document.getElementById("1-V").value;
 var newbieValue = document.getElementById("1-N").value;
@@ -717,7 +731,13 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+}
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue) +
@@ -726,7 +746,6 @@ chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
 (Number(data['result']['option2']['Verified'])* verifiedValue) +
 (Number(data['result']['option2']['Newbie'])* newbieValue));
-
 
 if(!data['result']['option1']['Desc'] == ''){
 chartlabels.push(data['result']['option1']['Desc']);
@@ -739,40 +758,46 @@ var ctx = document.getElementById('BarVa').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
-function changeScoreH(){
-$('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+function changeScoreH(useData){
+
 var humanValue = document.getElementById("2-H").value;
 let chartdata = [];
 let chartlabels = [];
 var humansCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+}
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue));
 //option2
@@ -789,41 +814,46 @@ var ctx = document.getElementById('BarH').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
-function changeScoreV(){
-$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+function changeScoreV(useData){
+
 var verifiedValue = document.getElementById("3-V").value;
 
 let chartdata = [];
 let chartlabels = [];
 var verifiedCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+}
 // option 1
 chartdata.push((Number(data['result']['option1']['Verified'])* verifiedValue));
 //option2
@@ -836,46 +866,50 @@ if(!data['result']['option2']['Desc'] == ''){
 chartlabels.push(data['result']['option2']['Desc']);
 }
 
-
 var ctx = document.getElementById('BarV').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
-function changeScoreN(){
-$('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+function changeScoreN(useData){
+
 
 var newbieValue = document.getElementById("4-N").value;
 let chartdata = [];
 let chartlabels = [];
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+data = JSON.parse(scoreData);
+  $('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+}
 // option 1
 chartdata.push((Number(data['result']['option1']['Newbie'])* newbieValue));
 //option2
@@ -892,35 +926,35 @@ var ctx = document.getElementById('BarN').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
-function changeScoreHAndV(){
-$('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+function changeScoreHAndV(useData){
+
 var humanValue = document.getElementById("5-H").value;
 var verifiedValue = document.getElementById("5-V").value;
 let chartdata = [];
@@ -928,7 +962,15 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
+
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+}
+
+
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue));
@@ -947,35 +989,35 @@ var ctx = document.getElementById('BarHAndV').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
-function changeScoreAll(){
-$('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+function changeScoreAll(useData){
+
 var humanValue = document.getElementById("6-H").value;
 var verifiedValue = document.getElementById("6-V").value;
 var newbieValue = document.getElementById("6-N").value;
@@ -985,8 +1027,13 @@ let chartlabels = [];
 var humansCount = 0;
 var verifiedCount = 0;
 var newbieCount = 0;
+if(!useData == '0'){
+  data = JSON.parse(scoreData);
+}else{
+  data = JSON.parse(scoreData);
+  $('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+}
 
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=0', function(data) {
 // option 1
 chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 (Number(data['result']['option1']['Verified'])* verifiedValue) +
@@ -995,6 +1042,7 @@ chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
 chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
 (Number(data['result']['option2']['Verified'])* verifiedValue) +
 (Number(data['result']['option2']['Newbie'])* newbieValue));
+
 
 if(!data['result']['option1']['Desc'] == ''){
 chartlabels.push(data['result']['option1']['Desc']);
@@ -1007,32 +1055,32 @@ var ctx = document.getElementById('BarAll').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'horizontalBar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Score',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.purple,
-    window.chartColors.orange,
-    window.chartColors.yellow,
-    window.chartColors.green,
-    window.chartColors.blue,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Score',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.purple,
+      window.chartColors.orange,
+      window.chartColors.yellow,
+      window.chartColors.green,
+      window.chartColors.blue,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1047,7 +1095,10 @@ function loadBarVa(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+
+  data = JSON.parse(ageData);
+
+
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
@@ -1071,7 +1122,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Human']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1079,34 +1130,34 @@ var ctx = document.getElementById('BarAgeVa').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1117,7 +1168,7 @@ function loadBarH(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']);
@@ -1141,7 +1192,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Human']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1149,34 +1200,34 @@ var ctx = document.getElementById('BarAgeH').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1187,7 +1238,7 @@ function loadBarV(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total =  Number(data['result']['Verified']['E0To2']);
@@ -1211,7 +1262,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Verified']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1219,34 +1270,34 @@ var ctx = document.getElementById('BarAgeV').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1259,7 +1310,7 @@ function loadBarN(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Newbie']['E0To2']);
@@ -1283,7 +1334,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Human']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1291,34 +1342,34 @@ var ctx = document.getElementById('BarAgeN').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1331,7 +1382,7 @@ function loadBarHAndV(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']);
@@ -1355,7 +1406,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Human']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1363,34 +1414,34 @@ var ctx = document.getElementById('BarAgeHAndV').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
@@ -1402,7 +1453,7 @@ function loadBarAll(){
 let chartdata = [];
 let chartlabels = [];
 
-ajax_get('./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal', function(data) {
+  data = JSON.parse(ageData);
 // option 1
 
 var _E0To2Total = Number(data['result']['Human']['E0To2']) + Number(data['result']['Verified']['E0To2']) + Number(data['result']['Newbie']['E0To2']);
@@ -1426,7 +1477,7 @@ chartdata.push(_E41To47Total);
 
 
 for(k in data['result']['Human']) {
-chartlabels.push(k)
+  chartlabels.push(k)
 }
 
 
@@ -1434,321 +1485,362 @@ var ctx = document.getElementById('BarAgeAll').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'bar',
 data: {
-  labels: chartlabels,
-  datasets: [{
-      label: 'Age',
-      data: chartdata,
-      backgroundColor: [
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-    window.chartColors.red,
-  ],borderWidth: 1}]},
+    labels: chartlabels,
+    datasets: [{
+        label: 'Age',
+        data: chartdata,
+        backgroundColor: [
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+      window.chartColors.red,
+    ],borderWidth: 1}]},
 options: {
-responsive: true,
-title: {
-  display: true,
+  responsive: true,
+  title: {
+    display: true,
 
-},
-tooltips: {
-  mode: 'index',
-  intersect: true
+  },
+  tooltips: {
+    mode: 'index',
+    intersect: true
 }
 }
 }
 );
-});
+
 }
 
 
 
-function changeChartVa(age){
-  $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
+function changeChartVa(age,useData){
+
 age = document.getElementById("VaAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['Validated'] == 0){
-  chartdata.push(data['result']['option1']['Validated']);
-}
-if(!data['result']['option2']['Validated'] == 0){
-  chartdata.push(data['result']['option2']['Validated']);
+
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartVa').replaceWith('<canvas id="ChartVa" width="100%" height="70%"></canvas>');
 }
 
+// Count
+  if(!data['result']['option1']['Validated'] == 0){
+    chartdata.push(data['result']['option1']['Validated']);
+  }
+  if(!data['result']['option2']['Validated'] == 0){
+    chartdata.push(data['result']['option2']['Validated']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
 
 
 
 var ctx = document.getElementById('ChartVa').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]},});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
 
 
 
 
-    }
-);
+
 }
-function changeChartH(age){
-  $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
-age = document.getElementById("HAge").value;
+function changeChartH(age,useData){
+
+  age = document.getElementById("HAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['Human'] == 0){
-  chartdata.push(data['result']['option1']['Human']);
-}
-if(!data['result']['option2']['Human'] == 0){
-  chartdata.push(data['result']['option2']['Human']);
+
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartH').replaceWith('<canvas id="ChartH" width="100%" height="70%"></canvas>');
 }
 
+
+// Count
+  if(!data['result']['option1']['Human'] == 0){
+    chartdata.push(data['result']['option1']['Human']);
+  }
+  if(!data['result']['option2']['Human'] == 0){
+    chartdata.push(data['result']['option2']['Human']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
 
 
 
 var ctx = document.getElementById('ChartH').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]},});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
 
 
 
 
-    }
-);
+
 }
-function changeChartV(age){
-$('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
-age = document.getElementById("VAge").value;
+function changeChartV(age,useData){
+
+  age = document.getElementById("VAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['Verified'] == 0){
-  chartdata.push(data['result']['option1']['Verified']);
-}
-if(!data['result']['option2']['Verified'] == 0){
-  chartdata.push(data['result']['option2']['Verified']);
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartV').replaceWith('<canvas id="ChartV" width="100%" height="70%"></canvas>');
 }
 
+// Count
+  if(!data['result']['option1']['Verified'] == 0){
+    chartdata.push(data['result']['option1']['Verified']);
+  }
+  if(!data['result']['option2']['Verified'] == 0){
+    chartdata.push(data['result']['option2']['Verified']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
 
 
 
 var ctx = document.getElementById('ChartV').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]},});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
 
 
 
 
-    }
-);
+
 }
-function changeChartN(age){
-  $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
-age = document.getElementById("NAge").value;
+function changeChartN(age,useData){
+
+  age = document.getElementById("NAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['Newbie'] == 0){
-  chartdata.push(data['result']['option1']['Newbie']);
-}
-if(!data['result']['option2']['Newbie'] == 0){
-  chartdata.push(data['result']['option2']['Newbie']);
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartN').replaceWith('<canvas id="ChartN" width="100%" height="70%"></canvas>');
 }
 
+// Count
+  if(!data['result']['option1']['Newbie'] == 0){
+    chartdata.push(data['result']['option1']['Newbie']);
+  }
+  if(!data['result']['option2']['Newbie'] == 0){
+    chartdata.push(data['result']['option2']['Newbie']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
 
 
 
 var ctx = document.getElementById('ChartN').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]}
-      ,});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]}
+        ,});
 
 
 
 
-    }
-);
+
 }
-function changeChartHAndV(age){
-  $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
-age = document.getElementById("HAndVAge").value;
+function changeChartHAndV(age,useData){
+  age = document.getElementById("HAndVAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['HumanAndVerified'] == 0){
-  chartdata.push(data['result']['option1']['HumanAndVerified']);
-}
-if(!data['result']['option2']['HumanAndVerified'] == 0){
-  chartdata.push(data['result']['option2']['HumanAndVerified']);
+
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartHAndV').replaceWith('<canvas id="ChartHAndV" width="100%" height="70%"></canvas>');
 }
 
+// Count
+  if(!data['result']['option1']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option1']['HumanAndVerified']);
+  }
+  if(!data['result']['option2']['HumanAndVerified'] == 0){
+    chartdata.push(data['result']['option2']['HumanAndVerified']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
+
 
 
 var ctx = document.getElementById('ChartHAndV').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]},});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
 
 
 
 
-    }
-);
-}
+      }
 
-function changeChartAll(age){
-  $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
-age = document.getElementById("AllAge").value;
+
+function changeChartAll(age,useData){
+
+  age = document.getElementById("AllAge").value;
 let chartdata = [];
 let chartlabels = [];
-ajax_get('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age, function(data) {
-// Count
-if(!data['result']['option1']['All'] == 0){
-  chartdata.push(data['result']['option1']['All']);
-}
-if(!data['result']['option2']['All'] == 0){
-  chartdata.push(data['result']['option2']['All']);
+if(!useData == '0'){
+  data = JSON.parse(chartData);
+}else{
+  data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age='+age);
+  data = JSON.parse(data);
+  $('#ChartAll').replaceWith('<canvas id="ChartAll" width="100%" height="70%"></canvas>');
 }
 
+// Count
+  if(!data['result']['option1']['All'] == 0){
+    chartdata.push(data['result']['option1']['All']);
+  }
+  if(!data['result']['option2']['All'] == 0){
+    chartdata.push(data['result']['option2']['All']);
+  }
+
 // Description
-if(!data['result']['option1']['Desc'] == ''){
-  chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-  chartlabels.push(data['result']['option2']['Desc']);
-}
+  if(!data['result']['option1']['Desc'] == ''){
+    chartlabels.push(data['result']['option1']['Desc']);
+  }
+  if(!data['result']['option2']['Desc'] == ''){
+    chartlabels.push(data['result']['option2']['Desc']);
+  }
 
 
 
 var ctx = document.getElementById('ChartAll').getContext('2d');
 var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: chartlabels,
-      datasets: [{
-          label: '# of Votes',
-          data: chartdata,
-          backgroundColor: [
-        window.chartColors.purple,
-        window.chartColors.orange,
-        window.chartColors.yellow,
-        window.chartColors.green,
-        window.chartColors.blue,
-        window.chartColors.red,
-      ],borderWidth: 1}]},});
+    type: 'pie',
+    data: {
+        labels: chartlabels,
+        datasets: [{
+            label: '# of Votes',
+            data: chartdata,
+            backgroundColor: [
+          window.chartColors.purple,
+          window.chartColors.orange,
+          window.chartColors.yellow,
+          window.chartColors.green,
+          window.chartColors.blue,
+          window.chartColors.red,
+        ],borderWidth: 1}]},});
 
 
 
 
-    }
-);
-}
+      }
+
 
 
 
@@ -1767,92 +1859,94 @@ var myChart = new Chart(ctx, {
 
 
 function toggle(change) {
-  if(change == true) {
-          document.getElementById("text_submit").innerHTML = "Casting...";
-          document.getElementById("submit").classList.add("disabled");
-  } else {
-          document.getElementById("text_submit").innerHTML = "Cast my Vote";
-          document.getElementById("submit").classList.remove("disabled");
-  }
+    if(change == true) {
+            document.getElementById("text_submit").innerHTML = "Casting...";
+            document.getElementById("submit").classList.add("disabled");
+    } else {
+            document.getElementById("text_submit").innerHTML = "Cast my Vote";
+            document.getElementById("submit").classList.remove("disabled");
+    }
 }
 
 function castVote()
 {
-  toggle(true);
-  var elements = document.getElementsByClassName("formVal");
-  var formData = new FormData();
-  for(var i=0; i<elements.length; i++)
-  {
+    toggle(true);
+    var elements = document.getElementsByClassName("formVal");
+    var formData = new FormData();
+    for(var i=0; i<elements.length; i++)
+    {
 
-    if (elements[i].name == 'vote'){
-      if (elements[i].checked){
-          formData.append(elements[i].name, elements[i].value);
+      if (elements[i].name == 'vote'){
+        if (elements[i].checked){
+            formData.append(elements[i].name, elements[i].value);
+        }
+      }else {
+        formData.append(elements[i].name, elements[i].value);
       }
-    }else {
-      formData.append(elements[i].name, elements[i].value);
+
     }
 
-  }
-
-  ajax_post('./services/vote.php', formData, function(data) {
-      toggle(false);
-      if(data["success"]){
-          document.getElementById("success").classList.remove("rem");
-          document.getElementById("warning").classList.add("rem");
-          document.getElementById("success").innerHTML = '&#x2705; Vote made successfully';
-      } else {
-          document.getElementById("success").classList.add("rem");
-          document.getElementById("warning").classList.remove("rem");
-          document.getElementById("submit").classList.add("disabled");
-          document.getElementById("warning").innerHTML = '&#x274C; Error!';
+    ajax_post('./services/vote.php', formData, function(data) {
+        toggle(false);
+        if(data["success"]){
+            document.getElementById("success").classList.remove("rem");
+            document.getElementById("warning").classList.add("rem");
+            document.getElementById("success").innerHTML = '&#x2705; Vote made successfully';
+        } else {
+            document.getElementById("success").classList.add("rem");
+            document.getElementById("warning").classList.remove("rem");
+            document.getElementById("submit").classList.add("disabled");
+            document.getElementById("warning").innerHTML = '&#x274C; Error!';
+        }
+    });
+    ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
+      if(data["status"]=='true'){
+          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
       }
-  });
-  ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
-    if(data["status"]=='true'){
-        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have voted "'+data["vote"]+'".</h4>';
-    }
-    if(data["status"]=='login'){
-      document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
+      if(data["status"]=='login'){
+        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">You have to be signed in to vote</h4>';
 
-    }
-    if(data["status"]=='ended'){
-        document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">Proposal Ended ".</h4>';
-    }
-  });
+      }
+      if(data["status"]=='ended'){
+          document.getElementById("vote_container").innerHTML = '<br><h4 style="text-align: center;">Proposal Ended</h4>';
+      }
+
+    });
 }
 function Delete(id)
 {
-ajax_get('./services/deleteProposal.php?id='+id, function(data) {
+  ajax_get('./services/deleteProposal.php?id='+id, function(data) {
 
 
-    window.location.replace("<?php echo $url;?>proposals.php");
+      window.location.replace("<?php echo $url;?>proposals.php");
 
-});
+  });
 }
 window.onload = function()
 {
-changeChartVa(0);
-changeChartH(0);
-changeChartV(0);
-changeChartN(0);
-changeChartHAndV(0);
-changeChartAll(0);
+  changeChartVa(0,chartData);
+  changeChartH(0,chartData);
+  changeChartV(0,chartData);
+  changeChartN(0,chartData);
+  changeChartHAndV(0,chartData);
+  changeChartAll(0,chartData);
 
-changeScoreVa();
-changeScoreH();
-changeScoreV();
-changeScoreN();
-changeScoreHAndV();
-changeScoreAll();
+  changeScoreVa(scoreData);
+  changeScoreH(scoreData);
+  changeScoreV(scoreData);
+  changeScoreN(scoreData);
+  changeScoreHAndV(scoreData);
+  changeScoreAll(scoreData);
 
 
 
-loadBarVa();
-loadBarH();
-loadBarV();
-loadBarN();
-loadBarHAndV();
-loadBarAll();
+  loadBarVa();
+  loadBarH();
+  loadBarV();
+  loadBarN();
+  loadBarHAndV();
+  loadBarAll();
+
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
     if(data["status"]=='true'){

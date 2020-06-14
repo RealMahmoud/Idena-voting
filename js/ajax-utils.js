@@ -2,7 +2,7 @@ function ajax_post(url, form_Data, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            
+
             try {
                 var data = JSON.parse(xmlhttp.responseText);
             } catch(err) {
@@ -12,7 +12,7 @@ function ajax_post(url, form_Data, callback) {
             callback(data);
         }
     };
- 
+
     xmlhttp.open("POST", url, true);
     xmlhttp.send(form_Data);
 }
@@ -21,7 +21,7 @@ function ajax_get(url, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            
+
             try {
                 var data = JSON.parse(xmlhttp.responseText);
             } catch(err) {
@@ -31,11 +31,10 @@ function ajax_get(url, callback) {
             callback(data);
         }
     };
- 
+
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-
 
 function precise2(x) {
   return x.toLocaleString(undefined, {maximumFractionDigits:2});

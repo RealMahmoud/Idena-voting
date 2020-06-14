@@ -199,6 +199,7 @@ window.onload = function() {
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                            +obj.title
                                           +'</p>'
+                                         +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
@@ -228,6 +229,7 @@ window.onload = function() {
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                            +obj.title
                                           +'</p>'
+                                        +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'

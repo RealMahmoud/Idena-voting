@@ -37,8 +37,15 @@ function opendnaurl(){
    console.log(encodeURI(url));
 }
 
+
+
+
+
 window.onload = function() {
+
     opendnaurl();
+
+
 }
 
 </script>

@@ -17,10 +17,13 @@ if ($result->num_rows > 0) {
           echo '{"success":false, "data": "You have already voted"}';
           }
 } else {
+
+
+
   $sql = "SELECT * FROM `".$type."s` WHERE `id` = '".$id."' LIMIT 1;";
-  $result = $conn->query($sql);
-  if ($result->num_rows > 0) {
-  while($row2 = $result->fetch_assoc()) {
+  $result3 = $conn->query($sql);
+  if ($result3->num_rows > 0) {
+  while($row2 = $result3->fetch_assoc()) {
     if(Date(strtotime('now')) > Date(strtotime($row2['endtime']))&&isset($_SESSION["addr"])){
     die('{"status": "ended", "data": "0"}');
   }else{

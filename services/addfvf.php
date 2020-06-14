@@ -68,6 +68,44 @@ if(!empty($_SESSION["addr"]))
           $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr` ,  `title`,`category`,`vip`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."' ,'".$title."','".$category."','".$vip."')";
 
           $result = $conn->query($sql);
+          // discord
+          
+
+          $hookObject = json_encode([
+              "username" => "Idena.vote",
+              "avatar_url" => "https://robohash.org/".$_SESSION['username'],
+              "tts" => false,
+              "embeds" => [
+                  [
+                      "title" => 'New FvF : '.$title,
+                      "url" => $url.'fvf.php?id='.$conn->insert_id,
+                      "type" => "rich",
+                      "timestamp" => gmdate("Y-m-d\TH:i:s\Z"),
+                      "color" => hexdec( "FFFFFF" ),
+                      "author" => [
+                          "name" => 'User : '.$_SESSION['username'],
+                          "url" => $url.'profile.php?user='.$_SESSION['username']
+                      ]
+                  ]
+              ]
+
+          ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+
+          $ch = curl_init();
+
+          curl_setopt_array( $ch, [
+              CURLOPT_URL => $hook,
+              CURLOPT_POST => true,
+              CURLOPT_POSTFIELDS => $hookObject,
+              CURLOPT_HTTPHEADER => [
+                  "Content-Type: application/json"
+              ]
+          ]);
+
+          $response = curl_exec( $ch );
+          curl_close( $ch );
+// end discord
+
           $sql = "UPDATE `accounts` SET `credits` = `credits`-".$cost." WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
           echo '{"success":true,"data":"Fvf Created successfully"}';

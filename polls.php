@@ -59,9 +59,9 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
             </div>
           </div>
           <div class="row row-fluid" id="poll-list-running-vip">
+
           </div>
           <div class="row row-fluid" id="poll-list-running">
-
           </div>
         </div>
 
@@ -74,6 +74,7 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Polls '.'- <a h
             </div>
           </div>
           <div class="row row-fluid" id="poll-list-ended-vip">
+
           </div>
           <div class="row row-fluid" id="poll-list-ended">
 
@@ -200,6 +201,7 @@ window.onload = function() {
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                            +obj.title
                                           +'</p>'
+                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
@@ -229,6 +231,7 @@ window.onload = function() {
                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                            +obj.title
                                           +'</p>'
+                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'

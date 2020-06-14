@@ -131,6 +131,11 @@ Polls
               FvFs
             </a>
           </li>
+          <li class="nav-item header_nav__item">
+            <a class="nav-link header_nav__link appslink" href="./faq.php" title="FAQ" descriptioncontent="FAQ">
+              FAQ
+            </a>
+          </li>
 
 
 </div>
@@ -165,7 +170,7 @@ Polls
                     <li>
                         <a class="btn btn-small" href="./logout.php"><span>Log out</span></a>
                     </li>
-                    
+
 
               </div>
 

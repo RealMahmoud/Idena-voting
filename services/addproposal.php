@@ -3,8 +3,8 @@ session_start();
 
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
-if(empty($conn->real_escape_string($_POST['vip']))) {
-  die('{"success":false}');
+if(!isset($_POST['vip'])) {
+  die('{"success":false,"data":"need to choose vip ot not"}');
 }
 $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 $result = $conn->query($sql);
@@ -18,7 +18,7 @@ if($vip == 1){
 }
 
     if($row['credits'] < $cost){
-      die('{"success":false}');
+      die('{"success":false,"data":"no enough credits"}');
     }
 
 
@@ -26,21 +26,20 @@ if($vip == 1){
 
 
   if(empty($conn->real_escape_string($_POST['desc']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No desc chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['title']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No title chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['category']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No category chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['endtime']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No EndTime"}');
   }
 
 if(!empty($_SESSION["addr"]))
 {
-
         if ($_POST['type'] == 'proposal'){
           $pdesc = $conn->real_escape_string($_POST['desc']);
           $title = $conn->real_escape_string($_POST['title']);
@@ -61,12 +60,12 @@ if(!empty($_SESSION["addr"]))
           $result = $conn->query($sql);
           $sql = "UPDATE `accounts` SET `credits` = `credits`-".$cost." WHERE `accounts`.`addr` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
-          echo '{"success":true}';
+          echo '{"success":true,"data":"Proposl created successfully"}';
         } else {
-          echo '{"success":false}';
+          echo '{"success":false,"data":"This is not proposal"}';
         }
 } else {
-    echo '{"success":false}';
+    echo '{"success":false,"data":"You need to be signed in"}';
 }
 
 ?>

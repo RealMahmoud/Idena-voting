@@ -10,7 +10,15 @@ if(!empty($id)){
   $result = $conn->query("SELECT `addtime` from `proposals` WHERE `id` = '".$id."'");
   $row = $result->fetch_row();
  if (date(strtotime('now - 1 hour')) < Date(strtotime($row[0]))){
-   $sql = "UPDATE `accounts` SET `credits` = `credits` + 1 WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1 ;";
+
+      $result = $conn->query("SELECT `vip` from `proposals` WHERE `id` = '".$id."'");
+      $row = $result->fetch_row();
+      if($row[0] == 1){
+        $cost = 5;
+      }else{
+        $cost = 1;
+      }
+      $sql = "UPDATE `accounts` SET `credits` = `credits` + ".$cost." WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1 ;";
    $result = $conn->query($sql);
  }
 

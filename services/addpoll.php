@@ -3,8 +3,8 @@ session_start();
 
 include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
-if(empty($conn->real_escape_string($_POST['vip']))) {
-  die('{"success":false}');
+if(!isset($_POST['vip'])) {
+  die('{"success":false,"data":"need to choose vip ot not"}');
 }
 $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 $result = $conn->query($sql);
@@ -18,7 +18,7 @@ if($vip == 1){
 }
 
     if($row['credits'] < $cost){
-      die('{"success":false}');
+      die('{"success":false,"data":"no enough credits"}');
     }
 
 
@@ -26,16 +26,16 @@ if($vip == 1){
 
 
   if(empty($conn->real_escape_string($_POST['desc']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No desc chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['title']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No title chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['category']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No category chosen"}');
   }
   if(empty($conn->real_escape_string($_POST['endtime']))) {
-    die('{"success":false}');
+    die('{"success":false,"data":"No EndTime"}');
   }
 
 if(!empty($_SESSION["addr"]))
@@ -55,7 +55,7 @@ if(!empty($_SESSION["addr"]))
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
-          die('{"success":false}');
+          die('{"success":false,"data":"Duplicate Data"}');
           }
           $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."')";
 
@@ -64,10 +64,10 @@ if(!empty($_SESSION["addr"]))
          $conn->query($sql);
           echo '{"success":true}';
         } else {
-          echo '{"success":false}';
+          echo '{"success":false,"data":"This is not poll"}';
         }
 } else {
-    echo '{"success":false}';
+    echo '{"success":false,"data":"You need to be signed in"}';
 }
 
 ?>

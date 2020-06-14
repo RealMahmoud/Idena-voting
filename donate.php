@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include(dirname(__FILE__)."/common/protected.php");
+include(dirname(__FILE__)."/common/_public.php");
 if(isset($_GET['user'])){
 $usernamea = $_GET['user'];
 }

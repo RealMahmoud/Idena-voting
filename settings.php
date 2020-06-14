@@ -165,6 +165,29 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                         </form>
+
+
+
+                        <br>
+                        <div class="warning rem" id="warning-donate">
+                        </div>
+                        <div class="success rem" id="success-donate">
+                        </div>
+                        <h4 class="info_block__accent">Change Donation Address : </h4>
+
+                        <form id="name_form" METHOD="POST" onsubmit="changedonate(); return false;">
+                            <div class="input-group" style="width: 60%;">
+                                <input type="text" name="donate" class="formValDonate form-control" value="" placeholder="Please type the new address"/>
+                            </div>
+
+                            <div class="input-group">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit-donate" onclick="changedonate(); return false;" style="margin-top: 1em;">
+                                <span id="text_submit-donate"> Change</span>
+                                <i class="icon icon--thin_arrow_right"></i>
+                            </a>
+                            </div>
+
+                        </form>
                         <br>
 
 

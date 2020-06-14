@@ -27,17 +27,17 @@ if($row['hidden'] == 1 ){
 
   $_SESSION["credits"] = $row['credits'];
   $_SESSION["age"] = $row['age'];
-  
+
  echo '{"success":true}';
 
 
 }
 
 }else{
-    echo '{"success":false}';
+    echo '{"success":false, "data": "ERROR"}';
 }
 
 }else {
-  echo '{"success":false}';
+  echo '{"success":false, "data": "ERROR"}';
 }
 ?>

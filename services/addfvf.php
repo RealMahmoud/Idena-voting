@@ -59,17 +59,32 @@ if(!empty($_SESSION["addr"]))
           $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
           $vip = $conn->real_escape_string($_POST['vip']);
 
+
+          $addr = $conn->htmlspecialchars($addr);
+          $location1 = $conn->htmlspecialchars($location1);
+          $location2 = $conn->htmlspecialchars($location2);
+          $endtime= $conn->htmlspecialchars($endtime);
+          $pdesc = $conn->htmlspecialchars($pdesc);
+          $title = $conn->htmlspecialchars($title);
+          $category = $conn->htmlspecialchars($category);
+          $fundaddr = $conn->htmlspecialchars($fundaddr);
+          $vip = $conn->htmlspecialchars($vip);
+
+
+
+
+
           $sql = "SELECT * FROM `fvfs` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
-          die('{"success":false}');
+          die('{"success":false, "data": "This FvF already exist before"}');
           }
           $sql = "INSERT INTO `fvfs`( `addr`, `location1`, `location2`,`endtime`, `pdesc`, `fundaddr` ,  `title`,`category`,`vip`) VALUES ('".$addr."','".$location1."','".$location2."','".$endtime."','".$pdesc."','".$fundaddr."' ,'".$title."','".$category."','".$vip."')";
 
           $result = $conn->query($sql);
           // discord
-          
+
 
           $hookObject = json_encode([
               "username" => "Idena.vote",

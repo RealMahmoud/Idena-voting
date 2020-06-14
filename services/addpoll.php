@@ -51,6 +51,27 @@ if(!empty($_SESSION["addr"]))
           $option5 = $conn->real_escape_string($_POST['option5']);
           $option6 = $conn->real_escape_string($_POST['option6']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
+
+
+
+          $pdesc = $conn->htmlspecialchars($pdesc);
+          $title = $conn->htmlspecialchars($title);
+          $category = $conn->htmlspecialchars($category);
+          $option1 = $conn->htmlspecialchars($option1);
+          $option2 = $conn->htmlspecialchars($option2);
+          $option3 = $conn->htmlspecialchars($option3);
+          $option4 = $conn->htmlspecialchars($option4);
+          $option5 = $conn->htmlspecialchars($option5);
+          $option6 = $conn->htmlspecialchars($option6);
+          $endtime = $conn->htmlspecialchars($endtime);
+
+
+
+
+
+
+
+
           $sql = "SELECT * FROM `polls` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
           $result = $conn->query($sql);
 
@@ -61,7 +82,7 @@ if(!empty($_SESSION["addr"]))
 
           $result = $conn->query($sql);
           // discord
-          
+
 
           $hookObject = json_encode([
               "username" => "Idena.vote",

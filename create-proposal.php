@@ -153,7 +153,7 @@ function createproposal()
         } else {
             document.getElementById("success").classList.add("rem");
             document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("warning").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }

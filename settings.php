@@ -83,10 +83,10 @@ include(dirname(__FILE__)."/partials/header.php");
                   <div class="row">
 
                     <div class="col-12 col-sm-12 bordered-col">
-                        <div class="warning rem" id="warning">
-                        </div>
-                        <div class="success rem" id="success">
-                        </div>
+                      <div class="warning rem" id="warning-username">
+                      </div>
+                      <div class="success rem" id="success-username">
+                      </div>
 
                         <h4 class="info_block__accent">Change username</h4>
                         <form id="name_form" METHOD="POST"onsubmit="changeName(); return false;">
@@ -95,7 +95,7 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeName(); return false;" style="margin-top: 1em;">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit-username" onclick="changeName(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit-username"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
@@ -103,7 +103,10 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         </form>
                         <br>
-
+                        <div class="warning rem" id="warning-ST">
+                        </div>
+                        <div class="success rem" id="success-ST">
+                        </div>
                         <h4 class="info_block__accent">Change Secret Token : </h4>
 
                         <form id="name_form" METHOD="POST" onsubmit="changeST(); return false;">
@@ -112,7 +115,7 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeST(); return false;" style="margin-top: 1em;">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit-ST" onclick="changeST(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit-ST"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
@@ -123,7 +126,10 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
                         <br>
-
+                        <div class="warning rem" id="warning-bio">
+                        </div>
+                        <div class="success rem" id="success-bio">
+                        </div>
                         <h4 class="info_block__accent">Change Bio : </h4>
 
                         <form id="name_form" METHOD="POST" onsubmit="changeBio(); return false;">
@@ -132,7 +138,7 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="changeBio(); return false;" style="margin-top: 1em;">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit-bio" onclick="changeBio(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit-bio"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
@@ -140,7 +146,10 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         </form>
                         <br>
-
+                        <div class="warning rem" id="warning-hidden">
+                        </div>
+                        <div class="success rem" id="success-hidden">
+                        </div>
                         <h4 class="info_block__accent">Change Account Hidden Status : </h4>
 
                         <form id="name_form" METHOD="POST" onsubmit="ChangeHidden(); return false;">
@@ -149,7 +158,7 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
+                            <a class="btn btn-secondary btn-small" href="#" id="submit-hidden" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
                                 <span id="text_submit-hidden"> Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
@@ -195,14 +204,14 @@ function changeName()
     ajax_post('./services/changeUsername.php', formData, function(data) {
         toggle(false,'username');
         if(data["success"]){
-            document.getElementById("success").classList.remove("rem");
-            document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; username changed successfully';
+            document.getElementById("success-username").classList.remove("rem");
+            document.getElementById("warning-username").classList.add("rem");
+            document.getElementById("success-username").innerHTML = '&#x2705; username changed successfully';
 
         } else {
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("success-username").classList.add("rem");
+            document.getElementById("warning-username").classList.remove("rem");
+            document.getElementById("warning-username").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }
@@ -220,14 +229,14 @@ function changedonate()
     ajax_post('./services/changeDonate.php', formData, function(data) {
         toggle(false,'donate');
         if(data["success"]){
-            document.getElementById("success").classList.remove("rem");
-            document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Donate Address changed successfully';
+            document.getElementById("success-donate").classList.remove("rem");
+            document.getElementById("warning-donate").classList.add("rem");
+            document.getElementById("success-donate").innerHTML = '&#x2705; Donate Address changed successfully';
 
         } else {
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("success-donate").classList.add("rem");
+            document.getElementById("warning-donate").classList.remove("rem");
+            document.getElementById("warning-donate").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }
@@ -244,14 +253,14 @@ function ChangeHidden()
     ajax_post('./services/changeHidden.php', formData, function(data) {
         toggle(false,'hidden');
         if(data["success"]){
-            document.getElementById("success").classList.remove("rem");
-            document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Hidden Status changed successfully';
+            document.getElementById("success-hidden").classList.remove("rem");
+            document.getElementById("warning-hidden").classList.add("rem");
+            document.getElementById("success-hidden").innerHTML = '&#x2705; Hidden Status changed successfully';
 
         } else {
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("success-hidden").classList.add("rem");
+            document.getElementById("warning-hidden").classList.remove("rem");
+            document.getElementById("warning-hidden").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }
@@ -269,14 +278,14 @@ function changeST()
     ajax_post('./services/changeST.php', formData, function(data) {
         toggle(false,'ST');
         if(data["success"]){
-            document.getElementById("success").classList.remove("rem");
-            document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; The Secret Token changed successfully';
+            document.getElementById("success-ST").classList.remove("rem");
+            document.getElementById("warning-ST").classList.add("rem");
+            document.getElementById("success-ST").innerHTML = '&#x2705; Secret Token changed successfully';
 
         } else {
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("success-ST").classList.add("rem");
+            document.getElementById("warning-ST").classList.remove("rem");
+            document.getElementById("warning-ST").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }
@@ -294,14 +303,14 @@ function changeBio()
     ajax_post('./services/changeBio.php', formData, function(data) {
         toggle(false,'bio');
         if(data["success"]){
-            document.getElementById("success").classList.remove("rem");
-            document.getElementById("warning").classList.add("rem");
-            document.getElementById("success").innerHTML = '&#x2705; Bio changed successfully';
+            document.getElementById("success-bio").classList.remove("rem");
+            document.getElementById("warning-bio").classList.add("rem");
+            document.getElementById("success-bio").innerHTML = '&#x2705; Bio changed successfully';
 
         } else {
-            document.getElementById("success").classList.add("rem");
-            document.getElementById("warning").classList.remove("rem");
-            document.getElementById("warning").innerHTML = '&#x274C; Something went wrong. Please try again';
+            document.getElementById("success-bio").classList.add("rem");
+            document.getElementById("warning-bio").classList.remove("rem");
+            document.getElementById("warning-bio").innerHTML = '&#x274C; '+data["data"];
         }
     });
 }
@@ -320,14 +329,7 @@ function toggle(change,k) {
     }
 }
 
-function checkusername() {
-    ajax_get('./services/checkUsername.php?addr=<?php echo $_SESSION["addr"]; ?>', function(data) {
-            document.getElementById("user_name").innerHTML = data["username"];
-    });
-}
-window.onload = function() {
 
-}
 </script>
 <?php
 include(dirname(__FILE__)."/partials/footer.php");

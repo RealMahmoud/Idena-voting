@@ -19,6 +19,6 @@ if(($password == 'confirm') && !empty($_SESSION["addr"]))
             echo '{"success":true}';
     }
 } else {
-    echo '{"success":false}';
+    echo '{"success":false, "data": "ERROR"}';
 }
 ?>

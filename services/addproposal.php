@@ -49,17 +49,32 @@ if(!empty($_SESSION["addr"]))
           $amount = $conn->real_escape_string($_POST['amount']);
           $endtime = $conn->real_escape_string($_POST['endtime']);
            $fundaddr = $conn->real_escape_string($_POST['fundaddr']);
+
+
+
+
+           $pdesc = $conn->htmlspecialchars($pdesc);
+           $title = $conn->htmlspecialchars($title);
+           $category = $conn->htmlspecialchars($category);
+           $option1 = $conn->htmlspecialchars($option1);
+           $option2 = $conn->htmlspecialchars($option2);
+          $amount = $conn->htmlspecialchars($amount);
+           $endtime = $conn->htmlspecialchars($endtime);
+                $fundaddr = $conn->htmlspecialchars($fundaddr);
+
+
+
            $sql = "SELECT * FROM `proposals` WHERE `pdesc` = '".$pdesc."' OR `title` = '".$title."' LIMIT 1;";
            $result = $conn->query($sql);
 
            if ($result->num_rows > 0) {
-           die('{"success":false}');
+           die('{"success":false, "data": "This Propsal already exist before"}');
            }
           $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."')";
 
           $result = $conn->query($sql);
           // discord
-          
+
 
           $hookObject = json_encode([
               "username" => "Idena.vote",

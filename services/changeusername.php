@@ -4,7 +4,7 @@ include(dirname(__FILE__)."/../common/protected.php");
 header('Content-Type: application/json');
 
 $username = $conn->real_escape_string($_POST['username']);
-
+$username = htmlspecialchars($username);
 if(!empty($username))
 {
     $sql1 = "SELECT `username` FROM `accounts` WHERE `username` = '".$username."' LIMIT 1;";
@@ -15,9 +15,9 @@ if(!empty($username))
       $result = $conn->query($sql);
       echo '{"success":true}';
     } else {
-              echo '{"success":false}';
+              echo '{"success":false, "data": "ERROR"}';
     }
 } else {
-    echo '{"success":false}';
+    echo '{"success":false, "data": "ERROR"}';
 }
 ?>

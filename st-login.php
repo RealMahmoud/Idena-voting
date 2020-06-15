@@ -2,7 +2,7 @@
 session_start();
 include(dirname(__FILE__)."/common/_public.php");
 
-$pagetitle = 'Mobile Login';
+$pagetitle = 'ST Login';
 include(dirname(__FILE__)."/partials/header.php");
 
 ?>
@@ -16,7 +16,7 @@ include(dirname(__FILE__)."/partials/header.php");
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
 
                          <h4 class="info_block__accent"style="margin-top: 3em;">Login With Secret Token</h4>
-                         <form id="name_form" METHOD="POST" onsubmit="MobileLogin(); return false;">
+                         <form id="name_form" METHOD="POST" onsubmit="STLogin(); return false;">
                            <div class="warning rem" id="warning">
                            </div>
                            <div class="success rem" id="success">
@@ -26,7 +26,7 @@ include(dirname(__FILE__)."/partials/header.php");
                              </div>
 
                              <div class="input-group">
-                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="MobileLogin(); return false;" style="margin-top: 1em;">
+                             <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="STLogin(); return false;" style="margin-top: 1em;">
                                  <span id="text_submit">Login</span>
                                  <i class="icon icon--thin_arrow_right"></i>
                              </a>
@@ -40,7 +40,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
 </section>
 <script>
-function MobileLogin()
+function STLogin()
 {
     var elements = document.getElementsByClassName("formVal");
     var formData = new FormData();
@@ -49,7 +49,7 @@ function MobileLogin()
         formData.append(elements[i].name, elements[i].value);
     }
 
-    ajax_post('./services/mobileAuth.php', formData, function(data) {
+    ajax_post('./services/stAuth.php', formData, function(data) {
 
         if(data["success"]){
             document.getElementById("success").classList.remove("rem");

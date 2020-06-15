@@ -3,7 +3,7 @@ include_once(dirname(__FILE__)."/../common/_public.php");
 require_once(dirname(__FILE__)."/../vendor/autoload.php");
 use Elliptic\EC;
 use kornrunner\Keccak;
-use Web3p\RLP\RLP;
+
 
 function pubKeyToAddress($pubkey) {
     return "0x" . substr(Keccak::hash(substr(hex2bin($pubkey->encode("hex")), 1), 256), 24);

@@ -87,13 +87,13 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Start a new proposal</h4>
                         <form id="proposal_form" METHOD="POST" onsubmit="createproposal(); return false;">
                             <div class="input-group" style="width: 60%;">
-                            <p>Title :</p><input maxlength="250" minlength="1"name="title" id="title" class="formVal form-control"  value="Will DNA beat BTC?"></input><br>
-                            <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" >Will Idena beat BTC At 2022 ?</textarea><br>
+                            <p>Title :</p><input maxlength="250" minlength="1"name="title" id="title" class="formVal form-control"  value=""></input><br>
+                            <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" ></textarea><br>
                             <p>Category :</p><input maxlength="15" minlength="1"name="category" id="category" class="formVal form-control" value="Idena"></input><br>
                           <br>  <p> End Time :</p><input type="datetime-local"name="endtime" id="endT" class=" form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
                             <br><p> Option 1 :</p><input maxlength="25" minlength="1"type="text"name="option1" class="formVal form-control" value="Yes">
                             <br><p> Option 2 :</p><input maxlength="25" minlength="1"type="text"name="option2" class="formVal form-control" value="No">
-                            <br><p> Required Amount :</p><input maxlength="10" minlength="1"type="text"name="amount" class="formVal form-control" value="100">
+                            <br><p> Required Amount :</p><input maxlength="10" minlength="1"type="text"name="amount" class="formVal form-control" value="0">
                             <br><p> Donations Address :</p><input maxlength="42" minlength="1"type="text"name="fundaddr" class="formVal form-control" value="">
                             <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
                             <input type="hidden" name="type" class="formVal" value="proposal"/>

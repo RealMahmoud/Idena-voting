@@ -25,12 +25,12 @@ if(!empty($_SESSION["token"])) {
 
 
     if(!empty($_SESSION["addr"])) {
-      
+
       $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-          if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['state'] == 'zero'){
+          if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['state'] == 'Undefined'){
 
 
             $identity_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"];
@@ -38,16 +38,18 @@ if(!empty($_SESSION["token"])) {
 
             if(isset( $jsonArrayResponse['result']["state"])){
               if($jsonArrayResponse['result']["state"] == 'Suspended'){
+                /*
                 $lastepochurl = 'https://api.idena.org/api/epoch/last';
                 $jsonlastepoch = curl_get($lastepochurl);
                 $prevstateurl = 'https://api.idena.org/api/epoch/'.($jsonlastepoch['result']['epoch'] - 1 ).'/identity/'.$_SESSION["addr"];
                 $prevstate = curl_get($prevstateurl);
-                $newstate = $prevstate["result"]["prevState"];
+                $newstate = $prevstate["result"]["prevState"]; */
+                $newstate = $jsonArrayResponse['result']["state"];
               }else{
                 $newstate = $jsonArrayResponse['result']["state"];
               }
              }else{
-             $newstate = 'zero';
+             $newstate = 'Undefined';
               }
 
 

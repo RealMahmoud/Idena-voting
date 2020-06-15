@@ -11,6 +11,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
                         <div>
+                          <img src="./images/idena_black.svg" alt="Idena" width="100px" style="">
                             <h3 class="info_block__accent" style="margin-top: 3em;">Welcome to idena.vote!</h3>
                             <div class="text_block" id="none">Idena is a novel way to formalize people on the blockchain using proof-of-person consensus: Every node is linked to a cryptoidentity, one single person with equal voting power.
 

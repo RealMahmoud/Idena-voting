@@ -21,7 +21,7 @@ include_once(dirname(__FILE__)."/partials/header.php");
                     <br>
 
                         <br>
-                    <a class="btn btn-signin" href="./st-login.php">
+                    <a class="btn btn-signin" href="./stLogin.php">
                    <img alt="signin" class="icon icon-logo-white-small" src="https://scan.idena.io/static/images/idena_white_small.svg" width="24px">
                    <span style="color: #fff;">Sign-in with Secret Token</span>
                    </a>

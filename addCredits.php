@@ -9,13 +9,14 @@ include(dirname(__FILE__)."/partials/header.php");
 
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
 
-              <h4 class="info_block__accent">Add Credits - (Current : <?php echo $_SESSION['credits'];?> c)</h4>
+              <h4 class="info_block__accent">Add Credits - (You have <?php echo $_SESSION['credits'];?> credits)</h4>
               <br>
-                <br>
+              <h6 >Current price 1 DNA = 4 credits</h6>
+              <br>
 
               <form id="fvf_form" METHOD="POST" onsubmit="addCredits(); return false;"style="margin-left:20%;margin-right:20%;">
                   <div class="input-group">
-                    <p>Credits Amounts</p><input id="amount"type="number" class="formVal form-control" value="1"></input><br>
+                    <p>Credits Amounts</p><input id="amount"type="number"style="text-align:center;" class="formVal form-control" value="1"></input><br>
 
                   </div>
                   <div class="input-group">

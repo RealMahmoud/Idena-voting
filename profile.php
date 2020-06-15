@@ -50,14 +50,14 @@ include(dirname(__FILE__)."/partials/header.php");
 echo '  <a class="btn btn-small btn-primary" href="./settings.php">
       <span>Edit Settings</span>
   </a>
-  <a class="btn btn-small btn-primary" href="./create-poll.php">
+  <a class="btn btn-small btn-primary" href="./createPoll.php">
       <span>Create New Poll</span>
   </a>
 
-  <a class="btn btn-small btn-primary" href="./create-proposal.php">
+  <a class="btn btn-small btn-primary" href="./createProposal.php">
       <span>Create New Proposal</span>
   </a>
-  <a class="btn btn-small btn-primary" href="./create-fvf.php">
+  <a class="btn btn-small btn-primary" href="./createFvF.php">
       <span>Create New FvF</span>
   </a>';
 }?>

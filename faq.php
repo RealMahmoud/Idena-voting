@@ -86,6 +86,97 @@ include(dirname(__FILE__)."/partials/header.php");
           </div>
 
 
+          <div class="card">
+            <div class="card-header" id="faq-pop-4">
+              <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+What is proposals ?
+              </a>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="faq-pop-4" data-parent="#accordion">
+              <div class="card-body">
+                <p>proposals is a type of polls where you get  :</p>
+  <p>1 : two options to vote on</p>
+  <p>2 :  an  option to add a donation / funding address</p>
+  <p>3 : funding amount required option</p>
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header" id="faq-pop-5">
+              <a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+Why my profile pic is not like the one at explorer ?
+              </a>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="faq-pop-5" data-parent="#accordion">
+              <div class="card-body">
+
+  <p> it's changed due that You have the option to hide your address instead of being public ..and the profile pic depends on the address SO it here don't depend on that 😅 </p>
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="faq-pop-6">
+              <a class="collapsed" data-toggle="collapse" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+Is the credits going to increase everyday ?
+              </a>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="faq-pop-6" data-parent="#accordion">
+              <div class="card-body">
+
+  <p> If you are human then your credits amount will be set to  5 if your credits is lower than 5 ( Daily )
+and so on for each validated user ( newbie , verified , human)  </p>
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header" id="faq-pop-7">
+              <a class="collapsed" data-toggle="collapse" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+what is donate button ?
+              </a>
+            </div>
+            <div id="collapseSeven" class="collapse" aria-labelledby="faq-pop-7" data-parent="#accordion">
+              <div class="card-body">
+
+  <p>  It's added so users can accept DNA and without revealing your address  - You can add the donation address at settings  </p>
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="faq-pop-8">
+              <a class="collapsed" data-toggle="collapse" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+How can i make my address public ? 
+              </a>
+            </div>
+            <div id="collapseEight" class="collapse" aria-labelledby="faq-pop-8" data-parent="#accordion">
+              <div class="card-body">
+
+  <p>  Just go to the settings and type false at the changing form and click change </p>
+
+
+
+              </div>
+            </div>
+          </div>
+
+
 
 
 

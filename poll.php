@@ -90,11 +90,11 @@ $owneraddress = $rowf[1];
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
                         <h4 class="info_block__accent ">Start Time</h4>
-                        <p class="timeUTC"><?php echo  date('Y-m-d H:i A', strtotime($row['addtime'])); ?></p>
+                        <p class="timeUTC"><?php echo  date('Y-m-d H:i', strtotime($row['addtime'])); ?></p>
                       </div>
                       <div class="col-4 col-sm-4 bordered-col">
                       <h4 class="info_block__accent ">End Time</h4>
-                      <p class="timeUTC"><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
+                      <p class="timeUTC"><?php echo  date('Y-m-d H:i', strtotime($row['endtime'])); ?></p>
                     </div>
 
 
@@ -2262,7 +2262,7 @@ function timechanging(){
 
 
     let utcTime = elements[i].innerHTML;
-    elements[i].innerHTML = moment.utc(utcTime ).local().format('YYYY-MM-DD HH:mm');
+    elements[i].innerHTML = moment.utc(utcTime ).local().format('YYYY-MM-DD HH:mm A');
 
   }
 

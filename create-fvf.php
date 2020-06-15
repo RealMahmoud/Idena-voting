@@ -91,7 +91,7 @@ include(dirname(__FILE__)."/partials/header.php");
                                 <p>Category :</p><input maxlength="15" minlength="1"name="category" id="category" class="formVal form-control" value="Idena"></input><br>
                           <br><p> Flip location 1 :</p><input maxlength="250" minlength="1"type="text"name="location1" class="formVal form-control" value="">
                             <br><p> Flip location2 :</p><input maxlength="250" minlength="1"type="text"name="location2" class="formVal form-control" value="">
-                              <br>  <p> End Time :</p><input type="datetime-local"name="endtime" id="endT" class=" form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
+                              <br>  <p> End Time :</p><input type="datetime-local"name="endtime" id="endT" class=" form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+96 hours'));?>">
                             <br><p> Donations Address :</p><input maxlength="42" minlength="1"type="text"name="fundaddr" class="formVal form-control" value="">
                             <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
 

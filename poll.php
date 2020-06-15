@@ -89,12 +89,12 @@ $owneraddress = $rowf[1];
 
                         <div class="row">
                         <div class="col-4 col-sm-4 bordered-col">
-                        <h4 class="info_block__accent">Start Time</h4>
-                        <p><?php echo  date('Y-m-d H:i A', strtotime($row['addtime'])); ?></p>
+                        <h4 class="info_block__accent ">Start Time</h4>
+                        <p class="timeUTC"><?php echo  date('Y-m-d H:i A', strtotime($row['addtime'])); ?></p>
                       </div>
                       <div class="col-4 col-sm-4 bordered-col">
-                      <h4 class="info_block__accent">End Time</h4>
-                      <p><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
+                      <h4 class="info_block__accent ">End Time</h4>
+                      <p class="timeUTC"><?php echo  date('Y-m-d H:i A', strtotime($row['endtime'])); ?></p>
                     </div>
 
 
@@ -2254,8 +2254,23 @@ function Delete(id)
 
   });
 }
+function timechanging(){
+  var elements = document.getElementsByClassName("timeUTC");
+
+  for(var i=0; i<elements.length; i++)
+  {
+
+
+    let utcTime = elements[i].innerHTML;
+    elements[i].innerHTML = moment.utc(utcTime ).local().format('YYYY-MM-DD HH:mm');
+
+  }
+
+}
 window.onload = function()
 {
+
+timechanging();
   changeChartVa(0,chartData);
   changeChartH(0,chartData);
   changeChartV(0,chartData);

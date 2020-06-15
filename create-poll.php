@@ -85,16 +85,16 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Start a new poll</h4>
                         <form id="poll_form" METHOD="POST" onsubmit="createPoll(); return false;">
                             <div class="input-group" style="width: 60%;">
-                              <p>Title :</p><input name="title" id="title" class="formVal form-control" value="Will DNA beat BTC?"></input><br>
+                              <p>Title :</p><input maxlength="250" minlength="1"name="title" id="title" class="formVal form-control" value="Will DNA beat BTC?"></input><br>
                               <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" >Will Idena beat BTC At 2022 ?</textarea><br>
-                              <p>Category :</p><input name="category" id="category" class="formVal form-control" value="Idena"></input><br>
+                              <p>Category :</p><input maxlength="15" minlength="1"name="category" id="category" class="formVal form-control" value="Idena"></input><br>
                           <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
-                            <br><p> Option 1 :</p><input type="text"name="option1" class="formVal form-control" value="Yes">
-                            <br><p> Option 2 :</p><input type="text"name="option2" class="formVal form-control" value="No">
-                            <br><p> Option 3 :</p><input type="text"name="option3" class="formVal form-control" value="">
-                            <br><p> Option 4 :</p><input type="text"name="option4" class="formVal form-control" value="">
-                            <br><p> Option 5 :</p><input type="text"name="option5" class="formVal form-control" value="">
-                            <br><p> Option 6 :</p><input type="text"name="option6" class="formVal form-control" value="">
+                            <br><p> Option 1 :</p><input maxlength="25" minlength="1"type="text"name="option1" class="formVal form-control" value="Yes">
+                            <br><p> Option 2 :</p><input maxlength="25" minlength="1"type="text"name="option2" class="formVal form-control" value="No">
+                            <br><p> Option 3 :</p><input maxlength="25" minlength="1"type="text"name="option3" class="formVal form-control" value="">
+                            <br><p> Option 4 :</p><input maxlength="25" minlength="1"type="text"name="option4" class="formVal form-control" value="">
+                            <br><p> Option 5 :</p><input maxlength="25" minlength="1"type="text"name="option5" class="formVal form-control" value="">
+                            <br><p> Option 6 :</p><input maxlength="25" minlength="1"type="text"name="option6" class="formVal form-control" value="">
                             <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
                             <input type="hidden" name="type" class="formVal" value="poll"/>
                             </div>

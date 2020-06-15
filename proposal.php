@@ -109,7 +109,7 @@ $owneraddress = $rowf[1];
                           <p>'.$row['fundaddr'].'</p>
                         </div>
                       </div>';}?>
-                      <?php if (strlen($row['amount']) > 0){
+                      <?php if (intval($row['amount']) > 0){
 
 
                       echo '<div class="row">

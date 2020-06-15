@@ -71,7 +71,7 @@ if(!empty($_SESSION["addr"]))
            die('{"success":false, "data": "This Propsal already exist before"}');
            }
           $sql = "INSERT INTO `proposals`( `pdesc`, `addr`, `option1`,`option2`,`endtime`,`amount`,`fundaddr`,`title`,`category`,`vip`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$endtime."','".$amount."','".$fundaddr."','".$title."','".$category."','".$vip."')";
-
+        
           $result = $conn->query($sql);
           // discord
 

@@ -91,7 +91,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Change username</h4>
                         <form id="name_form" METHOD="POST"onsubmit="changeName(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="username" class="formValUsername form-control" value="" placeholder="your new username goes here..."/>
+                                <input type="text" maxlength="25" minlength="1" name="username" class="formValUsername form-control" value="" placeholder="your new username goes here..."/>
                             </div>
 
                             <div class="input-group">
@@ -111,7 +111,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeST(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="password" class="formValST form-control" value="" placeholder="Please type confirm"/>
+                                <input type="text" maxlength="7" minlength="1" name="password" class="formValST form-control" value="" placeholder="Please type confirm"/>
                             </div>
 
                             <div class="input-group">
@@ -134,7 +134,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeBio(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="bio" class="formValBio form-control" value="" placeholder="Your new Bio goes here"/>
+                                <input type="text" maxlength="250" minlength="1" name="bio" class="formValBio form-control" value="" placeholder="Your new Bio goes here"/>
                             </div>
 
                             <div class="input-group">
@@ -154,7 +154,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="ChangeHidden(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="hidden" class="formValHidden form-control" value="" placeholder="Please type true or false"/>
+                                <input type="text" maxlength="5" minlength="1" name="hidden" class="formValHidden form-control" value="" placeholder="Please type true or false"/>
                             </div>
 
                             <div class="input-group">
@@ -177,7 +177,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changedonate(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" name="donate" class="formValDonate form-control" value="" placeholder="Please type the new address"/>
+                                <input type="text" maxlength="42" minlength="1" name="donate" class="formValDonate form-control" value="" placeholder="Please type the new address"/>
                             </div>
 
                             <div class="input-group">

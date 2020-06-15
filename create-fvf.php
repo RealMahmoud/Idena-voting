@@ -86,13 +86,13 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Start a new Flip Vs Flips</h4>
                         <form id="fvf_form" METHOD="POST" onsubmit="createfvf(); return false;">
                             <div class="input-group" style="width: 60%;">
-                              <p>Title :</p><input name="title" id="title" class="formVal form-control" value="Round 1 Discord FvF"></input><br>
+                              <p>Title :</p><input maxlength="250" minlength="1"name="title" id="title" class="formVal form-control" value="Round 1 Discord FvF"></input><br>
                               <p>Description :</p><textarea rows = "5" cols = "60"name="desc" id="desc" class="formVal form-control" value="">Round 1 .. Set vs BroBot</textarea><br>
-                                <p>Category :</p><input name="category" id="category" class="formVal form-control" value="Idena"></input><br>
-                          <br><p> Flip location 1 :</p><input type="text"name="location1" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
-                            <br><p> Flip location2 :</p><input type="text"name="location2" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
+                                <p>Category :</p><input maxlength="15" minlength="1"name="category" id="category" class="formVal form-control" value="Idena"></input><br>
+                          <br><p> Flip location 1 :</p><input maxlength="250" minlength="1"type="text"name="location1" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
+                            <br><p> Flip location2 :</p><input maxlength="250" minlength="1"type="text"name="location2" class="formVal form-control" value="https://i.ibb.co/VDzjqrm/windows-10-2018-insider-wallpaper.jpg">
                               <br>  <p> End Time :</p><input type="datetime-local"name="endtime" class="formVal form-control" value="<?php echo date('Y-m-d\TH:i',strtotime('+48 hours'));?>">
-                            <br><p> Donations Address :</p><input type="text"name="fundaddr" class="formVal form-control" value="">
+                            <br><p> Donations Address :</p><input maxlength="42" minlength="1"type="text"name="fundaddr" class="formVal form-control" value="">
                             <br><span> VIP (costs 5 credits):  </span><input type="checkbox"id="vip" name="vip">
 
 

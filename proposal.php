@@ -840,7 +840,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -896,7 +896,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -952,7 +952,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1008,7 +1008,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1071,7 +1071,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1137,7 +1137,7 @@ data: {
       window.chartColors.green,
       window.chartColors.blue,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1214,7 +1214,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1284,7 +1284,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1354,7 +1354,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1426,7 +1426,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1498,7 +1498,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1569,7 +1569,7 @@ data: {
       window.chartColors.red,
       window.chartColors.red,
       window.chartColors.red,
-    ],borderWidth: 1}]},
+    ],borderWidth: 2}]},
 options: {
   responsive: true,
   title: {
@@ -1623,7 +1623,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartVa').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1636,7 +1636,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]},});
+        ],borderWidth: 2}]},});
 
 
 
@@ -1676,7 +1676,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartH').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1689,7 +1689,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]},});
+        ],borderWidth: 2}]},});
 
 
 
@@ -1730,7 +1730,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartV').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1743,7 +1743,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]},});
+        ],borderWidth: 2}]},});
 
 
 
@@ -1784,7 +1784,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartN').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1797,7 +1797,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]}
+        ],borderWidth: 2}]}
         ,});
 
 
@@ -1838,7 +1838,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartHAndV').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1851,7 +1851,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]},});
+        ],borderWidth: 2}]},});
 
 
 
@@ -1892,7 +1892,7 @@ if(!useData == '0'){
 
 var ctx = document.getElementById('ChartAll').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: chartlabels,
         datasets: [{
@@ -1905,7 +1905,7 @@ var myChart = new Chart(ctx, {
           window.chartColors.green,
           window.chartColors.blue,
           window.chartColors.red,
-        ],borderWidth: 1}]},});
+        ],borderWidth: 2}]},});
 
 
 

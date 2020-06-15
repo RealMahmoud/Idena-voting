@@ -814,7 +814,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -870,7 +870,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -926,7 +926,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -982,7 +982,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1045,7 +1045,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1111,7 +1111,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.green,
         window.chartColors.blue,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1188,7 +1188,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1258,7 +1258,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1328,7 +1328,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1400,7 +1400,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1472,7 +1472,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1543,7 +1543,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
         window.chartColors.red,
         window.chartColors.red,
         window.chartColors.red,
-      ],borderWidth: 1}]},
+      ],borderWidth: 2}]},
   options: {
     responsive: true,
     title: {
@@ -1597,7 +1597,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartVa').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1610,7 +1610,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]},});
+          ],borderWidth: 2}]},});
 
 
 
@@ -1650,7 +1650,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartH').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1663,7 +1663,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]},});
+          ],borderWidth: 2}]},});
 
 
 
@@ -1704,7 +1704,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartV').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1717,7 +1717,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]},});
+          ],borderWidth: 2}]},});
 
 
 
@@ -1758,7 +1758,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartN').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1771,7 +1771,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]}
+          ],borderWidth: 2}]}
           ,});
 
 
@@ -1812,7 +1812,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartHAndV').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1825,7 +1825,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]},});
+          ],borderWidth: 2}]},});
 
 
 
@@ -1866,7 +1866,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
 
   var ctx = document.getElementById('ChartAll').getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
           labels: chartlabels,
           datasets: [{
@@ -1879,7 +1879,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
             window.chartColors.green,
             window.chartColors.blue,
             window.chartColors.red,
-          ],borderWidth: 1}]},});
+          ],borderWidth: 2}]},});
 
 
 

@@ -1,5 +1,5 @@
 <?php
-
+include(dirname(__FILE__)."/_public.php");
 
 $sql = "UPDATE `accounts` SET `credits` =  5 , `dailyCredits` = '".date("Y-m-d")."' WHERE `accounts`.`state` = 'Human' AND  `accounts`.`banned` = '0'  AND `credits`< 5 AND`dailyCredits` < '".date("Y-m-d")."';";
 $conn->query($sql);
@@ -31,7 +31,7 @@ $hookObject = json_encode([
     "tts" => false,
     "embeds" => [
         [
-            "title" => 'New Proposal : '.$row['title'],
+            "title" => 'Hot Proposal : '.$row['title'],
             "url" => $url.'proposal.php?id='.$row['id'],
             "type" => "rich",
             "timestamp" => $row['addtime'],
@@ -87,7 +87,7 @@ $hookObject = json_encode([
     "tts" => false,
     "embeds" => [
         [
-            "title" => 'New poll : '.$row['title'],
+            "title" => 'Hot poll : '.$row['title'],
             "url" => $url.'poll.php?id='.$row['id'],
             "type" => "rich",
             "timestamp" => $row['addtime'],
@@ -133,7 +133,7 @@ $hookObject = json_encode([
     "tts" => false,
     "embeds" => [
         [
-            "title" => 'New FvF : '.$row['title'],
+            "title" => 'Hot FvF : '.$row['title'],
             "url" => $url.'fvf.php?id='.$row['id'],
             "type" => "rich",
             "timestamp" => $row['addtime'],

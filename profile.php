@@ -86,7 +86,7 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
 <br>
 <div class="control-label"  id="credits"title="Credits">Loading...</div>
 <br>
-<div class="control-label"  id="lastseen"title="Lastseen">Loading...</div>
+<div class="control-label timeUTC"  id="lastseen"title="Lastseen">Loading...</div>
 
 </div>
  </div>
@@ -234,11 +234,14 @@ function checkbio() {
 }
 function checklastseen() {
     ajax_get('./services/checkLastseen.php?user=<?php echo $usernamea;?>', function(data) {
-            document.getElementById("lastseen").innerHTML = 'Last Seen : ' + data["lastseen"];
+      let utcTime = data["lastseen"]
+
+            document.getElementById("lastseen").innerHTML = 'Last Seen : ' + moment.utc(utcTime).local().format('YYYY-MM-DD HH:mm A');
     });
 }
 function checkCredits() {
     ajax_get('./services/checkCredits.php?user=<?php echo $usernamea;?>', function(data) {
+
             document.getElementById("credits").innerHTML = 'Credits : ' + data["credits"];
     });
 }

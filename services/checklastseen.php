@@ -19,7 +19,7 @@ if ($result_acct->num_rows > 0) {
         if($row['lastseen']=='0'){
             $lastseen = ' - ';
         } else {
-            $lastseen = $row['lastseen'];
+            $lastseen = date('Y-m-d H:i', strtotime($row['lastseen']));
         }
     }
     echo '{"lastseen":"'.$lastseen.'"}';

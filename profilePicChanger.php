@@ -14,10 +14,10 @@ include(dirname(__FILE__)."/partials/header.php");
 
 
             <div class="card" id="empty_card" style="text-align:center;height:80vh">
-<?php $newP = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,11); ?>
+
                          <h4 class="info_block__accent"style="margin-top: 3em;">Profile Pic Randomizer</h4>
 
-                           <img src="https://robohash.org/<?php echo $newP;?>" id="pic" alt="Idena" width="120px" style="">
+                           <img src="https://robohash.org/<?php echo $_SESSION['pic'];?>" id="pic" alt="Idena" width="120px" style="">
                            <br>
                            <br>
 
@@ -27,7 +27,7 @@ include(dirname(__FILE__)."/partials/header.php");
                            <div class="success rem" id="success">
                            </div>
                              <div class="input-group" style="width: 60%;margin: 0 auto;">
-                                 <input type="text" id="hash" class="formVal form-control" oninput="changePic();"value="<?php echo $newP;?>" placeholder="hash"/>
+                                 <input type="text" id="hash" class="formVal form-control" oninput="changePic();"value="<?php echo $_SESSION['pic'];?>" placeholder="hash"/>
                              </div>
 
                              <div class="input-group">

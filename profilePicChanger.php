@@ -17,7 +17,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                          <h4 class="info_block__accent"style="margin-top: 3em;">Profile Pic Randomizer</h4>
 
-                           <img src="https://robohash.org/<?php echo $_SESSION['pic'];?>" id="pic" alt="Idena" width="120px" style="">
+                           <img style="border-radius: 50%; background-color:#ffffff"src="https://robohash.org/<?php echo $_SESSION['pic'];?>" id="pic" alt="Idena" width="120px" style="">
                            <br>
                            <br>
 
@@ -26,7 +26,7 @@ include(dirname(__FILE__)."/partials/header.php");
                            </div>
                            <div class="success rem" id="success">
                            </div>
-                             <div class="input-group" style="width: 60%;margin: 0 auto;">
+                             <div class="input-group" style="width: 30%;margin: 0 auto;">
                                  <input type="text" id="hash" class="formVal form-control" oninput="changePic();"value="<?php echo $_SESSION['pic'];?>" placeholder="hash"/>
                              </div>
 
@@ -65,9 +65,8 @@ function newProfilePic()
 {
 
 var formData = new FormData();
-        formData.append('pic', document.getElementById("hash").value);
-
-
+    formData.append('pic', document.getElementById("hash").value);
+    document.getElementById("headerPic").src = 'https://robohash.org/' + document.getElementById("hash").value;
     ajax_post('./services/changePic.php', formData, function(data) {
 
         if(data["success"]){

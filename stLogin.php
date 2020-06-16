@@ -16,7 +16,7 @@ include(dirname(__FILE__)."/partials/header.php");
             <div class="card" id="empty_card" style="text-align:center;height:60vh">
 
                          <h4 class="info_block__accent"style="margin-top: 3em;">Login With Secret Token</h4>
-                         <h6 style="margin-top: 3em;">You can get your secret token from settings</h6>
+                         <h6 >You can get your secret token from settings</h6>
                          <br>
                          <form id="name_form" METHOD="POST" onsubmit="STLogin(); return false;">
                            <div class="warning rem" id="warning">
@@ -24,7 +24,7 @@ include(dirname(__FILE__)."/partials/header.php");
                            <div class="success rem" id="success">
                            </div>
                              <div class="input-group" style="width: 60%;margin: 0 auto;">
-                                 <input type="text" name="password" class="formVal form-control" value="" placeholder="Your secret token goes here..."/>
+                                 <input type="text"class="formVal form-control" value="" placeholder="Your secret token goes here..."/>
                              </div>
 
                              <div class="input-group">

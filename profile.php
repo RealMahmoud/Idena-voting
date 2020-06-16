@@ -24,7 +24,7 @@ if(empty($usernamea) && isset($_SESSION['username'])){
 if(empty($usernamea)){
   header("location:.././404.php");
 }
-$pagetitle = 'Profile';
+$pagetitle = $usernamea.' Profile';
 include(dirname(__FILE__)."/partials/header.php");
 
 ?>

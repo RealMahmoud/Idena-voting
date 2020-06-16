@@ -97,9 +97,7 @@ $title = '<h3 id="page_title" class="info_block__accent rem">Top Proposals '.'- 
 </section>
 
 
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
+
 
 <script>
    function Change(Newl) {

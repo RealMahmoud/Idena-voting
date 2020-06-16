@@ -67,9 +67,7 @@ function STLogin()
     });
 }
 </script>
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
+
 
  <!-- this is to close main, div opened in the header -->
  </div>

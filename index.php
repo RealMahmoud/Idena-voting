@@ -23,9 +23,6 @@ Here you can login using your cryptoidentity to create and vote on polls, propos
 
 </section>
 
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
 
  <!-- this is to close main, div opened in the header -->
  </div>

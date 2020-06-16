@@ -188,9 +188,6 @@ How can i make my address public ?
   </div>
 </section>
 
-<?php
-include(dirname(__FILE__)."/partials/donation.php");
-?>
 
  <!-- this is to close main, div opened in the header -->
  </div>

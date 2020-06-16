@@ -275,14 +275,14 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartVa" width="100%" height="70%"></canvas>
+              <canvas id="ChartVa" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalVa">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
 
               <form id="name_form" METHOD="POST" oninput="changeChartVa(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="VaAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="VaChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
                <br><br><br>
@@ -302,18 +302,21 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
               <br>
               <form id="name_form" METHOD="POST" oninput="changeScoreVa(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
-<br>
 
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <p  style="text-align:center;"> . Human Vote Value .</p>
                   <input type="number" class=" form-control" id="1-H" value="1" min="0" placeholder="Human Vote Value" />
-<br>
-                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+
+                  <p  style="text-align:center;"> . Verified Vote Value .</p>
                   <input type="number" class=" form-control" id="1-V" value="1" min="0" placeholder="Verified Vote Value" />
-<br>
-                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+
+                  <p  style="text-align:center;"> . Newbie Vote Value .</p>
                   <input type="number" class=" form-control" id="1-N" value="1" min="0" placeholder="Newbie Vote Value" />
-<br>
+
+                </div>
+               <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="VaScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
 
@@ -339,13 +342,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartH" width="100%" height="70%"></canvas>
+              <canvas id="ChartH" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalH">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
               <form id="name_form" METHOD="POST" oninput="changeChartH(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="HAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="HChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
               <br><br><br>
@@ -368,11 +371,22 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <p  style="text-align:center;"> . Human Vote Value .</p>
                   <input type="number" class="form-control" id="2-H" value="1" min="0" placeholder="Human Vote Value" />
 <br>
                 </div>
+
+
+               <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="HScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                </div>
+
+
               </form>
+
+
+
 
             </div>
           </div>
@@ -394,13 +408,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartV" width="100%" height="70%"></canvas>
+              <canvas id="ChartV" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalV">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
               <form id="name_form" METHOD="POST" oninput="changeChartV(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="VAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="VChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
               <br><br><br>
@@ -423,9 +437,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <p  style="text-align:center;"> . Verified Vote Value .</p>
                   <input type="number" class=" form-control" id="3-V" value="1" min="0" placeholder="Verified Vote Value" />
 <br>
+                </div>
+               <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="VScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
 
@@ -449,13 +467,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartN" width="100%" height="70%"></canvas>
+              <canvas id="ChartN" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalN">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
               <form id="name_form" METHOD="POST" oninput="changeChartN(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="NAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="NChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
               <br><br><br>
@@ -478,9 +496,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                  <p  style="text-align:center;"> . Newbie Vote Value .</p>
                   <input type="number" class=" form-control" id="4-N" value="1" min="0" placeholder="Newbie Vote Value" />
 <br>
+                </div>
+               <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="NScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
 
@@ -504,13 +526,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartHAndV" width="100%" height="70%"></canvas>
+              <canvas id="ChartHAndV" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalHAndV">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
               <form id="name_form" METHOD="POST" oninput="changeChartHAndV(); return false;">
                 <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="HAndVAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="HAndVChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
               <br><br><br>
@@ -533,12 +555,16 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <p  style="text-align:center;"> . Human Vote Value .</p>
                   <input type="number" class=" form-control" id="5-H" value="1" min="0" placeholder="Human Vote Value" />
 <br>
-                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <p  style="text-align:center;"> . Verified Vote Value .</p>
                   <input type="number" class=" form-control" id="5-V" value="1" min="0" placeholder="Verified Vote Value" />
 <br>
+                </div>
+               <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="HAndVScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
 
@@ -565,13 +591,13 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <h3 class="info_block__accent" style="text-align:center;">Total Votes By Option</h3>
           <div class="row">
             <div class="col-12 col-sm-6 bordered-col">
-              <canvas id="ChartAll" width="100%" height="70%"></canvas>
+              <canvas id="ChartAll" width="100%" height="70%"></canvas><br><h4 style="text-align:center;" id="TotalAll">Total : 0</h4>
             </div>
             <div class="col-12 col-sm-6 bordered-col">
               <form id="name_form" METHOD="POST" oninput="changeChartAll(); return false;">
-                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <br><h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <input type="number" name="age" style="text-align:center;" id="AllAge" class="formVal form-control" value="1" placeholder="Minimum age" />
+                  <input type="number" name="age" style="text-align:center;" id="AllChartAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
               <br><br><br>
@@ -594,16 +620,20 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
                 <h2 class="info_block__accent" style="text-align:center;">Score Calculator</h2>
 <br>
                 <div class="input-group" style="width: 60%;margin: 0 auto;">
-                  <p class="info_block__accent" style="text-align:center;"> . Human Vote Value .</p>
+                  <p  style="text-align:center;"> . Human Vote Value .</p>
                   <input type="number" class=" form-control" id="6-H" value="1" min="0" placeholder="Human Vote Value" />
 <br>
-                  <p class="info_block__accent" style="text-align:center;"> . Verified Vote Value .</p>
+                  <p  style="text-align:center;"> . Verified Vote Value .</p>
                   <input type="number" class=" form-control" id="6-V" value="1" min="0" placeholder="Verified Vote Value" />
 <br>
-                  <p class="info_block__accent" style="text-align:center;"> . Newbie Vote Value .</p>
+                  <p  style="text-align:center;"> . Newbie Vote Value .</p>
                   <input type="number" class=" form-control" id="6-N" value="1" min="0" placeholder="Newbie Vote Value" />
 <br>
 
+                </div>
+                <h2 class="info_block__accent" style="text-align:center;">Minimum Age</h2>
+                <div class="input-group" style="width: 60%;margin: 0 auto;">
+                  <input type="number" name="age" style="text-align:center;" id="AllScoreAge" class="formVal form-control" value="1" placeholder="Minimum age" />
                 </div>
               </form>
 
@@ -780,11 +810,11 @@ include(dirname(__FILE__)."/partials/donation.php");
 <script>
 var scoreurl = "./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=1";
 var ageurl = "./services/ageStats.php?pid=<?php echo $id; ?>&type=proposal&age=1";
-function httpGet(theUrl)
-{
+
+function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
+    xmlHttp.open("GET", theUrl, false); // false for synchronous request
+    xmlHttp.send(null);
     return xmlHttp.responseText;
 }
 
@@ -792,365 +822,387 @@ var scoreData = httpGet(scoreurl);
 var chartData = scoreData;
 var ageData = httpGet(ageurl);
 
-function changeScoreVa(useData){
+function changeScoreVa(useData) {
+    age = document.getElementById("VaScoreAge").value;
+    var humanValue = document.getElementById("1-H").value;
+    var verifiedValue = document.getElementById("1-V").value;
+    var newbieValue = document.getElementById("1-N").value;
+    let chartdata = [];
+    let chartlabels = [];
+    var humansCount = 0;
+    var verifiedCount = 0;
+    var newbieCount = 0;
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
+    }
 
-var humanValue = document.getElementById("1-H").value;
-var verifiedValue = document.getElementById("1-V").value;
-var newbieValue = document.getElementById("1-N").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-  data = JSON.parse(scoreData);
-  $('#BarVa').replaceWith('<canvas id="BarVa" width="100%" height="60%"></canvas>');
-}
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Human']) * humanValue) +
+        (Number(data['result']['option1']['Verified']) * verifiedValue) +
+        (Number(data['result']['option1']['Newbie']) * newbieValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Human']) * humanValue) +
+        (Number(data['result']['option2']['Verified']) * verifiedValue) +
+        (Number(data['result']['option2']['Newbie']) * newbieValue));
 
-// option 1
-chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
-(Number(data['result']['option1']['Verified'])* verifiedValue) +
-(Number(data['result']['option1']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
-(Number(data['result']['option2']['Verified'])* verifiedValue) +
-(Number(data['result']['option2']['Newbie'])* newbieValue));
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
 
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
-}
+    var ctx = document.getElementById('BarVa').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
 
-var ctx = document.getElementById('BarVa').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
-
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
-
-}
-function changeScoreH(useData){
-
-var humanValue = document.getElementById("2-H").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-  data = JSON.parse(scoreData);
-  $('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
-}
-
-// option 1
-chartdata.push((Number(data['result']['option1']['Human'])* humanValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Human'])* humanValue));
-
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
-}
-
-var ctx = document.getElementById('BarH').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
-
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
 
 }
-function changeScoreV(useData){
 
-var verifiedValue = document.getElementById("3-V").value;
+function changeScoreH(useData) {
+    age = document.getElementById("HScoreAge").value;
+    var humanValue = document.getElementById("2-H").value;
+    let chartdata = [];
+    let chartlabels = [];
+    var humansCount = 0;
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarH').replaceWith('<canvas id="BarH" width="100%" height="60%"></canvas>');
+    }
 
-let chartdata = [];
-let chartlabels = [];
-var verifiedCount = 0;
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-  data = JSON.parse(scoreData);
-$('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
-}
-// option 1
-chartdata.push((Number(data['result']['option1']['Verified'])* verifiedValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Verified'])* verifiedValue));
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Human']) * humanValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Human']) * humanValue));
 
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
-}
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
 
-var ctx = document.getElementById('BarV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
+    var ctx = document.getElementById('BarH').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
 
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
-
-}
-function changeScoreN(useData){
-
-
-var newbieValue = document.getElementById("4-N").value;
-let chartdata = [];
-let chartlabels = [];
-var newbieCount = 0;
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-data = JSON.parse(scoreData);
-  $('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
-}
-// option 1
-chartdata.push((Number(data['result']['option1']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Newbie'])* newbieValue));
-
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
-}
-
-var ctx = document.getElementById('BarN').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
-
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
 
 }
-function changeScoreHAndV(useData){
 
-var humanValue = document.getElementById("5-H").value;
-var verifiedValue = document.getElementById("5-V").value;
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
+function changeScoreV(useData) {
+    age = document.getElementById("VScoreAge").value;
+    var verifiedValue = document.getElementById("3-V").value;
 
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-  data = JSON.parse(scoreData);
-  $('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
-}
+    let chartdata = [];
+    let chartlabels = [];
+    var verifiedCount = 0;
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarV').replaceWith('<canvas id="BarV" width="100%" height="60%"></canvas>');
+    }
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Verified']) * verifiedValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Verified']) * verifiedValue));
 
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
 
-// option 1
-chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
-(Number(data['result']['option1']['Verified'])* verifiedValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
-(Number(data['result']['option2']['Verified'])* verifiedValue));
+    var ctx = document.getElementById('BarV').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
 
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
-}
-
-var ctx = document.getElementById('BarHAndV').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
-
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
 
 }
-function changeScoreAll(useData){
 
-var humanValue = document.getElementById("6-H").value;
-var verifiedValue = document.getElementById("6-V").value;
-var newbieValue = document.getElementById("6-N").value;
+function changeScoreN(useData) {
 
-let chartdata = [];
-let chartlabels = [];
-var humansCount = 0;
-var verifiedCount = 0;
-var newbieCount = 0;
-if(!useData == '0'){
-  data = JSON.parse(scoreData);
-}else{
-  data = JSON.parse(scoreData);
-  $('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+    age = document.getElementById("NScoreAge").value;
+    var newbieValue = document.getElementById("4-N").value;
+    let chartdata = [];
+    let chartlabels = [];
+    var newbieCount = 0;
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarN').replaceWith('<canvas id="BarN" width="100%" height="60%"></canvas>');
+    }
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Newbie']) * newbieValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Newbie']) * newbieValue));
+
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
+
+    var ctx = document.getElementById('BarN').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
+
 }
 
-// option 1
-chartdata.push((Number(data['result']['option1']['Human'])* humanValue) +
-(Number(data['result']['option1']['Verified'])* verifiedValue) +
-(Number(data['result']['option1']['Newbie'])* newbieValue));
-//option2
-chartdata.push((Number(data['result']['option2']['Human'])* humanValue) +
-(Number(data['result']['option2']['Verified'])* verifiedValue) +
-(Number(data['result']['option2']['Newbie'])* newbieValue));
+function changeScoreHAndV(useData) {
+    age = document.getElementById("HAndVScoreAge").value;
+    var humanValue = document.getElementById("5-H").value;
+    var verifiedValue = document.getElementById("5-V").value;
+    let chartdata = [];
+    let chartlabels = [];
+    var humansCount = 0;
+    var verifiedCount = 0;
+    var newbieCount = 0;
+
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarHAndV').replaceWith('<canvas id="BarHAndV" width="100%" height="60%"></canvas>');
+    }
 
 
-if(!data['result']['option1']['Desc'] == ''){
-chartlabels.push(data['result']['option1']['Desc']);
-}
-if(!data['result']['option2']['Desc'] == ''){
-chartlabels.push(data['result']['option2']['Desc']);
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Human']) * humanValue) +
+        (Number(data['result']['option1']['Verified']) * verifiedValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Human']) * humanValue) +
+        (Number(data['result']['option2']['Verified']) * verifiedValue));
+
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
+
+    var ctx = document.getElementById('BarHAndV').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
+
 }
 
-var ctx = document.getElementById('BarAll').getContext('2d');
-var myChart = new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-    labels: chartlabels,
-    datasets: [{
-        label: 'Score',
-        data: chartdata,
-        backgroundColor: [
-      window.chartColors.purple,
-      window.chartColors.orange,
-      window.chartColors.yellow,
-      window.chartColors.green,
-      window.chartColors.blue,
-      window.chartColors.red,
-    ],borderWidth: 2}]},
-options: {
-  responsive: true,
-  title: {
-    display: true,
+function changeScoreAll(useData) {
+    age = document.getElementById("AllScoreAge").value;
+    var humanValue = document.getElementById("6-H").value;
+    var verifiedValue = document.getElementById("6-V").value;
+    var newbieValue = document.getElementById("6-N").value;
 
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: true
-}
-}
-}
-);
+    let chartdata = [];
+    let chartlabels = [];
+    var humansCount = 0;
+    var verifiedCount = 0;
+    var newbieCount = 0;
+    if (!useData == '0') {
+        data = JSON.parse(scoreData);
+    } else {
+        data = httpGet('./services/stats.php?pid=<?php echo $id; ?>&type=proposal&age=' + age);
+        data = JSON.parse(data);
+        $('#BarAll').replaceWith('<canvas id="BarAll" width="100%" height="60%"></canvas>');
+    }
+
+    // option 1
+    chartdata.push((Number(data['result']['option1']['Human']) * humanValue) +
+        (Number(data['result']['option1']['Verified']) * verifiedValue) +
+        (Number(data['result']['option1']['Newbie']) * newbieValue));
+    //option2
+    chartdata.push((Number(data['result']['option2']['Human']) * humanValue) +
+        (Number(data['result']['option2']['Verified']) * verifiedValue) +
+        (Number(data['result']['option2']['Newbie']) * newbieValue));
+
+
+    if (!data['result']['option1']['Desc'] == '') {
+        chartlabels.push(data['result']['option1']['Desc']);
+    }
+    if (!data['result']['option2']['Desc'] == '') {
+        chartlabels.push(data['result']['option2']['Desc']);
+    }
+    var ctx = document.getElementById('BarAll').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: chartlabels,
+            datasets: [{
+                label: 'Score',
+                data: chartdata,
+                backgroundColor: [
+                    window.chartColors.purple,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.red,
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    });
 
 }
 
@@ -1588,9 +1640,9 @@ options: {
 
 
 
-function changeChartVa(age,useData){
+function changeChartVa(useData){
 
-age = document.getElementById("VaAge").value;
+age = document.getElementById("VaChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 
@@ -1620,7 +1672,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalVa').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartVa').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -1643,9 +1695,9 @@ var myChart = new Chart(ctx, {
 
 
 }
-function changeChartH(age,useData){
+function changeChartH(useData){
 
-  age = document.getElementById("HAge").value;
+  age = document.getElementById("HChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 
@@ -1673,7 +1725,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalH').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartH').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -1696,9 +1748,9 @@ var myChart = new Chart(ctx, {
 
 
 }
-function changeChartV(age,useData){
+function changeChartV(useData){
 
-  age = document.getElementById("VAge").value;
+  age = document.getElementById("VChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 
@@ -1727,7 +1779,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalV').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartV').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -1750,9 +1802,9 @@ var myChart = new Chart(ctx, {
 
 
 }
-function changeChartN(age,useData){
+function changeChartN(useData){
 
-  age = document.getElementById("NAge").value;
+  age = document.getElementById("NChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 
@@ -1781,7 +1833,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalN').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartN').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -1805,8 +1857,8 @@ var myChart = new Chart(ctx, {
 
 
 }
-function changeChartHAndV(age,useData){
-  age = document.getElementById("HAndVAge").value;
+function changeChartHAndV(useData){
+  age = document.getElementById("HAndVChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 
@@ -1835,7 +1887,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalHAndV').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartHAndV').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -1859,9 +1911,9 @@ var myChart = new Chart(ctx, {
       }
 
 
-function changeChartAll(age,useData){
+function changeChartAll(useData){
 
-  age = document.getElementById("AllAge").value;
+  age = document.getElementById("AllChartAge").value;
 let chartdata = [];
 let chartlabels = [];
 if(!useData == '0'){
@@ -1889,7 +1941,7 @@ if(!useData == '0'){
   }
 
 
-
+    document.getElementById('TotalAll').innerHTML = "Total : " + eval(chartdata.join('+'));
 var ctx = document.getElementById('ChartAll').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -2009,13 +2061,13 @@ function timechanging(){
 window.onload = function()
 {
 
-timechanging();
-  changeChartVa(0,chartData);
-  changeChartH(0,chartData);
-  changeChartV(0,chartData);
-  changeChartN(0,chartData);
-  changeChartHAndV(0,chartData);
-  changeChartAll(0,chartData);
+  timechanging();
+  changeChartVa(chartData);
+  changeChartH(chartData);
+  changeChartV(chartData);
+  changeChartN(chartData);
+  changeChartHAndV(chartData);
+  changeChartAll(chartData);
 
   changeScoreVa(scoreData);
   changeScoreH(scoreData);
@@ -2032,7 +2084,6 @@ timechanging();
   loadBarN();
   loadBarHAndV();
   loadBarAll();
-
 
   ajax_get('./services/checkVote.php?id=<?php echo $id; ?>&type=proposal', function(data) {
     if(data["status"]=='true'){

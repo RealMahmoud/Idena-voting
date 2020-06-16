@@ -81,43 +81,7 @@ if(!empty($_SESSION["addr"]))
           $sql = "INSERT INTO `polls`( `pdesc`, `addr`, `option1`,`option2`,`option3`,`option4`,`option5`,`option6`,`endtime`,`title`,`category`,`vip`) VALUES ('".$pdesc."','".$_SESSION["addr"]."','".$option1."','".$option2."','".$option3."','".$option4."','".$option5."','".$option6."','".$endtime."','".$title."','".$category."','".$vip."')";
 
           $result = $conn->query($sql);
-          // discord
 
-
-          $hookObject = json_encode([
-              "username" => "Idena.vote",
-              "avatar_url" => "https://robohash.org/".$_SESSION['pic'],
-              "tts" => false,
-              "embeds" => [
-                  [
-                      "title" => 'New Poll : '.$title,
-                      "url" => $url.'poll.php?id='.$conn->insert_id,
-                      "type" => "rich",
-                      "timestamp" => gmdate("Y-m-d\TH:i:s\Z"),
-                      "color" => hexdec( "FFFFFF" ),
-                      "author" => [
-                          "name" => 'User : '.$_SESSION['username'],
-                          "url" => $url.'profile.php?user='.$_SESSION['username']
-                      ]
-                  ]
-              ]
-
-          ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-
-          $ch = curl_init();
-
-          curl_setopt_array( $ch, [
-              CURLOPT_URL => $hook,
-              CURLOPT_POST => true,
-              CURLOPT_POSTFIELDS => $hookObject,
-              CURLOPT_HTTPHEADER => [
-                  "Content-Type: application/json"
-              ]
-          ]);
-
-          $response = curl_exec( $ch );
-          curl_close( $ch );
-// end discord
           $sql = "UPDATE `accounts` SET `credits` = `credits`- ".$cost." WHERE `accounts`.`address` = '".$_SESSION["addr"]."';";
          $conn->query($sql);
           echo '{"success":true}';

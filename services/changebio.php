@@ -20,6 +20,7 @@ if(!empty($bio) && !empty($_SESSION["addr"]))
             $sql = "UPDATE `accounts` SET `bio` = '".$bio."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
             $result = $conn->query($sql);
             echo '{"success":true}';
+            
     }
 } else {
     echo '{"success":false, "data": "Empty Bio ?"}';

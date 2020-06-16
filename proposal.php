@@ -68,7 +68,7 @@ $owneraddress = $rowf[1];
                         <h4 class="info_block__accent">Added by</h4>
                         <p style="vertical-align: middle;">
                           <a href="<?php echo $url.'profile.php?user='.$owner;?>">
-                            <img class="user-pic user-avatar" src="https://robohash.org/<?php echo $owner; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
+                            <img class="user-pic user-avatar" src="https://robohash.org/<?php echo curl_get($url.'services/checkPic.php?user='.$owner)['pic']; ?>" alt="pic" width="40" style="margin-right: 1em;background: #f5f6f7;" />
                           </a>
                               <a href="<?php echo $url.'profile.php?user='.$owner;?>"><?php echo $owner; ?></a>
                         </p>

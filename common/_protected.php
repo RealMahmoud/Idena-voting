@@ -30,7 +30,7 @@ if(!empty($_SESSION["token"])) {
       $result = $conn->query($sql);
       if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-          if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['state'] == 'Undefined'){
+          if (date(strtotime('now')) > Date(strtotime($row['lastseen'].' +1 hour')) || $row['state'] == '0'){
 
 
             $identity_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"];
@@ -55,7 +55,7 @@ if(!empty($_SESSION["token"])) {
 
             $age_url = 'https://api.idena.org/api/identity/'.$_SESSION["addr"].'/age';
             $jsonArrayResponse = curl_get($age_url);
-            if( isset( $jsonArrayResponse['result'])){
+            if(isset( $jsonArrayResponse['result'])){
               $newage = $jsonArrayResponse["result"];
 }else{
   $newage = '0';
@@ -89,6 +89,7 @@ if(!empty($_SESSION["token"])) {
         }
 
           $_SESSION["credits"] = $row['credits'];
+          $_SESSION["pic"] = $row['pic'];
           $_SESSION["banned"] = $row['banned'];
           $_SESSION["age"] = $row['age'];}}
 

@@ -88,7 +88,7 @@ if(!empty($_SESSION["addr"]))
 
           $hookObject = json_encode([
               "username" => "Idena.vote",
-              "avatar_url" => "https://robohash.org/".$_SESSION['username'],
+              "avatar_url" => "https://robohash.org/".$_SESSION['pic'],
               "tts" => false,
               "embeds" => [
                   [

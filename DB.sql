@@ -32,9 +32,10 @@ CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `lastlogin` timestamp NOT NULL DEFAULT current_timestamp(),
-  `credits` tinyint(10) NOT NULL DEFAULT 0,
+  `credits` int(10) NOT NULL DEFAULT 0,
   `state` varchar(255) NOT NULL DEFAULT 'zero',
   `username` varchar(50) NOT NULL,
+  `pic` varchar(50) NOT NULL DEFAULT 0,
   `lastseen` timestamp NOT NULL DEFAULT current_timestamp(),
   `age` int(11) NOT NULL DEFAULT 0,
   `score` decimal(10,4) NOT NULL DEFAULT 0.0000,
@@ -43,7 +44,7 @@ CREATE TABLE `accounts` (
   `banned` int(11) NOT NULL DEFAULT 0,
   `reachout` varchar(255) NOT NULL DEFAULT '0',
   `hidden` int(11) NOT NULL DEFAULT 0,
-  `donate` varchar(255) NOT NULL DEFAULT 'undefined',
+  `donate` varchar(255) NOT NULL DEFAULT '0',
   `dailyCredits` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

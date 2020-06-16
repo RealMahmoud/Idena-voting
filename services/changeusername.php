@@ -14,6 +14,7 @@ if(!empty($username))
       $sql = "UPDATE `accounts` SET `username` = '".$username."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
       $result = $conn->query($sql);
       echo '{"success":true}';
+      $_SESSION["username"] = $username;
     } else {
               echo '{"success":false, "data": "ERROR"}';
     }

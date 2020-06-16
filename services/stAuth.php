@@ -26,6 +26,8 @@ if($row['hidden'] == 1 ){
 }
 
   $_SESSION["credits"] = $row['credits'];
+    $_SESSION["pic"] = $row['pic'];
+
   $_SESSION["age"] = $row['age'];
 
  echo '{"success":true}';

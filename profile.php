@@ -1,12 +1,18 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_public.php");
+
 if(isset($_GET['user'])){
 $usernamea = $_GET['user'];
+include(dirname(__FILE__)."/common/_public.php");
+$pic = curl_get($url.'services/checkPic.php?user='.$usernamea)['pic'];
+
 }
 if(empty($usernamea) && isset($_SESSION['username'])){
+    include(dirname(__FILE__)."/common/_protected.php");
   $usernamea = $_SESSION['username'];
+  $pic = $_SESSION['pic'];
   $owner = true;
+
 }
   if(isset($usernamea) && isset($_SESSION['username'])){
     if($usernamea==$_SESSION['username']){
@@ -29,7 +35,7 @@ include(dirname(__FILE__)."/partials/header.php");
         <div class="col-auto">
             <div class="section_main__image" >
               <a href="<?php echo $url.'profile.php?user='.$usernamea;?>">
-                <img src="https://robohash.org/<?php echo $usernamea; ?>" alt="pic" width="120"/>
+                <img src="https://robohash.org/<?php echo $pic; ?>" alt="pic" width="120"/>
               </a>
             </div>
         </div>

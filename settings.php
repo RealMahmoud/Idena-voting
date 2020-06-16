@@ -22,7 +22,7 @@ include(dirname(__FILE__)."/partials/header.php");
         <div class="col-auto">
           <div class="section_main__image" style="width: 7rem;height: 7rem;">
             <a href="<?php echo $url.'profile.php?user='.$_SESSION["username"];?>">
-              <img src="https://robohash.org/<?php echo $_SESSION["username"]; ?>" alt="pic" width="80"/>
+              <img src="https://robohash.org/<?php echo $_SESSION["pic"]; ?>" alt="pic" width="80"/>
             </a>
           </div>
         </div>
@@ -68,6 +68,8 @@ include(dirname(__FILE__)."/partials/header.php");
                         <br/>
                         <h4 class="info_block__accent">Current Hidden Status</h4>
                         <p>  <?php echo $_SESSION["hidden"];?></p>
+                        <h4 class="info_block__accent">Current Pic</h4>
+                        <p>  <?php echo $_SESSION["pic"];?></p>
 
 
 
@@ -90,7 +92,7 @@ include(dirname(__FILE__)."/partials/header.php");
                       <div class="success rem" id="success-username">
                       </div>
 
-                        <h4 class="info_block__accent">Change username</h4>
+                        <h4 class="info_block__accent">Change username :</h4>
                         <form id="name_form" METHOD="POST"onsubmit="changeName(); return false;">
                             <div class="input-group" style="width: 60%;">
                                 <input type="text" maxlength="25" minlength="1" name="username" class="formValUsername form-control" value="" placeholder="your new username goes here..."/>
@@ -124,7 +126,6 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                         </form>
-
 
 
                         <br>
@@ -190,8 +191,14 @@ include(dirname(__FILE__)."/partials/header.php");
                             </div>
 
                         </form>
-                        <br>
 
+                        <br>
+                                                <h4 class="info_block__accent">Change Profile Pic : </h4>
+                                                <a class="btn btn-secondary btn-small" href="./profilePicChanger.php"  style="margin-top: 1em;">
+                                                    <span >Change</span>
+                                                    <i class="icon icon--thin_arrow_right"></i>
+                                                </a>
+                        <br>
 
 
 

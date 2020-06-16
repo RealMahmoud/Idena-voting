@@ -24,7 +24,7 @@ include(dirname(__FILE__)."/partials/header.php");
         <div class="col-auto">
             <div class="section_main__image" style="width: 7rem;height: 7rem;">
               <a href="<?php echo $url.'profile.php?user='.$_SESSION["username"];?>">
-                <img src="https://robohash.org/<?php echo $_SESSION["username"]; ?>" alt="pic" width="80"/>
+                <img src="https://robohash.org/<?php echo $_SESSION["pic"]; ?>" alt="pic" width="80"/>
               </a>
             </div>
         </div>

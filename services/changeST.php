@@ -16,7 +16,7 @@ if(($password == 'confirm') && !empty($_SESSION["addr"]))
       $newST = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),0,30);
             $sql = "UPDATE `accounts` SET `password` = '".$newST."' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
             $result = $conn->query($sql);
-            echo '{"success":true}';
+            echo '{"success":true , "ST" : "'.$newST.'"}';
     }
 } else {
     echo '{"success":false, "data": "ERROR"}';

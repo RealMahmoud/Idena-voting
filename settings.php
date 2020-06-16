@@ -61,8 +61,8 @@ include(dirname(__FILE__)."/partials/header.php");
                         <h4 class="info_block__accent">Age</h4>
                         <p><?php echo $_SESSION["age"]; ?></p>
                         <br/>
-                        <h4 class="info_block__accent">Current Secret Token</h4>
-                        <p>  <?php echo $_SESSION["password"];?></p>
+                        <h4 class="info_block__accent" >Current Secret Token</h4>
+                        <p id="currST">  <?php echo $_SESSION["password"];?></p>
                         <br/>
                         <h4 class="info_block__accent">Current Hidden Status</h4>
                         <p>  <?php echo $_SESSION["hidden"];?></p>
@@ -111,12 +111,12 @@ include(dirname(__FILE__)."/partials/header.php");
 
                         <form id="name_form" METHOD="POST" onsubmit="changeST(); return false;">
                             <div class="input-group" style="width: 60%;">
-                                <input type="text" maxlength="7" minlength="1" name="password" class="formValST form-control" value="" placeholder="Please type confirm"/>
+                                <input type="hidden" maxlength="7" minlength="1" name="password" class="formValST form-control" value="confirm" placeholder=""/>
                             </div>
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit-ST" onclick="changeST(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit-ST"> Change</span>
+                                <span id="text_submit-ST">RESET Secret Token</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -159,7 +159,7 @@ include(dirname(__FILE__)."/partials/header.php");
 
                             <div class="input-group">
                             <a class="btn btn-secondary btn-small" href="#" id="submit-hidden" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit-hidden"> Change</span>
+                                <span id="text_submit-hidden">Change</span>
                                 <i class="icon icon--thin_arrow_right"></i>
                             </a>
                             </div>
@@ -303,11 +303,13 @@ function changeST()
         if(data["success"]){
             document.getElementById("success-ST").classList.remove("rem");
             document.getElementById("warning-ST").classList.add("rem");
-            document.getElementById("success-ST").innerHTML = '&#x2705; Secret Token changed successfully';
+            document.getElementById("currST").innerHTML = data["ST"];
+            document.getElementById("success-ST").innerHTML = '&#x2705; Your new Secret Token is : '+data["ST"];
 
         } else {
             document.getElementById("success-ST").classList.add("rem");
             document.getElementById("warning-ST").classList.remove("rem");
+
             document.getElementById("warning-ST").innerHTML = '&#x274C; '+data["data"];
         }
     });

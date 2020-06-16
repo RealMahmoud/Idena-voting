@@ -232,7 +232,7 @@ window.onload = function() {
 
           data["entries"].forEach(function(obj) {
           if(obj.vip == 1){
-            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+            pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
                                            +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                             +obj.title
@@ -247,7 +247,7 @@ window.onload = function() {
                                            +'</div>'
                                          +'</div>';
           }else{
-            pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+            pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
                                            +'<p class="info_block__accent desc" style="color: #9447bb; ">'
                                             +obj.title

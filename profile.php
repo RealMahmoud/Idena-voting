@@ -27,8 +27,10 @@ include(dirname(__FILE__)."/partials/header.php");
 <section class="section section_main">
     <div class="row">
         <div class="col-auto">
-            <div class="section_main__image">
+            <div class="section_main__image" >
+              <a href="<?php echo $url.'profile.php?user='.$usernamea;?>">
                 <img src="https://robohash.org/<?php echo $usernamea; ?>" alt="pic" width="120"/>
+              </a>
             </div>
         </div>
             <div class="col">

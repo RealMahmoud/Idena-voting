@@ -31,13 +31,13 @@ include(dirname(__FILE__)."/partials/header.php");
           <div class="card">
             <div class="card-header" id="faq-pop-1">
               <a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                What is credits ?
+                What are credits?
               </a>
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="faq-pop-1" data-parent="#accordion">
               <div class="card-body">
                 <p>
-                  credits is a token that you can use to create polls , proposals and fvfs
+                  Credits are a token that you can use to create polls, proposals and fvf's.
                 </p>
 
               </div>
@@ -52,7 +52,7 @@ include(dirname(__FILE__)."/partials/header.php");
             <div id="collapseTwo" class="collapse" aria-labelledby="faq-pop-2" data-parent="#accordion">
               <div class="card-body">
                 <p>
-                  You don't have to pay dna to get credits As you get free credits daily based on your identity status
+                You don't have to pay DNA to get credits as you get free credits daily based on your identity status:
                 </p>
                 <p>
                   Human gets 5
@@ -89,15 +89,15 @@ include(dirname(__FILE__)."/partials/header.php");
           <div class="card">
             <div class="card-header" id="faq-pop-4">
               <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-What is proposals ?
+What are proposals?
               </a>
             </div>
             <div id="collapseFour" class="collapse" aria-labelledby="faq-pop-4" data-parent="#accordion">
               <div class="card-body">
-                <p>proposals is a type of polls where you get  :</p>
-  <p>1 : two options to vote on</p>
-  <p>2 :  an  option to add a donation / funding address</p>
-  <p>3 : funding amount required option</p>
+                <p>Proposal is a type of poll where you get:</p>
+  <p>1. Two options to vote on/p>
+  <p>2. An option to add a donation/funding address</p>
+  <p>3. Required funding amount option</p>
 
 
 
@@ -162,7 +162,7 @@ what is donate button ?
           <div class="card">
             <div class="card-header" id="faq-pop-8">
               <a class="collapsed" data-toggle="collapse" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-How can i make my address public ? 
+How can i make my address public ?
               </a>
             </div>
             <div id="collapseEight" class="collapse" aria-labelledby="faq-pop-8" data-parent="#accordion">

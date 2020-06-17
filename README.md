@@ -1,5 +1,5 @@
 # Idena Vote features #
-#### Idena vote is the  most customized polls website where you can do the following :
+#### https://idena.vote is the most customized polls website where you can do the following :
 1. hide your DNA address
 2. accept donations without revealing your main address
 3. Have a profile with bio , username and donations address
@@ -14,3 +14,5 @@
 12. Dark mode exist :)
 13. You can set a tag/category for each poll , proposal or FvF you create
 14. a Discord Webhook & TG Bot enabled to auto send hot polls,proposals and FvF that it's votes exceed 5 validated votes
+-------------
+please support idena.vote by sending a 0 DNA SendTx from here https://idena.vote/vote.php

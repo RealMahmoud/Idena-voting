@@ -24,7 +24,7 @@ include(dirname(__FILE__)."/partials/header.php");
                            <div class="success rem" id="success">
                            </div>
                              <div class="input-group" style="width: 60%;margin: 0 auto;">
-                                 <input type="text"class="formVal form-control" value="" placeholder="Your secret token goes here..."/>
+                                 <input name="password" type="text"class="formVal form-control" value="" placeholder="Your secret token goes here..."/>
                              </div>
 
                              <div class="input-group">

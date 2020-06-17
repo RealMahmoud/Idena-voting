@@ -81,7 +81,8 @@ CREATE TABLE `fvfs` (
   `fundaddr` varchar(255) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT 'No Title',
   `category` varchar(30) NOT NULL DEFAULT 'idena',
-  `vip` int(11) NOT NULL DEFAULT 0
+  `vip` int(11) NOT NULL DEFAULT 0,
+`ann` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,7 +122,8 @@ CREATE TABLE `polls` (
   `option6` varchar(255) DEFAULT NULL,
   `title` varchar(255) NOT NULL DEFAULT 'No Title',
   `category` varchar(30) NOT NULL DEFAULT 'idena',
-  `vip` int(11) NOT NULL DEFAULT 0
+  `vip` int(11) NOT NULL DEFAULT 0,
+`ann` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -142,7 +144,8 @@ CREATE TABLE `proposals` (
   `fundaddr` varchar(64) NOT NULL DEFAULT 'NONE',
   `title` varchar(255) NOT NULL DEFAULT 'No Title',
   `category` varchar(30) NOT NULL DEFAULT 'idena',
-  `vip` int(11) NOT NULL DEFAULT 0
+  `vip` int(11) NOT NULL DEFAULT 0,
+`ann` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

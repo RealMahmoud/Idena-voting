@@ -179,18 +179,7 @@ if(isset($_GET['cat'])){
 }
 ?>
 
-function timechanging(){
-  var elements = document.getElementsByClassName("timeUTC");
 
-  for(var i=0; i<elements.length; i++)
-  {
-    let utcTime = elements[i].innerHTML;
-
-    elements[i].innerHTML = 'End Time : '+moment.utc(utcTime ).local().format('YYYY-MM-DD HH:mm A');
-    elements[i].classList.remove('timeUTC');
-  }
-
-}
 window.onload = function()
 {
 
@@ -213,7 +202,7 @@ window.onload = function()
                                            +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                           +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                          +'<p class="desc timeUTC timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                          +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                           +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                             +'<span>Check out FvF</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
@@ -231,7 +220,7 @@ window.onload = function()
                                            +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                            +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                           +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                           +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                            +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                              +'<span>Check out FvF</span>'
                                              +'<i class="icon icon--thin_arrow_right"></i>'
@@ -245,7 +234,7 @@ window.onload = function()
          document.getElementById("none1").innerHTML = '';
            fvfsrunninglist.innerHTML =  fvfsrunningcontent;
       }
-      timechanging();
+
   });
 
 
@@ -267,7 +256,7 @@ window.onload = function()
                                              +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                            +'<p class="desc timeUTC timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                            +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                             +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                               +'<span>Check out FvF</span>'
                                               +'<i class="icon icon--thin_arrow_right"></i>'
@@ -285,7 +274,7 @@ window.onload = function()
                                              +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                              +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                             +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                             +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                              +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                                +'<span>Check out FvF</span>'
                                                +'<i class="icon icon--thin_arrow_right"></i>'
@@ -300,7 +289,7 @@ window.onload = function()
            fvfsendedlist.innerHTML =  fvfsendedcontent;
       }
 
-  timechanging();
+
 });
 
 
@@ -330,7 +319,7 @@ window.onload = function()
    catlist.innerHTML =   catcontent;
       }
 
-  timechanging();
+
 });
 
 }

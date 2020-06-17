@@ -28,6 +28,27 @@ body {
     color: #333 !important;
 }
 
+
+.viplbl{
+  color: #ffbb1b;
+}
+.noramlbl{
+  color: #84ce84;
+}
+.categorylbl{
+  color: #703384;
+}
+.voteslbl{
+  color: #00a6af;
+}
+.timelbl{
+  color: #ff0018;
+}
+.titlelbl{
+  color: #000000;
+}
+
+
 @media (max-width: 576px) {
     .container {
         max-width: 540px !important;
@@ -209,6 +230,7 @@ select {
 }
 
 p.desc {
+    font-weight: 600;
     font-size: 0.9rem;
     line-height: 1.5rem;
     padding: 15px;

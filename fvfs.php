@@ -179,8 +179,22 @@ if(isset($_GET['cat'])){
 }
 ?>
 
+function timechanging(){
+  var elements = document.getElementsByClassName("timeUTC");
 
-window.onload = function() {
+  for(var i=0; i<elements.length; i++)
+  {
+    let utcTime = elements[i].innerHTML;
+
+    elements[i].innerHTML = 'End Time : '+moment.utc(utcTime ).local().format('YYYY-MM-DD HH:mm A');
+    elements[i].classList.remove('timeUTC');
+  }
+
+}
+window.onload = function()
+{
+
+
 
   ajax_get('./services/getFvfsRunning.php'+cat, function(data) {
 
@@ -191,28 +205,34 @@ window.onload = function() {
           if(obj.vip == 1){
             fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="desc" style="color: #9447bb; ">'
+                                           +'<p class="desc titlelbl" title="'
+                                           +obj.fulltitle
+                                           +'">'
                                             +obj.title
                                            +'</p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                           +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
-                                             +'<span>Check out FvF</span>'
-                                             +'<i class="icon icon--thin_arrow_right"></i>'
-                                           +'</a>'
+                                           +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
+                                           +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                          +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
+                                          +'<p class="desc timeUTC timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                          +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
+                                            +'<span>Check out FvF</span>'
+                                            +'<i class="icon icon--thin_arrow_right"></i>'
+                                          +'</a>'
                                            +'</div>'
                                          +'</div>';
           }else{
             fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="desc" style="color: #9447bb; ">'
+                                           +'<p class="desc titlelbl" title="'
+                                           +obj.fulltitle
+                                           +'">'
                                             +obj.title
                                            +'</p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                           +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
+                                           +'<p class="desc noramlbl" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                           +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                           +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
+                                           +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                           +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                              +'<span>Check out FvF</span>'
                                              +'<i class="icon icon--thin_arrow_right"></i>'
                                            +'</a>'
@@ -225,6 +245,7 @@ window.onload = function() {
          document.getElementById("none1").innerHTML = '';
            fvfsrunninglist.innerHTML =  fvfsrunningcontent;
       }
+      timechanging();
   });
 
 
@@ -235,37 +256,43 @@ window.onload = function() {
 
 
           data["entries"].forEach(function(obj) {
-          if(obj.vip == 1){
-            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
-                                           +'<div class="mini-card">'
-                                           +'<p class="desc" style="color: #9447bb; ">'
-                                            +obj.title
-                                           +'</p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                           +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
-                                             +'<span>Check out FvF</span>'
-                                             +'<i class="icon icon--thin_arrow_right"></i>'
-                                           +'</a>'
-                                           +'</div>'
-                                         +'</div>';
-          }else{
-            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
-                                           +'<div class="mini-card">'
-                                           +'<p class="desc" style="color: #9447bb; ">'
-                                            +obj.title
-                                           +'</p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color:  #84ce84;"> - Normal - </p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                           +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
-                                             +'<span>Check out FvF</span>'
-                                             +'<i class="icon icon--thin_arrow_right"></i>'
-                                           +'</a>'
-                                           +'</div>'
-                                         +'</div>';
-          }
+            if(obj.vip == 1){
+              fvfsendedcontent = fvfsendedcontent + '<div class="col-3 col-sm-3 entry">'
+                                             +'<div class="mini-card">'
+                                             +'<p class="desc titlelbl" title="'
+                                             +obj.fulltitle
+                                             +'">'
+                                              +obj.title
+                                             +'</p>'
+                                             +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
+                                             +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                            +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
+                                            +'<p class="desc timeUTC timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                            +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
+                                              +'<span>Check out FvF</span>'
+                                              +'<i class="icon icon--thin_arrow_right"></i>'
+                                            +'</a>'
+                                             +'</div>'
+                                           +'</div>';
+            }else{
+              fvfsendedcontent = fvfsendedcontent + '<div class="col-3 col-sm-3 entry">'
+                                             +'<div class="mini-card">'
+                                             +'<p class="desc titlelbl" title="'
+                                             +obj.fulltitle
+                                             +'">'
+                                              +obj.title
+                                             +'</p>'
+                                             +'<p class="desc noramlbl" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                             +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                             +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
+                                             +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
+                                             +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
+                                               +'<span>Check out FvF</span>'
+                                               +'<i class="icon icon--thin_arrow_right"></i>'
+                                             +'</a>'
+                                             +'</div>'
+                                           +'</div>';
+            }
 
 
          });//retrieve all user fvfs
@@ -273,7 +300,8 @@ window.onload = function() {
            fvfsendedlist.innerHTML =  fvfsendedcontent;
       }
 
-  });
+  timechanging();
+});
 
 
 
@@ -289,12 +317,12 @@ window.onload = function() {
                                           +'<p class="desc" style="color: #9447bb; ">'
 
                                           +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">FvFs Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./fvfs.php?cat='+obj.category+'">'
+                                          +'<p class="desc" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                            +'<p class="desc" style="padding:0px;padding-bottom:15px;text-align:center; ">FvFs Count : '+obj.count+'</p>'
+                                          +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvfs.php?cat='+obj.category+'">'
                                             +'<span>FvFs</span>'
-                                            +'<i class="icon icon--thin_arrow_right"></i>'
-                                          +'</a>'
+
+
                                           +'</div>'
                                         +'</div>';
 
@@ -303,7 +331,8 @@ window.onload = function() {
    catlist.innerHTML =   catcontent;
       }
 
-  });
+  timechanging();
+});
 
 }
 

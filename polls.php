@@ -315,7 +315,7 @@ window.onload = function() {
                                           +'</p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Polls Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" href="./polls.php?cat='+obj.category+'">'
+                                          +'<a class="btn btn-secondary btn-small"style="width:90%" href="./polls.php?cat='+obj.category+'">'
                                             +'<span>Polls</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
                                           +'</a>'

@@ -319,7 +319,7 @@ window.onload = function()
                                           +'</p>'
                                           +'<p class="desc" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc" style="padding:0px;padding-bottom:15px;text-align:center; ">FvFs Count : '+obj.count+'</p>'
-                                          +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvfs.php?cat='+obj.category+'">'
+                                          +'<a class="btn btn-secondary btn-small" style="width:90%" href="./fvfs.php?cat='+obj.category+'">'
                                             +'<span>FvFs</span>'
 
 

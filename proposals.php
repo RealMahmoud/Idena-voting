@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-include(dirname(__FILE__)."/common/_public.php");
+if(isset($_SESSION["addr"])) {
+include(dirname(__FILE__)."/common/_protected.php");
+}else{
+  include(dirname(__FILE__)."/common/_public.php");
+}
 
 $pagetitle = 'Proposals';
 

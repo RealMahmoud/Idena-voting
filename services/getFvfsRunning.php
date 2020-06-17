@@ -50,7 +50,7 @@ if( empty($_GET['user']) && !empty($_GET['cat'])){
     if ($result_acct->num_rows > 0) {
         // output data of each row
                 while($row = $result_acct->fetch_assoc()) {
-                    $fvfs[] = array('id' => $row['id'],'vip' => $row['vip'],'count' => $row['count'],'title' => mb_strimwidth($row['title'], 0, 25, '...'),'category' =>  $row['category'] , `endtime` => $row['endtime']);
+                    $fvfs[] = array('id' => $row['id'],'vip' => $row['vip'],'count' => $row['count'],'title' => mb_strimwidth($row['title'], 0, 250, '...'),'category' =>  $row['category'] , `endtime` => $row['endtime']);
                 }
 
     }

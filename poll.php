@@ -1,6 +1,10 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_public.php");
+if(isset($_SESSION["addr"])) {
+include(dirname(__FILE__)."/common/_protected.php");
+}else{
+  include(dirname(__FILE__)."/common/_public.php");
+}
 
 if(empty($conn->real_escape_string($_GET["id"]))){
   header("location:index.php");

@@ -22,7 +22,6 @@ if(!empty($_SESSION["token"])) {
 }
 
 
-
     if(!empty($_SESSION["addr"])) {
 
       $sql = "SELECT * FROM `accounts` WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";

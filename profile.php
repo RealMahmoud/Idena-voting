@@ -3,7 +3,11 @@ session_start();
 
 if(isset($_GET['user'])){
 $usernamea = $_GET['user'];
-include(dirname(__FILE__)."/common/_public.php");
+if(isset($_SESSION["addr"])) {
+include(dirname(__FILE__)."/common/_protected.php");
+}else{
+  include(dirname(__FILE__)."/common/_public.php");
+}
 $pic = curl_get($url.'services/checkPic.php?user='.$usernamea)['pic'];
 
 }

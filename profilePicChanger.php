@@ -1,6 +1,6 @@
 <?php
 session_start();
-include(dirname(__FILE__)."/common/_public.php");
+include(dirname(__FILE__)."/common/_protected.php");
 
 $pagetitle = 'Profile Pic Randomizer';
 include(dirname(__FILE__)."/partials/header.php");

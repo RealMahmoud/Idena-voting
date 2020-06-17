@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION["addr"])) {
+include(dirname(__FILE__)."/common/_protected.php");
+}else{
+  include(dirname(__FILE__)."/common/_public.php");
+}
 $pagetitle = 'FAQ';
 include(dirname(__FILE__)."/partials/header.php");
 ?>

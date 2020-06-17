@@ -1,5 +1,5 @@
 # Idena Vote features #
-## Idena vote is most customized polls website where you can do the following : 
+#### Idena vote is most customized polls website where you can do the following : 
 1. hide your DNA address
 2. accept donations without revealing your main address
 3. Have a profile with bio , username and donations address

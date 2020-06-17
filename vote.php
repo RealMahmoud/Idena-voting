@@ -11,7 +11,7 @@ include(dirname(__FILE__)."/partials/header.php");
                 <br>
                 <br>
                 <br>
-                  <p class="info_block__accent">Please support Idena.vote by voting on it by sending a 0 SendTx with this button</p>
+                  <p class="info_block__accent">Please support Idena.vote by voting for it by sending a 0 SendTx with this button</p>
                   <div style="padding-top:10vh;"class="input-group">
                   <a class="btn btn-secondary btn-small" href="#" id="submit" onclick="SendDna(); return false;">
                       <span id="text_submit">VOTE ON Idena.vote</span>

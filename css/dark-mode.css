@@ -4,6 +4,29 @@
     color: #d0d0d0 !important;
 }
 
+
+
+
+.darkmode .viplbl{
+  color: #ffbb1b !important;
+}
+.darkmode .noramlbl{
+  color: #84ce84 !important;
+}
+.darkmode .categorylbl{
+  color: #9059a2 !important;
+}
+.darkmode .voteslbl{
+  color: #00a6af !important;
+}
+.darkmode .timelbl{
+  color: #ce7079 !important;
+}
+.darkmode .titlelbl{
+  color: #c5c3c3 !important;
+}
+
+
 .darkmode select {
     color: #fff !important;
     height: 2.2rem !important;

@@ -224,12 +224,26 @@ window.onload = function() {
                                              +'</a>'
                                              +'</div>'
                                            +'</div>';
-            }
-
-
-         });
+            }});
+            proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+                                           +'<div class="mini-card">'
+                                           +'<p class="desc titlelbl" title="'
+                                           +"Can't see yours ?"
+                                           +'">'
+                                            +"Can't see yours ?"
+                                           +'</p>'
+                                           +'<p class="desc noramlbl" style="padding:0px;text-align:center;"do you >Want to create one?</p>'
+                                           +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Yoo can choose a category</p>'
+                                           +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes count goes here</p>'
+                                           +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">End Time will be here</p>'
+                                           +'<a class="btn btn-secondary btn-small" style="width:87%" href="./createProposal.php">'
+                                             +'<span>Creation Page</span>'
+                                             +'<i class="icon icon--thin_arrow_right"></i>'
+                                           +'</a>'
+                                           +'</div>'
+                                         +'</div>';
          document.getElementById("none1").innerHTML = '';
-           proposalsrunninglist.innerHTML =  proposalsrunningcontent;
+        proposalsrunninglist.innerHTML =  proposalsrunningcontent;
       }
 
 });
@@ -281,7 +295,24 @@ window.onload = function() {
           }
 
 
-       });//retrieve all user proposals
+       });
+            proposalsendedcontent = proposalsendedcontent + '<div class="col-3 col-sm-3 entry">'
+                                                  +'<div class="mini-card">'
+                                                  +'<p class="desc titlelbl" title="'
+                                                  +"Can't see yours ?"
+                                                  +'">'
+                                                   +"Can't see yours ?"
+                                                  +'</p>'
+                                                  +'<p class="desc noramlbl" style="padding:0px;text-align:center;"do you >Want to create one?</p>'
+                                                  +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Yoo can choose a category</p>'
+                                                  +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes count goes here</p>'
+                                                  +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">End Time will be here</p>'
+                                                  +'<a class="btn btn-secondary btn-small" style="width:87%" href="./createProposal.php">'
+                                                    +'<span>Creation Page</span>'
+                                                    +'<i class="icon icon--thin_arrow_right"></i>'
+                                                  +'</a>'
+                                                  +'</div>'
+                                                +'</div>';
        document.getElementById("none2").innerHTML = '';
          proposalsendedlist.innerHTML =  proposalsendedcontent;
     }

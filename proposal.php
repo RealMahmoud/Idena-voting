@@ -74,11 +74,8 @@ $owneraddress = $rowf[1];
                           </a>
                               <a href="<?php echo $url.'profile.php?user='.$owner;?>"><?php echo $owner; ?></a>
                         </p>
-
-
-
                         <div class="row">
-                      <div class="col-12 col-sm-7 bordered-col">
+                      <div class="col-12 col-sm-12 bordered-col">
                           <h4 class="info_block__accent">Description</h4>
                           <p><?php echo nl2br($row['pdesc']); ?></p>
                           </div>

@@ -17,7 +17,7 @@ $conn->query($sql);
 
 
 
-$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'proposal' AND `pid`= `proposals`.`id` )AS 'count' FROM proposals WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'proposal' AND `pid`= `proposals`.`id`) > 9 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'proposal' AND `pid`= `proposals`.`id`) DESC LIMIT 50";
+$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'proposal' AND `pid`= `proposals`.`id` )AS 'count' FROM proposals WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'proposal' AND `pid`= `proposals`.`id`) > 6 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'proposal' AND `pid`= `proposals`.`id`) DESC LIMIT 50";
 $result_acct = $conn->query($sql2);
 if ($result_acct->num_rows > 0) {
 while($row = $result_acct->fetch_assoc()) {
@@ -73,7 +73,7 @@ curl_close( $ch );
 
 
 
-$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'poll' AND `pid`= `polls`.`id` )AS 'count' FROM polls WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'poll' AND `pid`= `polls`.`id`) > 9 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'poll' AND `pid`= `polls`.`id`) DESC LIMIT 50";
+$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'poll' AND `pid`= `polls`.`id` )AS 'count' FROM polls WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'poll' AND `pid`= `polls`.`id`) > 6 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'poll' AND `pid`= `polls`.`id`) DESC LIMIT 50";
 $result_acct = $conn->query($sql2);
 if ($result_acct->num_rows > 0) {
 while($row = $result_acct->fetch_assoc()) {
@@ -119,7 +119,7 @@ curl_close( $ch );
 
 
 
-$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'fvf' AND `pid`= `fvfs`.`id` )AS 'count' FROM fvfs WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'fvf' AND `pid`= `fvfs`.`id`) > 9 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'fvf' AND `pid`= `fvfs`.`id`) DESC LIMIT 50";
+$sql2 = "SELECT * , (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE (`state` = 'Verified' OR `state` = 'Human' OR `state` = 'Newbie') AND `type` = 'fvf' AND `pid`= `fvfs`.`id` )AS 'count' FROM fvfs WHERE (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'fvf' AND `pid`= `fvfs`.`id`) > 6 AND `ann` = '0' AND`endtime` > NOW() ORDER BY (SELECT COUNT(*) FROM `accounts` INNER JOIN `votes` ON `accounts`.`address`=`votes`.`addr` WHERE `type` = 'fvf' AND `pid`= `fvfs`.`id`) DESC LIMIT 50";
 $result_acct = $conn->query($sql2);
 if ($result_acct->num_rows > 0) {
 while($row = $result_acct->fetch_assoc()) {

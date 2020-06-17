@@ -25,6 +25,12 @@ $result = $conn->query("SELECT `pic`,`username` FROM `accounts` WHERE `address` 
 $rowk = $result->fetch_row();
 $sql = "UPDATE `proposals` SET `ann` =  1 WHERE `id` = '".$row['id']."'";
 $conn->query($sql);
+
+
+
+curl_get($TGBOT.urlencode("Hot Proposal : ".$row['title'] ."
+By User  : '.$rowk[1]."
+Check it out here : ".$url.'proposal.php?id='.$row['id']));
 $hookObject = json_encode([
     "username" => "Idena.vote",
     "avatar_url" => "https://robohash.org/".$rowk[0],
@@ -81,6 +87,9 @@ $result = $conn->query("SELECT `pic`,`username` FROM `accounts` WHERE `address` 
 $rowk = $result->fetch_row();
 $sql = "UPDATE `polls` SET `ann` =  1 WHERE `id` = '".$row['id']."'";
 $conn->query($sql);
+curl_get($TGBOT.urlencode("Hot Poll : ".$row['title'] ."
+By User  : '.$rowk[1]."
+Check it out here : ".$url.'poll.php?id='.$row['id']));
 $hookObject = json_encode([
     "username" => "Idena.vote",
     "avatar_url" => "https://robohash.org/".$rowk[0],
@@ -127,6 +136,9 @@ $result = $conn->query("SELECT `pic`,`username` FROM `accounts` WHERE `address` 
 $rowk = $result->fetch_row();
 $sql = "UPDATE `fvfs` SET `ann` =  1 WHERE `id` = '".$row['id']."'";
 $conn->query($sql);
+curl_get($TGBOT.urlencode("Hot FvF : ".$row['title'] ."
+By User  : '.$rowk[1]."
+Check it out here : ".$url.'fvf.php?id='.$row['id']));
 $hookObject = json_encode([
     "username" => "Idena.vote",
     "avatar_url" => "https://robohash.org/".$rowk[0],

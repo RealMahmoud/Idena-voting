@@ -191,7 +191,7 @@ window.onload = function() {
           if(obj.vip == 1){
             proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                           +'<p class="desc" style="color: #9447bb; ">'
                                             +obj.title
                                            +'</p>'
                                            +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
@@ -206,7 +206,7 @@ window.onload = function() {
           }else{
             proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                           +'<p class="desc" style="color: #9447bb; ">'
                                             +obj.title
                                            +'</p>'
                                            +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
@@ -238,7 +238,7 @@ window.onload = function() {
           if(obj.vip == 1){
             proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                           +'<p class="desc" style="color: #9447bb; ">'
                                             +obj.title
                                            +'</p>'
                                            +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #FFD700;"> - VIP - </p>'
@@ -253,7 +253,7 @@ window.onload = function() {
           }else{
             proposalsrunningcontent = proposalsrunningcontent + '<div class="col-3 col-sm-3 entry">'
                                            +'<div class="mini-card">'
-                                           +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                           +'<p class="desc" style="color: #9447bb; ">'
                                             +obj.title
                                            +'</p>'
                                            +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color:  #84ce84;"> - Normal - </p>'
@@ -286,7 +286,7 @@ window.onload = function() {
 
            catcontent = catcontent + '<div class="col-3 col-sm-3 entry">'
                                           +'<div class="mini-card">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
+                                          +'<p class="desc" style="color: #9447bb; ">'
 
                                           +'</p>'
                                           +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'

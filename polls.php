@@ -225,7 +225,7 @@ window.onload = function() {
                                              +'">'
                                               +obj.title
                                              +'</p>'
-                                             +'<p class="desc noramlbl" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                             +'<p class="desc noramlbl" style="padding:0px;text-align:center; > - Normal - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                              +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                              +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'
@@ -279,7 +279,7 @@ window.onload = function() {
                                                  +'">'
                                                   +obj.title
                                                  +'</p>'
-                                                 +'<p class="desc noramlbl" style="padding:0px;text-align:center; color: #84ce84;"> - Normal - </p>'
+                                                 +'<p class="desc noramlbl" style="padding:0px;text-align:center; > - Normal - </p>'
                                                  +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                                  +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                                  +'<p class="desc timelbl timeUTC" style="padding:0px;padding-bottom:15px;text-align:center; ">'+obj.endtime+'</p>'

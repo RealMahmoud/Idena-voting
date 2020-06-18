@@ -161,12 +161,12 @@ include(dirname(__FILE__)."/partials/header.php");
                               <?php
                               if($_SESSION["hidden"] == 'public'){
                                 echo '<a class="btn btn-secondary btn-small" href="#" id="submit-hidden-private" onclick="ChangeHidden('."'private'".'); return false;" style="margin-top: 1em;">
-                                    <span id="text_submit-hidden-private">Make Private</span>
+                                    <span id="text_submit-hidden-private">Change To Private</span>
                                     <i class="icon icon--thin_arrow_right"></i>
                                 </a>';
                               }else{
                                 echo '<a class="btn btn-secondary btn-small" href="#" id="submit-hidden-public" onclick="ChangeHidden('."'public'".'); return false;" style="margin-top: 1em;">
-                                    <span id="text_submit-hidden-public">Make Public</span>
+                                    <span id="text_submit-hidden-public">Change To Public</span>
                                     <i class="icon icon--thin_arrow_right"></i>
                                 </a>';
                               }

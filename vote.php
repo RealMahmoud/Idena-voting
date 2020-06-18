@@ -1,5 +1,5 @@
 <?php
-$pagetitle = 'Vote on idena.vote';
+$pagetitle = 'Vote for idena.vote';
 include(dirname(__FILE__)."/partials/header.php");
 ?>
 <section class="section section_info">

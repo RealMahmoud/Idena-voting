@@ -14,10 +14,12 @@ if(!empty($hidden) && !empty($_SESSION["addr"]))
 
     } else {
 
-           if($hidden == 'true'){
+           if($hidden == 'public'){
              $sql = "UPDATE `accounts` SET `hidden` = '1' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 
-           }else{
+           }
+
+           if($hidden == 'private'){
              $sql = "UPDATE `accounts` SET `hidden` = '0' WHERE `address` = '".$_SESSION["addr"]."' LIMIT 1;";
 
            }

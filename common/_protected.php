@@ -81,9 +81,9 @@ if(!empty($_SESSION["token"])) {
         $_SESSION["username"] = $row['username'];
         if($row['hidden'] == 1 ){
 
-            $_SESSION["hidden"] = 'True';
+            $_SESSION["hidden"] = 'public';
         }else{
-          $_SESSION["hidden"] = 'False';
+          $_SESSION["hidden"] = 'private';
         }
 
           $_SESSION["credits"] = $row['credits'];

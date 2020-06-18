@@ -28,10 +28,10 @@ if(isset($_SESSION['addr'])){
     if($hidden == 1  || $address == $addressu){
         echo '{"address":"'.$address.'"}';
     }else{
-        echo '{"address":" - "}';
+        echo '{"address":" Private "}';
     }
 
 }else{
-    echo '{"address":" - "}';
+    echo '{"address":" Private "}';
 }
 ?>

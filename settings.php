@@ -67,7 +67,7 @@ include(dirname(__FILE__)."/partials/header.php");
                         <p id="currST">  <?php echo $_SESSION["password"];?></p>
                         <br/>
                         <h4 class="info_block__accent">Current Hidden Status</h4>
-                        <p>  <?php echo $_SESSION["hidden"];?></p>
+                        <p id='hiddenlbl'><?php echo $_SESSION["hidden"];?></p>
                         <h4 class="info_block__accent">Current Pic</h4>
                         <p>  <?php echo $_SESSION["pic"];?></p>
 
@@ -153,21 +153,27 @@ include(dirname(__FILE__)."/partials/header.php");
                         </div>
                         <div class="success rem" id="success-hidden">
                         </div>
-                        <h4 class="info_block__accent">Change Account Hidden Status : </h4>
+                        <h4 class="info_block__accent">Change address Hidden Status : </h4>
 
-                        <form id="name_form" METHOD="POST" onsubmit="ChangeHidden(); return false;">
-                            <div class="input-group" style="width: 60%;">
-                                <input type="text" maxlength="5" minlength="1" name="hidden" class="formValHidden form-control" value="" placeholder="Please type true or false"/>
-                            </div>
+
 
                             <div class="input-group">
-                            <a class="btn btn-secondary btn-small" href="#" id="submit-hidden" onclick="ChangeHidden(); return false;" style="margin-top: 1em;">
-                                <span id="text_submit-hidden">Change</span>
-                                <i class="icon icon--thin_arrow_right"></i>
-                            </a>
+                              <?php
+                              if($_SESSION["hidden"] == 'public'){
+                                echo '<a class="btn btn-secondary btn-small" href="#" id="submit-hidden-private" onclick="ChangeHidden('."'private'".'); return false;" style="margin-top: 1em;">
+                                    <span id="text_submit-hidden-private">Make Private</span>
+                                    <i class="icon icon--thin_arrow_right"></i>
+                                </a>';
+                              }else{
+                                echo '<a class="btn btn-secondary btn-small" href="#" id="submit-hidden-public" onclick="ChangeHidden('."'public'".'); return false;" style="margin-top: 1em;">
+                                    <span id="text_submit-hidden-public">Make Public</span>
+                                    <i class="icon icon--thin_arrow_right"></i>
+                                </a>';
+                              }
+
+                            ?>
                             </div>
 
-                        </form>
 
 
 
@@ -270,28 +276,28 @@ function changedonate()
         }
     });
 }
-function ChangeHidden()
+function ChangeHidden(value)
 {
-    toggle(true,'hidden');
-    var elements = document.getElementsByClassName("formValHidden");
-    var formData = new FormData();
-    for(var i=0; i<elements.length; i++)
-    {
-        formData.append(elements[i].name, elements[i].value);
-    }
 
+var formData = new FormData();
+    formData.append('hidden', value);
+    document.getElementById("text_submit-hidden-"+value).innerHTML = "Changing...";
+    document.getElementById("submit-hidden-"+value).classList.add("disabled");
     ajax_post('./services/changeHidden.php', formData, function(data) {
-        toggle(false,'hidden');
+
         if(data["success"]){
             document.getElementById("success-hidden").classList.remove("rem");
             document.getElementById("warning-hidden").classList.add("rem");
-            document.getElementById("success-hidden").innerHTML = '&#x2705; Hidden Status changed successfully';
+            document.getElementById("success-hidden").innerHTML = '&#x2705; address hidden Status changed successfully';
+            document.getElementById("hiddenlbl").innerHTML = value;
 
         } else {
             document.getElementById("success-hidden").classList.add("rem");
             document.getElementById("warning-hidden").classList.remove("rem");
             document.getElementById("warning-hidden").innerHTML = '&#x274C; '+data["data"];
         }
+        document.getElementById("text_submit-hidden-"+value).innerHTML = "Change To "+value;
+        document.getElementById("submit-hidden-"+value).classList.remove("disabled");
     });
 }
 

@@ -6,6 +6,7 @@ header('Content-Type: application/json');
 
 if(isset($_GET['user'])){
   $username = $conn->real_escape_string($_GET['user']);
+  $username = urldecode($username);
 }else{
   $username = '';
 }

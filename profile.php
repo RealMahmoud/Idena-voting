@@ -8,7 +8,8 @@ include(dirname(__FILE__)."/common/_protected.php");
 }else{
   include(dirname(__FILE__)."/common/_public.php");
 }
-$pic = curl_get($url.'services/checkPic.php?user='.$usernamea)['pic'];
+
+$pic = curl_get($url.'services/checkPic.php?user='.urlencode($usernamea))['pic'];
 
 }
 if(empty($usernamea) && isset($_SESSION['username'])){

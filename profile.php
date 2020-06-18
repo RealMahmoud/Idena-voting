@@ -252,7 +252,7 @@ function checkaddress() {
     ajax_get('./services/checkAddress.php?user=<?php echo $usernamea;?>', function(data) {
       if(data["address"] == ' - '){
 
-        document.getElementById("address2").innerHTML = 'Address : - ';
+        document.getElementById("address2").innerHTML = 'Address : Private ';
       }else{
 
 

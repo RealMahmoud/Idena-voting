@@ -2,7 +2,7 @@
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
-$TGBOT = "https://api.telegram.org/botag/sendMessage?chat_id=889703453&text="
+$TGBOT = "https://api.telegram.org/botag/sendMessage?chat_id=889703453&text=";
 $hook = "https://discord.com/api/webhooks/721616409909657620/YW8mQ_ktP446Xl7VGHRxa1phpUPjYOWG7KK-bv9I3fNwhnByOsIO72JuTPz6O9Djhg2Y";
 $url = 'http://127.0.0.1/Idena-voting/';
 $site_name = 'Idena Voting';

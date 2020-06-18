@@ -288,7 +288,7 @@ var formData = new FormData();
         if(data["success"]){
             document.getElementById("success-hidden").classList.remove("rem");
             document.getElementById("warning-hidden").classList.add("rem");
-            document.getElementById("success-hidden").innerHTML = '&#x2705; address hidden Status changed successfully';
+            document.getElementById("success-hidden").innerHTML = '&#x2705; Address hidden status changed successfully';
             document.getElementById("hiddenlbl").innerHTML = value;
 
         } else {

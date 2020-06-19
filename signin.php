@@ -1,7 +1,18 @@
 <?php
 session_start();
-session_destroy();
-session_start();
+if(isset($_SESSION['addr'])){
+  header("location:index.php");
+}else{
+  unset($_SESSION['addr']);
+  unset($_SESSION['token']);
+  unset($_SESSION['pic']);
+  unset($_SESSION['username']);
+  unset($_SESSION['credits']);
+  unset($_SESSION['hidden']);
+  unset($_SESSION['age']);
+  unset($_SESSION['password']);
+  unset($_SESSION['state']);
+}
 include_once(dirname(__FILE__)."/common/_public.php");
 $pagetitle = 'Sign In';
 include_once(dirname(__FILE__)."/partials/header.php");

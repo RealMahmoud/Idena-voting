@@ -170,7 +170,7 @@ How can i make my address public ?
             <div id="collapseEight" class="collapse" aria-labelledby="faq-pop-8" data-parent="#accordion">
               <div class="card-body">
 
-  <p>  Just go to the settings and type false at the changing form and click change </p>
+  <p>  Just go to the settings and you will find a button to change the status from one to another </p>
 
 
 

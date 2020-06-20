@@ -146,11 +146,7 @@ Polls
               FAQ
             </a>
           </li>
-          <li class="nav-item header_nav__item">
-            <a class="nav-link header_nav__link appslink" href="./vote.php" title="VOTE" descriptioncontent="VOTE">
-              VOTE FOR US
-            </a>
-          </li>
+
 
 
 </div>

@@ -15,4 +15,4 @@
 13. You can set a tag/category for each poll , proposal or FvF you create
 14. a Discord Webhook & TG Bot enabled to auto send hot polls,proposals and FvF that it's votes exceed 5 validated votes
 -------------
-please support idena.vote by sending a 0 DNA SendTx from here https://idena.vote/vote.php
+please support idena.vote by sending donations here 0x400c4f7822a6c0f81fffcd425f98a92d18ebc567 🙂 

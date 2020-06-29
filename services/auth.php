@@ -3,7 +3,9 @@ include_once(dirname(__FILE__)."/../common/_public.php");
 require_once(dirname(__FILE__)."/../vendor/autoload.php");
 use Elliptic\EC;
 use kornrunner\Keccak;
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 function pubKeyToAddress($pubkey) {
     return "0x" . substr(Keccak::hash(substr(hex2bin($pubkey->encode("hex")), 1), 256), 24);

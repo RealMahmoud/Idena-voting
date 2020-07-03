@@ -75,7 +75,7 @@ body {
 @media (max-width: 767px) {
   div nav li     { display: none !important;}
   div nav select { display: inline-block !important;
-  width: 200% !important;}
+  width: 150% !important;}
 .copy {
     font-size: 10px;
     line-height: 24px;

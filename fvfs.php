@@ -192,7 +192,7 @@ window.onload = function()
 
           data["entries"].forEach(function(obj) {
           if(obj.vip == 1){
-            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                            +'<div class="mini-card">'
                                            +'<p class="desc titlelbl" title="'
                                            +obj.fulltitle
@@ -202,7 +202,7 @@ window.onload = function()
                                            +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                           +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                          +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                          +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                           +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                             +'<span>Check out FvF</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
@@ -210,7 +210,7 @@ window.onload = function()
                                            +'</div>'
                                          +'</div>';
           }else{
-            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+            fvfsrunningcontent = fvfsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                            +'<div class="mini-card">'
                                            +'<p class="desc titlelbl" title="'
                                            +obj.fulltitle
@@ -220,7 +220,7 @@ window.onload = function()
                                            +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                            +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                           +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                           +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                            +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                              +'<span>Check out FvF</span>'
                                              +'<i class="icon icon--thin_arrow_right"></i>'
@@ -231,7 +231,7 @@ window.onload = function()
 
 
          });
-         fvfsrunningcontent = fvfsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+         fvfsrunningcontent = fvfsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                         +'<div class="mini-card">'
                                         +'<p class="desc titlelbl" title="'
                                         +"Can't see yours ?"
@@ -263,7 +263,7 @@ window.onload = function()
 
           data["entries"].forEach(function(obj) {
             if(obj.vip == 1){
-              fvfsendedcontent = fvfsendedcontent + '<div class="col-3 col-sm-3 entry">'
+              fvfsendedcontent = fvfsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                              +'<div class="mini-card">'
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
@@ -273,7 +273,7 @@ window.onload = function()
                                              +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                            +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                            +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                             +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                               +'<span>Check out FvF</span>'
                                               +'<i class="icon icon--thin_arrow_right"></i>'
@@ -281,7 +281,7 @@ window.onload = function()
                                              +'</div>'
                                            +'</div>';
             }else{
-              fvfsendedcontent = fvfsendedcontent + '<div class="col-3 col-sm-3 entry">'
+              fvfsendedcontent = fvfsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                              +'<div class="mini-card">'
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
@@ -291,7 +291,7 @@ window.onload = function()
                                              +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                              +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                             +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                             +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                              +'<a class="btn btn-secondary btn-small" style="width:87%" href="./fvf.php?id='+obj.id+'">'
                                                +'<span>Check out FvF</span>'
                                                +'<i class="icon icon--thin_arrow_right"></i>'
@@ -302,7 +302,7 @@ window.onload = function()
 
 
          });
-         fvfsendedcontent = fvfsendedcontent + '<div class="col-3 col-sm-3 entry">'
+         fvfsendedcontent = fvfsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                         +'<div class="mini-card">'
                                         +'<p class="desc titlelbl" title="'
                                         +"Can't see yours ?"
@@ -335,7 +335,7 @@ window.onload = function()
 
           data["entries"].forEach(function(obj) {
 
-           catcontent = catcontent + '<div class="col-3 col-sm-3 entry">'
+           catcontent = catcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                           +'<div class="mini-card">'
                                           +'<p class="desc" style="color: #9447bb; ">'
                                           +'</p>'

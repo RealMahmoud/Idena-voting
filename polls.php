@@ -189,17 +189,17 @@ window.onload = function() {
 
           data["entries"].forEach(function(obj) {
             if(obj.vip == 1){
-              pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+              pollsrunningcontent = pollsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                              +'<div class="mini-card">'
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
                                              +'">'
                                               +obj.title
-                                             +'</p>' 
+                                             +'</p>'
                                              +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                             +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                            +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                            +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                             +'<a class="btn btn-secondary btn-small" style="width:87%" href="./poll.php?id='+obj.id+'">'
                                               +'<span>Check out Poll</span>'
                                               +'<i class="icon icon--thin_arrow_right"></i>'
@@ -207,7 +207,7 @@ window.onload = function() {
                                              +'</div>'
                                            +'</div>';
             }else{
-              pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+              pollsrunningcontent = pollsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                              +'<div class="mini-card">'
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
@@ -217,7 +217,7 @@ window.onload = function() {
                                              +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                              +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                             +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                             +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                              +'<a class="btn btn-secondary btn-small" style="width:87%" href="./poll.php?id='+obj.id+'">'
                                                +'<span>Check out Poll</span>'
                                                +'<i class="icon icon--thin_arrow_right"></i>'
@@ -228,7 +228,7 @@ window.onload = function() {
 
 
            });
-           pollsrunningcontent = pollsrunningcontent + '<div class="col-3 col-sm-3 entry">'
+           pollsrunningcontent = pollsrunningcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                           +'<div class="mini-card">'
                                           +'<p class="desc titlelbl" title="'
                                           +"Can't see yours ?"
@@ -260,7 +260,7 @@ window.onload = function() {
 
               data["entries"].forEach(function(obj) {
                 if(obj.vip == 1){
-                  pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
+                  pollsendedcontent = pollsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                                  +'<div class="mini-card">'
                                                  +'<p class="desc titlelbl" title="'
                                                  +obj.fulltitle
@@ -270,7 +270,7 @@ window.onload = function() {
                                                  +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                                  +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                                 +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                                +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                                +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                                 +'<a class="btn btn-secondary btn-small" style="width:87%" href="./poll.php?id='+obj.id+'">'
                                                   +'<span>Check out Poll</span>'
                                                   +'<i class="icon icon--thin_arrow_right"></i>'
@@ -278,7 +278,7 @@ window.onload = function() {
                                                  +'</div>'
                                                +'</div>';
                 }else{
-                  pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
+                  pollsendedcontent = pollsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                                  +'<div class="mini-card">'
                                                  +'<p class="desc titlelbl" title="'
                                                  +obj.fulltitle
@@ -288,7 +288,7 @@ window.onload = function() {
                                                  +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                                  +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                                  +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                                +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'End Time : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
+                                                +'<p class="desc timelbl" style="padding:0px;padding-bottom:15px;text-align:center; ">'+'Ends on : '+moment.utc(obj.endtime).local().format('YYYY-MM-DD HH:mm A')+'</p>'
                                                  +'<a class="btn btn-secondary btn-small" style="width:87%" href="./poll.php?id='+obj.id+'">'
                                                    +'<span>Check out Poll</span>'
                                                    +'<i class="icon icon--thin_arrow_right"></i>'
@@ -299,7 +299,7 @@ window.onload = function() {
 
 
              });
-             pollsendedcontent = pollsendedcontent + '<div class="col-3 col-sm-3 entry">'
+             pollsendedcontent = pollsendedcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                             +'<div class="mini-card">'
                                             +'<p class="desc titlelbl" title="'
                                             +"Can't see yours ?"
@@ -331,7 +331,7 @@ window.onload = function() {
 
           data["entries"].forEach(function(obj) {
 
-           catcontent = catcontent + '<div class="col-3 col-sm-3 entry">'
+           catcontent = catcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
                                           +'<div class="mini-card">'
                                           +'<p class="desc" style="color: #9447bb; ">'
 

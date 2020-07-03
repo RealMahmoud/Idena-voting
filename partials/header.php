@@ -152,7 +152,7 @@ Polls
         </nav>
 <nav>
           <select style="display: none;"onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-              <option value="" selected="selected">Select</option>
+              <option value="" selected="selected">Navigate</option>
               <option value="./">Home</option>
               <option value="./polls.php">Polls</option>
               <option value="./proposals.php">Proposals</option>

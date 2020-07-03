@@ -197,7 +197,7 @@ window.onload = function()
                                            +'<p class="desc titlelbl" title="'
                                            +obj.fulltitle
                                            +'">'
-                                            +obj.title
+                                            +obj.fulltitle
                                            +'</p>'
                                            +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
@@ -215,7 +215,7 @@ window.onload = function()
                                            +'<p class="desc titlelbl" title="'
                                            +obj.fulltitle
                                            +'">'
-                                            +obj.title
+                                            +obj.fulltitle
                                            +'</p>'
                                            +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                            +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
@@ -268,7 +268,7 @@ window.onload = function()
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
                                              +'">'
-                                              +obj.title
+                                              +obj.fulltitle
                                              +'</p>'
                                              +'<p class="desc viplbl" style="padding:0px;text-align:center;"> - VIP - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
@@ -286,7 +286,7 @@ window.onload = function()
                                              +'<p class="desc titlelbl" title="'
                                              +obj.fulltitle
                                              +'">'
-                                              +obj.title
+                                              +obj.fulltitle
                                              +'</p>'
                                              +'<p class="desc noramlbl" style="padding:0px;text-align:center;"> - Normal - </p>'
                                              +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'

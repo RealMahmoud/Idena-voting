@@ -45,6 +45,7 @@ body {
   color: #ff0018;
 }
 .titlelbl{
+  overflow: hidden;
   color: #000000;
 }
 

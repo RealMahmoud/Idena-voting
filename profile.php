@@ -289,13 +289,15 @@ checkCredits();
 
           data["entries"].forEach(function(obj) {
 
-           pollcontent = pollcontent + '<div class="col-3 col-sm-3 entry">'
-                                          +'<div class="mini-card vip">'
-                                          +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                           +obj.title
+           pollcontent = pollcontent +  '<div class="col-lg-3 col-sm-6 mb-3 entry">'
+                                          +'<div class="mini-card">'
+                                          +'<p class="desc titlelbl" title="'
+                                          +obj.fulltitle
+                                          +'">'
+                                           +obj.fulltitle
                                           +'</p>'
-                                          +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                            +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                          +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                         +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" href="./poll.php?id='+obj.id+'">'
                                             +'<span>Check out poll</span>'
                                             +'<i class="icon icon--thin_arrow_right"></i>'
@@ -329,13 +331,15 @@ ajax_get('./services/getProposalsUser.php?user=<?php echo $usernamea; ?>', funct
 
         data["entries"].forEach(function(obj) {
 
-          proposalcontent = proposalcontent + '<div class="col-3 col-sm-3 entry">'
-                                         +'<div class="mini-card vip">'
-                                         +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                          +obj.title
+          proposalcontent = proposalcontent +  '<div class="col-lg-3 col-sm-6 mb-3 entry">'
+                                         +'<div class="mini-card ">'
+                                         +'<p class="desc titlelbl" title="'
+                                         +obj.fulltitle
+                                         +'">'
+                                          +obj.fulltitle
                                          +'</p>'
-                                         +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./proposals.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
+                                         +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                        +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                          +'<a class="btn btn-secondary btn-small" href="./proposal.php?id='+obj.id+'">'
                                            +'<span>Check out proposal</span>'
                                            +'<i class="icon icon--thin_arrow_right"></i>'
@@ -372,14 +376,16 @@ ajax_get('./services/getFvfsUser.php?user=<?php echo $usernamea; ?>', function(d
 
         data["entries"].forEach(function(obj) {
 
-          fvfcontent = fvfcontent + '<div class="col-3 col-sm-3 entry">'
-                                         +'<div class="mini-card vip">'
-                                         +'<p class="info_block__accent desc" style="color: #9447bb; ">'
-                                          +obj.title
+          fvfcontent = fvfcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
+                                         +'<div class="mini-card ">'
+                                         +'<p class="desc titlelbl" title="'
+                                         +obj.fulltitle
+                                         +'">'
+                                          +obj.fulltitle
                                          +'</p>'
-                                         +'<p class="desc info_block__accent" style="padding:0px;text-align:center; color: #007BBC;">Category : <a href="./fvfs.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                           +'<p class="desc info_block__accent" style="padding:0px;padding-bottom:15px;text-align:center; color: #ffbb1b;">Votes Count : '+obj.count+'</p>'
-                                         +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
+                                         +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
+                                        +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
+                                        +'<a class="btn btn-secondary btn-small" href="./fvf.php?id='+obj.id+'">'
                                            +'<span>Check out FvFs</span>'
                                            +'<i class="icon icon--thin_arrow_right"></i>'
                                          +'</a>'

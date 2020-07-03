@@ -340,7 +340,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeVa" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeVa" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>
@@ -406,7 +406,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeH" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeH" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>
@@ -465,7 +465,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeV" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeV" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>
@@ -524,7 +524,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeN" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeN" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>
@@ -586,7 +586,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeHAndV" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeHAndV" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>
@@ -655,7 +655,7 @@ $id = $conn->real_escape_string($_GET["id"]);}} ?>
           <div class="row">
             <div class="col-12 col-sm-12 bordered-col">
               <h3 class="info_block__accent" style="text-align:center;">Total Votes By Age</h3>
-              <canvas id="BarAgeAll" width="100%" height="30%"></canvas>
+              <canvas id="BarAgeAll" width="100%" height="40%"></canvas>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+die('disabled');
 session_start();
 
 include(dirname(__FILE__)."/common/_protected.php");

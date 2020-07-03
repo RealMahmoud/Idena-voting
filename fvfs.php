@@ -1,4 +1,5 @@
 <?php
+die('disabled');
 session_start();
 
 if(isset($_SESSION["addr"])) {

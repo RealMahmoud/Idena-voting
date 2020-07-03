@@ -69,9 +69,6 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
 
   <a class="btn btn-small btn-primary" href="./createProposal.php">
       <span>Create New Proposal</span>
-  </a>
-  <a class="btn btn-small btn-primary" href="./createFvF.php">
-      <span>Create New FvF</span>
   </a>';
 }?>
 

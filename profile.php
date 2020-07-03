@@ -119,11 +119,8 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
                         <h3>Proposals</h3>
                      </a>
                   </li>
-                  <li class="nav-item">
-                     <a onclick="Change('3');" id='3Nav' class="nav-link ">
-                        <h3>FvFs</h3>
-                     </a>
-                  </li>
+
+
 
 
                </ul>
@@ -144,14 +141,8 @@ echo '  <a class="btn btn-small btn-primary" href="./settings.php">
           <div class="row row-fluid" id="proposal-list">
           </div>
         </div>
-        <div class="tab-pane " id="3Con">
-          <div class="row row-fluid" id="fvf-list">
-          </div>
-        </div>
-        <div class="tab-pane " id="4Con">
-          <div class="row row-fluid" id="page-list">
-          </div>
-        </div>
+
+
 
 
 
@@ -224,8 +215,6 @@ var pollcontent = '';
 var proposallist = document.getElementById("proposal-list");
 var proposalcontent = '';
 
-var fvflist = document.getElementById("fvf-list");
-var fvfcontent = '';
 
 function checkbio() {
     ajax_get('./services/checkBio.php?user=<?php echo $usernamea; ?>', function(data) {
@@ -368,47 +357,7 @@ proposallist.innerHTML = proposalcontent;
 
 
 
-//load all polls
-ajax_get('./services/getFvfsUser.php?user=<?php echo $usernamea; ?>', function(data) {
 
-    if(data["entries"].length > 0){
-
-
-        data["entries"].forEach(function(obj) {
-
-          fvfcontent = fvfcontent + '<div class="col-lg-3 col-sm-6 mb-3 entry">'
-                                         +'<div class="mini-card ">'
-                                         +'<p class="desc titlelbl" title="'
-                                         +obj.fulltitle
-                                         +'">'
-                                          +obj.fulltitle
-                                         +'</p>'
-                                         +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
-                                        +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
-                                        +'<a class="btn btn-secondary btn-small" style="width: -webkit-fill-available;" href="./fvf.php?id='+obj.id+'">'
-                                           +'<span>Check out FvFs</span>'
-                                           +'<i class="icon icon--thin_arrow_right"></i>'
-                                         +'</a>'
-                                         +'</div>'
-                                       +'</div>';
-
-       });//retrieve all user polls
-
-    } else {
-      if(fvfcontent == ''){
-        fvfcontent = '<div class="card" id="empty_card" style="text-align:center;">'
-+'<div>'
-+'<h3 class="info_block__accent" style="margin-top: 3em;">No FvFs</h3>'
-+'<div class="text_block" id="none"></div>'
-+'</div>'
-+'</div>';
-fvflist.classList.remove("row");
-      }
-    }
-
-
-    fvflist.innerHTML = fvfcontent;
-});
 
 
 }

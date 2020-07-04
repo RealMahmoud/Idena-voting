@@ -17,6 +17,10 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.titleoutdiv {
+  height: 60px;
+  overflow-y: auto;
+}
 .container {
     width: 100%;
     padding-right: 15px;
@@ -45,8 +49,7 @@ body {
   color: #ff0018;
 }
 .titlelbl{
-  overflow: hidden;
-  white-space: nowrap;
+  padding-bottom: 0px !important;
   color: #000000;
 }
 

@@ -279,12 +279,12 @@ checkCredits();
           data["entries"].forEach(function(obj) {
 
            pollcontent = pollcontent +  '<div class="col-lg-3 col-sm-6 mb-3 entry">'
-                                          +'<div class="mini-card">'
-                                          +'<p class="desc titlelbl" title="'
-                                          +obj.fulltitle
-                                          +'">'
-                                           +obj.fulltitle
-                                          +'</p>'
+                                                 +'<div class="mini-card">'
+                                                 +'<div class="titleoutdiv"><p class="desc titlelbl" title="'
+                                                 +obj.fulltitle
+                                                 +'">'
+                                                 +obj.fulltitle
+                                                 +'</p></div>'
                                           +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                          +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                           +'<a class="btn btn-secondary btn-small" style="width: -webkit-fill-available;" href="./poll.php?id='+obj.id+'">'
@@ -321,12 +321,12 @@ ajax_get('./services/getProposalsUser.php?user=<?php echo $usernamea; ?>', funct
         data["entries"].forEach(function(obj) {
 
           proposalcontent = proposalcontent +  '<div class="col-lg-3 col-sm-6 mb-3 entry">'
-                                         +'<div class="mini-card ">'
-                                         +'<p class="desc titlelbl" title="'
-                                         +obj.fulltitle
-                                         +'">'
-                                          +obj.fulltitle
-                                         +'</p>'
+                                                +'<div class="mini-card">'
+                                                +'<div class="titleoutdiv"><p class="desc titlelbl" title="'
+                                                +obj.fulltitle
+                                                +'">'
+                                                +obj.fulltitle
+                                                +'</p></div>'
                                          +'<p class="desc categorylbl" style="padding:0px;text-align:center; ">Category : <a href="./polls.php?cat='+obj.category+'">#'+obj.category+'</a></p>'
                                         +'<p class="desc voteslbl" style="padding:0px;padding-bottom:15px;text-align:center; ">Votes Count : '+obj.count+'</p>'
                                          +'<a class="btn btn-secondary btn-small" style="width: -webkit-fill-available;" href="./proposal.php?id='+obj.id+'">'

@@ -142,12 +142,12 @@ $owneraddress = $rowf[1];
 echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
         <div class="input-group">';
-                                          if (!$row2['option1'] == null){
-                                          echo $row2['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked/><br>';
-                                          }
-                                          if (!$row2['option2'] == null){
-                                          echo $row2['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
-                                          }
+        if (!$row2['option1'] == null){
+        echo '<input type="radio" class="formVal" name="vote" value="1" checked />  '.$row2['option1'].'<br>';
+        }
+        if (!$row2['option2'] == null){
+        echo '<input type="radio" class="formVal" name="vote" value="2" />  '.$row2['option2'].'<br>';
+        }
 
                                       echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
                                         <input type="hidden" class="formVal" name="type" value="proposal"/>

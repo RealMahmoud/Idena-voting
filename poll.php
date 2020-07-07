@@ -144,22 +144,22 @@ echo '<div id="checker"></div>
 <form id="vote_form" METHOD="POST">
         <div class="input-group" >';
                                           if (!$row2['option1'] == null){
-                                          echo $row2['option1'].'  <input type="radio" class="formVal" name="vote" value="1" checked /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="1" checked />  '.$row2['option1'].'<br>';
                                           }
                                           if (!$row2['option2'] == null){
-                                          echo $row2['option2'].'  <input type="radio" class="formVal" name="vote" value="2" /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="2" />  '.$row2['option2'].'<br>';
                                           }
                                           if (!$row2['option3'] == null){
-                                          echo $row2['option3'].'  <input type="radio" class="formVal" name="vote" value="3" /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="3" />  '.$row2['option3'].'<br>';
                                           }
                                           if (!$row2['option4'] == null){
-                                          echo $row2['option4'].'  <input type="radio" class="formVal" name="vote" value="4" /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="4" />  '.$row2['option4'].'<br>';
                                           }
                                           if (!$row2['option5'] == null){
-                                          echo $row2['option5'].'  <input type="radio" class="formVal" name="vote" value="5" /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="5" />  '.$row2['option5'].'<br>';
                                           }
                                           if (!$row2['option6'] == null){
-                                          echo $row2['option6'].'  <input type="radio" class="formVal" name="vote" value="6" /><br>';
+                                          echo '<input type="radio" class="formVal" name="vote" value="6" />  '.$row2['option6'].'<br>';
                                         }
                                       echo  '<input type="hidden" class="formVal" name="id" value="'.$id.'"/>
                                         <input type="hidden" class="formVal" name="type" value="poll"/>

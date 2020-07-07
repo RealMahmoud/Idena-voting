@@ -36,12 +36,12 @@ if(!empty($_SESSION["token"])) {
 
             if(isset( $jsonArrayResponse['result']["state"])){
               if($jsonArrayResponse['result']["state"] == 'Suspended'){
-                /*
+
                 $lastepochurl = 'https://api.idena.org/api/epoch/last';
                 $jsonlastepoch = curl_get($lastepochurl);
                 $prevstateurl = 'https://api.idena.org/api/epoch/'.($jsonlastepoch['result']['epoch'] - 1 ).'/identity/'.$_SESSION["addr"];
                 $prevstate = curl_get($prevstateurl);
-                $newstate = $prevstate["result"]["prevState"]; */
+                $newstate = $prevstate["result"]["prevState"];
                 $newstate = $jsonArrayResponse['result']["state"];
               }else{
                 $newstate = $jsonArrayResponse['result']["state"];

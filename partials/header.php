@@ -125,12 +125,7 @@ input[type=text]:hover {
 </style>
 <div class="col-auto">
   <nav>
-  <li class="nav-item header_nav__item">
-  <a class="nav-link header_nav__link appslink" href="./" title="Home" descriptioncontent="
-  Home">
-  Home
-  </a>
-  </li>
+
 <li class="nav-item header_nav__item">
 <a class="nav-link header_nav__link appslink" href="./polls.php" title="Polls" descriptioncontent="
 Polls">
@@ -143,12 +138,18 @@ Polls
               Proposals
             </a>
           </li>
-
+          <li class="nav-item header_nav__item">
+            <a class="nav-link header_nav__link appslink" href="./proposals.php?cat=Dev-Supported" title="Core Proposals" descriptioncontent="FAQ">
+              Dev-Supported
+            </a>
+          </li>
           <li class="nav-item header_nav__item">
             <a class="nav-link header_nav__link appslink" href="./faq.php" title="FAQ" descriptioncontent="FAQ">
               FAQ
             </a>
           </li>
+
+
         </nav>
 <nav>
           <select style="display: none;"onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
